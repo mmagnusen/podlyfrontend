@@ -43,7 +43,7 @@ class PodcastContent extends Component {
                 <p>Tags: {tags}</p>
                 <p>Age: {start_date}</p>
                 <p>Host: {hosts}</p>
-                <p className='PodcastContent-detailsLink'><a href={url} target='_blank'>Link to podcast</a></p>
+                <p className='PodcastContent-detailsLink'><a href={url} target='_blank' rel="noopener noreferrer">Link to podcast</a></p>
                 <button onClick={() => this.handleOpen()} className='PodcastContent-detailsContact'>Contact host</button>
             </section>
             <section className="PodcastContent-description">

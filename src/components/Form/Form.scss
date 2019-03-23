@@ -3,34 +3,51 @@
 $module: 'Form';
 
 .#{$module} {
-    width: 300px;
     position: absolute;
     border: 1px solid grey;
     background: white;
     margin: 0 auto;
     top: 50px;
-    left: calc(50% - 185px);
+    left: calc(50% - 145px);
     padding: 30px;
+    box-sizing: border-box;
+    width: 290px;
+    @media only screen and (min-width: $mobileLargeBreakpoint) {
+        width: 400px;
+        left: calc(50% - 195px);
+    }
     @media only screen and (min-width: $tabletBreakpoint) {
         width: 600px;
-        left: calc(50% - 330px);
+        left: calc(50% - 300px);
     }
 
     &-field {
-        display: grid;
-        grid-template-columns: 110px 1fr;
+        display: flex;
+        flex-direction: column;
         margin: 1.5rem 0;
+        @media only screen and (min-width: $tabletBreakpoint) {
+            display: grid;
+            grid-template-columns: 110px 1fr;
+        }
+
+        label {
+            margin: 0.5rem 0;
+        }
 
         input {
             height: 35px;
             padding: 5px;
             font-size: 16px;
+            border: 1px solid grey;
+            border-radius: 2px;
         }
 
         textarea {
             height: 70px;
             padding: 5px;
             font-size: 16px;
+            border: 1px solid grey;
+            border-radius: 2px;
         }
     }
 

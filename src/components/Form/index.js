@@ -72,7 +72,7 @@ class Form extends Component {
                         <input onChange={this.updateName}/>
                     </section>
                     <section className='Form-field'>
-                        <label>Email</label>  
+                        <label>Email:</label>  
                         <input onChange={this.updateEmail}/>
                     </section>
                     <section className='Form-field'>
