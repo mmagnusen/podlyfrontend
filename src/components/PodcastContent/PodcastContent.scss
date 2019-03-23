@@ -1,0 +1,42 @@
+@import '../../../constants/styles/sass-variables/breakpoints';
+
+$module: 'PodcastContent';
+
+.#{$module} {
+    width: 90%;
+    margin: 0 auto;
+
+    @media only screen and (min-width: $tabletBreakpoint) {
+        width: 80%;
+    }
+
+    &-details {
+        display: grid;
+        grid-template-columns: 1fr;
+        margin: 1rem 0;
+        @media only screen and (min-width: $tabletBreakpoint) {
+            grid-template-columns: 1fr 1fr;
+          }
+    }
+
+    &-detailsLink > a {
+        color: #40c4bf;
+        text-decoration: none;
+    }
+
+    &-detailsContact {
+        background: #40c4bf;
+        color: white;
+        height: 35px;
+        font-size: 16px;
+        border: none;
+        border-radius: 4px;
+    }
+
+    &-description {
+        margin: 1rem 0;
+        p {
+            line-height: 2rem;
+        }
+    }
+}

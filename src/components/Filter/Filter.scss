@@ -1,0 +1,20 @@
+@import '../../../constants/styles/sass-variables/breakpoints';
+
+$module: 'Filter';
+
+.#{$module} {
+    width: 90%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 150px 1fr;
+    @media only screen and (min-width: $tabletBreakpoint) {
+        width: 80%;
+    }
+
+    label {
+        display: flex;
+        align-items: center;   
+        padding-right: 5px;
+        color: white;
+    }
+}

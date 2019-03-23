@@ -1,18 +1,20 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import Home from '../Home'
-import Blog from '../Blog'
-import Post from '../Post'
+import { Provider } from 'react-redux'
+import store from '../../redux/store/store'
+import HomePage from '../../pages/HomePage'
+import PodcastPage from '../../pages/PodcastPage'
 
 const AppRouter  = (props) => {
     return (
+        <Provider store={store}>
         <BrowserRouter>
             <Switch>
-                <Route path='/' component={Home} exact={true}/>
-                <Route path='/blog' component={Blog} exact={true}/>
-                <Route path="/blog/:slug" component={Post}/>  
+                <Route path='/' component={HomePage} exact={true}/>
+                <Route path="/podcast/:slug" component={PodcastPage}/>  
             </Switch>
         </BrowserRouter>
+        </Provider>
     )
 }
 
