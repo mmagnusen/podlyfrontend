@@ -12,8 +12,6 @@ class PodcastContent extends Component {
     }
 
     handleOpen = () => {
-
-        console.log('handle open')
         this.setState({
             podcastOpen: true 
         })
@@ -26,8 +24,8 @@ class PodcastContent extends Component {
     }
 
   componentDidMount() {
-    const endpoint = `https://marilynmags.pythonanywhere.com/api/podcast?slug=${this.props.match.params.slug}`
-    this.props.dispatch(searchAsyncActions.singlePodcast(endpoint))
+    const slug = this.props.match.params.slug
+    this.props.dispatch(searchAsyncActions.singlePodcast(slug))
   }
 
 

@@ -10,8 +10,7 @@ class Home extends Component {
     }
 
     componentDidMount() {
-        const endpoint = `https://marilynmags.pythonanywhere.com/api/podcast`
-        this.props.dispatch(searchAsyncActions.freshRequest(endpoint))
+        this.props.dispatch(searchAsyncActions.freshRequest())
     }
 
   render() {

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Select from 'react-select';
 import { connect } from 'react-redux'
-import searchActionGenerators from './../../redux/actions/search/searchActionGenerators'
+import searchAsyncActions from './../../redux/actions/search/asyncActions'
 import './Filter.scss'
 
 const options = [
@@ -25,7 +25,7 @@ class Filter extends Component {
   }
 
   handleChange = (selectedOption) => {
-    this.props.dispatch(searchActionGenerators.updateFilters(selectedOption))
+    this.props.dispatch(searchAsyncActions.updateFilters(selectedOption))
   }
   
   render() {
