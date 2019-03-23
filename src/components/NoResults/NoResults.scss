@@ -1,0 +1,10 @@
+@import '../../../constants/styles/sass-variables/breakpoints';
+
+$module: 'NoResults';
+
+.#{$module} {
+    background: rgba(83, 83, 83, 0.03);
+    width: 90%;
+    margin: 6rem auto 3rem auto;
+    color: white;
+}
