@@ -7,9 +7,9 @@ class PodcastPage extends Component {
   render() {
     return (
         <div className="App">
-        <Helmet>
-          <title>Podcast guests</title>
-        </Helmet>
+            <Helmet>
+              <title>Podcast guests</title>
+            </Helmet>
             <Header />
             <PodcastContent />
         </div>

@@ -1,0 +1,71 @@
+@import './constants/styles/sass-variables/colors';
+@import './constants/styles/sass-variables/breakpoints';
+
+$module: 'AuthenticationForm';
+
+.#{$module} {  
+    margin: 0 auto;
+    box-shadow: 0 7px 16px 0 rgba(57, 76, 93, 0.13);
+    @media screen and (min-width: $mobileLargeBreakpoint) { 
+        width: 80%;
+    }
+    @media screen and (min-width: $mobileLargeBreakpoint) { 
+        max-width: 600px;
+    }
+    
+  &-header {
+    text-align: center;
+    background-color: $teak;
+    height: 56px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    color: $white;
+    font-size: 16px;
+  }  
+
+  form {
+    padding: 15px 10px;
+    background: $white;
+  }
+
+  label {
+    font-size: 14px;
+}
+
+.field {
+    margin: 2rem 0;
+    }
+
+.fieldTwo {
+    display: grid;
+    grid-column-gap: 5px;
+    grid-template-columns: repeat(2, 1fr);    
+}
+
+.fieldThree {
+    display: grid;
+    grid-column-gap: 5px;
+    grid-template-columns: 30% 40% 25%;    
+}
+
+&-authenticate {
+    button {
+        width: 90%;
+        height: 40px;
+        margin: 0 auto;
+        display: block;
+        background: $turquoise;
+        color: $white;
+        font-size: 16px;
+        border: none;
+        cursor: pointer;
+        &:hover {
+            border: 2px solid $turquoise;
+            color: $black;
+            background-color: $white;
+        }
+    }
+}
+}
