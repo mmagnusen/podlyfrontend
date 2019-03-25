@@ -1,0 +1,40 @@
+@import '../../../../constants/styles/sass-variables/breakpoints';
+
+$module: 'LoggedOut';
+
+.#{$module} {
+    min-height: 100px;
+    display: grid;
+    grid-template-columns: 200px 1fr 230px;
+    width: 80%;
+
+    &-logo {
+        display: flex;
+        align-items: center;
+        a {
+            display: flex;
+        }
+    }
+
+    &-middle {
+        display: flex; 
+        align-items: center;
+        justify-content: center;
+    }
+
+    &-authenticate {
+        display: flex; 
+        align-items: center;
+        justify-content: space-between;
+        button {
+            background: white;
+            color: grey;
+            height: 40px;
+            width: 100px;
+            border-radius: 4px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+    }
+}

@@ -34,10 +34,17 @@ class Input extends Component {
 
     render() {
         const { value } = this.state
-        const { icon } = this.props
+        const { icon, type } = this.props
         return (
             <section className='Input'>
-                <input  onChange={this.updateValue} onKeyPress={this.handleKeypress} onBlur={this.handleBlur} value={value}/>
+                <input  
+                onChange={this.updateValue} 
+                onKeyPress={this.handleKeypress} 
+                onBlur={this.handleBlur} 
+                value={value}
+                type={type}
+                />
+                
                 {icon && <i className={classnames("fas", icon)}/>}
             </section>
         )

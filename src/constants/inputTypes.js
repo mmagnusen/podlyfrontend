@@ -1,4 +1,5 @@
 export const INPUT_TYPES = {
     TEXT: 'text',
-    NUMBER: 'number'
+    NUMBER: 'number',
+    PASSWORD: 'password'
 }

@@ -4,6 +4,7 @@ import { AuthenticationForm, Input } from '../../'
 import { FORM } from '../../../constants'
 import { Redirect } from 'react-router-dom';
 import userAsyncActions from '../../../redux/actions/user/asyncActions'
+import { INPUT_TYPES } from '../../../constants/index'
 import './Register.scss'
 
 class Register extends Component {
@@ -74,7 +75,10 @@ class Register extends Component {
                         </section>
                         <section className='field fieldTwo'>
                             <label>Password</label> 
-                            <Input onChange={this.updatePassword}/>
+                            <Input 
+                                onChange={this.updatePassword}
+                                type={INPUT_TYPES.PASSWORD}
+                            />
                         </section>
                     </AuthenticationForm>
                 </div>

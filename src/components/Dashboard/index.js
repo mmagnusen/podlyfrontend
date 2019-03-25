@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Layout } from '../../'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
 import './Dashboard.scss'
@@ -11,9 +10,9 @@ class DashboardHome extends Component {
         const lastName = localStorage.getItem('lastName')
         const email = localStorage.getItem('email')
 
-        // if (this.props.user.isLoggedIn === false) {
-        //     return <Redirect to='/'/>
-        // }
+        if (this.props.user.isLoggedIn === false) {
+            return <Redirect to='/'/>
+        }
 
         return (
                 <div className='Dashboard'>

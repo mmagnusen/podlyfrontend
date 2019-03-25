@@ -80,7 +80,7 @@ const userAsyncActions = {
             }) 
         }
     },
-    handleLogOut: () => {
+    handleLogout: () => {
         return (dispatch) => {
             axios({
                 method: 'post',
@@ -96,6 +96,9 @@ const userAsyncActions = {
                 localStorage.setItem('lastName', null)
                 localStorage.setItem('email', null)
                 localStorage.setItem('isLoggedIn', false)
+            })
+            .then(() => {
+                dispatch(userActionGenerators.setRedirect(false))
             })
             .catch((error) => {
                 console.log('error', error)
