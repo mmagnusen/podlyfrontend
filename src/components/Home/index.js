@@ -15,6 +15,7 @@ class Home extends Component {
 
   render() {
     const { podcasts, loading } = this.props.search
+
     return (
         <div className="App">
           <div className='Podcast-list'>
@@ -32,7 +33,8 @@ class Home extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        search: state.search
+        search: state.search,
+        user: state.user
     }
 }
 

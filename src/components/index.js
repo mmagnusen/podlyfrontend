@@ -7,3 +7,14 @@ export { default as LoadingSpinner } from './LoadingSpinner'
 export { default as Header } from './Header'
 export { default as Home } from './Home'
 export { default as NoResults } from './NoResults'
+export { default as Input } from './Input'
+export { default as Dashboard } from './Dashboard'
+
+export { default as LoggedIn } from '../components/Header/LoggedIn'
+export { default as LoggedOut } from '../components/Header/LoggedOut'
+
+// Authentication
+
+export { default as Login } from './authentication/Login'
+export { default as Register } from './authentication/Register'
+export { default as AuthenticationForm } from './authentication/AuthenticationForm'

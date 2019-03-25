@@ -1,0 +1,14 @@
+@import './constants/styles/sass-variables/breakpoints';
+
+ $module: 'Login';
+
+ .#{$module} {   
+    width: 90%;
+    margin: 2rem auto;
+    @media screen and (min-width: $mobileLargeBreakpoint) { 
+        width: 80%;
+    }
+    @media screen and (min-width: $mobileLargeBreakpoint) { 
+        max-width: 600px;
+    }
+} 

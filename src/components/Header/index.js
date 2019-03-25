@@ -1,16 +1,24 @@
 import React, { Component } from 'react';
-import { Link  } from 'react-router-dom';
+import { connect } from 'react-redux'
+import { LoggedIn, LoggedOut } from '../../components/'
 import './Header.scss'
 
 class Header extends Component {
   render() {
+
+    const { user } = this.props
     return (
       <div className="Header">
-      <Link to="/"><h1>Podcasts</h1></Link>
-        <h3>Connecting podcasts with engaging guests</h3>
+        { user.isLoggedIn === true ? <LoggedIn /> : <LoggedOut /> }
       </div>
     );
   }
 }
 
-export default Header;
+const mapStateToProps = (state) => {
+  return {
+      user: state.user
+  }
+}
+
+export default connect(mapStateToProps)(Header);

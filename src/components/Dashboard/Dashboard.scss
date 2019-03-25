@@ -1,0 +1,10 @@
+@import '../../../constants/styles/sass-variables/breakpoints';
+@import '../../../constants/styles/sass-variables/colors';
+
+$module: 'Dashboard';
+
+.#{$module} {   
+    min-height: 400px;
+    width: 80%;
+    margin: 0 auto;
+}
