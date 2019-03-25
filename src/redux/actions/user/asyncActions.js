@@ -8,7 +8,7 @@ const userAsyncActions = {
         return (dispatch) => {
             axios({
                 method: 'post',
-                url: 'http://127.0.0.1:8000/api/rest-auth/login/', 
+                url: 'https://marilynmags.pythonanywhere.com/api/rest-auth/login/', 
                 data: {
                         email,
                         password,
@@ -32,7 +32,7 @@ const userAsyncActions = {
         return (dispatch) => { 
             axios({
                 method: 'post',
-                url: 'http://127.0.0.1:8000/api/rest-auth/registration/', 
+                url: 'https://marilynmags.pythonanywhere.com/api/rest-auth/registration/', 
                 data: {
                         first_name: firstName,
                         last_name: lastName,
@@ -59,7 +59,7 @@ const userAsyncActions = {
         return (dispatch) => {
             axios({
                 method: 'get',
-                url: 'http://127.0.0.1:8000/api/rest-auth/user/', 
+                url: 'https://marilynmags.pythonanywhere.com/api/rest-auth/user/', 
                 headers: {
                     'Authorization': 'Token '+ token
                     },
@@ -84,7 +84,7 @@ const userAsyncActions = {
         return (dispatch) => {
             axios({
                 method: 'post',
-                url: 'http://127.0.0.1:8000/api/rest-auth/logout/', 
+                url: 'https://marilynmags.pythonanywhere.com/api/rest-auth/logout/', 
                 headers: {
                     'Authorization': 'Token '+ store.getState().user.token
                     },
