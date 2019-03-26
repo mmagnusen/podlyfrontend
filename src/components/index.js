@@ -12,6 +12,8 @@ export { default as Dashboard } from './Dashboard'
 
 export { default as LoggedIn } from '../components/Header/LoggedIn'
 export { default as LoggedOut } from '../components/Header/LoggedOut'
+export { default as UserPodcast } from './Dashboard/UserPodcast'
+export { default as EditPodcast } from './Dashboard/EditPodcast'
 
 // Authentication
 

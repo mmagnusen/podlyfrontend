@@ -9,10 +9,6 @@ class Input extends Component {
         onChange: () => { }
       }
 
-    state = {
-        value: ''
-    }
-
     updateValue = (event) => {
         this.setState({ value: event.target.value})
     }
@@ -33,16 +29,17 @@ class Input extends Component {
     }
 
     render() {
-        const { value } = this.state
-        const { icon, type } = this.props
+
+        const { icon, type, value } = this.props
+        
         return (
             <section className='Input'>
                 <input  
-                onChange={this.updateValue} 
-                onKeyPress={this.handleKeypress} 
-                onBlur={this.handleBlur} 
-                value={value}
-                type={type}
+                    onChange={this.updateValue} 
+                    onKeyPress={this.handleKeypress} 
+                    onBlur={this.handleBlur} 
+                    value={value}
+                    type={type}
                 />
                 
                 {icon && <i className={classnames("fas", icon)}/>}

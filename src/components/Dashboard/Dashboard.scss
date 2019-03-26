@@ -7,4 +7,8 @@ $module: 'Dashboard';
     min-height: 400px;
     width: 80%;
     margin: 0 auto;
+
+    &-email {
+        margin: 2rem 0 3rem 0;
+    }
 }
