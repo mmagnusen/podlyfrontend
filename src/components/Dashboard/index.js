@@ -1,34 +1,31 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { UserPodcast } from '../index'
+import Modal from '@material-ui/core/Modal';
+import { EditPodcast, NewPodcast } from '../'
 import { Redirect } from 'react-router-dom'
 import './Dashboard.scss'
 
 class DashboardHome extends Component {
 
     state = {
-        editOpen: true
+        newOpen: false
     }
 
-    handleOpen = () => {
+    toggleNewPodcast = (open) => {
+
+        console.log('toggling', open)
         this.setState({
-            editOpen: true 
+            newOpen: open
         })
     }
-
-    handleClose = () => {
-        this.setState({
-            editOpen: false 
-        })
-    }
-
     render() {
         const firstName = localStorage.getItem('firstName')
         const lastName = localStorage.getItem('lastName')
         const email = localStorage.getItem('email')
 
-        const { user } = this.props
-        const { editOpen } = this.state
+        const { user, reduxPodcast } = this.props
+        const { newOpen } = this.state
 
         // if (user.isLoggedIn === false) {
         //     return <Redirect to='/'/>
@@ -40,21 +37,49 @@ class DashboardHome extends Component {
                    <section className='Dashboard-email'>
                         email: { email }
                    </section>
+                   <section className='Dashboard-addPodcast'>
+                        <button onClick={() => this.toggleNewPodcast(true)}>Add new podcast</button>
+                   </section>
 
-                    <section>
-                    <h3>Your podcasts</h3>
-                </section>
-                    <section>
-                        { user.podcasts && user.podcasts.map((podcast) => (
+                    
+                    <section className='Dashboard-yourPodcasts'>
+                        <section className='Dashboard-yourPodcastsTitle'>
+                            <h3>Your podcasts</h3>
+                        </section>
+                        { reduxPodcast.podcasts && reduxPodcast.podcasts.map((podcast) => (
                             <UserPodcast 
                                 key={podcast.name} 
-                                podcast={podcast} 
-                                editOpen={editOpen} 
-                                handleOpen={this.handleOpen} 
-                                handleClose={this.handleClose} 
+                                editOpen={podcast.editOpen} 
+                                podcast={podcast}
                             />
                         ))}
                     </section>
+
+                    { reduxPodcast.editOpen === true && 
+                        (<Modal
+                            aria-labelledby="simple-modal-title"
+                            aria-describedby="simple-modal-description"
+                            open={reduxPodcast.editOpen}
+                            onClose={this.handleClose}
+                        >
+                            <div>
+                                <EditPodcast />
+                            </div>
+                        </Modal>
+                    )}
+
+                    { newOpen === true && 
+                        (<Modal
+                            aria-labelledby="simple-modal-title"
+                            aria-describedby="simple-modal-description"
+                            open={newOpen}
+                            onClose={() => this.toggleNewPodcast(false)}
+                        >
+                            <div>
+                                <NewPodcast toggleNewPodcast={this.toggleNewPodcast}/>
+                            </div>
+                        </Modal>
+                    )}
                 </div>
         )
     }
@@ -62,7 +87,8 @@ class DashboardHome extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        user: state.user
+        user: state.user,
+        reduxPodcast: state.podcast
     }
 }
 

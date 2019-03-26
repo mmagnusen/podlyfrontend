@@ -11,4 +11,20 @@ $module: 'Dashboard';
     &-email {
         margin: 2rem 0 3rem 0;
     }
+
+    &-addPodcast {
+        border-bottom: 1px solid grey;
+        padding: 2rem 0;
+        
+        button {
+            height: 40px;
+            width: 200px;
+            font-size: 16px;
+            border-radius: 4px;
+        }
+    }
+
+    &-yourPodcasts{
+        display: none; 
+    }
 }

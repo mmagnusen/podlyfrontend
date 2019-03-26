@@ -2,48 +2,79 @@ import React, { Component } from 'react';
 import { Input, TextArea } from '../../index'
 import { connect } from 'react-redux'
 import podcastAsyncActions from '../../../redux/actions/podcast/asyncActions'
-import podcastActionGenerators from '../../../redux/actions/podcast/podcastActionGenerators'
-import './EditPodcast.scss'
+import './NewPodcast.scss'
 
-class EditPodcast extends Component {
+class NewPodcast extends Component {
+
+    state = {
+        name:"",
+        slug:"",
+        start_date:"",
+        hosts:"",
+        url:"",
+        description:"",
+        tags:""
+    }
 
     updateName = (event) => {
-        this.props.dispatch(podcastActionGenerators.updateName(event.target.value))
+        this.setState({
+            name: event.target.value
+        })
+    }
+
+    updateSlug = (event) => {
+        this.setState({
+            slug: event.target.value
+        })
     }
 
     updateTags = (event) => {
-        this.props.dispatch((podcastActionGenerators.updateTags(event.target.value)))
+         this.setState({
+            tags: event.target.value
+        })
     }
 
     updateStartDate = (event) => {
-        this.props.dispatch((podcastActionGenerators.updateStartDate(event.target.value)))
+        this.setState({
+            start_date: event.target.value
+        })
     }
 
     updateHosts = (event) => {
-        this.props.dispatch((podcastActionGenerators.updateHosts(event.target.value)))
+        this.setState({
+            hosts: event.target.value
+        })
     }
 
     updateUrl = (event) => {
-        this.props.dispatch((podcastActionGenerators.updateUrl(event.target.value)))
+        this.setState({
+            url: event.target.value
+        })
     }
 
     updateDescription = (event) => {
-        this.props.dispatch((podcastActionGenerators.updateDescription(event.target.value)))
+        this.setState({
+            description: event.target.value
+        })
     }
 
-    submitChanges = () => {
-        this.props.dispatch((podcastAsyncActions.submitChanges()))
+    submitNewPodcast = () => {
+        this.props.toggleNewPodcast(false)
+        this.props.dispatch((podcastAsyncActions.submitNewPodcast(this.state)))
     }
 
     render() {
 
-        const { name, tags, start_date, hosts, url, description } = this.props.podcast
+        const { name, slug, tags, start_date, hosts, url, description } = this.state
 
         return (
                 <div className='EditPodcast'>
                     <div className="EditPodcast-details">
                     <section>
                         <p>Name:</p> <Input value={name} onChange={this.updateName}/> 
+                    </section>
+                    <section>
+                        <p>Slug:</p> <Input value={slug} onChange={this.updateSlug}/> 
                     </section>
                     <section>
                         <p>Tags:</p> <Input value={tags} onChange={this.updateTags}/>
@@ -62,7 +93,7 @@ class EditPodcast extends Component {
                     </section>
                     </div>
                     <div>
-                        <button onClick={this.submitChanges}>Save changes</button>
+                        <button onClick={this.submitNewPodcast}>Save changes</button>
                     </div>
                 </div>
         )
@@ -76,4 +107,4 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps)(EditPodcast)
+export default connect(mapStateToProps)(NewPodcast)
