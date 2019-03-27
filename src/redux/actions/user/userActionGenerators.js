@@ -1,4 +1,10 @@
 const userActionGenerators = {
+    receiveUserPodcasts: (userPodcasts) => {
+        return {
+            type: 'RECEIVE_USER_PODCASTS',
+            userPodcasts
+        }
+    },
     setToken: (token) => {
         return {
             type: 'SET_TOKEN',

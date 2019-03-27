@@ -18,25 +18,25 @@ class Register extends Component {
 
     updateFirstName = (event) => {
         this.setState({
-            firstName: event
+            firstName: event.target.value
         })
     }
 
     updateLastName = (event) => {
         this.setState({
-            lastName: event
+            lastName: event.target.value
         })
     }
 
     updateEmail = (event) => {
         this.setState({
-            email: event
+            email: event.target.value
         })  
     }
 
     updatePassword = (event) => {
         this.setState({
-            password: event
+            password: event.target.value
         })  
     }
 

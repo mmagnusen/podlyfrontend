@@ -4,6 +4,7 @@ import { UserPodcast } from '../index'
 import Modal from '@material-ui/core/Modal';
 import { EditPodcast, NewPodcast } from '../'
 import { Redirect } from 'react-router-dom'
+import userAsyncActions from '../../redux/actions/user/asyncActions'
 import './Dashboard.scss'
 
 class DashboardHome extends Component {
@@ -12,8 +13,11 @@ class DashboardHome extends Component {
         newOpen: false
     }
 
-    toggleNewPodcast = (open) => {
+    componentDidMount() {
+        this.props.dispatch(userAsyncActions.getUserPodcasts())
+    }
 
+    toggleNewPodcast = (open) => {
         console.log('toggling', open)
         this.setState({
             newOpen: open

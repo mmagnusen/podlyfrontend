@@ -1,7 +1,8 @@
 import axios from 'axios'
 import podcastActionGenerators from './podcastActionGenerators'
+import store from '../../store/store'
 
-const endpoint = `https://marilynmags.pythonanywhere.com/api/podcast`
+const endpoint = `http://127.0.0.1:8000/api/podcast`
 
 const podcastAsyncActions = { 
     submitChanges: () => {
@@ -10,10 +11,21 @@ const podcastAsyncActions = {
             dispatch(podcastActionGenerators.updateEditModalOpen(false))
         }  
     },
-    submitNewPodcast: () => {
-        console.log('hello')
+    submitNewPodcast: (data) => {
+        console.log('submit podcast async action', data)
         return (dispatch) => {
-            
+            axios({
+                method: 'post',
+                url: endpoint, 
+                responseType: 'json',
+                data
+            })
+            .then((response) => {
+                console.log('response from submit podcast async action', response)
+            })
+            .catch((error) => {
+                console.log('error', error)
+            }) 
         }  
     },
 }

@@ -2,8 +2,17 @@ import axios from 'axios'
 import userActionGenerators from './userActionGenerators'
 import store from '../../store/store'
 
-const userAsyncActions = { 
 
+const getUserPodcastsEndpoint = 'http://127.0.0.1:8000/api/podcast'
+const userAsyncActions = { 
+    getUserPodcasts: () => {
+        return (dispatch) => {
+            axios.get(getUserPodcastsEndpoint)
+            .then((response) => {
+                dispatch(userActionGenerators.receiveUserPodcasts(response.data))
+            })
+        }  
+    },
     submitLogin: (email, password) => {
         return (dispatch) => {
             axios({
