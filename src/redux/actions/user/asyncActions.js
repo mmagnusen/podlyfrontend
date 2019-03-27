@@ -42,13 +42,20 @@ const userAsyncActions = {
                     },
                 responseType: 'json'
             })
-            .then((response) => {
-                if (response.data.key) {
-                    dispatch(userActionGenerators.setToken(response.data.key))
-                } 
-            })
-            .then(()  => {
-                setTimeout( () =>  dispatch(userAsyncActions.retrieveUserDetails(store.getState().user.token)), 200);  
+            .then(({data}) => {
+                if (data.token) {
+                    localStorage.setItem('firstName', data.user.first_name)
+                    localStorage.setItem('lastName', data.user.last_name)
+                    localStorage.setItem('email', data.user.email)
+                    localStorage.setItem('token', data.token)
+                    localStorage.setItem('isLoggedIn', true)
+                }
+                setTimeout( () =>  dispatch(userActionGenerators.setUserDetails({
+                    first_name: data.user.first_name,
+                    last_name: data.user.last_name,
+                    email: data.user.email,
+                    token: data.token
+                }), 200));  
             })
             .catch((error) => {
                 console.log('error', error)
