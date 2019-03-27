@@ -1,38 +1,38 @@
 const userActionGenerators = {
     receiveUserPodcasts: (userPodcasts) => {
-        return {
-            type: 'RECEIVE_USER_PODCASTS',
-            userPodcasts
-        }
+        // return {
+        //     type: 'RECEIVE_USER_PODCASTS',
+        //     userPodcasts
+        // }
     },
-    setToken: (token) => {
+    setUserDetails: (details) => {
         return {
-            type: 'SET_TOKEN',
-            token
+            type: 'SET_USER_DETAILS',
+            details
         }
     },
     updateUser: (user) => {
-        return {
-            type: 'UPDATE_USER',
-            user
-        }
+        // return {
+        //     type: 'UPDATE_USER',
+        //     user
+        // }
     },
     setRedirect: (redirect) => {
-        return {
-            type: 'SET_REDIRECT',
-            redirect
-        } 
+        // return {
+        //     type: 'SET_REDIRECT',
+        //     redirect
+        // } 
     },
     handleLogout: () => {
-        return {
-            type: 'LOG_OUT'
-        } 
+        // return {
+        //     type: 'LOG_OUT'
+        // } 
     },
     updateDashboardPage: (page) => {
-        return {
-            type: 'DASHBOARD_PAGE',
-            page    
-        }
+        // return {
+        //     type: 'DASHBOARD_PAGE',
+        //     page    
+        // }
     }
 }
 

@@ -14,7 +14,7 @@ class DashboardHome extends Component {
     }
 
     componentDidMount() {
-        this.props.dispatch(userAsyncActions.getUserPodcasts())
+        //this.props.dispatch(userAsyncActions.getUserPodcasts())
     }
 
     toggleNewPodcast = (open) => {
@@ -27,6 +27,7 @@ class DashboardHome extends Component {
         const firstName = localStorage.getItem('firstName')
         const lastName = localStorage.getItem('lastName')
         const email = localStorage.getItem('email')
+        const token = localStorage.getItem('token')
 
         const { user, reduxPodcast } = this.props
         const { newOpen } = this.state
@@ -41,6 +42,15 @@ class DashboardHome extends Component {
                    <section className='Dashboard-email'>
                         email: { email }
                    </section>
+                   <section className='Dashboard-email'>
+                        first Name: { firstName }
+                    </section>
+                    <section className='Dashboard-email'>
+                        lastName: { lastName }
+                    </section>
+                    <section className='Dashboard-email'>
+                        token: { token }
+                    </section>
                    <section className='Dashboard-addPodcast'>
                         <button onClick={() => this.toggleNewPodcast(true)}>Add new podcast</button>
                    </section>
