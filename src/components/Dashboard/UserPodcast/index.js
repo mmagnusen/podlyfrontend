@@ -12,7 +12,7 @@ class UserPodcast extends Component {
     render() {
 
         const { podcast } = this.props
-        const { name, tags, start_date, hosts, url } = podcast
+        const { name, tags, start_date, hosts, url, user } = podcast
 
         return (
             <div className='UserPodcast'>
@@ -21,6 +21,7 @@ class UserPodcast extends Component {
                     <p>Tags: {tags}</p>
                     <p>Age: {start_date}</p>
                     <p>Host: {hosts}</p>
+                    <p>User: {user}</p>
                     <p>Link to podcast: {url}</p>
                 </div>
                 <div>

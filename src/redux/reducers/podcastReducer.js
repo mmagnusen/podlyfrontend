@@ -56,6 +56,11 @@ const podcastReducer = (state = defaultPodcastState, action = {}) => {
                 
                 }
             }
+        case 'UPDATE_USER_PODCASTS':
+            return {
+                ...state,
+                podcasts: action.podcasts
+            }
         default:
             return state
      }

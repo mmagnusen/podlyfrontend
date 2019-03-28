@@ -6,31 +6,6 @@ axios.defaults.xsrfCookieName = 'csrftoken';
 axios.defaults.xsrfHeaderName = 'X-CSRFToken';
 
 const userAsyncActions = { 
-    getUserPodcasts: () => {
-        // return (dispatch) => {
-        //     axios({
-        //         method: 'get',
-        //         url: 'http://127.0.0.1:8000/api/podcast', 
-        //         headers: {
-        //             'Authorization': 'Token '+ store.getState().user.token
-        //             },
-        //         responseType: 'json'
-        //     })
-        //     .then(({data}) => {
-        //         dispatch(userActionGenerators.updateUser(data))
-        //         localStorage.setItem('firstName', data.first_name)
-        //         localStorage.setItem('lastName', data.last_name)
-        //         localStorage.setItem('email', data.email)
-        //         localStorage.setItem('isLoggedIn', true)
-        //     })
-        //     .then(() => {
-        //         dispatch(userActionGenerators.setRedirect(true))
-        //     })
-        //     .catch((error) => {
-        //         console.log('error', error)
-        //     }) 
-        // }  
-    },
     submitLogin: (email, password) => {
         return (dispatch) => {
             axios({
@@ -90,7 +65,6 @@ const userAsyncActions = {
             })
         }  
     },
-
     handleLogout: () => {
         localStorage.clear()
     }

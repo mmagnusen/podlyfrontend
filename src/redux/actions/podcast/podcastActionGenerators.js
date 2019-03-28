@@ -41,6 +41,12 @@ const podcastActionGenerators = {
             description
         }
     },
+    updateUserPodcasts: (podcasts) => {
+        return {
+            type: 'UPDATE_USER_PODCASTS',
+            podcasts
+        } 
+    }
 }
 
 export default podcastActionGenerators
