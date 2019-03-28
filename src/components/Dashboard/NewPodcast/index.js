@@ -59,7 +59,7 @@ class NewPodcast extends Component {
     }
 
     submitNewPodcast = () => {
-        this.props.toggleNewPodcast(false)
+        //this.props.toggleNewPodcast(false)
         this.props.dispatch((podcastAsyncActions.submitNewPodcast(this.state)))
     }
 

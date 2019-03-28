@@ -18,7 +18,6 @@ class DashboardHome extends Component {
     }
 
     toggleNewPodcast = (open) => {
-        console.log('toggling', open)
         this.setState({
             newOpen: open
         })

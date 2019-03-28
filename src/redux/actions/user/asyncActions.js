@@ -92,29 +92,7 @@ const userAsyncActions = {
     },
 
     handleLogout: () => {
-    //     return (dispatch) => {
-    //         axios({
-    //             method: 'post',
-    //             url: 'https://marilynmags.pythonanywhere.com/api/rest-auth/logout/', 
-    //             headers: {
-    //                 'Authorization': 'Token '+ store.getState().user.token
-    //                 },
-    //             responseType: 'json'
-    //         })
-    //         .then(() => {
-    //             dispatch(userActionGenerators.handleLogout())
-    //             localStorage.setItem('firstName', null)
-    //             localStorage.setItem('lastName', null)
-    //             localStorage.setItem('email', null)
-    //             localStorage.setItem('isLoggedIn', false)
-    //         })
-    //         .then(() => {
-    //             dispatch(userActionGenerators.setRedirect(false))
-    //         })
-    //         .catch((error) => {
-    //             console.log('error', error)
-    //         }) 
-    //     }
+        localStorage.clear()
     }
 }
 

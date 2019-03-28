@@ -14,9 +14,14 @@ const podcastAsyncActions = {
     submitNewPodcast: (data) => {
         console.log('submit podcast async action', data)
         return (dispatch) => {
+            const token = localStorage.getItem('token');
+
             axios({
                 method: 'post',
                 url: endpoint, 
+                headers: {
+                    'Authorization': 'JWT '+ token
+                    },
                 responseType: 'json',
                 data
             })
