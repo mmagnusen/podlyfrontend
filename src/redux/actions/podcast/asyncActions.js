@@ -28,9 +28,24 @@ const podcastAsyncActions = {
         }  
     },
     submitChanges: () => {
-        console.log('hello')
+        const editedPodcast = store.getState().podcast.currentPodcast
         return (dispatch) => {
             dispatch(podcastActionGenerators.updateEditModalOpen(false))
+            axios({
+                method: 'patch',
+                url: `http://127.0.0.1:8000/api/podcast/${editedPodcast.pk}`, 
+                headers: {
+                    'Authorization': 'JWT '+ token
+                    },
+                responseType: 'json',
+                data: editedPodcast
+            })
+            .then((response) => {
+                console.log('response from submit podcast async action', response)
+            })
+            .catch((error) => {
+                console.log('error', error)
+            }) 
         }  
     },
     submitNewPodcast: (data) => {

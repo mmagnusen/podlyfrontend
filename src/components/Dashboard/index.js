@@ -4,7 +4,6 @@ import { UserPodcast } from '../index'
 import Modal from '@material-ui/core/Modal';
 import { EditPodcast, NewPodcast } from '../'
 import { Redirect } from 'react-router-dom'
-import userAsyncActions from '../../redux/actions/user/asyncActions'
 import podcastAsyncActions from '../../redux/actions/podcast/asyncActions'
 import './Dashboard.scss'
 
@@ -32,9 +31,9 @@ class DashboardHome extends Component {
         const { user, reduxPodcast } = this.props
         const { newOpen } = this.state
 
-        // if (user.isLoggedIn === false) {
-        //     return <Redirect to='/'/>
-        // }
+        if (user.isLoggedIn === false) {
+            return <Redirect to='/'/>
+        }
 
         return (
                 <div className='Dashboard'>

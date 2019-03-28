@@ -1,6 +1,5 @@
 import axios from 'axios'
 import userActionGenerators from './userActionGenerators'
-import store from '../../store/store'
 
 axios.defaults.xsrfCookieName = 'csrftoken';
 axios.defaults.xsrfHeaderName = 'X-CSRFToken';
