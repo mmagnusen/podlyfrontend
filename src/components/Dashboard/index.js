@@ -19,7 +19,7 @@ class DashboardHome extends Component {
 
     toggleNewPodcast = (open) => {
         this.setState({
-            newOpen: open
+            newOpen: !this.state.newOpen
         })
     }
     render() {
@@ -27,11 +27,12 @@ class DashboardHome extends Component {
         const lastName = localStorage.getItem('lastName')
         const email = localStorage.getItem('email')
         const token = localStorage.getItem('token')
+        const isLoggedIn =  localStorage.getItem('isLoggedIn')
 
-        const { user, reduxPodcast } = this.props
+        const { reduxPodcast } = this.props
         const { newOpen } = this.state
 
-        if (user.isLoggedIn === false) {
+        if (isLoggedIn === false) {
             return <Redirect to='/'/>
         }
 
@@ -81,18 +82,14 @@ class DashboardHome extends Component {
                         </Modal>
                     )}
 
-                    { newOpen === true && 
-                        (<Modal
-                            aria-labelledby="simple-modal-title"
-                            aria-describedby="simple-modal-description"
+                        <Modal
                             open={newOpen}
-                            onClose={() => this.toggleNewPodcast(false)}
+                            onClose={this.toggleNewPodcast}
                         >
                             <div>
                                 <NewPodcast toggleNewPodcast={this.toggleNewPodcast}/>
                             </div>
                         </Modal>
-                    )}
                 </div>
         )
     }

@@ -6,13 +6,16 @@ import { ENDPOINT } from '../../../constants'
 const endpoint = `${ENDPOINT}/api/podcast`
 axios.defaults.xsrfCookieName = 'csrftoken';
 axios.defaults.xsrfHeaderName = 'X-CSRFToken';
+
 const token = localStorage.getItem('token');
 
 
 const podcastAsyncActions = { 
     getUserPodcasts: () => {
         return (dispatch) => {
-            axios({
+
+        
+            token && axios({
                 method: 'get',
                 url: `${ENDPOINT}/api/podcast/user_podcasts`, 
                 headers: {

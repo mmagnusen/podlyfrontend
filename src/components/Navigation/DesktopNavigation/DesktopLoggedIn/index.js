@@ -20,6 +20,9 @@ class DesktopLoggedIn extends Component {
             <h3>Connecting podcasts with engaging guests</h3>
         </section>
         <section className="DesktopLoggedIn-authenticate">
+            <Link to='/dashboard'>
+              <button>Dashboard</button>
+            </Link>
             <button onClick={() => this.handleLogout()}>Logout</button>
         </section>
       </div>

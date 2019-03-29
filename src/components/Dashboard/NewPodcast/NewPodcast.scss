@@ -1,0 +1,25 @@
+@import '../../../../constants/styles/sass-variables/breakpoints';
+@import '../../../../constants/styles/sass-variables/colors';
+
+$module: 'NewPodcast';
+
+.#{$module} {   
+    width: 600px;
+    margin: 0 auto;
+    background: white;
+    padding: 1rem;
+    box-sizing: border-box;
+    margin-top: 3rem;
+
+    &-name, 
+    &-slug,
+    &-tags,
+    &-age,
+    &-host,
+    &-link,
+    &-description {
+        display: grid;
+        grid-template-columns: 100px 1fr;
+    }
+
+}

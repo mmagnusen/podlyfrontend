@@ -68,28 +68,28 @@ class NewPodcast extends Component {
         const { name, slug, tags, start_date, hosts, url, description } = this.state
 
         return (
-                <div className='EditPodcast'>
-                    <div className="EditPodcast-details">
-                    <section>
+                <div className='NewPodcast'>
+                    <div className="NewPodcast-details">
+                    <section className="NewPodcast-name">
                         <p>Name:</p> <Input value={name} onChange={this.updateName}/> 
                     </section>
-                    <section>
+                    <section className="NewPodcast-slug">
                         <p>Slug:</p> <Input value={slug} onChange={this.updateSlug}/> 
                     </section>
-                    <section>
+                    <section className="NewPodcast-tags">
                         <p>Tags:</p> <Input value={tags} onChange={this.updateTags}/>
                     </section>
-                    <section>
+                    <section className="NewPodcast-age">
                         <p>Age:</p> <Input value={start_date} onChange={this.updateStartDate}/>
                     </section>
-                    <section>
+                    <section className="NewPodcast-host">
                         <p>Host:</p> <Input value={hosts} onChange={this.updateHosts}/>
                     </section>
-                    <section>
-                        <p>Link to podcast: <Input value={url} onChange={this.updateUrl}/></p>
+                    <section className="NewPodcast-link">
+                        <p>Link to podcast:</p> <Input value={url} onChange={this.updateUrl}/>
                     </section>
-                    <section>
-                        <p>Description: <TextArea value={description} onChange={this.updateDescription}/></p>
+                    <section className="NewPodcast-description">
+                        <p>Description:</p><TextArea value={description} onChange={this.updateDescription}/>
                     </section>
                     </div>
                     <div>
