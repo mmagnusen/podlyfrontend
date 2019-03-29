@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import { Link  } from 'react-router-dom';
 import { connect } from 'react-redux'
-import userAsyncActions from '../../../../redux/actions/user/asyncActions'
+import userActionGenerators from '../../../../redux/actions/user/userActionGenerators'
 import './MobileLoggedIn.scss'
 
 class MobileLoggedIn extends Component {
 
   handleLogout = () => {
-    this.props.dispatch(userAsyncActions.handleLogout())
+    this.props.dispatch(userActionGenerators.handleLogout())
   }
 
   render() {

@@ -64,9 +64,6 @@ const userAsyncActions = {
             })
         }  
     },
-    handleLogout: () => {
-        localStorage.clear()
-    }
 }
 
 export default userAsyncActions

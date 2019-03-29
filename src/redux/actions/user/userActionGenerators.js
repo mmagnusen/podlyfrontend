@@ -5,6 +5,12 @@ const userActionGenerators = {
             details
         }
     },
+    handleLogout: () => {
+        localStorage.clear()
+        return {
+            type: 'SET_LOGOUT'
+        }
+    }
 }
 
 export default userActionGenerators
