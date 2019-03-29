@@ -10,16 +10,23 @@ import './Dashboard.scss'
 class DashboardHome extends Component {
 
     state = {
-        newOpen: false
+        newOpen: false,
+        editOpen: false
     }
 
     componentDidMount() {
         this.props.dispatch(podcastAsyncActions.getUserPodcasts())
     }
 
-    toggleNewPodcast = (open) => {
+    toggleNewPodcast = () => {
         this.setState({
             newOpen: !this.state.newOpen
+        })
+    }
+
+    toggleEditPodcast = () => {
+        this.setState({
+            editOpen: !this.state.editOpen
         })
     }
     render() {
@@ -30,7 +37,7 @@ class DashboardHome extends Component {
         const isLoggedIn =  localStorage.getItem('isLoggedIn')
 
         const { reduxPodcast } = this.props
-        const { newOpen } = this.state
+        const { newOpen, editOpen } = this.state
 
         if (isLoggedIn === false) {
             return <Redirect to='/'/>
@@ -63,31 +70,28 @@ class DashboardHome extends Component {
                         { reduxPodcast.podcasts && reduxPodcast.podcasts.map((podcast) => (
                             <UserPodcast 
                                 key={podcast.name} 
-                                editOpen={podcast.editOpen} 
                                 podcast={podcast}
+                                toggleEditPodcast={this.toggleEditPodcast}
                             />
                         ))}
                     </section>
 
-                    { reduxPodcast.editOpen === true && 
-                        (<Modal
-                            aria-labelledby="simple-modal-title"
-                            aria-describedby="simple-modal-description"
-                            open={reduxPodcast.editOpen}
-                            onClose={this.handleClose}
+                        <Modal
+                            open={editOpen}
+                            onClose={this.toggleEditPodcast}
                         >
                             <div>
-                                <EditPodcast />
+                                <EditPodcast toggleEditPodcast={this.toggleEditPodcast}/>
                             </div>
                         </Modal>
-                    )}
+                    
 
                         <Modal
                             open={newOpen}
                             onClose={this.toggleNewPodcast}
                         >
                             <div>
-                                <NewPodcast toggleNewPodcast={this.toggleNewPodcast}/>
+                                <NewPodcast />
                             </div>
                         </Modal>
                 </div>

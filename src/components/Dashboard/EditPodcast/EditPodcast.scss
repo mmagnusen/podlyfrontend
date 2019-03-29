@@ -4,10 +4,31 @@
 $module: 'EditPodcast';
 
 .#{$module} {   
-    width: 600px;
-    margin: 0 auto;
+    width: 300px;
+    left: calc(50% - 150px);
     background: white;
     padding: 1rem;
     box-sizing: border-box;
     margin-top: 3rem;
+    position:  absolute;
+    border-radius: 4px;
+    @media screen and (min-width: $mobileLargeBreakpoint) { 
+        width: 450px;
+        left: calc(50% - 220px);
+    }
+
+    @media screen and (min-width: $tabletBreakpoint) { 
+        width: 650px;
+        left: calc(50% - 330px);
+    }
+
+    &-name,
+    &-tags,
+    &-age,
+    &-host,
+    &-link,
+    &-description {
+        display: grid;
+        grid-template-columns: 100px 1fr;
+    }
 }

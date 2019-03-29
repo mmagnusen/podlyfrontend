@@ -6,7 +6,8 @@ import './UserPodcast.scss'
 class UserPodcast extends Component {
 
     openEditModal = () => {
-        this.props.dispatch((podcastActionGenerators.updateEditModalOpen(true, this.props.podcast)))
+        this.props.dispatch((podcastActionGenerators.updateEditModalOpen(this.props.podcast)))
+        this.props.toggleEditPodcast()
     }
 
     render() {

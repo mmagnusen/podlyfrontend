@@ -5,7 +5,6 @@ const podcastReducer = (state = defaultPodcastState, action = {}) => {
         case 'UPDATE_MODAL_OPEN':
             return {
                 ...state,
-                editOpen: action.isOpen,
                 currentPodcast: action.podcast
             }
         case 'UPDATE_NAME':

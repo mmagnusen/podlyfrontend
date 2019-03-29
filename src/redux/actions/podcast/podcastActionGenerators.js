@@ -1,8 +1,7 @@
 const podcastActionGenerators = {
-    updateEditModalOpen: (isOpen, podcast = {}) => {
+    updateEditModalOpen: (podcast = {}) => {
         return {
             type: 'UPDATE_MODAL_OPEN',
-            isOpen,
             podcast
         }
     },

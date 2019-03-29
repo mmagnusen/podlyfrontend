@@ -70,6 +70,7 @@ class NewPodcast extends Component {
         return (
                 <div className='NewPodcast'>
                     <div className="NewPodcast-details">
+                    <section><h3>Add new podcast</h3></section>
                     <section className="NewPodcast-name">
                         <p>Name:</p> <Input value={name} onChange={this.updateName}/> 
                     </section>
