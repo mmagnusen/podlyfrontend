@@ -15,19 +15,19 @@ import './Login.scss'
 
      updateEmail = (event) => {
         this.setState({
-            email: event
+            email: event.target.value
         })  
     }
 
      updatePassword = (event) => {
         this.setState({
-            password: event
+            password: event.target.value
         })  
     }
 
      submitLogin = (e) => {
         e.preventDefault()
-        this.props.dispatch((userAsyncActions.submitLogin(this.state.email, this.state.password)))
+        this.props.dispatch(userAsyncActions.submitLogin(this.state.email, this.state.password))
     }
 
      render() {

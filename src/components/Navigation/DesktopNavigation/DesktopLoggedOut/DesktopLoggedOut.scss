@@ -1,0 +1,46 @@
+@import '../../../../../constants/styles/sass-variables/breakpoints';
+
+$module: 'DesktopLoggedOut';
+
+.#{$module} {
+    min-height: 100px;
+    display: grid;
+    grid-template-columns: 200px 1fr 230px;
+    width: 80%;
+    margin: 0 auto;
+
+    &-logo {
+        display: flex;
+        align-items: center;
+        a {
+            display: flex;
+        }
+    }
+
+    &-middle {
+        display: flex; 
+        align-items: center;
+        justify-content: center;
+        @media screen and (min-width: $tabletBreakpoint) { 
+            h3 {
+                display: none;
+            }
+        }
+    }
+
+    &-authenticate {
+        display: flex; 
+        align-items: center;
+        justify-content: space-between;
+        button {
+            background: white;
+            color: grey;
+            height: 40px;
+            width: 100px;
+            border-radius: 4px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+    }
+}

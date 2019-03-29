@@ -1,12 +1,13 @@
-@import '../../../../constants/styles/sass-variables/breakpoints';
+@import '../../../../../constants/styles/sass-variables/breakpoints';
 
-$module: 'LoggedOut';
+$module: 'DesktopLoggedIn';
 
 .#{$module} {
     min-height: 100px;
     display: grid;
     grid-template-columns: 200px 1fr 230px;
     width: 80%;
+    margin: 0 auto;
 
     &-logo {
         display: flex;
@@ -20,12 +21,17 @@ $module: 'LoggedOut';
         display: flex; 
         align-items: center;
         justify-content: center;
+        @media screen and (min-width: $tabletBreakpoint) { 
+            h3 {
+                display: none;
+            }
+        }
     }
 
     &-authenticate {
         display: flex; 
         align-items: center;
-        justify-content: space-between;
+        justify-content: flex-end;
         button {
             background: white;
             color: grey;

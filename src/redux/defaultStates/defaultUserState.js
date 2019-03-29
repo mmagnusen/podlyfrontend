@@ -4,7 +4,7 @@ const defaultUserState = {
     email: null,
     token: null,
     redirectToDashboard: false,
-    isLoggedIn: false
+    isLoggedIn: false,
 }
 
 export default defaultUserState

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Header, PodcastContent } from '../../src/components/';
-import {Helmet} from "react-helmet";
+import { Navigation, PodcastContent } from '../../src/components/';
+import { Helmet} from "react-helmet";
 
 class PodcastPage extends Component {
 
@@ -10,7 +10,7 @@ class PodcastPage extends Component {
             <Helmet>
               <title>Podcast guests</title>
             </Helmet>
-            <Header />
+            <Navigation />
             <PodcastContent />
         </div>
     );

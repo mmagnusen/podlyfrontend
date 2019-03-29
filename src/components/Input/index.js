@@ -1,25 +1,21 @@
 import React, { Component } from 'react';
 import classnames from 'classnames'
+import {func} from 'prop-types';
 import { INPUT_TYPES } from '../../constants'
 import './Input.scss'
 
 class Input extends Component {
 
+    static propTypes = {
+        onChange: func, 
+        onBlur: func
+    }
+    
     static defaultProps = {
-        onChange: () => { }
+        onChange: () => { },
+        onBlur: () => { },
+        value: null
       }
-
-    state = {
-        value: ''
-    }
-
-    updateValue = (event) => {
-        this.setState({ value: event.target.value})
-    }
-
-    handleBlur = () => {
-        this.props.onChange(this.state.value)
-    }
 
     handleKeypress = (event) => {
         const { inputType} = this.props
@@ -33,16 +29,17 @@ class Input extends Component {
     }
 
     render() {
-        const { value } = this.state
-        const { icon, type } = this.props
+
+        const { icon, type, value, onChange, onBlur } = this.props
+        
         return (
             <section className='Input'>
                 <input  
-                onChange={this.updateValue} 
-                onKeyPress={this.handleKeypress} 
-                onBlur={this.handleBlur} 
-                value={value}
-                type={type}
+                    onChange={(event) => onChange(event)} 
+                    onKeyPress={this.handleKeypress} 
+                    onBlur={(event) => onBlur(event)} 
+                    value={value}
+                    type={type}
                 />
                 
                 {icon && <i className={classnames("fas", icon)}/>}

@@ -1,25 +1,25 @@
 import React, { Component } from 'react';
 import { Link  } from 'react-router-dom';
 import { connect } from 'react-redux'
-import userAsyncActions from '../../../redux/actions/user/asyncActions'
-import './LoggedIn.scss'
+import userActionGenerators from '../../../../redux/actions/user/userActionGenerators'
+import './DesktopLoggedIn.scss'
 
-class LoggedIn extends Component {
+class DesktopLoggedIn extends Component {
 
   handleLogout = () => {
-    this.props.dispatch((userAsyncActions.handleLogout()))
+    this.props.dispatch(userActionGenerators.handleLogout())
   }
 
   render() {
     return (
-      <div className="LoggedIn">
-        <section  className="LoggedIn-logo">
+      <div className="DesktopLoggedIn">
+        <section  className="DesktopLoggedIn-logo">
           <Link to="/"><h1>Podcasts</h1></Link>
         </section>
-        <section className="LoggedIn-middle">
+        <section className="DesktopLoggedIn-middle">
             <h3>Connecting podcasts with engaging guests</h3>
         </section>
-        <section className="LoggedIn-authenticate">
+        <section className="DesktopLoggedIn-authenticate">
             <button onClick={() => this.handleLogout()}>Logout</button>
         </section>
       </div>
@@ -33,4 +33,4 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps)(LoggedIn);
+export default connect(mapStateToProps)(DesktopLoggedIn);

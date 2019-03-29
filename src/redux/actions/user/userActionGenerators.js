@@ -1,31 +1,14 @@
 const userActionGenerators = {
-    setToken: (token) => {
+    setUserDetails: (details) => {
         return {
-            type: 'SET_TOKEN',
-            token
+            type: 'SET_USER_DETAILS',
+            details
         }
-    },
-    updateUser: (user) => {
-        return {
-            type: 'UPDATE_USER',
-            user
-        }
-    },
-    setRedirect: (redirect) => {
-        return {
-            type: 'SET_REDIRECT',
-            redirect
-        } 
     },
     handleLogout: () => {
+        localStorage.clear()
         return {
-            type: 'LOG_OUT'
-        } 
-    },
-    updateDashboardPage: (page) => {
-        return {
-            type: 'DASHBOARD_PAGE',
-            page    
+            type: 'SET_LOGOUT'
         }
     }
 }

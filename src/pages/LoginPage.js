@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Header, Login } from '../../src/components/';
+import { Navigation, Login } from '../../src/components/';
 import { Helmet } from "react-helmet";
 
 class LoginPage extends Component {
@@ -10,7 +10,7 @@ class LoginPage extends Component {
             <Helmet>
                 <title>Podcast guests</title>
             </Helmet>
-            <Header />
+            <Navigation />
             <Login />
         </div>
     );
