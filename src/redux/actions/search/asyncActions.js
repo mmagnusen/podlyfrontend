@@ -1,8 +1,9 @@
 import axios from 'axios'
 import searchActionGenerators from './searchActionGenerators'
 import { transformFilters } from '../../../utils'
+import { ENDPOINT } from '../../../constants'
 
-const endpoint = `https://marilynmags.pythonanywhere.com/api/podcast`
+const endpoint = `${ENDPOINT}/api/podcast`
 
 const searchAsyncActions = { 
     freshRequest: () => {
@@ -24,7 +25,7 @@ const searchAsyncActions = {
             dispatch(searchActionGenerators.updateFilters(filters))
             const filtersString = transformFilters()
 
-            const filtersEndpoint = `https://marilynmags.pythonanywhere.com/api/podcast?filters=${filtersString}`
+            const filtersEndpoint = `${ENDPOINT}/api/podcast?filters=${filtersString}`
 
             axios.get(filtersEndpoint)
             .then((response) => {
@@ -39,7 +40,7 @@ const searchAsyncActions = {
     },
     singlePodcast: (slug) => {
 
-        const singleEndpoint = `https://marilynmags.pythonanywhere.com/api/podcast?slug=${slug}`
+        const singleEndpoint = `${ENDPOINT}}/api/podcast?slug=${slug}`
         return (dispatch) => {
             dispatch(searchActionGenerators.setSingleLoading(true))
             axios.get(singleEndpoint)

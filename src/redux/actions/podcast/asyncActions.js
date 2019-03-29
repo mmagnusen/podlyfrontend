@@ -1,8 +1,9 @@
 import axios from 'axios'
 import podcastActionGenerators from './podcastActionGenerators'
 import store from '../../store/store'
+import { ENDPOINT } from '../../../constants'
 
-const endpoint = `http://127.0.0.1:8000/api/podcast`
+const endpoint = `${ENDPOINT}/api/podcast`
 axios.defaults.xsrfCookieName = 'csrftoken';
 axios.defaults.xsrfHeaderName = 'X-CSRFToken';
 const token = localStorage.getItem('token');
@@ -13,7 +14,7 @@ const podcastAsyncActions = {
         return (dispatch) => {
             axios({
                 method: 'get',
-                url: 'http://127.0.0.1:8000/api/podcast/user_podcasts', 
+                url: `${ENDPOINT}/api/podcast/user_podcasts`, 
                 headers: {
                     'Authorization': 'JWT '+ token
                     },
@@ -33,7 +34,7 @@ const podcastAsyncActions = {
             dispatch(podcastActionGenerators.updateEditModalOpen(false))
             axios({
                 method: 'patch',
-                url: `http://127.0.0.1:8000/api/podcast/${editedPodcast.pk}`, 
+                url: `${ENDPOINT}/api/podcast/${editedPodcast.pk}`, 
                 headers: {
                     'Authorization': 'JWT '+ token
                     },

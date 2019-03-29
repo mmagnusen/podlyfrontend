@@ -1,5 +1,6 @@
 import axios from 'axios'
 import userActionGenerators from './userActionGenerators'
+import { ENDPOINT } from '../../../constants'
 
 axios.defaults.xsrfCookieName = 'csrftoken';
 axios.defaults.xsrfHeaderName = 'X-CSRFToken';
@@ -9,7 +10,7 @@ const userAsyncActions = {
         return (dispatch) => {
             axios({
                 method: 'post',
-                url: 'http://127.0.0.1:8000/api/users/api-token-auth/', 
+                url: `${ENDPOINT}/api/users/api-token-auth/`, 
                 data: {
                         email,
                         password,
@@ -40,7 +41,7 @@ const userAsyncActions = {
         return (dispatch) => { 
             axios({
                 method: 'post',
-                url: 'http://127.0.0.1:8000/api/users/', 
+                url: `${ENDPOINT}/api/users/`, 
                 data: {
                         first_name: firstName,
                         last_name: lastName,
