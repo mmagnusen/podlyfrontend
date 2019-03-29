@@ -40,7 +40,7 @@ const searchAsyncActions = {
     },
     singlePodcast: (slug) => {
 
-        const singleEndpoint = `${ENDPOINT}}/api/podcast?slug=${slug}`
+        const singleEndpoint = `${ENDPOINT}/api/podcast?slug=${slug}`
         return (dispatch) => {
             dispatch(searchActionGenerators.setSingleLoading(true))
             axios.get(singleEndpoint)

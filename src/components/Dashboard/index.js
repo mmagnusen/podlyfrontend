@@ -47,16 +47,13 @@ class DashboardHome extends Component {
                 <div className='Dashboard'>
                    <h1>Dashboard </h1>
                    <section className='Dashboard-email'>
-                        email: { email }
+                        Email: { email }
                    </section>
                    <section className='Dashboard-email'>
-                        first Name: { firstName }
+                        First Name: { firstName }
                     </section>
                     <section className='Dashboard-email'>
-                        lastName: { lastName }
-                    </section>
-                    <section className='Dashboard-email'>
-                        token: { token }
+                        Last Name: { lastName }
                     </section>
                    <section className='Dashboard-addPodcast'>
                         <button onClick={() => this.toggleNewPodcast(true)}>Add new podcast</button>

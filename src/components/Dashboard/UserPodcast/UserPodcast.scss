@@ -1,0 +1,23 @@
+@import '../../../../constants/styles/sass-variables/breakpoints';
+@import '../../../../constants/styles/sass-variables/colors';
+
+$module: 'UserPodcast';
+
+.#{$module} {  
+    
+    p {
+        margin: 1rem 0;
+    }
+    
+    &-edit{
+        button {
+            height: 40px;
+            width: 200px;
+            font-size: 16px;
+            border-radius: 4px;
+            background: #6B004C;
+            color: white;
+            border: none;
+        }
+    }
+}
