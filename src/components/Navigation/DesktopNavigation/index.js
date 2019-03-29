@@ -1,18 +1,19 @@
 import React, { Component } from 'react';
-import { Link  } from '../../';
+import { DesktopLoggedIn, DesktopLoggedOut  } from '../../';
 import { connect } from 'react-redux'
-import userAsyncActions from '../../../redux/actions/user/asyncActions'
 
 class DesktopNavigation extends Component {
 
-  handleLogout = () => {
-    this.props.dispatch((userAsyncActions.handleLogout()))
-  }
 
   render() {
+    
+    const isLoggedIn = localStorage.getItem('isLoggedIn')
+
     return (
-      <div className="LoggedIn">
-        
+      <div className="DesktopNavigation">
+          {
+            isLoggedIn === 'true' ? <DesktopLoggedIn /> : <DesktopLoggedOut />
+          }
       </div>
     );
   }

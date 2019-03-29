@@ -1,12 +1,13 @@
-@import '../../../../constants/styles/sass-variables/breakpoints';
+@import '../../../../../constants/styles/sass-variables/breakpoints';
 
-$module: 'LoggedIn';
+$module: 'MobileLoggedIn';
 
 .#{$module} {
     min-height: 100px;
     display: grid;
-    grid-template-columns: 200px 1fr 230px;
-    width: 80%;
+    grid-template-columns: 130px 1fr 120px;
+    width: 90%;
+    margin: 0 auto;
 
     &-logo {
         display: flex;
@@ -20,6 +21,9 @@ $module: 'LoggedIn';
         display: flex; 
         align-items: center;
         justify-content: center;
+        h3 {
+            display: none;
+        }
     }
 
     &-authenticate {

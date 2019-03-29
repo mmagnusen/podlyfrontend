@@ -1,17 +1,19 @@
 import React, { Component } from 'react';
+import { MobileLoggedIn, MobileLoggedOut  } from '../../';
 import { connect } from 'react-redux'
-import userAsyncActions from '../../../redux/actions/user/asyncActions'
 
 class MobileNavigation extends Component {
 
-  handleLogout = () => {
-    this.props.dispatch((userAsyncActions.handleLogout()))
-  }
 
   render() {
+    
+    const isLoggedIn = localStorage.getItem('isLoggedIn')
+
     return (
-      <div>
-        
+      <div className="MobileNavigation">
+          {
+            isLoggedIn === 'true' ? <MobileLoggedIn /> : <MobileLoggedOut />
+          }
       </div>
     );
   }

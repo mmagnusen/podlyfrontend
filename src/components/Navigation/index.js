@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { MobileNavigation, DesktopNavigation } from '../../components/'
 import { Responsive} from 'semantic-ui-react'
-import './Header.scss'
+import './Navigation.scss'
 
 class Navigation extends Component {
 

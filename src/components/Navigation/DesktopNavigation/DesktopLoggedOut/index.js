@@ -1,19 +1,19 @@
 import React, { Component } from 'react';
 import { Link  } from 'react-router-dom';
 import { connect } from 'react-redux'
-import './LoggedOut.scss'
+import './DesktopLoggedOut.scss'
 
-class LoggedOut extends Component {
+class DesktopLoggedOut extends Component {
   render() {
     return (
-      <div className="LoggedOut">
-        <section className="LoggedOut-logo">
+      <div className="DesktopLoggedOut">
+        <section className="DesktopLoggedOut-logo">
             <Link to="/"><h1>Podcasts</h1></Link>
         </section>
-        <section className="LoggedOut-middle">
+        <section className="DesktopLoggedOut-middle">
             <h3>Connecting podcasts with engaging guests</h3>
         </section>
-        <section className="LoggedOut-authenticate">
+        <section className="DesktopLoggedOut-authenticate">
             <Link to='/login'>
                 <button>Login</button>
             </Link>
@@ -32,4 +32,4 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps)(LoggedOut);
+export default connect(mapStateToProps)(DesktopLoggedOut);
