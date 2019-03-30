@@ -8,7 +8,7 @@ class DesktopLoggedOut extends Component {
     return (
       <div className="DesktopLoggedOut">
         <section className="DesktopLoggedOut-logo">
-            <Link to="/"><h1>Podcasts</h1></Link>
+            <Link to="/"><h1>Platfore</h1></Link>
         </section>
         <section className="DesktopLoggedOut-middle">
             <h3>Connecting podcasts with engaging guests</h3>

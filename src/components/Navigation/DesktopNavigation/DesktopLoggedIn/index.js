@@ -14,7 +14,7 @@ class DesktopLoggedIn extends Component {
     return (
       <div className="DesktopLoggedIn">
         <section  className="DesktopLoggedIn-logo">
-          <Link to="/"><h1>Podcasts</h1></Link>
+          <Link to="/"><h1>Platfore</h1></Link>
         </section>
         <section className="DesktopLoggedIn-middle">
             <h3>Connecting podcasts with engaging guests</h3>

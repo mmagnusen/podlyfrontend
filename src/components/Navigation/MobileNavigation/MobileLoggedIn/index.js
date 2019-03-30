@@ -14,7 +14,7 @@ class MobileLoggedIn extends Component {
     return (
       <div className="MobileLoggedIn">
         <section  className="MobileLoggedIn-logo">
-          <Link to="/"><h1>Podcasts</h1></Link>
+          <Link to="/"><h1>Platfore</h1></Link>
         </section>
         <section className="MobileLoggedIn-middle">
             <h3>Connecting podcasts with engaging guests</h3>

@@ -8,7 +8,7 @@ class MobileLoggedOut extends Component {
     return (
       <div className="MobileLoggedOut">
         <section className="MobileLoggedOut-logo">
-            <Link to="/"><h1>Podcasts</h1></Link>
+            <Link to="/"><h1>Platfore</h1></Link>
         </section>
         <section className="MobileLoggedOut-middle">
             <h3>Connecting podcasts with engaging guests</h3>
