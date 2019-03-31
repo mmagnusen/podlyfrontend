@@ -63,6 +63,7 @@ class PodcastContent extends Component {
             aria-describedby="simple-modal-description"
             open={podcastOpen}
             onClose={this.handleClose}
+            className='PodcastContent-contactForm'
         >
             <div>
                 <Form handleClose={this.handleClose}/>

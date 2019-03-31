@@ -1,0 +1,68 @@
+@import '../../../../constants/styles/sass-variables/breakpoints';
+
+$module: 'MobileNavigation';
+
+.#{$module} {
+    min-height: 100px;
+    display: grid;
+    grid-template-columns: 110px 1fr 180px;
+    width: 90%;
+    margin: 0 auto;
+
+    &-logo {
+        display: flex;
+        align-items: center;
+        a {
+            display: flex;
+        }
+    }
+
+    &-middle {
+        display: flex; 
+        align-items: center;
+        justify-content: center;
+        h3 {
+            display: none;
+        }
+    }
+
+    &-authenticate {
+        display: flex; 
+        align-items: center;
+        justify-content: flex-end;
+    }
+
+    &-dropdownInner {
+        width: 90%;
+        margin: 0 auto;
+        h3 {
+            text-align: left;
+            margin-bottom: 3rem;
+        }
+    }
+
+    .burger {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 20px;
+        width: 30px;
+        cursor: pointer;
+    }
+
+    .burger-row {
+        height: 2px;
+        width: 100%;
+        background: white;
+
+    }
+
+    &-dropdown {
+        height: 100vh;
+        color: white;
+        position: absolute;
+        background-color: #18002a;
+        width: 100%;
+        z-index: 2;
+    }
+}
