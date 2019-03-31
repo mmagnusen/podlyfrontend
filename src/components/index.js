@@ -16,9 +16,6 @@ export { default as DesktopNavigation } from '../components/Navigation/DesktopNa
 
 export { default as DesktopLoggedIn } from '../components/Navigation/DesktopNavigation/DesktopLoggedIn'
 export { default as DesktopLoggedOut } from '../components/Navigation/DesktopNavigation/DesktopLoggedOut'
-export { default as MobileLoggedIn } from '../components/Navigation/MobileNavigation/MobileLoggedIn'
-export { default as MobileLoggedOut } from '../components/Navigation/MobileNavigation/MobileLoggedOut'
-
 
 export { default as UserPodcast } from './Dashboard/UserPodcast'
 export { default as EditPodcast } from './Dashboard/EditPodcast'
