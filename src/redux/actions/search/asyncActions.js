@@ -51,7 +51,7 @@ const searchAsyncActions = {
                 setTimeout( () => dispatch(searchActionGenerators.setSingleLoading(false)), 1000);
             })
         }  
-    }
+    },
 }
 
 export default searchAsyncActions

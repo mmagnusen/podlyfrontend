@@ -1,0 +1,42 @@
+@import '../../../constants/styles/sass-variables/breakpoints';
+
+$module: 'Host';
+
+.#{$module} {
+    border-top: 2px solid hsla(0,0%,50.2%,.1);
+    padding: 3rem 0;
+
+    &-avatar {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        img {
+            height: auto;
+            width: 100px;
+            border-radius: 50%;
+            margin: 0 auto;
+        }  
+    }
+
+    &-avatarDetailsMobile {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+
+        a {
+            color: #46B6F8;
+            font-weight: bold;
+            display: flex;
+        }
+
+        h3, a, p {
+            margin: 0;
+            padding: 0;
+        }
+    }
+
+    &-bio {
+        p {
+            line-height: 1.5rem;
+        }    
+    }
+}

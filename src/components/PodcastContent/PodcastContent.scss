@@ -5,6 +5,7 @@ $module: 'PodcastContent';
 .#{$module} {
     width: 90%;
     margin: 0 auto;
+    padding-bottom: 3rem;
 
     @media only screen and (min-width: $tabletBreakpoint) {
         width: 80%;
@@ -34,7 +35,8 @@ $module: 'PodcastContent';
     }
 
     &-description {
-        margin: 1rem 0;
+    margin: 1rem 0;
+       border-top: 2px solid hsla(0,0%,50.2%,.1);
         p {
             line-height: 2rem;
         }
