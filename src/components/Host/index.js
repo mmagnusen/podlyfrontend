@@ -6,11 +6,11 @@ import './Host.scss'
 class Host extends Component {
 
     render() {
-        const { name, bio, image , twitter_name, twitter_url } = this.props.host
+        const { name, bio, image, twitter_name, twitter_url } = this.props.host
         return (
             <section className='Host'>
                 <div className='Host-avatar'>
-                    <img src='https://pbs.twimg.com/profile_images/1064506745924608001/Zy4wmix8_400x400.jpg'/>
+                    <img src={image}/>
                     <div className='Host-avatarDetailsMobile'>
                         <h3>{name}</h3>
                         <a href={twitter_url} target='_blank' rel="noopener noreferrer">
