@@ -48,7 +48,7 @@ class Register extends Component {
 
     render() {
 
-        if (this.props.user.token !== false) {
+        if (this.props.user.token !== null) {
             return <Redirect to='/dashboard'/>
         }
 
