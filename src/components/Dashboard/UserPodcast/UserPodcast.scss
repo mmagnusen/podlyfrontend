@@ -5,19 +5,37 @@ $module: 'UserPodcast';
 
 .#{$module} {  
     
+    margin: 4rem 0;
+
     p {
-        margin: 1rem 0;
+        line-height: 1.5rem;
+    }
+
+    &-details {
+        section {
+            display: grid;
+            grid-template-columns: 90px 1fr;  
+            margin: 0.1rem 0;
+        }
+
+        p:last-child {
+            word-break: break-all
+        }
     }
     
     &-edit{
         button {
-            height: 40px;
-            width: 200px;
+            height: 30px;
+            width: 120px;
             font-size: 16px;
             border-radius: 4px;
             background: #6B004C;
             color: white;
             border: none;
+            @media only screen and (min-width: $tabletBreakpoint) {
+                height: 40px;
+                width: 200px;
+            }
         }
     }
 }

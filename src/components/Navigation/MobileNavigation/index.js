@@ -1,6 +1,7 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { Link  } from 'react-router-dom';
 import { connect } from 'react-redux'
+import userActionGenerators from '../../../redux/actions/user/userActionGenerators'
 import './MobileNavigation.scss'
 
 class MobileNavigation extends Component {
@@ -9,12 +10,30 @@ class MobileNavigation extends Component {
     dropdownOpen: false
   }
 
+  handleLogout = () => {
+    this.props.dispatch(userActionGenerators.handleLogout())
+  }
+
   getDropdownMenu = () => {
+    const { user } = this.props
     return (
       <div className='MobileNavigation-dropdown'>
         <div className='MobileNavigation-dropdownInner'>
-        <Link to="/login" onClick={this.toggleDropdown}><h3>Login</h3></Link>
-        <Link to="/register" onClick={this.toggleDropdown}><h3>Register</h3></Link>
+
+        {user.token === null && (
+          <Fragment>
+            <Link to="/login" onClick={this.toggleDropdown}><h3>Login</h3></Link>
+            <Link to="/register" onClick={this.toggleDropdown}><h3>Register</h3></Link>
+          </Fragment>
+        )}
+        
+        {user.token !== null && (
+          <Fragment>
+            <Link to="/dashboard" onClick={this.toggleDropdown}><h3>Dashboard</h3></Link>
+            <h3 onClick={this.handleLogout}>Logout</h3>
+          </Fragment>
+        )}
+
         </div>
       </div>
     )
@@ -26,10 +45,8 @@ class MobileNavigation extends Component {
     })
   }
 
-
   render() {
     
-    const isLoggedIn = localStorage.getItem('isLoggedIn')
     const { dropdownOpen } = this.state
 
     return (
@@ -49,7 +66,7 @@ class MobileNavigation extends Component {
             </section>
         </section>
       </div>
-      { dropdownOpen && this.getDropdownMenu()}
+      { dropdownOpen && this.getDropdownMenu() }
       </div>
     );
   }

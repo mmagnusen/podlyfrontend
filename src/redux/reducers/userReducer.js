@@ -9,8 +9,11 @@ const userReducer = (state = defaultUserState, action = {}) => {
                 lastName: action.details.last_name,
                 email: action.details.email,
                 token: action.details.token,
-                redirectToDashboard: true,
-                isLoggedIn: true
+            }
+        case 'SET_REDIRECT':
+            return {
+                ...state,
+                shboard: action.redirect,
             }
         case 'SET_LOGOUT':
             return {
@@ -19,8 +22,6 @@ const userReducer = (state = defaultUserState, action = {}) => {
                 lastName: null,
                 email: null,
                 token: null,
-                redirectToDashboard: false,
-                isLoggedIn: false
             }
         default:
             return state

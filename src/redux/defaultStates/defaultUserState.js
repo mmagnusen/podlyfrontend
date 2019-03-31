@@ -1,10 +1,13 @@
+const firstName = localStorage.getItem('firstName')
+const lastName = localStorage.getItem('lastName')
+const email = localStorage.getItem('email')
+const token = localStorage.getItem('token')
+
 const defaultUserState = {
-    firstName: null,
-    lastName: null,
-    email: null,
-    token: null,
-    redirectToDashboard: false,
-    isLoggedIn: false,
+    firstName: firstName,
+    lastName: lastName,
+    email: email,
+    token: token,
 }
 
 export default defaultUserState

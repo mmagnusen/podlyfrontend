@@ -5,6 +5,12 @@ const userActionGenerators = {
             details
         }
     },
+    setRedirect: (redirect) => {
+        return {
+            type: 'SET_REDIRECT',
+            redirect
+        }
+    },
     handleLogout: () => {
         localStorage.clear()
         return {
