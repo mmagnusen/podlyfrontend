@@ -11,7 +11,5 @@ export const transformFilters = () => {
 
     const filtersString = filtersArray.join()
 
-    console.log(filtersArray, filtersString)
-
     return filtersString
 }

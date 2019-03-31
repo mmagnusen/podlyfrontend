@@ -48,40 +48,40 @@ class Register extends Component {
 
     render() {
 
-        if (this.props.user.redirectToDashboard === true) {
+        if (this.props.user.token !== false) {
             return <Redirect to='/dashboard'/>
         }
 
         return (
-                <div className='Register'>
-                    <AuthenticationForm 
-                        header='Register' 
-                        classes='Register-form'
-                        formType={FORM.TYPE.AUTHENTICATION}
-                        buttonCta='Register'
-                        buttonAction={this.submitRegister}
-                    >
-                        <section className='field fieldTwo'>
-                            <label>First name</label> 
-                            <Input onChange={this.updateFirstName}/>
-                        </section>
-                        <section className='field fieldTwo'>
-                            <label>Last Name</label> 
-                            <Input onChange={this.updateLastName}/>
-                        </section>
-                        <section className='field fieldTwo'>
-                            <label>Email</label> 
-                            <Input onChange={this.updateEmail} />
-                        </section>
-                        <section className='field fieldTwo'>
-                            <label>Password</label> 
-                            <Input 
-                                onChange={this.updatePassword}
-                                type={INPUT_TYPES.PASSWORD}
-                            />
-                        </section>
-                    </AuthenticationForm>
-                </div>
+            <div className='Register'>
+                <AuthenticationForm 
+                    header='Register' 
+                    classes='Register-form'
+                    formType={FORM.TYPE.AUTHENTICATION}
+                    buttonCta='Register'
+                    buttonAction={this.submitRegister}
+                >
+                    <section className='field fieldTwo'>
+                        <label>First name</label> 
+                        <Input onChange={this.updateFirstName}/>
+                    </section>
+                    <section className='field fieldTwo'>
+                        <label>Last Name</label> 
+                        <Input onChange={this.updateLastName}/>
+                    </section>
+                    <section className='field fieldTwo'>
+                        <label>Email</label> 
+                        <Input onChange={this.updateEmail} />
+                    </section>
+                    <section className='field fieldTwo'>
+                        <label>Password</label> 
+                        <Input 
+                            onChange={this.updatePassword}
+                            type={INPUT_TYPES.PASSWORD}
+                        />
+                    </section>
+                </AuthenticationForm>
+            </div>
         )
     }
 }

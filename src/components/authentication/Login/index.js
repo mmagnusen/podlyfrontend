@@ -32,7 +32,7 @@ import './Login.scss'
 
      render() {
 
-         if (this.props.user.redirectToDashboard === true) {
+         if (this.props.user.token !== null && this.props.podcast.podcasts !== null) {
             return <Redirect to='/dashboard'/>
         }
 
@@ -60,7 +60,8 @@ import './Login.scss'
 
  const mapStateToProps = (state) => {
     return {
-        user: state.user
+        user: state.user,
+        podcast: state.podcast
     }
 }
 

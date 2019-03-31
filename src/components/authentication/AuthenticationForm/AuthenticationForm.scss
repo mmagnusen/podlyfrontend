@@ -32,6 +32,8 @@ $module: 'AuthenticationForm';
 
   label {
     font-size: 14px;
+    display: flex;
+    align-items: center;
 }
 
 .field {
@@ -41,7 +43,10 @@ $module: 'AuthenticationForm';
 .fieldTwo {
     display: grid;
     grid-column-gap: 5px;
-    grid-template-columns: repeat(2, 1fr);    
+    grid-template-columns: 1fr 2fr;   
+    @media screen and (min-width: $mobileLargeBreakpoint) { 
+        grid-template-columns: repeat(2, 1fr);  
+    } 
 }
 
 .fieldThree {

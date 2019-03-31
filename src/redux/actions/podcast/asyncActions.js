@@ -9,17 +9,15 @@ axios.defaults.xsrfHeaderName = 'X-CSRFToken';
 
 const token = localStorage.getItem('token');
 
-
 const podcastAsyncActions = { 
-    getUserPodcasts: () => {
+    getUserPodcasts: (responseToken) => {
+        console.log('get user podcasts triggered', 'token:', token, 'responseToken:', responseToken)
         return (dispatch) => {
-
-        
-            token && axios({
+            (token || responseToken) && axios({
                 method: 'get',
                 url: `${ENDPOINT}/api/podcast/user_podcasts`, 
                 headers: {
-                    'Authorization': 'JWT '+ token
+                    'Authorization': 'JWT '+ (responseToken || token)
                     },
                 responseType: 'json'
             })
@@ -43,9 +41,6 @@ const podcastAsyncActions = {
                     },
                 responseType: 'json',
                 data: editedPodcast
-            })
-            .then((response) => {
-                console.log('response from submit podcast async action', response)
             })
             .catch((error) => {
                 console.log('error', error)

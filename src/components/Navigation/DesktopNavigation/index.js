@@ -6,13 +6,11 @@ class DesktopNavigation extends Component {
 
 
   render() {
-    
-    const isLoggedIn = localStorage.getItem('isLoggedIn')
-
+    const {user} = this.props
     return (
       <div className="DesktopNavigation">
           {
-            isLoggedIn === 'true' ? <DesktopLoggedIn /> : <DesktopLoggedOut />
+            user.token !== null ? <DesktopLoggedIn /> : <DesktopLoggedOut />
           }
       </div>
     );

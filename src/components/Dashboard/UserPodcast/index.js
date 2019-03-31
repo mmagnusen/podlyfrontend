@@ -18,11 +18,21 @@ class UserPodcast extends Component {
         return (
             <div className='UserPodcast'>
                 <div className="UserPodcast-details">
-                    <p>Name: {name}</p>
-                    <p>Tags: {tags}</p>
-                    <p>Age: {start_date}</p>
-                    <p>Host: {hosts}</p>
-                    <p>Link to podcast: {url}</p>
+                    <section>
+                        <p>Name:</p><p>{name}</p>
+                    </section>
+                    <section>
+                        <p>Tags:</p><p>{tags}</p>
+                    </section>
+                    <section>
+                        <p>Age:</p><p>{start_date}</p>
+                    </section>
+                    <section>
+                        <p>Host:</p><p>{hosts}</p>
+                    </section>
+                    <section>
+                        <p>Link to podcast:</p><p>{url}</p>
+                    </section>
                 </div>
                 <div className='UserPodcast-edit'>
                     <button onClick={this.openEditModal}>Edit podcast</button>

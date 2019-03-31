@@ -1,7 +1,7 @@
 const defaultPodcastState = {
     editOpen: false,
     currentPodcast: {},
-    podcasts: []
+    podcasts: null
 }
 
 export default defaultPodcastState

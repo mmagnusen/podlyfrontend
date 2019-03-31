@@ -30,68 +30,62 @@ class DashboardHome extends Component {
         })
     }
     render() {
-        const firstName = localStorage.getItem('firstName')
-        const lastName = localStorage.getItem('lastName')
-        const email = localStorage.getItem('email')
-        const token = localStorage.getItem('token')
-        const isLoggedIn =  localStorage.getItem('isLoggedIn')
 
-        const { reduxPodcast } = this.props
+        const { reduxPodcast, user } = this.props
         const { newOpen, editOpen } = this.state
 
-        if (isLoggedIn === false) {
+        if (user.token === null) {
             return <Redirect to='/'/>
         }
 
         return (
-                <div className='Dashboard'>
-                   <h1>Dashboard </h1>
-                   <section className='Dashboard-email'>
-                        Email: { email }
-                   </section>
-                   <section className='Dashboard-email'>
-                        First Name: { firstName }
-                    </section>
-                    <section className='Dashboard-email'>
-                        Last Name: { lastName }
-                    </section>
-                   <section className='Dashboard-addPodcast'>
-                        <button onClick={() => this.toggleNewPodcast(true)}>Add new podcast</button>
-                   </section>
+            <div className='Dashboard'>
+                <h1>Dashboard </h1>
+                <section className='Dashboard-email'>
+                    Email: { user.email }
+                </section>
+                <section className='Dashboard-email'>
+                    First Name: { user.firstName }
+                </section>
+                <section className='Dashboard-email'>
+                    Last Name: { user.lastName }
+                </section>
+                <section className='Dashboard-addPodcast'>
+                    <button onClick={() => this.toggleNewPodcast(true)}>Add new podcast</button>
+                </section>
 
-                    
-                    <section className='Dashboard-yourPodcasts'>
-                        <section className='Dashboard-yourPodcastsTitle'>
-                            <h3>Your podcasts</h3>
-                        </section>
-                        { reduxPodcast.podcasts && reduxPodcast.podcasts.map((podcast) => (
-                            <UserPodcast 
-                                key={podcast.name} 
-                                podcast={podcast}
-                                toggleEditPodcast={this.toggleEditPodcast}
-                            />
-                        ))}
+                
+                <section className='Dashboard-yourPodcasts'>
+                    <section className='Dashboard-yourPodcastsTitle'>
+                        <h3>Your podcasts</h3>
                     </section>
+                    { reduxPodcast.podcasts && reduxPodcast.podcasts.map((podcast) => (
+                        <UserPodcast 
+                            key={podcast.name} 
+                            podcast={podcast}
+                            toggleEditPodcast={this.toggleEditPodcast}
+                        />
+                    ))}
+                </section>
 
-                        <Modal
-                            open={editOpen}
-                            onClose={this.toggleEditPodcast}
-                        >
-                            <div>
-                                <EditPodcast toggleEditPodcast={this.toggleEditPodcast}/>
-                            </div>
-                        </Modal>
-                    
-
-                        <Modal
-                            open={newOpen}
-                            onClose={this.toggleNewPodcast}
-                        >
-                            <div>
-                                <NewPodcast />
-                            </div>
-                        </Modal>
-                </div>
+                <Modal
+                    open={editOpen}
+                    onClose={this.toggleEditPodcast}
+                >
+                    <div>
+                        <EditPodcast toggleEditPodcast={this.toggleEditPodcast}/>
+                    </div>
+                </Modal>
+            
+                <Modal
+                    open={newOpen}
+                    onClose={this.toggleNewPodcast}
+                >
+                    <div>
+                        <NewPodcast />
+                    </div>
+                </Modal>
+            </div>
         )
     }
 }
