@@ -39,7 +39,6 @@ class PodcastContent extends Component {
             this.setState({
                 hosts: response.data
             })
-            //dispatch(searchActionGenerators.receiveSinglePodcast(response.data[0]))
         })
   }
 
