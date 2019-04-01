@@ -11,7 +11,7 @@ class Host extends Component {
             <section className='Host'>
                 <div className='Host-avatar'>
                     <img src={image}/>
-                    <div className='Host-avatarDetailsMobile'>
+                    <div className='Host-avatarDetails'>
                         <h3>{name}</h3>
                         <a href={twitter_url} target='_blank' rel="noopener noreferrer">
                             <i class="fab fa-twitter"></i>
@@ -19,11 +19,9 @@ class Host extends Component {
                         </a>
                     </div>
                 </div>
-                <div>
                 <div className='Host-bio'>
                     <h3>Bio</h3>
                     <p>{bio}</p>
-                </div>
                 </div>
             </section>
         )    

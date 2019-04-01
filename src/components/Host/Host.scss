@@ -5,10 +5,18 @@ $module: 'Host';
 .#{$module} {
     border-top: 2px solid hsla(0,0%,50.2%,.1);
     padding: 3rem 0;
-
+  
     &-avatar {
+        width: 100%;
+        grid-template-columns: 100px 1fr;
         display: grid;
-        grid-template-columns: 1fr 1fr;
+        grid-column-gap: 40px;
+        padding-bottom: 2rem;
+        @media screen and (min-width: $tabletBreakpoint) { 
+            width: 50%;
+            grid-template-columns: 150px 1fr;
+
+        }
         img {
             height: auto;
             width: 100px;
@@ -17,11 +25,10 @@ $module: 'Host';
         }  
     }
 
-    &-avatarDetailsMobile {
+    &-avatarDetails {
         display: flex;
         flex-direction: column;
         justify-content: space-around;
-
         a {
             color: #46B6F8;
             font-weight: bold;
