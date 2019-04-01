@@ -8,6 +8,7 @@ const options = [
     { value: 'Tech', label: 'Tech' },
     { value: 'Business', label: 'Business' },
     { value: 'Coding', label: 'Coding' },
+    { value: 'Diversity', label: 'Diversity' },
     { value: 'Software', label: 'Software' },
     { value: 'Pop culture', label: 'Pop culture' },
     { value: 'Design', label: 'Design' },

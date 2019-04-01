@@ -1,0 +1,13 @@
+@import '../../../../constants/styles/sass-variables/breakpoints';
+
+$module: 'EditorsPick';
+
+.#{$module} {
+    height: 200px;
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    background: white;
+    margin-bottom: 2.5rem;
+    cursor: pointer;
+}

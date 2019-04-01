@@ -1,0 +1,48 @@
+export const podcasts = [
+    {
+        name: 'Techish',
+        title: 'Snapshat merger, Elon and more',
+        snippet: 'Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.',
+        hosts: 'Abadese and Michael',
+        tags: 'tech, pop culture',
+        date: '27th Feb 2019',
+        length: '1 hour',
+    },
+    {
+        name: 'Techish',
+        title: 'Spotify goes public',
+        snippet: 'Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.',
+        hosts: 'Abadese and Michael',
+        tags: 'tech, pop culture',
+        date: '27th Feb 2019',
+        length: '1 hour',
+    },
+    {
+        name: 'Techish',
+        title: 'Snapshat merger, Elon and more',
+        snippet: 'Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.',
+        hosts: 'Abadese and Michael',
+        tags: 'tech, pop culture',
+        date: '27th Feb 2019',
+        length: '1 hour',
+    },
+    {
+        name: 'Techish',
+        title: 'Snapshat merger, Elon and more',
+        snippet: 'Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.',
+        hosts: 'Abadese and Michael',
+        tags: 'tech, pop culture',
+        date: '27th Feb 2019',
+        length: '1 hour',
+    },
+    {
+        name: 'Techish',
+        title: 'Snapshat merger, Elon and more',
+        snippet: 'Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.',
+        hosts: 'Abadese and Michael',
+        tags: 'tech, pop culture',
+        date: '27th Feb 2019',
+        length: '1 hour',
+    },
+    
+]

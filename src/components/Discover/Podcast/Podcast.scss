@@ -1,0 +1,40 @@
+@import '../../../../constants/styles/sass-variables/breakpoints';
+
+$module: 'SinglePodcast';
+
+.#{$module} {
+    min-height: 150px;
+    width: 100%;
+    background: white;
+    padding: 10px;
+    box-sizing: border-box;
+    cursor: pointer;
+
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    grid-column-gap: 20px;
+
+    &-details {
+        box-sizing: border-box;
+    }
+
+    &-nameTags {
+        display: flex;
+
+        h3, p {
+            padding: 0;
+            margin: 0 1rem 0 0;
+            line-height: 1rem;
+
+        }
+    }
+
+    &-dateLength {
+        display: flex;
+        justify-content: space-between;
+    }
+    &-image { 
+        display: flex;
+        justify-content: center;
+    }
+}

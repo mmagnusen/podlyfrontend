@@ -7,6 +7,7 @@ import PodcastPage from '../../pages/PodcastPage'
 import LoginPage from '../../pages/LoginPage'
 import RegisterPage from '../../pages/RegisterPage'
 import DashboardPage from '../../pages/DashboardPage'
+import DiscoverPage from '../../pages/DiscoverPage'
 
 const AppRouter  = (props) => {
     return (
@@ -18,6 +19,8 @@ const AppRouter  = (props) => {
                 <Route path="/login" component={LoginPage}/> 
                 <Route path="/register" component={RegisterPage}/> 
                 <Route path="/dashboard" component={DashboardPage}/> 
+                <Route path="/discover" component={DiscoverPage}/> 
+
             </Switch>
         </BrowserRouter>
         </Provider>

@@ -1,0 +1,28 @@
+@import '../../../constants/styles/sass-variables/breakpoints';
+
+$module: 'Discover';
+
+.#{$module} {
+    background: #18002a;
+    min-height: 900px;
+    padding-bottom: 4rem;
+
+    &-inner {
+        width: 90%;
+        margin: 0 auto;  
+        display: grid;
+        grid-template-columns: 800px 1fr;
+        grid-column-gap: 100px;
+    }
+
+    &-list {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-row-gap: 30px;
+    }
+
+    &-editorsPicks {
+        display: flex;
+        flex-direction: column;
+    }
+}

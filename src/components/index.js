@@ -11,6 +11,7 @@ export { default as Input } from './Input'
 export { default as TextArea } from './TextArea'
 export { default as Dashboard } from './Dashboard'
 export { default as Host } from './Host'
+export { default as Discover } from './Discover'
 
 export { default as MobileNavigation } from '../components/Navigation/MobileNavigation'
 export { default as DesktopNavigation } from '../components/Navigation/DesktopNavigation'
