@@ -2,14 +2,13 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import './Podcast.scss'
 
-
 class Podcast extends Component {
   state = {
     selectedOption: null,
   }
 
   render() {
-    const { name, title, snippet, hosts, tags, date, length } = this.props.podcast
+    const { name, title, snippet, hosts, tags, publish_date, length } = this.props.podcast
     return (
         <div className="SinglePodcast">
             <div className='SinglePodcast-details'>
@@ -37,7 +36,7 @@ class Podcast extends Component {
 
                 <section className='SinglePodcast-dateLength'>
                     <section>
-                        <p>{date}</p>
+                        <p>{publish_date}</p>
                     </section>
                     <section>
                         <p>{length}</p>
