@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import discoverAsyncActions from './../../redux/actions/discover/asyncActions'
 import mp3 from '../../resources/lay.mp3'
+import ListItem from './ListItem'
 import './Play.scss'
 
 class Play extends Component {
@@ -42,7 +43,7 @@ class Play extends Component {
                     </section>
 
                     <section  className='Play-list'>
-                        { episodes && episodes.map(( podcast ) => <section className='Play-listItem'></section>)}
+                        { episodes && episodes.map(( podcast ) => <ListItem podcast={podcast}/>)}
                     </section>
                 </section>
             </section> 
