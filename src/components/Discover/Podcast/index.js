@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
+import { ENDPOINT } from '../../../constants'
+import moment from 'moment'
+import { Link  } from 'react-router-dom';
 import './Podcast.scss'
 
 class Podcast extends Component {
@@ -8,45 +11,47 @@ class Podcast extends Component {
   }
 
   render() {
-    const { name, title, snippet, hosts, tags, publish_date, length } = this.props.podcast
+    const { name, podcast, snippet, hosts, tags, publish_date, length, image } = this.props.podcast
     return (
-        <div className="SinglePodcast">
-            <div className='SinglePodcast-details'>
-                <section>
-                    <h3>{title}</h3>
-                </section>
-
-                <section>
-                    <p>{snippet}</p>
-                </section>
-
-                <section className='SinglePodcast-nameTags'>
+        <Link to="/play">
+            <div className="SinglePodcast">
+                <div className='SinglePodcast-details'>
                     <section>
                         <h3>{name}</h3>
                     </section>
 
                     <section>
-                        <p>{tags}</p>
+                        <p>{snippet}</p>
                     </section>
-                </section>
 
-                <section>
-                    <p>{hosts}</p>
-                </section>
+                    <section className='SinglePodcast-nameTags'>
+                        <section>
+                            <h3>{podcast}</h3>
+                        </section>
 
-                <section className='SinglePodcast-dateLength'>
-                    <section>
-                        <p>{publish_date}</p>
+                        <section>
+                            <p>{tags}</p>
+                        </section>
                     </section>
+
                     <section>
-                        <p>{length}</p>
+                        <p>{hosts}</p>
                     </section>
-                </section>
+
+                    <section className='SinglePodcast-dateLength'>
+                        <section>
+                            <p>{moment(publish_date).format("Do MMM YYYY") }</p>
+                        </section>
+                        <section>
+                            <p>{length}</p>
+                        </section>
+                    </section>
+                </div>
+                <div className='SinglePodcast-image'>
+                    <img src={`${ENDPOINT}/media/${image}`} />
+                </div>
             </div>
-            <div className='SinglePodcast-image'>
-                <img src='https://picsum.photos/250/250' />
-            </div>
-        </div>
+        </Link>
     );
   }
 }

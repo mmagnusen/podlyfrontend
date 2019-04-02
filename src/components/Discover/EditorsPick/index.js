@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
+import { Link  } from 'react-router-dom';
 import './EditorsPick.scss'
-
 
 class EditorsPick extends Component {
   state = {
@@ -11,23 +11,25 @@ class EditorsPick extends Component {
   render() {
     const { name, title, snippet, hosts, tags, date, length } = this.props.podcast
     return (
-        <div className="EditorsPick">
-            <section>
-                <h3>{title}</h3>
-            </section>
+        <Link to="/play">
+            <div className="EditorsPick">
+                <section>
+                    <h3>{name}</h3>
+                </section>
 
-            <section>
-                <p>{snippet}</p>
-            </section>
+                <section className="EditorsPick-snippet">
+                    <p>{snippet}</p>
+                </section>
 
-            <section>
-                <p>{name}</p>
-            </section>
+                <section>
+            
+                </section>
 
-            <section>
-                <p>{tags}</p>
-            </section>
-        </div>
+                <section>
+                    <p>{tags}</p>
+                </section>
+            </div>
+        </Link>
     );
   }
 }

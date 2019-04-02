@@ -21,8 +21,23 @@ $module: 'Discover';
         grid-row-gap: 30px;
     }
 
+    &-listTitle {
+        h3 {
+            color: white;    
+        }
+        border-bottom: 1px solid grey;
+    }
+
     &-editorsPicks {
         display: flex;
         flex-direction: column;
+    }
+
+    &-editorsTitle {
+        h3 {
+            color: white;    
+        }
+        border-bottom: 1px solid grey;
+        margin-bottom: 2rem;
     }
 }

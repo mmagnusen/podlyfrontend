@@ -22,9 +22,11 @@ class Discover extends Component {
           <div className="Discover">
             <div className="Discover-inner">
                 <section className="Discover-list">
+                    <section className="Discover-listTitle"><h3>Latest Podcasts</h3></section>
                     { episodes && episodes.map(( podcast ) => <Podcast podcast={podcast} />)}
                 </section>
                 <section className="Discover-editorsPicks">
+                  <section className="Discover-editorsTitle"><h3>Our Favourites</h3></section>
                     { episodes && episodes.map(( podcast ) => <EditorsPick podcast={podcast} />)}
                 </section>
             </div>
