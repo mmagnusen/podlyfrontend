@@ -1,0 +1,36 @@
+@import '../../../constants/styles/sass-variables/breakpoints';
+
+$module: 'Play';
+
+.#{$module} {
+    background: #18002a;
+    color: white;
+    display: flex;
+    justify-content: center;
+    padding: 3rem 0;
+
+    &-inner {
+        width: 90%;
+        margin: 0 auto;
+    }
+
+    &-info {
+        display: grid;
+        grid-template-columns: 200px 1fr;
+        grid-column-gap: 30px;
+    }
+
+    &-player {
+        margin: 2rem 0;
+
+        audio {
+            margin: 0 auto;
+            display: block;
+        }
+    }
+
+    &-listitem {
+        background: grey;
+        height: 50px;
+    }
+}

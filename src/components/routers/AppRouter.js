@@ -8,6 +8,7 @@ import LoginPage from '../../pages/LoginPage'
 import RegisterPage from '../../pages/RegisterPage'
 import DashboardPage from '../../pages/DashboardPage'
 import DiscoverPage from '../../pages/DiscoverPage'
+import PlayPage from '../../pages/PlayPage'
 
 const AppRouter  = (props) => {
     return (
@@ -20,6 +21,7 @@ const AppRouter  = (props) => {
                 <Route path="/register" component={RegisterPage}/> 
                 <Route path="/dashboard" component={DashboardPage}/> 
                 <Route path="/discover" component={DiscoverPage}/> 
+                <Route path="/play" component={PlayPage}/> 
 
             </Switch>
         </BrowserRouter>
