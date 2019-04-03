@@ -21,7 +21,7 @@ const AppRouter  = (props) => {
                 <Route path="/register" component={RegisterPage}/> 
                 <Route path="/dashboard" component={DashboardPage}/> 
                 <Route path="/discover" component={DiscoverPage}/> 
-                <Route path="/play" component={PlayPage}/> 
+                <Route path="/play/:slug" component={PlayPage}/> 
 
             </Switch>
         </BrowserRouter>

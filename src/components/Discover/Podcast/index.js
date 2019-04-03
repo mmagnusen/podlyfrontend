@@ -11,10 +11,10 @@ class Podcast extends Component {
   }
 
   render() {
-    const { name, podcast, snippet, hosts, publish_date, image } = this.props.podcast
-
+    const { name, podcast, snippet, hosts, publish_date, image, slug } = this.props.podcast
+    console.log('from individual podcast', this.props.podcast)
     return (
-        <Link to="/play">
+        <Link to={`/play/${slug}`}>
             <div className="SinglePodcast">
                 <div className='SinglePodcast-details'>
                     <section className='SinglePodcast-name'>

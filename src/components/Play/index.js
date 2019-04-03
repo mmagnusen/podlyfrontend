@@ -3,17 +3,39 @@ import { connect } from 'react-redux'
 import discoverAsyncActions from './../../redux/actions/discover/asyncActions'
 import mp3 from '../../resources/lay.mp3'
 import ListItem from './ListItem'
+import axios from 'axios'
+import { ENDPOINT } from '../../constants'
 import './Play.scss'
 
 class Play extends Component {
 
+    state = {
+        podcast: {}
+    }
+
     componentDidMount() {
         this.props.dispatch(discoverAsyncActions.freshRequest())
+
+        const singleEndpoint = `${ENDPOINT}/api/episode?slug=${this.props.slug}`
+            axios.get(singleEndpoint)
+            .then((response) => {
+               this.setState({
+                   podcast: response.data[0]
+               })
+            })
+
       }
 
     render() {
 
-    const { episodes } = this.props.discover
+    const { episodes } = this.props
+    const { podcast } = this.state.podcast
+
+    console.log(this.state)
+
+
+
+    console.log('from play', this.props)
 
         return (
             <section className='Play'>
@@ -21,7 +43,7 @@ class Play extends Component {
                     <section className='Play-info' >
                         <img src="https://picsum.photos/200/300" alt='hosts'/>
                         <div>
-                            <h3>Techish</h3>
+                            <h3>{podcast}</h3>
                             <p>Abadesi, Michael</p>
                             <p>Lorem Ipsum is simply dummy text of the printing and typesetting 
                                 industry. Lorem Ipsum has been the industry's standard dummy text 

@@ -11,11 +11,10 @@ class PlayPage extends Component {
                 <title>Podcast guests</title>
             </Helmet>
             <Navigation />
-            <Play />
+            <Play slug={this.props.match.params.slug}/>
         </div>
     );
   }
 }
-
 
 export default PlayPage;
