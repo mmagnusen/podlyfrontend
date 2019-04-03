@@ -6,32 +6,54 @@ $module: 'SinglePodcast';
     min-height: 150px;
     width: 100%;
     background: white;
-    padding: 10px;
     box-sizing: border-box;
     cursor: pointer;
+   
+    display: flex;
+    flex-direction: column-reverse;
+    color: rgba(0,0,0,.84)!important;
 
-    display: grid;
-    grid-template-columns: 1fr 300px;
-    grid-column-gap: 20px;
+    @media screen and (min-width: $tabletBreakpoint) { 
+        grid-template-columns: 1fr;
+        grid-column-gap: 20px;
+        display: grid;
+        grid-template-columns: 1fr 300px;
+    }
 
     &-details {
         box-sizing: border-box;
+        padding: 20px 20px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    &-name {
+        h3, p {
+            padding: 0;
+            margin: 0;
+        }
+    }
+
+    &-snippet {
+       margin: 0;
     }
 
     &-nameTags {
         display: flex;
-
+        margin: 1rem 0 0.5rem 0;
         h3, p {
             padding: 0;
-            margin: 0 1rem 0 0;
-            line-height: 1rem;
-
+            margin: 0;
         }
     }
 
     &-dateLength {
         display: flex;
         justify-content: space-between;
+        h3, p {
+            padding: 0;
+            margin: 0;
+        }
     }
     &-image { 
         display: flex;

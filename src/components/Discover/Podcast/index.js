@@ -11,27 +11,22 @@ class Podcast extends Component {
   }
 
   render() {
-    const { name, podcast, snippet, hosts, tags, publish_date, length, image } = this.props.podcast
+    const { name, podcast, snippet, hosts, publish_date, image } = this.props.podcast
+
     return (
         <Link to="/play">
             <div className="SinglePodcast">
                 <div className='SinglePodcast-details'>
-                    <section>
+                    <section className='SinglePodcast-name'>
                         <h3>{name}</h3>
                     </section>
 
-                    <section>
+                    <section className='SinglePodcast-snippet'>
                         <p>{snippet}</p>
                     </section>
 
                     <section className='SinglePodcast-nameTags'>
-                        <section>
-                            <h3>{podcast}</h3>
-                        </section>
-
-                        <section>
-                            <p>{tags}</p>
-                        </section>
+                        <h3>{podcast}</h3>
                     </section>
 
                     <section>
@@ -43,7 +38,7 @@ class Podcast extends Component {
                             <p>{moment(publish_date).format("Do MMM YYYY") }</p>
                         </section>
                         <section>
-                            <p>{length}</p>
+                            <p>00:59</p>
                         </section>
                     </section>
                 </div>

@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { Link  } from 'react-router-dom';
+import Truncate from 'react-truncate';
+import moment from 'moment'
 import './EditorsPick.scss'
 
 class EditorsPick extends Component {
@@ -9,25 +11,33 @@ class EditorsPick extends Component {
   }
 
   render() {
-    const { name, title, snippet, hosts, tags, date, length } = this.props.podcast
+    const { name, podcast, snippet, publish_date, hosts, tags, date, length } = this.props.podcast
     return (
         <Link to="/play">
             <div className="EditorsPick">
-                <section>
+                <section className="EditorsPick-name">
                     <h3>{name}</h3>
                 </section>
 
                 <section className="EditorsPick-snippet">
-                    <p>{snippet}</p>
+                    <Truncate lines={2} ellipsis={<span>...</span>}>
+                        {snippet}
+                    </Truncate>
                 </section>
 
-                <section>
-            
+                <section className="EditorsPick-name">
+                    <h3>{podcast}</h3>
                 </section>
 
-                <section>
-                    <p>{tags}</p>
-                </section>
+                <div className="EditorsPick-dateLength">
+                    <section>
+                        <p>{moment(publish_date).format("Do MMM YYYY") }</p>
+                    </section>
+
+                    <section>
+                        <p>00:59</p>
+                    </section>
+                </div>
             </div>
         </Link>
     );

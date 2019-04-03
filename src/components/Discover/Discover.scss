@@ -10,9 +10,14 @@ $module: 'Discover';
     &-inner {
         width: 90%;
         margin: 0 auto;  
-        display: grid;
-        grid-template-columns: 800px 1fr;
-        grid-column-gap: 100px;
+        display: flex;
+        flex-direction: column-reverse;
+        @media screen and (min-width: $largeMonitorBreakpoint) { 
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-column-gap: 100px;
+            grid-template-columns: 800px 1fr;
+        }
     }
 
     &-list {
