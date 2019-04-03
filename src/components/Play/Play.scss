@@ -20,12 +20,76 @@ $module: 'Play';
         grid-column-gap: 30px;
     }
 
-    &-player {
-        margin: 2rem 0;
+    &-infoImage {
+        display: flex;
+        img {
+            width: auto;
+            height: 150px;
+        }
+    }
 
-        audio {
-            margin: 0 auto;
+    &-player {
+        margin: 2rem auto;
+    }
+
+    &-playerInner {
+        width: 500px;
+        margin: 2rem auto;
+    }
+
+    &-playerControls {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        border: 1px solid grey;
+        padding: 10px;
+        border-radius: 5px;
+        div {
+            display: flex;
+            justify-content: center;
+            align-items: center; 
+        }
+        i {
+            font-size: 25px;
+            cursor: pointer;
+        }
+
+        .circle {
+            border: 1px solid white;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 50px;
+            width: 50px;
+        }
+    }
+
+    &-playerProgress {
+        padding: 1rem 0;
+        .ui.progress .bar {
+            height: 0.5em;
             display: block;
+            line-height: 1;
+            position: relative;
+            width: 0%;
+            min-width: 2em;
+            background-color: #00b5ad;
+            border-radius: .28571429rem;
+            -webkit-transition: width .1s ease,background-color .1s ease;
+            transition: width .1s ease,background-color .1s ease;
+        }
+
+        .ui.progress {
+            position: relative;
+            display: block;
+            max-width: 100%;
+            border: none;
+            margin: 1em 0 2.5em;
+            -webkit-box-shadow: none;
+            box-shadow: none;
+            background: grey;
+            padding: 0;
+            border-radius: .28571429rem;
         }
     }
 
