@@ -10,7 +10,6 @@ class NewPodcast extends Component {
         name:"",
         slug:"",
         start_date:"",
-        hosts:"",
         url:"",
         description:"",
         tags:""
@@ -40,12 +39,6 @@ class NewPodcast extends Component {
         })
     }
 
-    updateHosts = (event) => {
-        this.setState({
-            hosts: event.target.value
-        })
-    }
-
     updateUrl = (event) => {
         this.setState({
             url: event.target.value
@@ -65,7 +58,7 @@ class NewPodcast extends Component {
 
     render() {
 
-        const { name, slug, tags, start_date, hosts, url, description } = this.state
+        const { name, slug, tags, start_date, url, description } = this.state
 
         return (
                 <div className='NewPodcast'>
@@ -82,9 +75,6 @@ class NewPodcast extends Component {
                     </section>
                     <section className="NewPodcast-age">
                         <p>Age:</p> <Input value={start_date} onChange={this.updateStartDate}/>
-                    </section>
-                    <section className="NewPodcast-host">
-                        <p>Host:</p> <Input value={hosts} onChange={this.updateHosts}/>
                     </section>
                     <section className="NewPodcast-link">
                         <p>Link to podcast:</p> <Input value={url} onChange={this.updateUrl}/>

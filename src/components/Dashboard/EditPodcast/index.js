@@ -19,10 +19,6 @@ class EditPodcast extends Component {
         this.props.dispatch((podcastActionGenerators.updateStartDate(event.target.value)))
     }
 
-    updateHosts = (event) => {
-        this.props.dispatch((podcastActionGenerators.updateHosts(event.target.value)))
-    }
-
     updateUrl = (event) => {
         this.props.dispatch((podcastActionGenerators.updateUrl(event.target.value)))
     }
@@ -33,11 +29,12 @@ class EditPodcast extends Component {
 
     submitChanges = () => {
         this.props.dispatch((podcastAsyncActions.submitChanges()))
+        this.props.toggleEditPodcast()
     }
 
     render() {
 
-        const { name, tags, start_date, hosts, url, description } = this.props.podcast
+        const { name, tags, start_date, url, description } = this.props.podcast
 
         return (
                 <div className='EditPodcast'>
@@ -51,9 +48,6 @@ class EditPodcast extends Component {
                     </section>
                     <section className="EditPodcast-age">
                         <p>Age:</p> <Input value={start_date} onChange={this.updateStartDate}/>
-                    </section>
-                    <section className="EditPodcast-host">
-                        <p>Host:</p> <Input value={hosts} onChange={this.updateHosts}/>
                     </section>
                     <section className="EditPodcast-link">
                         <p>Link to podcast:</p> <Input value={url} onChange={this.updateUrl}/>

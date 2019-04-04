@@ -1,0 +1,15 @@
+@import '../../../../constants/styles/sass-variables/breakpoints';
+@import '../../../../constants/styles/sass-variables/colors';
+
+$module: 'UserEpisode';
+
+.#{$module} {   
+    border-bottom: 1px solid grey;
+    margin-bottom: 1.5rem;
+    &-detail {
+        display: grid;
+        grid-template-columns: 100px 1fr;
+    
+    }
+
+}

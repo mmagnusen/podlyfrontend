@@ -1,32 +1,21 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import discoverAsyncActions from './../../redux/actions/discover/asyncActions'
 import mp3 from '../../resources/lay.mp3'
 import ListItem from './ListItem'
-import axios from 'axios'
 import { ENDPOINT } from '../../constants'
 import moment from 'moment'
 import Truncate from 'react-truncate';
+import episodeAsyncActions from './../../redux/actions/play/asyncActions'
 import './Play.scss'
 
 class Play extends Component {
 
     state = {
-        podcast: {},
         play: false,
     }
 
     componentDidMount() {
-        this.props.dispatch(discoverAsyncActions.freshRequest())
-
-        const singleEndpoint = `${ENDPOINT}/api/episode?slug=${this.props.slug}`
-            axios.get(singleEndpoint)
-            .then((response) => {
-               this.setState({
-                   podcast: response.data[0]
-               })
-            })
-
+        this.props.dispatch(episodeAsyncActions.getEpisode(this.props.slug))
       }
 
       static audio = document.getElementById("player");  
@@ -56,8 +45,7 @@ class Play extends Component {
 
     render() {
 
-    const { episodes } = this.props
-    const { podcast, snippet, image, publish_date } = this.state.podcast
+    const { podcast, snippet, image, publish_date } = this.props.episode.currentlyPlaying
 
         return (
             <section className='Play'>
@@ -112,7 +100,7 @@ class Play extends Component {
                     </section>
 
                     <section  className='Play-list'>
-                        { episodes && episodes.map(( podcast ) => <ListItem podcast={podcast}/>)}
+                        {/* episodes && episodes.map(( podcast ) => <ListItem podcast={podcast}/>) */}
                     </section>
                 </section>
             </section> 
@@ -122,7 +110,8 @@ class Play extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        discover: state.discover
+        discover: state.discover,
+        episode: state.episode
     }
 }
 

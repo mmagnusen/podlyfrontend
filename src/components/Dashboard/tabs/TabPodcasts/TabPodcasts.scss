@@ -1,0 +1,25 @@
+@import '../../../../../constants/styles/sass-variables/breakpoints';
+@import '../../../../../constants/styles/sass-variables/colors';
+
+$module: 'TabPodcasts';
+
+.#{$module} {   
+    &-addPodcast {
+        border-bottom: 1px solid grey;
+        padding: 2rem 0;
+        
+        button {
+            height: 40px;
+            width: 200px;
+            font-size: 16px;
+            border-radius: 4px;
+            background: #40c4bf;
+            color: white;
+            border: none;
+        }
+    }
+}
+
+
+
+

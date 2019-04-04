@@ -1,0 +1,38 @@
+import React, { Component } from 'react';
+import { connect } from 'react-redux'
+import episodeAsyncActions from '../../../../redux/actions/episode/asyncActions'
+import UserEpisode from './../../UserEpisode'
+import './TabEpisodes.scss'
+
+class TabEpisodes extends Component {
+    componentDidMount() {
+        this.props.dispatch(episodeAsyncActions.getUserEpisodes())
+    }
+
+    render() {
+        const { toggleNewEpisode } = this.props
+        const { userEpisodes } = this.props.episode
+
+        return (
+            <section className='TabEpisodes'>
+                <section className='TabEpisodes-title'>
+                    <h3>Your episodes</h3>
+                </section>
+                <section className='TabEpisodes-new'>
+                    <button onClick={() => toggleNewEpisode(true)}>Add episode</button>
+                </section>
+                {userEpisodes.map((episode) => <UserEpisode key={episode.name} episode={episode}/>)}
+            </section> 
+        )
+    }
+}
+
+const mapStateToProps = (state) => {
+    return {
+        user: state.user,
+        episode: state.episode
+    }
+}
+
+export default connect(mapStateToProps)(TabEpisodes)
+

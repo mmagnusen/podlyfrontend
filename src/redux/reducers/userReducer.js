@@ -23,6 +23,11 @@ const userReducer = (state = defaultUserState, action = {}) => {
                 email: null,
                 token: null,
             }
+        case 'UPDATE_USER_TAB':
+            return {
+                ...state,
+                dashboardTabIndex: action.newTabIndex
+            }
         default:
             return state
      }

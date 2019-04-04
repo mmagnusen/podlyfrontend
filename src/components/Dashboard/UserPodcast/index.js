@@ -17,7 +17,8 @@ class UserPodcast extends Component {
 
         return (
             <div className='UserPodcast'>
-                <div className="UserPodcast-details">
+             
+                    <div className="UserPodcast-details">
                     <section>
                         <p>Name:</p><p>{name}</p>
                     </section>
@@ -33,10 +34,11 @@ class UserPodcast extends Component {
                     <section>
                         <p>Link to podcast:</p><p>{url}</p>
                     </section>
-                </div>
-                <div className='UserPodcast-edit'>
-                    <button onClick={this.openEditModal}>Edit podcast</button>
-                </div>
+                    </div>
+                    <div className='UserPodcast-edit'>
+                        <button onClick={this.openEditModal}>Edit podcast details</button>
+                    </div>
+       
             </div>
         )
     }

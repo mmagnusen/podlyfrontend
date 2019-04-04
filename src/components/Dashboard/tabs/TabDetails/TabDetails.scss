@@ -1,0 +1,12 @@
+@import '../../../../../constants/styles/sass-variables/breakpoints';
+@import '../../../../../constants/styles/sass-variables/colors';
+
+$module: 'TabDetails';
+
+.#{$module} {   
+    
+    &-email {
+        margin: 2rem 0 3rem 0;
+    }
+
+}

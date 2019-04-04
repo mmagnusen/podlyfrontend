@@ -16,6 +16,12 @@ const userActionGenerators = {
         return {
             type: 'SET_LOGOUT'
         }
+    },
+    updateTabIndex: (newTabIndex) => {
+        return {
+            type: 'UPDATE_USER_TAB',
+            newTabIndex
+        }
     }
 }
 
