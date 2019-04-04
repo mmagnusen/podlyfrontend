@@ -5,7 +5,7 @@ import ListItem from './ListItem'
 import { ENDPOINT } from '../../constants'
 import moment from 'moment'
 import Truncate from 'react-truncate';
-import episodeAsyncActions from './../../redux/actions/play/asyncActions'
+import episodeAsyncActions from '../../redux/actions/episode/asyncActions'
 import './Play.scss'
 
 class Play extends Component {
