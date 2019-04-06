@@ -10,38 +10,9 @@ import './Play.scss'
 
 class Play extends Component {
 
-    state = {
-        play: false,
-    }
-
     componentDidMount() {
         this.props.dispatch(episodeAsyncActions.getEpisode(this.props.slug))
     }
-
-    static audio = document.getElementById("player");  
-
-    togglePlayer = () => {
-
-        const audio = document.getElementById("player");  
-        
-        if (this.state.play === true ) {
-
-            this.setState({
-                play: false
-            })
-
-            audio.pause()
-
-        } else {
-
-            this.setState({
-                play: true
-            })   
-
-            audio.play()
-
-        }
-      }
 
     render() {
 
@@ -62,37 +33,7 @@ class Play extends Component {
                             <p>{moment(publish_date).format("Do MMM YYYY") }</p>
                         </div>
                     </section>
-
-                    <section className='Play-player'>
-                        <section className='Play-playerInner'>
-                            <section className='Play-playerControls'>
-                                <div>
-                                    <i className="fas fa-step-backward"></i>
-                                </div>
-                                <div>
-                                    {
-                                        this.state.play === false ?
-                                        <i className="fas fa-play circle" onClick={this.togglePlayer}></i>
-                                        :
-                                        <i className="fas fa-pause circle" onClick={this.togglePlayer}></i>
-                                    }
-                                </div>
-                                <div>
-                                    <i className="fas fa-step-forward"></i>
-                                </div>
-                            </section>
-                            <section className='Play-playerProgress'>
-                                <div className="ui teal progress" data-percent="74" id="example1">
-                                    <div className="bar">
-                                        <div className="progress"></div>
-                                    </div>
-                                </div>
-
-                            </section>
-                        </section>
-                    </section>
-
-                    <section className='Play-playerxxx'>
+                    <section className='Play-playerHtml'>
                         <audio controls id='player'>
                             <source src={mp3} type="audio/mpeg"/>
                             Your browser does not support the audio element.
