@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import Select from 'react-select';
 import episodeAsyncActions from '../../../redux/actions/episode/asyncActions'
 import './NewEpisode.scss'
+import { storage } from '../../../firebase'
 
 class NewEpisode extends Component {
 
@@ -12,6 +13,8 @@ class NewEpisode extends Component {
         slug:"",
         snippet:"",
         podcastSelectOption: null,
+        image: null,
+        url: null,
     }
 
     componentDidMount() {
@@ -69,6 +72,37 @@ class NewEpisode extends Component {
         return options
     }
 
+    handleChange = (e) => {
+
+        if ( e.target.files[0] ) {
+            const image = e.target.files[0]
+
+            this.setState({
+                image
+            })
+        }
+    }
+
+    handleUpload = () => {
+    const { image } = this.state
+       const uploadTask =  storage.ref(`images/${image.name}`).put(image);
+       uploadTask.on('state_changed', 
+       (snapshot) => {
+           //progress function ...
+       },
+       (error) => {
+           //error function ...
+           console.log('error:', error)
+       },
+       () => {
+            //complete function ...
+            storage.ref('images').child(image.name).getDownloadURL().then(url => {
+                console.log('url', url)
+            })
+       },
+    )
+    }
+
     render() {
 
         const { name, slug, tags, podcastSelectOption } = this.state
@@ -77,6 +111,9 @@ class NewEpisode extends Component {
             <div className='NewEpisode'>
                 <div className="NewEpisode-details">
                     <section><h3>Add new episode</h3></section>
+
+                    <input type='file' onChange={this.handleChange}/>
+                    <button onClick={this.handleUpload}>upload</button>
                     <Select
                         value={podcastSelectOption}
                         onChange={this.updateSelectedPodcastOption}
