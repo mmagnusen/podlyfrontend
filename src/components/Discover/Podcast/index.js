@@ -11,7 +11,7 @@ class Podcast extends Component {
   }
 
   render() {
-    const { name, podcast, snippet, hosts, publish_date, image, slug } = this.props.podcast
+    const { name, podcast_name, snippet, hosts, publish_date, image, slug } = this.props.podcast
     console.log('from individual podcast', this.props.podcast)
     return (
         <Link to={`/play/${slug}`}>
@@ -26,7 +26,7 @@ class Podcast extends Component {
                     </section>
 
                     <section className='SinglePodcast-nameTags'>
-                        <h3>{podcast}</h3>
+                        <h3>{podcast_name}</h3>
                     </section>
 
                     <section>
@@ -43,7 +43,7 @@ class Podcast extends Component {
                     </section>
                 </div>
                 <div className='SinglePodcast-image'>
-                    <img src={`${ENDPOINT}/media/${image}`} />
+                    <img src={`${ENDPOINT}/media/${image}`} alt='podcast cover'/>
                 </div>
             </div>
         </Link>

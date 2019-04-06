@@ -5,8 +5,9 @@ import TabDetails from './tabs/TabDetails'
 import TabPodcasts from './tabs/TabPodcasts'
 import TabEpisodes from './tabs/TabEpisodes'
 import Modal from '@material-ui/core/Modal';
-import { EditPodcast, NewPodcast, NewEpisode } from '../'
+import { EditPodcast, NewPodcast, NewEpisode, EditEpisode } from '../'
 import { Redirect } from 'react-router-dom'
+import podcastAsyncActions from '../../redux/actions/podcast/asyncActions'
 import userActionGenerators from '../../redux/actions/user/userActionGenerators'
 import './Dashboard.scss'
 
@@ -15,7 +16,12 @@ class DashboardHome extends Component {
     state = {
         newOpen: false,
         editOpen: false,
-        newEpisodeOpen: false
+        newEpisodeOpen: false,
+        episodeEditOpen: false
+    }
+
+    componentDidMount() {
+        this.props.dispatch(podcastAsyncActions.getUserPodcasts())
     }
 
     toggleNewPodcast = () => {
@@ -36,14 +42,20 @@ class DashboardHome extends Component {
         })
     }
 
+    toggleEditEpisode = () => {
+        this.setState({
+            episodeEditOpen: !this.state.episodeEditOpen
+        })
+    }
+
     updateDashboardTab = (newTabIndex) => {
         this.props.dispatch(userActionGenerators.updateTabIndex(newTabIndex))
     }
 
     render() {
 
-        const { reduxPodcast, user } = this.props
-        const { newOpen, editOpen, newEpisodeOpen } = this.state
+        const { user } = this.props
+        const { newOpen, editOpen, newEpisodeOpen, episodeEditOpen } = this.state
 
         if (user.token === null) {
             return <Redirect to='/'/>
@@ -61,7 +73,7 @@ class DashboardHome extends Component {
                 <section>
                     { user.dashboardTabIndex === 0 && <TabDetails />}
                     { user.dashboardTabIndex === 1 && <TabPodcasts toggleNewPodcast={this.toggleNewPodcast} toggleEditPodcast={this.toggleEditPodcast}/> }
-                    { user.dashboardTabIndex === 2 && <TabEpisodes toggleNewEpisode={this.toggleNewEpisode} />  }
+                    { user.dashboardTabIndex === 2 && <TabEpisodes toggleNewEpisode={this.toggleNewEpisode} toggleEditEpisode={this.toggleEditEpisode}/>  }
                 </section>
                 <Modal
                     open={editOpen}
@@ -82,13 +94,22 @@ class DashboardHome extends Component {
                 </Modal>
 
                 <Modal
-                open={newEpisodeOpen}
-                onClose={this.toggleNewEpisode}
+                    open={newEpisodeOpen}
+                    onClose={this.toggleNewEpisode}
                 >
-                <div>
-                    <NewEpisode toggleNewEpisode={this.toggleNewEpisode}/>
-                </div>
-            </Modal>
+                    <div>
+                        <NewEpisode toggleNewEpisode={this.toggleNewEpisode}/>
+                    </div>
+                </Modal>
+
+                <Modal
+                    open={episodeEditOpen}
+                    onClose={this.toggleEditEpisode}
+                >
+                    <div>
+                        <EditEpisode toggleEditEpisode={this.toggleEditEpisode}/>
+                    </div>
+                </Modal>
             </div>
         )
     }

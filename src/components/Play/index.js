@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import mp3 from '../../resources/lay.mp3'
-import ListItem from './ListItem'
+//import ListItem from './ListItem'
 import { ENDPOINT } from '../../constants'
 import moment from 'moment'
 import Truncate from 'react-truncate';
@@ -45,17 +45,17 @@ class Play extends Component {
 
     render() {
 
-    const { podcast, snippet, image, publish_date } = this.props.episode.currentlyPlaying
+    const { podcast_name, snippet, image, publish_date } = this.props.episode.currentlyPlaying
 
         return (
             <section className='Play'>
                 <section className='Play-inner'>
                     <section className='Play-info' >
                         <section className='Play-infoImage'>
-                            <img src={`${ENDPOINT}/media/${image}`} />
+                            <img src={`${ENDPOINT}/media/${image}`} alt='host cover'/>
                         </section>
                         <div>
-                            <h3>{podcast}</h3>
+                            <h3>{podcast_name}</h3>
                             <Truncate lines={3} ellipsis={<span>...</span>}>
                                 {snippet}
                             </Truncate>

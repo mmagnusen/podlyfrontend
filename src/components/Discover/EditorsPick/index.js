@@ -11,7 +11,7 @@ class EditorsPick extends Component {
   }
 
   render() {
-    const { name, podcast, snippet, publish_date, hosts, tags, date, length } = this.props.podcast
+    const { name, podcast_name, snippet, publish_date } = this.props.podcast
     return (
         <Link to="/play">
             <div className="EditorsPick">
@@ -26,7 +26,7 @@ class EditorsPick extends Component {
                 </section>
 
                 <section className="EditorsPick-name">
-                    <h3>{podcast}</h3>
+                    <h3>{podcast_name}</h3>
                 </section>
 
                 <div className="EditorsPick-dateLength">

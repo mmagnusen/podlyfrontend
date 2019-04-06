@@ -10,7 +10,7 @@ class Host extends Component {
         return (
             <section className='Host'>
                 <div className='Host-avatar'>
-                    <img src={image}/>
+                    <img src={image} alt='host'/>
                     <div className='Host-avatarDetails'>
                         <h3>{name}</h3>
                         <a href={twitter_url} target='_blank' rel="noopener noreferrer">

@@ -3,14 +3,12 @@ import { Input, TextArea } from '../../index'
 import { connect } from 'react-redux'
 import Select from 'react-select';
 import episodeAsyncActions from '../../../redux/actions/episode/asyncActions'
-import './NewEpisode.scss'
+import episodeActionGenerators from '../../../redux/actions/episode/episodeActionGenerators'
+import './EditEpisode.scss'
 
-class NewEpisode extends Component {
+class EditEpisode extends Component {
 
     state = {
-        name:"",
-        slug:"",
-        snippet:"",
         podcastSelectOption: null,
     }
 
@@ -30,32 +28,16 @@ class NewEpisode extends Component {
     }
 
     updateName = (event) => {
-        this.setState({
-            name: event.target.value
-        })
-    }
-
-    updateSlug = (event) => {
-        this.setState({
-            slug: event.target.value
-        })
+        this.props.dispatch(episodeActionGenerators.updateName(event.target.value))
     }
 
     updateSnippet = (event) => {
-         this.setState({
-            snippet: event.target.value
-        })
+        this.props.dispatch(episodeActionGenerators.updateSnippet(event.target.value))
     }
 
-    submitNewEpisode = () => {
-        this.props.toggleNewEpisode(false)
-        const data = {
-            name: this.state.name,
-            slug: this.state.slug,
-            snippet: this.state.snippet,
-            podcast: this.state.podcastSelectOption.value
-        }
-        this.props.dispatch((episodeAsyncActions.submitNewEpisode(data)))
+    submitChanges = () => {
+        this.props.dispatch((episodeAsyncActions.submitChanges()))
+        //this.props.toggleEditEpisode()
     }
 
     getPodcastSelectOptions = () => {
@@ -71,29 +53,27 @@ class NewEpisode extends Component {
 
     render() {
 
-        const { name, slug, tags, podcastSelectOption } = this.state
+        const { name, slug, snippet, podcastSelectOption } = this.props.reduxEpisode.currentEditEpisode
 
         return (
-            <div className='NewEpisode'>
-                <div className="NewEpisode-details">
-                    <section><h3>Add new episode</h3></section>
+            <div className='EditEpisode'>
+                <div className="EditEpisode-details">
+
+                    <section><h3>Edit episode</h3></section>
                     <Select
                         value={podcastSelectOption}
                         onChange={this.updateSelectedPodcastOption}
                         options={this.getPodcastSelectOptions()}
                     />
-                    <section className="NewEpisode-name">
+                    <section className="EditEpisode-name">
                         <p>Name:</p> <Input value={name} onChange={this.updateName}/> 
                     </section>
-                    <section className="NewEpisode-slug">
-                        <p>Slug:</p> <Input value={slug} onChange={this.updateSlug}/> 
-                    </section>
-                    <section className="NewEpisode-snippet">
-                        <p>Snippet:</p> <TextArea value={tags} onChange={this.updateSnippet}/>
+                    <section className="EditEpisode-snippet">
+                        <p>Snippet:</p> <TextArea value={snippet} onChange={this.updateSnippet}/>
                     </section>
                 </div>
                 <div>
-                    <button onClick={this.submitNewEpisode}>Save New Episode</button>
+                    <button onClick={this.submitChanges}>Submit Changes</button>
                 </div>
             </div>
         )
@@ -103,8 +83,9 @@ class NewEpisode extends Component {
 const mapStateToProps = (state) => {
     return {
         user: state.user,
-        podcast: state.podcast
+        podcast: state.podcast,
+        reduxEpisode: state.episode
     }
 }
 
-export default connect(mapStateToProps)(NewEpisode)
+export default connect(mapStateToProps)(EditEpisode)

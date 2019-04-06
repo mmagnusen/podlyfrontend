@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link  } from 'react-router-dom';
 import axios from 'axios'
 import { ENDPOINT } from '../../constants'
-import HostThumbnail from './HostThumbnail'
+//import HostThumbnail from './HostThumbnail'
 import './Podcast.scss'
 
 class Podcast extends Component {
@@ -14,10 +14,8 @@ class Podcast extends Component {
   componentDidMount() {
 
     const singleEndpoint = `${ENDPOINT}/api/host?slug=${this.props.podcast.slug}`
-    console.log('get hosts')
         axios.get(singleEndpoint)
         .then((response) => {
-            console.log('response', response)
             this.setState({
                 hosts: response.data
             })
@@ -26,7 +24,7 @@ class Podcast extends Component {
 
   render() {
       const { name, tags, start_date, slug } = this.props.podcast
-      const { hosts } = this.state
+      //const { hosts } = this.state
 
     return (
       <div>

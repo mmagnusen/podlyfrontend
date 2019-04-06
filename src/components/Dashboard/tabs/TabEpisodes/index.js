@@ -21,7 +21,12 @@ class TabEpisodes extends Component {
                 <section className='TabEpisodes-new'>
                     <button onClick={() => toggleNewEpisode(true)}>Add episode</button>
                 </section>
-                {userEpisodes.map((episode) => <UserEpisode key={episode.name} episode={episode}/>)}
+                {userEpisodes.map((episode) => (
+                    <UserEpisode 
+                        key={episode.name} 
+                        episode={episode}
+                        toggleEditEpisode={this.props.toggleEditEpisode}
+                    />))}
             </section> 
         )
     }

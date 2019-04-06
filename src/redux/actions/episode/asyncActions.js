@@ -15,7 +15,6 @@ const podcastAsyncActions = {
         }  
     },
     getUserEpisodes: () => {
-        console.log('episodes called')
         return (dispatch) => {
             token && axios({
                 method: 'get',
@@ -30,8 +29,24 @@ const podcastAsyncActions = {
             })
         }  
     },
-    submitNewEpisode: (data) => {
+    submitChanges: (editedPodcast) => {
         return (dispatch) => {
+            axios({
+                method: 'patch',
+                url: `${ENDPOINT}/api/episode/${editedPodcast.pk}`, 
+                headers: {
+                    'Authorization': 'JWT '+ token
+                    },
+                responseType: 'json',
+                data: editedPodcast
+            })
+            .catch((error) => {
+                console.log('error', error)
+            }) 
+        }  
+    },
+    submitNewEpisode: (data) => {
+        return () => {
             axios({
                 method: 'post',
                 url: `${ENDPOINT}/api/episode`, 
@@ -40,9 +55,6 @@ const podcastAsyncActions = {
                     },
                 responseType: 'json',
                 data
-            })
-            .then((response) => {
-                console.log('response from submit podcast async action', response)
             })
             .catch((error) => {
                 console.log('error', error)

@@ -2,6 +2,27 @@ import defaultEpisodeState from '../defaultStates/defaultEpisodeState'
 
 const episodeReducer = (state = defaultEpisodeState, action = {}) => {
     switch(action.type) {
+        case 'UPDATE_EPISODE_EDIT_OPEN':
+            return {
+                ...state,
+                currentEditEpisode: action.episode
+            }
+        case 'UPDATE_EPISODE_NAME':
+            return {
+                ...state,
+                currentEditEpisode: {
+                    ...state.currentEditEpisode,
+                    name: action.name
+                }
+            }
+        case 'UPDATE_EPISODE_SNIPPET':
+            return {
+                ...state,
+                currentEditEpisode: {
+                    ...state.currentEditEpisode,
+                    snippet: action.snippet
+                }
+            }
         case 'SET_PLAYING':
             return {
                 ...state,

@@ -23,7 +23,10 @@ export { default as DesktopLoggedOut } from '../components/Navigation/DesktopNav
 export { default as UserPodcast } from './Dashboard/UserPodcast'
 export { default as EditPodcast } from './Dashboard/EditPodcast'
 export { default as NewPodcast } from './Dashboard/NewPodcast'
+
+export { default as UserEpisode } from './Dashboard/UserEpisode'
 export { default as NewEpisode } from './Dashboard/NewEpisode'
+export { default as EditEpisode } from './Dashboard/EditEpisode' 
 
 // Authentication
 
