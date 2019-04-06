@@ -33,6 +33,11 @@ const episodeReducer = (state = defaultEpisodeState, action = {}) => {
                 ...state,
                 userEpisodes: action.episodes
             }
+        case 'UPDATE_EPISODE_FAMILY':
+            return {
+                ...state,
+                episodeFamily: action.episodes
+            }
         default:
             return state
      }

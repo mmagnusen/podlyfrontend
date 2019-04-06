@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import mp3 from '../../resources/lay.mp3'
-//import ListItem from './ListItem'
+import { PlayList } from '../index'
 import { ENDPOINT } from '../../constants'
 import moment from 'moment'
 import Truncate from 'react-truncate';
@@ -16,11 +16,11 @@ class Play extends Component {
 
     componentDidMount() {
         this.props.dispatch(episodeAsyncActions.getEpisode(this.props.slug))
-      }
+    }
 
-      static audio = document.getElementById("player");  
+    static audio = document.getElementById("player");  
 
-      togglePlayer = () => {
+    togglePlayer = () => {
 
         const audio = document.getElementById("player");  
         
@@ -45,7 +45,7 @@ class Play extends Component {
 
     render() {
 
-    const { podcast_name, snippet, image, publish_date } = this.props.episode.currentlyPlaying
+    const { podcast_name, snippet, image, publish_date, podcast } = this.props.episode.currentlyPlaying
 
         return (
             <section className='Play'>
@@ -99,9 +99,8 @@ class Play extends Component {
                         </audio>
                     </section>
 
-                    <section  className='Play-list'>
-                        {/* episodes && episodes.map(( podcast ) => <ListItem podcast={podcast}/>) */}
-                    </section>
+                    {podcast && <PlayList pk={podcast}/>}
+
                 </section>
             </section> 
         )

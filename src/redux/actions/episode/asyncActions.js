@@ -1,5 +1,6 @@
 import axios from 'axios'
 import episodeActionGenerators from './episodeActionGenerators'
+import store from '../../store/store'
 import { ENDPOINT } from '../../../constants'
 
 const token = localStorage.getItem('token');
@@ -11,6 +12,15 @@ const podcastAsyncActions = {
             axios.get(singleEndpoint)
             .then((response) => {
                 dispatch(episodeActionGenerators.setPlaying(response.data[0]))
+            })
+        }  
+    },
+    getFamilyEpisodes: (pk) => {
+        return (dispatch) => {
+            const singleEndpoint = `${ENDPOINT}/api/episode/family?podcast_pk=${pk}`
+            axios.get(singleEndpoint)
+            .then(({data}) => {
+                dispatch(episodeActionGenerators.updateEpisdeFamily(data))
             })
         }  
     },
@@ -29,16 +39,20 @@ const podcastAsyncActions = {
             })
         }  
     },
-    submitChanges: (editedPodcast) => {
+    submitChanges: () => { 
+        const editedEpisode = store.getState().episode.currentEditEpisode 
+        delete editedEpisode.podcast
+        delete editedEpisode.image
+
         return (dispatch) => {
             axios({
                 method: 'patch',
-                url: `${ENDPOINT}/api/episode/${editedPodcast.pk}`, 
+                url: `${ENDPOINT}/api/episode/${editedEpisode.pk}`, 
                 headers: {
                     'Authorization': 'JWT '+ token
                     },
                 responseType: 'json',
-                data: editedPodcast
+                data: editedEpisode
             })
             .catch((error) => {
                 console.log('error', error)

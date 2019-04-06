@@ -13,6 +13,8 @@ export { default as Dashboard } from './Dashboard'
 export { default as Host } from './Host'
 export { default as Discover } from './Discover'
 export { default as Play } from './Play'
+export { default as PlayList } from './PlayList'
+export { default as ListItem } from './ListItem'
 
 export { default as MobileNavigation } from '../components/Navigation/MobileNavigation'
 export { default as DesktopNavigation } from '../components/Navigation/DesktopNavigation'

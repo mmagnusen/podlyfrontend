@@ -29,6 +29,12 @@ const episodeActionGenerators = {
             episodes
         }
     },
+    updateEpisdeFamily: (episodes) => {
+        return {
+            type: 'UPDATE_EPISODE_FAMILY',
+            episodes
+        }  
+    }
 }
 
 export default episodeActionGenerators

@@ -1,0 +1,20 @@
+@import '../../../constants/styles/sass-variables/colors';
+@import '../../../constants/styles/sass-variables/breakpoints';
+
+$module: 'ListItem';
+
+.#{$module} {
+
+    height: 50px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-column-gap: 20px;
+    padding: 5px 10px;
+    border-bottom: 1px solid grey;
+    cursor: pointer;
+
+}
+
+.currentlyPlaying {
+    background: #5F2E7A;    
+}

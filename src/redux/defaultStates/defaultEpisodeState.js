@@ -1,7 +1,8 @@
 const defaultPlayState = {
     currentlyPlaying: {},
     userEpisodes: [],
-    currentEditEpisode: {}
+    currentEditEpisode: {},
+    episodeFamily: [],
 }
 
 export default defaultPlayState
