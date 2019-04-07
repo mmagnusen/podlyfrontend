@@ -21,8 +21,8 @@ class Play extends Component {
             <section className='Play'>
                 <section className='Play-inner'>
                     <section className='Play-info' >
-                        <section className='Play-infoImage'>
-                            <img src={`${ENDPOINT}/media/${image}`} alt='host cover'/>
+                        <section className='Play-infoImage' style={{backgroundImage: `url(${ENDPOINT}/media/${image})`}}>
+                            <div className='Play-infoImageInner'/>
                         </section>
                         <div>
                             <h3>{podcast_name}</h3>

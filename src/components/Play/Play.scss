@@ -16,15 +16,24 @@ $module: 'Play';
 
     &-info {
         display: grid;
-        grid-template-columns: 200px 1fr;
-        grid-column-gap: 30px;
+        grid-template-columns: 1fr;
+        @media screen and (min-width: $tabletBreakpoint) { 
+            grid-template-columns: 200px 1fr;
+            grid-column-gap: 30px;
+        }
     }
 
     &-infoImage {
-        display: flex;
-        img {
-            width: auto;
-            height: 150px;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+    }
+
+    &-infoImageInner {
+        width: auto;
+        height: 150px;
+        @media screen and (min-width: $mobileLargeBreakpoint) { 
+            height: 200px;
         }
     }
 
