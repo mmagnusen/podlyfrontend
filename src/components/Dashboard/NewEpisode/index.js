@@ -13,7 +13,7 @@ class NewEpisode extends Component {
         slug:"",
         snippet:"",
         podcastSelectOption: null,
-        image: null,
+        audio: null,
         url: null,
     }
 
@@ -56,7 +56,8 @@ class NewEpisode extends Component {
             name: this.state.name,
             slug: this.state.slug,
             snippet: this.state.snippet,
-            podcast: this.state.podcastSelectOption.value
+            podcast: this.state.podcastSelectOption.value,
+            audio: this.state.url
         }
         this.props.dispatch((episodeAsyncActions.submitNewEpisode(data)))
     }
@@ -75,17 +76,17 @@ class NewEpisode extends Component {
     handleChange = (e) => {
 
         if ( e.target.files[0] ) {
-            const image = e.target.files[0]
+            const audio = e.target.files[0]
 
             this.setState({
-                image
+                audio
             })
         }
     }
 
     handleUpload = () => {
-    const { image } = this.state
-       const uploadTask =  storage.ref(`images/${image.name}`).put(image);
+    const { audio } = this.state
+       const uploadTask =  storage.ref(`episodes/${audio.name}`).put(audio);
        uploadTask.on('state_changed', 
        (snapshot) => {
            //progress function ...
@@ -96,8 +97,11 @@ class NewEpisode extends Component {
        },
        () => {
             //complete function ...
-            storage.ref('images').child(image.name).getDownloadURL().then(url => {
-                console.log('url', url)
+            storage.ref('episodes').child(audio.name).getDownloadURL().then(url => {
+                console.log('type of url', typeof url, url)
+                this.setState({
+                    url
+                })
             })
        },
     )
@@ -112,13 +116,21 @@ class NewEpisode extends Component {
                 <div className="NewEpisode-details">
                     <section><h3>Add new episode</h3></section>
 
-                    <input type='file' onChange={this.handleChange}/>
-                    <button onClick={this.handleUpload}>upload</button>
-                    <Select
-                        value={podcastSelectOption}
-                        onChange={this.updateSelectedPodcastOption}
-                        options={this.getPodcastSelectOptions()}
-                    />
+                    <section className="NewEpisode-audio">
+                        <p>Audio:</p>
+                        <div>
+                        <input type='file' onChange={this.handleChange}/>
+                        <button onClick={this.handleUpload}>save upload</button>
+                        </div>
+                    </section>
+                    <section className="NewEpisode-podcast">
+                        <p>Podcast:</p>
+                        <Select
+                            value={podcastSelectOption}
+                            onChange={this.updateSelectedPodcastOption}
+                            options={this.getPodcastSelectOptions()}
+                        />
+                    </section>
                     <section className="NewEpisode-name">
                         <p>Name:</p> <Input value={name} onChange={this.updateName}/> 
                     </section>

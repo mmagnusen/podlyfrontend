@@ -22,6 +22,8 @@ $module: 'NewEpisode';
         left: calc(50% - 330px);
     }
 
+    &-audio,
+    &-podcast,
     &-name, 
     &-slug,
     &-snippet {

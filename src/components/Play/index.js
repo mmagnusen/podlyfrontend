@@ -16,7 +16,7 @@ class Play extends Component {
 
     render() {
 
-    const { podcast_name, snippet, image, publish_date, podcast } = this.props.episode.currentlyPlaying
+    const { podcast_name, snippet, image, publish_date, podcast, audio } = this.props.episode.currentlyPlaying
 
         return (
             <section className='Play'>
@@ -34,8 +34,8 @@ class Play extends Component {
                         </div>
                     </section>
                     <section className='Play-playerHtml'>
-                        <audio controls id='player'>
-                            <source src={mp3} type="audio/mpeg"/>
+                        <audio controls id='player' key={audio}>
+                            <source src={audio} type="audio/mpeg"/>
                             Your browser does not support the audio element.
                         </audio>
                     </section>
