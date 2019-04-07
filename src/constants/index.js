@@ -1,3 +1,3 @@
 export * from './form'
-export * from './inputTypes'
+export * from './inputType'
 export * from './endpoint'

@@ -12,7 +12,6 @@ class Podcast extends Component {
 
   render() {
     const { name, podcast_name, snippet, hosts, publish_date, image, slug } = this.props.podcast
-    console.log('from individual podcast', this.props.podcast)
     return (
         <Link to={`/play/${slug}`}>
             <div className="SinglePodcast">
@@ -42,8 +41,8 @@ class Podcast extends Component {
                         </section>
                     </section>
                 </div>
-                <div className='SinglePodcast-image'>
-                    <img src={`${ENDPOINT}/media/${image}`} alt='podcast cover'/>
+                <div className='SinglePodcast-image' style={{backgroundImage: `url(${ENDPOINT}/media/${image})`}}>
+                        <div className='SinglePodcast-imageInner'/>
                 </div>
             </div>
         </Link>

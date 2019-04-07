@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { AuthenticationForm, Input } from '../../'
 import { Redirect } from 'react-router-dom'
-import { FORM } from '../../../constants/'
+import { FORM, INPUT_TYPE } from '../../../constants/'
 import userAsyncActions from '../../../redux/actions/user/asyncActions'
 import './Login.scss'
 
@@ -46,11 +46,17 @@ import './Login.scss'
                 >
                 <section className='field fieldTwo'>
                     <label>Email</label> 
-                    <Input onChange={this.updateEmail} />
+                    <Input 
+                        onChange={this.updateEmail} 
+                        type={INPUT_TYPE.EMAIL}
+                        />
                 </section>
                 <section className='field fieldTwo'>
                     <label>Password</label> 
-                    <Input onChange={this.updatePassword} />
+                    <Input 
+                        onChange={this.updatePassword} 
+                        type={INPUT_TYPE.PASSWORD}
+                    />
                 </section>
                 </AuthenticationForm>
             </div>

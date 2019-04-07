@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import mp3 from '../../resources/lay.mp3'
 import { PlayList } from '../index'
 import { ENDPOINT } from '../../constants'
 import moment from 'moment'

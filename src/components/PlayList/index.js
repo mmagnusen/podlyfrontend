@@ -15,7 +15,19 @@ class PlayList extends Component {
         const { episodeFamily } = this.props.episode
 
         return (
-            <section  className='Play-list'>
+            <section className='PlayList'>
+                <section className='PlayList-tableHead'>
+                    <div>
+                        <p>Title</p>
+                    </div>
+                    <div>
+                        <p>Publish date</p>
+                    </div>
+                    <div>
+                        <p>Length</p>
+                    </div>
+
+                </section>
                 { episodeFamily && episodeFamily.map(( episode ) => <ListItem key={episode.name} episode={episode}/>) }
             </section>
         )

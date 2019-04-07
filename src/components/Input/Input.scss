@@ -19,10 +19,16 @@ $module: 'Input';
     }
 
     i {
+        &:not(.password-icon) {
+            left: 6px;
+        }
         position: absolute;
-        left: 6px;
         top: 12px;
         font-size: 16px;
         color: $charcoal;
+    }
+
+    .password-icon {
+        right: 6px;
     }
 }

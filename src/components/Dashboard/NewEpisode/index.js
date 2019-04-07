@@ -15,6 +15,7 @@ class NewEpisode extends Component {
         podcastSelectOption: null,
         audio: null,
         url: null,
+        duration: null,
     }
 
     componentDidMount() {
@@ -57,7 +58,8 @@ class NewEpisode extends Component {
             slug: this.state.slug,
             snippet: this.state.snippet,
             podcast: this.state.podcastSelectOption.value,
-            audio: this.state.url
+            audio: this.state.url,
+            duration: this.state.duration,
         }
         this.props.dispatch((episodeAsyncActions.submitNewEpisode(data)))
     }
@@ -81,7 +83,11 @@ class NewEpisode extends Component {
             this.setState({
                 audio
             })
+
+      
+
         }
+        
     }
 
     handleUpload = () => {
@@ -99,6 +105,7 @@ class NewEpisode extends Component {
             //complete function ...
             storage.ref('episodes').child(audio.name).getDownloadURL().then(url => {
                 console.log('type of url', typeof url, url)
+                
                 this.setState({
                     url
                 })
@@ -115,7 +122,6 @@ class NewEpisode extends Component {
             <div className='NewEpisode'>
                 <div className="NewEpisode-details">
                     <section><h3>Add new episode</h3></section>
-
                     <section className="NewEpisode-audio">
                         <p>Audio:</p>
                         <div>

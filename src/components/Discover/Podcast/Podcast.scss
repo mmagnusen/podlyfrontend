@@ -56,12 +56,15 @@ $module: 'SinglePodcast';
         }
     }
     &-image { 
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        img {
-            width: auto;
-            height: 150px;
-        } 
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+    }
+    &-imageInner { 
+        height: 160px;
+        width: 100%;
+        @media screen and (min-width: $mobileLargeBreakpoint) { 
+            height: 200px;
+        }
     }
 }

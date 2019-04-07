@@ -29,17 +29,20 @@ $module: 'Play';
     }
 
     &-playerHtml {
-        margin: 2rem auto;
+        margin: 0;
         display: flex;
         justify-content: center;
-
+        background: pink;
+        width: 100%;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        background: #f1f3f4;
     }
 
     audio {
-        width: 100%;
+        width: 95%;
         background: #f1f3f4;
-        position: fixed;
-        bottom: 0;
     }
 
     audio::-webkit-media-controls-panel {

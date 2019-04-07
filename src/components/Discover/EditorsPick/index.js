@@ -11,9 +11,9 @@ class EditorsPick extends Component {
   }
 
   render() {
-    const { name, podcast_name, snippet, publish_date } = this.props.podcast
+    const { name, podcast_name, snippet, publish_date, slug } = this.props.podcast
     return (
-        <Link to="/play">
+        <Link to={`/play/${slug}`}>
             <div className="EditorsPick">
                 <section className="EditorsPick-name">
                     <h3>{name}</h3>
