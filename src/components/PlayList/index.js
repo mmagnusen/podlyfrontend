@@ -21,7 +21,7 @@ class PlayList extends Component {
                         <p>Title</p>
                     </div>
                     <div>
-                        <p>Publish date</p>
+                        <p>Published</p>
                     </div>
                     <div>
                         <p>Length</p>
