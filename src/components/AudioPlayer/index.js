@@ -72,6 +72,28 @@ class AudioPlayer extends Component {
         
     }
 
+    updateProgress = () => {
+        console.log('updateProgress')
+    }
+
+    backToStart = () => {
+        const audio = document.getElementById('player')
+        audio.currentTime = 0
+        audio.pause()
+        this.setState({
+            play: false
+        })
+    }
+
+    toFinish = () => {
+        const audio = document.getElementById('player')
+        audio.currentTime = this.state.durationOriginal  
+        audio.pause()
+        this.setState({
+            play: false
+        })
+    }
+
     render() {
 
     const { audio } = this.props
@@ -94,12 +116,20 @@ class AudioPlayer extends Component {
                     <p>{`${currentTime} / ${duration}`}</p>
                 </div>
 
+                <div className='AudioPlayer-step AudioPlayer-stepBack'>
+                    <i className="fas fa-step-backward" onClick={this.backToStart}/>
+                </div>
+
                 <section className='AudioPlayer-progress'>	
-                    <div className="AudioPlayer-progressOuter">	
+                    <div className="AudioPlayer-progressOuter" onClick={this.updateProgress}>	
                         <div className="AudioPlayer-progressBar" style={{width: `${percentange}%`}}>	
                         </div>	
                     </div>	
                 </section>
+
+                <div className='AudioPlayer-step AudioPlayer-stepForward'>
+                    <i className="fas fa-step-forward" onClick={this.toFinish}/>
+                </div>
 
                 <section className='AudioPlayer-volume'>
                 {   muted ? <i className="fas fa-volume-off" onClick={this.toggleMute}/>
