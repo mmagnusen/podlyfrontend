@@ -1,0 +1,86 @@
+@import '../../../constants/styles/sass-variables/breakpoints';
+
+$module: 'AudioPlayer';
+
+.#{$module} {
+
+    background: #f1f3f4;
+    padding: 0 10px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+
+    &-controls {
+        height: 50px;
+        display: grid;
+        grid-column-gap: 5px;
+        margin: 0 auto;  
+        grid-template-columns: 15px 75px 1fr 40px;
+        @media only screen and (min-width: $mobileLargeBreakpoint) {
+            grid-column-gap: 10px;
+            grid-template-columns: 25px 75px 1fr 40px;
+        }
+        @media only screen and (min-width: $tabletBreakpoint) {
+            grid-column-gap: 10px;
+            grid-template-columns: 100px 100px 1fr 100px;
+        }
+    }
+
+    &-play {
+        display: flex;
+        align-items: center;
+        i {
+            cursor: pointer;
+            color: grey;
+        }
+    }
+
+    &-duration {
+        display: flex;
+        align-items: center;
+        p {
+            color: grey; 
+            font-size: 12px;
+        }
+    }
+
+    &-progress {
+        display: flex;
+        align-items: center;
+    }
+
+    &-progressOuter {
+        width: 100%;
+        background: grey;
+        border-radius: 4px;
+        height: 10px;
+    }
+
+
+    &-progressBar {
+        background: #35c6ce;
+        height: 100%;
+        border-radius: 4px 0 0 4px;
+    }
+
+    &-volume {
+        display: flex;
+        align-items: center;  
+        i {
+            cursor: pointer;
+            color: grey;
+        }
+    }
+
+    audio {
+        width: 95%;
+        background: #f1f3f4;
+    }
+
+    audio::-webkit-media-controls-panel {
+        margin: 0 auto;
+
+        border: none;
+    }
+}

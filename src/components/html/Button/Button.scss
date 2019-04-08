@@ -1,0 +1,13 @@
+@import '../../../../constants/styles/sass-variables/colors';
+@import '../../../../constants/styles/sass-variables/breakpoints';
+
+$module: 'Button';
+
+.#{$module} {
+    button {
+        &:focus {
+            outline: none;
+        }
+    }
+  
+}

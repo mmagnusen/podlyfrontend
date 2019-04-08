@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { PlayList } from '../index'
 import { ENDPOINT } from '../../constants'
 import moment from 'moment'
+import { AudioPlayer } from '../'
 import Truncate from 'react-truncate';
 import episodeAsyncActions from '../../redux/actions/episode/asyncActions'
 import './Play.scss'
@@ -32,15 +33,10 @@ class Play extends Component {
                             <p>{moment(publish_date).format("Do MMM YYYY") }</p>
                         </div>
                     </section>
-                    <section className='Play-playerHtml'>
-                        <audio controls id='player' key={audio}>
-                            <source src={audio} type="audio/mpeg"/>
-                            Your browser does not support the audio element.
-                        </audio>
-                    </section>
-
+        
                     {podcast && <PlayList pk={podcast}/>}
 
+                    <AudioPlayer audio={audio}/>
                 </section>
             </section> 
         )

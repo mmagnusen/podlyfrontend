@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link  } from 'react-router-dom';
 import { connect } from 'react-redux'
+import { Button } from '../../../'
 import './DesktopLoggedOut.scss'
 
 class DesktopLoggedOut extends Component {
@@ -15,10 +16,10 @@ class DesktopLoggedOut extends Component {
         </section>
         <section className="DesktopLoggedOut-authenticate">
             <Link to='/login'>
-                <button>Login</button>
+                <Button>Login</Button>
             </Link>
             <Link to='/register'>
-                <button>Register</button>
+                <Button>Register</Button>
             </Link>
         </section>
       </div>

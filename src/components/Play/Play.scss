@@ -36,27 +36,4 @@ $module: 'Play';
             height: 200px;
         }
     }
-
-    &-playerHtml {
-        margin: 0;
-        display: flex;
-        justify-content: center;
-        background: pink;
-        width: 100%;
-        position: fixed;
-        bottom: 0;
-        left: 0;
-        background: #f1f3f4;
-    }
-
-    audio {
-        width: 95%;
-        background: #f1f3f4;
-    }
-
-    audio::-webkit-media-controls-panel {
-        margin: 0 auto;
-
-        border: none;
-    }
 }

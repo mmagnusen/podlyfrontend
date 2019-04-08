@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link  } from 'react-router-dom';
 import { connect } from 'react-redux'
+import { Button } from '../../../'
 import userActionGenerators from '../../../../redux/actions/user/userActionGenerators'
 import './DesktopLoggedIn.scss'
 
@@ -21,9 +22,9 @@ class DesktopLoggedIn extends Component {
         </section>
         <section className="DesktopLoggedIn-authenticate">
             <Link to='/dashboard'>
-              <button>Dashboard</button>
+              <Button>Dashboard</Button>
             </Link>
-            <button onClick={() => this.handleLogout()}>Logout</button>
+            <Button onClick={this.handleLogout}>Logout</Button>
         </section>
       </div>
     );
