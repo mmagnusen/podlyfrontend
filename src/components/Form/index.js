@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios'
+import { Input, TextArea } from '../index'
+import { INPUT_TYPE } from '../../constants'
 import './Form.scss'
 
 class Form extends Component {
@@ -67,15 +69,15 @@ class Form extends Component {
                     <h1>Contact host</h1>
                     <section className='Form-field'>
                         <label>Name:</label>  
-                        <input onChange={this.updateName}/>
+                        <Input type={INPUT_TYPE.TEXT} onChange={this.updateName}/>
                     </section>
                     <section className='Form-field'>
                         <label>Email:</label>  
-                        <input onChange={this.updateEmail}/>
+                        <Input type={INPUT_TYPE.EMAIL} onChange={this.updateEmail}/>
                     </section>
                     <section className='Form-field'>
                         <label>Message to host:</label>  
-                        <textarea onChange={this.updateMessage}/>
+                        <TextArea onChange={this.updateMessage}/>
                     </section>
                     <section className='Form-submit'>
                         <button onClick={this.submitForm}>Submit</button>

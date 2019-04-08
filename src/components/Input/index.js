@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import classnames from 'classnames'
-import {func} from 'prop-types';
+import { func } from 'prop-types';
 import { INPUT_TYPE } from '../../constants'
 import './Input.scss'
 
