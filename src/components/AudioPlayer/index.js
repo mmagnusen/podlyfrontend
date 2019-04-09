@@ -37,8 +37,6 @@ class AudioPlayer extends Component {
         const seconds = audio.duration
         const duration = moment.duration(seconds, 'seconds');
 
-        
-        console.log('duration', seconds)
         this.setState({ 
             currentOriginal: current,
             currentTime: formatted,
