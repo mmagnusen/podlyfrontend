@@ -4,8 +4,8 @@
 $module: 'UserPodcast';
 
 .#{$module} {  
-    
-    margin: 4rem 0;
+    border-top: 2px solid rgba(128, 128, 128, 0.1);
+    padding-bottom: 2rem;
 
     p {
         line-height: 1.5rem;

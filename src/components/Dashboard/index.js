@@ -63,53 +63,55 @@ class DashboardHome extends Component {
 
         return (
             <div className='Dashboard'>
-                <section className='Dashboard-navigation'>
-                    <ul>
-                        <li onClick={() => this.updateDashboardTab(0)}>Your details</li>
-                        <li onClick={() => this.updateDashboardTab(1)}> Podcasts</li>
-                        <li onClick={() => this.updateDashboardTab(2)}>Episodes</li>
-                    </ul>
-                </section>
-                <section>
+                <div className='Dashboard-inner'>
+                    <section className='Dashboard-navigation'>
+                        <ul>
+                            <li onClick={() => this.updateDashboardTab(0)}>Your details</li>
+                            <li onClick={() => this.updateDashboardTab(1)}> Podcasts</li>
+                            <li onClick={() => this.updateDashboardTab(2)}>Episodes</li>
+                        </ul>
+                    </section>
+
                     { user.dashboardTabIndex === 0 && <TabDetails />}
                     { user.dashboardTabIndex === 1 && <TabPodcasts toggleNewPodcast={this.toggleNewPodcast} toggleEditPodcast={this.toggleEditPodcast}/> }
                     { user.dashboardTabIndex === 2 && <TabEpisodes toggleNewEpisode={this.toggleNewEpisode} toggleEditEpisode={this.toggleEditEpisode}/>  }
-                </section>
-                <Modal
-                    open={editOpen}
-                    onClose={this.toggleEditPodcast}
-                >
-                    <div>
-                        <EditPodcast toggleEditPodcast={this.toggleEditPodcast}/>
-                    </div>
-                </Modal>
-            
-                <Modal
-                    open={newOpen}
-                    onClose={this.toggleNewPodcast}
-                >
-                    <div>
-                        <NewPodcast toggleNewPodcast={this.toggleNewPodcast}/>
-                    </div>
-                </Modal>
 
-                <Modal
-                    open={newEpisodeOpen}
-                    onClose={this.toggleNewEpisode}
-                >
-                    <div>
-                        <NewEpisode toggleNewEpisode={this.toggleNewEpisode}/>
-                    </div>
-                </Modal>
+                    <Modal
+                        open={editOpen}
+                        onClose={this.toggleEditPodcast}
+                    >
+                        <div>
+                            <EditPodcast toggleEditPodcast={this.toggleEditPodcast}/>
+                        </div>
+                    </Modal>
+                
+                    <Modal
+                        open={newOpen}
+                        onClose={this.toggleNewPodcast}
+                    >
+                        <div>
+                            <NewPodcast toggleNewPodcast={this.toggleNewPodcast}/>
+                        </div>
+                    </Modal>
 
-                <Modal
-                    open={episodeEditOpen}
-                    onClose={this.toggleEditEpisode}
-                >
-                    <div>
-                        <EditEpisode toggleEditEpisode={this.toggleEditEpisode}/>
-                    </div>
-                </Modal>
+                    <Modal
+                        open={newEpisodeOpen}
+                        onClose={this.toggleNewEpisode}
+                    >
+                        <div>
+                            <NewEpisode toggleNewEpisode={this.toggleNewEpisode}/>
+                        </div>
+                    </Modal>
+
+                    <Modal
+                        open={episodeEditOpen}
+                        onClose={this.toggleEditEpisode}
+                    >
+                        <div>
+                            <EditEpisode toggleEditEpisode={this.toggleEditEpisode}/>
+                        </div>
+                    </Modal>
+                </div>
             </div>
         )
     }

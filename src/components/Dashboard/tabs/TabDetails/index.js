@@ -13,13 +13,13 @@ class TabDetails extends Component {
                 <section className='TabDetails-title'>
                     <h3>Your details</h3>
                 </section>
-                <section className='Dashboard-email'>
+                <section className='TabDetails-email'>
                     Email: { user.email }
                 </section>
-                <section className='Dashboard-email'>
+                <section className='TabDetails-firstName'>
                     First Name: { user.firstName }
                 </section>
-                <section className='Dashboard-email'>
+                <section className='TabDetails-lastName'>
                     Last Name: { user.lastName }
                 </section>
             </section> 

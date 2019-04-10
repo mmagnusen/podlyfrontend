@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
+import { Button } from '../../'
 import podcastActionGenerators from '../../../redux/actions/podcast/podcastActionGenerators'
 import './UserPodcast.scss'
 
@@ -36,7 +37,7 @@ class UserPodcast extends Component {
                     </section>
                     </div>
                     <div className='UserPodcast-edit'>
-                        <button onClick={this.openEditModal}>Edit podcast details</button>
+                        <Button onClick={this.openEditModal}>Edit podcast details</Button>
                     </div>
        
             </div>

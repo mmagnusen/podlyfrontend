@@ -2,6 +2,7 @@
 
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
+import { Button } from '../../'
 import episodeActionGenerators from '../../../redux/actions/episode/episodeActionGenerators'
 import './UserEpisode.scss'
 
@@ -35,8 +36,8 @@ class UserEpisode extends Component {
                     <p>Publish Date:</p> 
                     <p>{publish_date}</p> 
                 </section>
-                <section>
-                    <button onClick={this.openEditModal}>Edit episode</button>
+                <section className='UserEpisode-edit'>
+                    <Button onClick={this.openEditModal}>Edit episode</Button>
                 </section>
             </section> 
         )

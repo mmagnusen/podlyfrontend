@@ -4,8 +4,15 @@
 $module: 'TabEpisodes';
 
 .#{$module} {   
-    &-new {
-        margin: 1rem 0;
+
+    background: white;
+    padding: 0 15px;
+
+    &-title {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
         button {
             height: 40px;
             width: 200px;

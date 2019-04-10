@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import episodeAsyncActions from '../../../../redux/actions/episode/asyncActions'
 import UserEpisode from './../../UserEpisode'
+import { Button } from '../../../'
 import './TabEpisodes.scss'
 
 class TabEpisodes extends Component {
@@ -17,9 +18,7 @@ class TabEpisodes extends Component {
             <section className='TabEpisodes'>
                 <section className='TabEpisodes-title'>
                     <h3>Your episodes</h3>
-                </section>
-                <section className='TabEpisodes-new'>
-                    <button onClick={() => toggleNewEpisode(true)}>Add episode</button>
+                    <Button onClick={() => toggleNewEpisode(true)}>Add episode</Button>
                 </section>
                 {userEpisodes.map((episode) => (
                     <UserEpisode 

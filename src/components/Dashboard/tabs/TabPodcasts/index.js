@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import UserPodcast from '../../UserPodcast'
+import { Button } from '../../../'
 import podcastAsyncActions from '../../../../redux/actions/podcast/asyncActions'
 import './TabPodcasts.scss'
 
@@ -15,20 +16,18 @@ class TabPodcasts extends Component {
     const { reduxPodcast, toggleNewPodcast } = this.props
 
         return (
-            <section className='TabPodcasts-yourPodcasts'>
-            <section className='TabPodcasts-yourPodcastsTitle'>
-                <h3>Your podcasts</h3>
-            </section>
-            <section className='TabPodcasts-addPodcast'>
-                <button onClick={() => toggleNewPodcast(true)}>Add new podcast</button>
-            </section>
-            { reduxPodcast.podcasts && reduxPodcast.podcasts.map((podcast) => (
-                <UserPodcast 
-                    key={podcast.name} 
-                    podcast={podcast}
-                    toggleEditPodcast={this.props.toggleEditPodcast}
-                />
-            ))}
+            <section className='TabPodcasts'>
+                <section className='TabPodcasts-title'>
+                    <h3>Your podcasts</h3>
+                    <Button onClick={() => toggleNewPodcast(true)}>Add new podcast</Button>
+                </section>
+                { reduxPodcast.podcasts && reduxPodcast.podcasts.map((podcast) => (
+                    <UserPodcast 
+                        key={podcast.name} 
+                        podcast={podcast}
+                        toggleEditPodcast={this.props.toggleEditPodcast}
+                    />
+                ))}
             </section>
         )
     }
