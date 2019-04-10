@@ -31,4 +31,17 @@ $module: 'EditEpisode';
         display: grid;
         grid-template-columns: 100px 1fr;
     }
+
+    &-submit {
+        margin-top: 1rem;
+        button {
+            font-size: 16px;
+            border-radius: 4px;
+            background: #6B004C;
+            color: white;
+            border: none;
+            height: 40px;
+            width: 200px;
+        }
+    }
 }

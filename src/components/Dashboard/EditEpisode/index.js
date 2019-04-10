@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Input, TextArea } from '../../index'
+import { Input, TextArea, Button } from '../../index'
 import { connect } from 'react-redux'
 import episodeAsyncActions from '../../../redux/actions/episode/asyncActions'
 import episodeActionGenerators from '../../../redux/actions/episode/episodeActionGenerators'
@@ -36,8 +36,8 @@ class EditEpisode extends Component {
                         <p>Snippet:</p> <TextArea value={snippet} onChange={this.updateSnippet}/>
                     </section>
                 </div>
-                <div>
-                    <button onClick={this.submitChanges}>Submit Changes</button>
+                <div className='EditEpisode-submit'>
+                    <Button onClick={this.submitChanges}>Submit Changes</Button>
                 </div>
             </div>
         )

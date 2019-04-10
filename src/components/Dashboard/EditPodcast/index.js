@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Input, TextArea } from '../../index'
+import { Input, TextArea, Button } from '../../index'
 import { connect } from 'react-redux'
 import podcastAsyncActions from '../../../redux/actions/podcast/asyncActions'
 import podcastActionGenerators from '../../../redux/actions/podcast/podcastActionGenerators'
@@ -56,7 +56,7 @@ class EditPodcast extends Component {
                         <p>Description:</p><TextArea value={description} onChange={this.updateDescription}/>
                     </section>
                     </div>
-                    <div>
+                    <div className='EditPodcast-submit'>
                         <button onClick={this.submitChanges}>Save changes</button>
                     </div>
                 </div>
