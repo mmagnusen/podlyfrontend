@@ -39,10 +39,17 @@ $module: 'Discover';
     }
 
     &-editorsTitle {
+        display: flex;
+        border-bottom: 1px solid grey;
+        margin-bottom: 2rem;
         h3 {
             color: white;    
         }
-        border-bottom: 1px solid grey;
-        margin-bottom: 2rem;
+        i {
+            color: #af2d82;
+            display: flex;
+            align-items: center;
+            margin-left: 1rem;
+        }
     }
 }

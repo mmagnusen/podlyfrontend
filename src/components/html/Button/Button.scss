@@ -5,6 +5,7 @@ $module: 'Button';
 
 .#{$module} {
     button {
+        border-radius: 4px;
         &:focus {
             outline: none;
         }

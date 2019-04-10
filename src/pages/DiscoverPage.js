@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Navigation, Discover } from '../../src/components/';
+import { Navigation, Discover, Footer } from '../../src/components/';
 import { Helmet } from "react-helmet";
 
 class DiscoverPage extends Component {
@@ -12,6 +12,7 @@ class DiscoverPage extends Component {
             </Helmet>
             <Navigation />
             <Discover />
+            <Footer />
         </div>
     );
   }

@@ -26,7 +26,10 @@ class Discover extends Component {
                     { episodes && episodes.map(( podcast ) => <Podcast podcast={podcast} />)}
                 </section>
                 <section className="Discover-editorsPicks">
-                  <section className="Discover-editorsTitle"><h3>Our Favourites</h3></section>
+                  <section className="Discover-editorsTitle">
+                    <h3>Our Favourites</h3>
+                    <i className="fas fa-heart" />
+                  </section>
                     { episodes && episodes.map(( podcast ) => <EditorsPick podcast={podcast} />)}
                 </section>
             </div>

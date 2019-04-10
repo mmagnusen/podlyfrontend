@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Button } from '../../'
 import './AuthenticationForm.scss'
 
 class AuthenticationForm extends Component { 
@@ -12,7 +13,7 @@ class AuthenticationForm extends Component {
                     {children}
 
                 <section className='AuthenticationForm-authenticate'>
-                    <button className='button' onClick={buttonAction}>{buttonCta}</button>
+                    <Button onClick={buttonAction}>{buttonCta}</Button>
                 </section>
             
                 </form>

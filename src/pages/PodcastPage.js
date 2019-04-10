@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Navigation, PodcastContent } from '../../src/components/';
+import { Navigation, PodcastContent, Footer } from '../../src/components/';
 import { Helmet} from "react-helmet";
 
 class PodcastPage extends Component {
@@ -12,6 +12,7 @@ class PodcastPage extends Component {
             </Helmet>
             <Navigation />
             <PodcastContent />
+            <Footer />
         </div>
     );
   }

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Navigation, Play } from '../../src/components/';
+import { Navigation, Play, Footer } from '../../src/components/';
 import { Helmet } from "react-helmet";
 
 class PlayPage extends Component {
@@ -12,6 +12,7 @@ class PlayPage extends Component {
             </Helmet>
             <Navigation />
             <Play slug={this.props.match.params.slug}/>
+            <Footer />
         </div>
     );
   }

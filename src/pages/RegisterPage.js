@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Navigation, Register } from '../../src/components/';
+import { Navigation, Register, Footer } from '../../src/components/';
 import { Helmet } from "react-helmet";
 
 class RegisterPage extends Component {
@@ -12,6 +12,7 @@ class RegisterPage extends Component {
             </Helmet>
             <Navigation />
             <Register />
+            <Footer />
         </div>
     );
   }

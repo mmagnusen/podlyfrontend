@@ -12,6 +12,7 @@ export { default as LoadingSpinner } from './LoadingSpinner'
 export { default as AudioPlayer } from './AudioPlayer' 
 export { default as Home } from './Home'
 export { default as NoResults } from './NoResults'
+export { default as Footer } from './Footer'
 
 
 export { default as Host } from './Host'
