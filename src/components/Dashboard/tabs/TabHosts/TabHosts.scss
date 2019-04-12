@@ -1,0 +1,26 @@
+@import '../../../../../constants/styles/sass-variables/breakpoints';
+@import '../../../../../constants/styles/sass-variables/colors';
+
+$module: 'TabHosts';
+
+.#{$module} {   
+    background: white;
+    border-radius: 4px;
+    padding: 0 15px;
+
+    &-title {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        button {
+            height: 40px;
+            width: 200px;
+            font-size: 16px;
+            border-radius: 4px;
+            background: #40c4bf;
+            color: white;
+            border: none;
+        }
+    }
+}

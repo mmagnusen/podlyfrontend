@@ -57,7 +57,7 @@ class EditPodcast extends Component {
                     </section>
                     </div>
                     <div className='EditPodcast-submit'>
-                        <button onClick={this.submitChanges}>Save changes</button>
+                        <Button onClick={this.submitChanges}>Save changes</Button>
                     </div>
                 </div>
         )

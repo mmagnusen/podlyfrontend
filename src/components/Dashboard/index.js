@@ -4,8 +4,9 @@ import { connect } from 'react-redux'
 import TabDetails from './tabs/TabDetails'
 import TabPodcasts from './tabs/TabPodcasts'
 import TabEpisodes from './tabs/TabEpisodes'
+import TabHosts from './tabs/TabHosts'
 import Modal from '@material-ui/core/Modal';
-import { EditPodcast, NewPodcast, NewEpisode, EditEpisode } from '../'
+import { NewPodcast, EditPodcast, NewEpisode, EditEpisode,  NewHost, EditHost} from '../'
 import { Redirect } from 'react-router-dom'
 import podcastAsyncActions from '../../redux/actions/podcast/asyncActions'
 import userActionGenerators from '../../redux/actions/user/userActionGenerators'
@@ -17,7 +18,8 @@ class DashboardHome extends Component {
         newOpen: false,
         editOpen: false,
         newEpisodeOpen: false,
-        episodeEditOpen: false
+        episodeEditOpen: false,
+        newHostOpen: false,
     }
 
     componentDidMount() {
@@ -33,6 +35,12 @@ class DashboardHome extends Component {
     toggleNewEpisode = () => {
         this.setState({
             newEpisodeOpen: !this.state.newEpisodeOpen
+        })
+    }
+
+    toggleNewHost = () => {
+        this.setState({
+            newHostOpen: !this.state.newHostOpen
         })
     }
 
@@ -55,7 +63,7 @@ class DashboardHome extends Component {
     render() {
 
         const { user } = this.props
-        const { newOpen, editOpen, newEpisodeOpen, episodeEditOpen } = this.state
+        const { newOpen, editOpen, newEpisodeOpen, episodeEditOpen, newHostOpen } = this.state
 
         if (user.token === null) {
             return <Redirect to='/'/>
@@ -68,13 +76,15 @@ class DashboardHome extends Component {
                         <ul>
                             <li onClick={() => this.updateDashboardTab(0)}>Your details</li>
                             <li onClick={() => this.updateDashboardTab(1)}> Podcasts</li>
-                            <li onClick={() => this.updateDashboardTab(2)}>Episodes</li>
+                            <li onClick={() => this.updateDashboardTab(2)}>Hosts</li>
+                            {/* <li onClick={() => this.updateDashboardTab(3)}>Episodes</li> */}
                         </ul>
                     </section>
 
                     { user.dashboardTabIndex === 0 && <TabDetails />}
                     { user.dashboardTabIndex === 1 && <TabPodcasts toggleNewPodcast={this.toggleNewPodcast} toggleEditPodcast={this.toggleEditPodcast}/> }
-                    { user.dashboardTabIndex === 2 && <TabEpisodes toggleNewEpisode={this.toggleNewEpisode} toggleEditEpisode={this.toggleEditEpisode}/>  }
+                    { user.dashboardTabIndex === 2 && <TabHosts toggleNewHost={this.toggleNewHost} toggleEditHost={this.toggleEditHost}/>  }
+                    { user.dashboardTabIndex === 3 && <TabEpisodes toggleNewEpisode={this.toggleNewEpisode} toggleEditEpisode={this.toggleEditEpisode}/>  }
 
                     <Modal
                         open={editOpen}
@@ -111,6 +121,15 @@ class DashboardHome extends Component {
                             <EditEpisode toggleEditEpisode={this.toggleEditEpisode}/>
                         </div>
                     </Modal>
+
+                    <Modal
+                        open={newHostOpen}
+                        onClose={this.toggleNewHost}
+                    >
+                    <div>
+                        <NewHost toggleNewHost={this.toggleNewHost}/>
+                    </div>
+                </Modal>
                 </div>
             </div>
         )

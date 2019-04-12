@@ -32,4 +32,17 @@ $module: 'NewPodcast';
         display: grid;
         grid-template-columns: 100px 1fr;
     }
+
+    &-save {
+        margin-top: 1rem;
+        button {
+            height: 40px;
+            width: 200px;
+            font-size: 16px;
+            border-radius: 4px;
+            background: #40c4bf;
+            color: white;
+            border: none;
+        }    
+    }
 }

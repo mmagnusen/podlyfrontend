@@ -1,0 +1,27 @@
+@import '../../../../constants/styles/sass-variables/breakpoints';
+@import '../../../../constants/styles/sass-variables/colors';
+
+$module: 'UserHost';
+
+.#{$module} {   
+    border-top: 2px solid rgba(128, 128, 128, 0.1);
+    margin-bottom: 1.5rem;
+    &-detail {
+        display: grid;
+        grid-template-columns: 100px 1fr;
+    
+    }
+
+    &-edit {
+        button {
+            font-size: 16px;
+            border-radius: 4px;
+            background: #6B004C;
+            color: white;
+            border: none;
+            height: 40px;
+            width: 200px;
+        }
+    }
+
+}

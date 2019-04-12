@@ -43,6 +43,9 @@ export { default as UserEpisode } from './Dashboard/UserEpisode'
 export { default as NewEpisode } from './Dashboard/NewEpisode'
 export { default as EditEpisode } from './Dashboard/EditEpisode' 
 
+export { default as UserHost } from './Dashboard/UserHost'
+export { default as NewHost } from './Dashboard/NewHost'
+
 // Authentication
 
 export { default as Login } from './authentication/Login'
