@@ -4,25 +4,43 @@ import { AuthenticationForm, Input } from '../../'
 import { Redirect } from 'react-router-dom'
 import { FORM, INPUT_TYPE } from '../../../constants/'
 import userAsyncActions from '../../../redux/actions/user/asyncActions'
+import { formValidation } from '../../../utils/'
 import './Login.scss'
 
  class Login extends Component {
 
      state = {
-        email: '',
-        password: '',
+        email: {
+            value: '',
+            isValid: null
+        },
+        password: {
+            value: '',
+            isValid: null
+        },
+        formError: false,
     }
 
-     updateEmail = (event) => {
+    updateValue = (event, field) => {
         this.setState({
-            email: event.target.value
-        })  
+            [field]: {
+                ...this.state[field],
+                value: event.target.value
+            }
+        })
     }
 
-     updatePassword = (event) => {
+
+    handleBlur = (field) => {
+
+        const isValid = formValidation[field](this.state[field].value);
+
         this.setState({
-            password: event.target.value
-        })  
+            [field]: {
+                ...this.state[field],
+                isValid
+            }
+        })
     }
 
      submitLogin = (e) => {
@@ -30,8 +48,14 @@ import './Login.scss'
         this.props.dispatch(userAsyncActions.submitLogin(this.state.email, this.state.password))
     }
 
+    canSubmit = () => {
+        const { email, password } = this.state;
+        return email.isValid && password.isValid
+    }
+
      render() {
 
+        const { email, password } = this.state;
          if (this.props.user.token !== null && this.props.podcast.podcasts !== null) {
             return <Redirect to='/dashboard'/>
         }
@@ -43,21 +67,33 @@ import './Login.scss'
                     formType={FORM.TYPE.AUTHENTICATION}
                     buttonCta='Login'
                     buttonAction={this.submitLogin}
+                    canSubmit={this.canSubmit()}
                 >
                 <section className='field fieldTwo'>
                     <label>Email</label> 
                     <Input 
-                        onChange={this.updateEmail} 
-                        type={INPUT_TYPE.EMAIL}
+                       onChange={(event) => this.updateValue(event, 'email')} 
+                       onBlur={() => this.handleBlur('email')}
+                       value={email.value}
                         />
                 </section>
+                <section>
+                    {email.isValid === false && <p className='error'>Please enter your email</p>}
+                </section>
+
                 <section className='field fieldTwo'>
                     <label>Password</label> 
                     <Input 
-                        onChange={this.updatePassword} 
+                        onChange={(event) => this.updateValue(event, 'password')} 
+                        onBlur={() => this.handleBlur('password')}
+                        value={password.value}
                         type={INPUT_TYPE.PASSWORD}
                     />
                 </section>
+                <section>
+                    {password.isValid === false && <p className='error'>Password must be minimum 8 characters</p>}
+                </section>
+
                 </AuthenticationForm>
             </div>
         )

@@ -27,7 +27,7 @@ class Register extends Component {
             value: '',
             isValid: null
         },
-        formError: false,
+        formError: null,
     }
 
     updateValue = (event, field) => {
@@ -51,6 +51,12 @@ class Register extends Component {
         })
     }
 
+    canSubmit = () => {
+        const { firstName, lastName, email, password } = this.state;
+        return firstName.isValid && lastName.isValid && email.isValid && password.isValid
+    }
+
+
     submitRegister = (e) => {
         const { firstName, lastName, email, password } = this.state
         e.preventDefault()
@@ -61,12 +67,6 @@ class Register extends Component {
         } else {
             this.setState({ formError: true})
         }
-        
-    }
-
-    canSubmit = () => {
-        const { firstName, lastName, email, password } = this.state;
-        return firstName.isValid && lastName.isValid && email.isValid && password.isValid
     }
 
     render() {
