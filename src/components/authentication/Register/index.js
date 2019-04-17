@@ -5,52 +5,79 @@ import { FORM } from '../../../constants'
 import { Redirect } from 'react-router-dom';
 import userAsyncActions from '../../../redux/actions/user/asyncActions'
 import { INPUT_TYPE } from '../../../constants/index'
+import { formValidation } from '../../../utils/'
 import './Register.scss'
 
 class Register extends Component {
 
     state = {
-        firstName: '',
-        lastName: '',
-        email: '',
-        password: '',
+        firstName: {
+            value: '',
+            isValid: null
+        },
+        lastName: {
+            value: '',
+            isValid: null
+        },
+        email: {
+            value: '',
+            isValid: null
+        },
+        password: {
+            value: '',
+            isValid: null
+        },
+        formError: false,
     }
 
-    updateFirstName = (event) => {
+    updateValue = (event, field) => {
         this.setState({
-            firstName: event.target.value
+            [field]: {
+                ...this.state[field],
+                value: event.target.value
+            }
         })
     }
 
-    updateLastName = (event) => {
+    handleBlur = (field) => {
+
+        const isValid = formValidation[field](this.state[field].value);
+
         this.setState({
-            lastName: event.target.value
+            [field]: {
+                ...this.state[field],
+                isValid
+            }
         })
-    }
-
-    updateEmail = (event) => {
-        this.setState({
-            email: event.target.value
-        })  
-    }
-
-    updatePassword = (event) => {
-        this.setState({
-            password: event.target.value
-        })  
     }
 
     submitRegister = (e) => {
         const { firstName, lastName, email, password } = this.state
         e.preventDefault()
-        this.props.dispatch((userAsyncActions.submitRegister(firstName, lastName, email, password)))
+        const canSubmit = this.canSubmit()
+
+        if ( canSubmit ) {
+            this.props.dispatch((userAsyncActions.submitRegister(firstName.value, lastName.value, email.value, password.value)))
+        } else {
+            this.setState({ formError: true})
+        }
+        
+    }
+
+    canSubmit = () => {
+        const { firstName, lastName, email, password } = this.state;
+        return firstName.isValid && lastName.isValid && email.isValid && password.isValid
     }
 
     render() {
 
+        const { firstName, lastName, email, password } = this.state;
+
         if (this.props.user.token !== null) {
             return <Redirect to='/dashboard'/>
         }
+
+        const { formError } = this.state;
 
         return (
             <div className='Register'>
@@ -60,26 +87,62 @@ class Register extends Component {
                     formType={FORM.TYPE.AUTHENTICATION}
                     buttonCta='Register'
                     buttonAction={this.submitRegister}
+                    canSubmit={this.canSubmit()}
                 >
                     <section className='field fieldTwo'>
                         <label>First name</label> 
-                        <Input onChange={this.updateFirstName}/>
+                        <Input 
+                            onChange={(event) => this.updateValue(event, 'firstName')} 
+                            onBlur={() => this.handleBlur('firstName')}
+                            value={firstName.value}
+                        />
                     </section>
+                    <section>
+                        {firstName.isValid === false && <p className='error'>Please enter your first name, without any special characters</p>}
+                    </section>
+
                     <section className='field fieldTwo'>
                         <label>Last Name</label> 
-                        <Input onChange={this.updateLastName}/>
+                        <Input 
+                            onChange={(event) => this.updateValue(event, 'lastName')}
+                            onBlur={() => this.handleBlur('lastName')}
+                            value={lastName.value}
+                        />
                     </section>
+                    <section>
+                        {lastName.isValid === false && <p className='error'>Please enter your last name, without any special characters</p>}
+                    </section>
+
                     <section className='field fieldTwo'>
                         <label>Email</label> 
-                        <Input onChange={this.updateEmail} />
+                        <Input 
+                            onChange={(event) => this.updateValue(event, 'email')}
+                            onBlur={() => this.handleBlur('email')}
+                            value={email.value}
+                        />
                     </section>
+                    <section>
+                        {email.isValid === false && <p className='error'>Please enter your email</p>}
+                    </section>
+
                     <section className='field fieldTwo'>
                         <label>Password</label> 
                         <Input 
-                            onChange={this.updatePassword}
+                            onChange={(event) => this.updateValue(event, 'password')}
+                            onBlur={() => this.handleBlur('password')}
                             type={INPUT_TYPE.PASSWORD}
+                            value={password.value}
                         />
                     </section>
+                    <section>
+                        {password.isValid === false && <p className='error'>Password must be minimum 8 characters</p>}
+                    </section>
+
+                    {formError &&
+                        <section>
+                            <p className='error'>Please check all the fields are completed</p>
+                        </section>
+                    }
                 </AuthenticationForm>
             </div>
         )
