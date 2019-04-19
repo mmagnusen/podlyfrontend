@@ -77,6 +77,7 @@ import './Login.scss'
                        onChange={(event) => this.updateValue(event, 'email')} 
                        onBlur={() => this.handleBlur('email')}
                        value={email.value}
+                       type={INPUT_TYPE.EMAIL}
                         />
                 </section>
                 <section>

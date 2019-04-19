@@ -4,7 +4,7 @@ import axios from 'axios'
 import searchAsyncActions from './../../redux/actions/search/asyncActions'
 import { connect } from 'react-redux'
 import { withRouter } from "react-router";
-import { Form, LoadingSpinner, Host, Button } from '../'
+import { ContactHost, LoadingSpinner, Host, Button } from '../'
 import { ENDPOINT } from '../../constants'
 import './PodcastContent.scss'
 
@@ -87,7 +87,7 @@ class PodcastContent extends Component {
                 className='PodcastContent-contactForm'
             >
                 <div>
-                    <Form handleClose={this.handleClose}/>
+                    <ContactHost handleClose={this.handleClose}/>
                 </div>
             </Modal>
             )}

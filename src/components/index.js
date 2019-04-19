@@ -5,7 +5,7 @@ export {default as Button } from './html/Button'
 
 
 export { default as Podcast } from './Podcast'
-export { default as Form } from './Form'
+export { default as ContactHost } from './ContactHost'
 export { default as PodcastContent } from './PodcastContent'
 export { default as Filter } from './Filter'
 export { default as LoadingSpinner } from './LoadingSpinner'

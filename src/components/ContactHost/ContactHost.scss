@@ -1,6 +1,6 @@
 @import '../../../constants/styles/sass-variables/breakpoints';
 
-$module: 'Form';
+$module: 'ContactHost';
 
 .#{$module} {
     position: absolute;
@@ -66,11 +66,13 @@ $module: 'Form';
         }
     }
 
-    &-submitted {
+    &-success {
         display: flex;
-        min-height: 300px;
+        min-height: 50px;
+        margin: 0.5rem auto;
         justify-content: center;
         align-items: center;
+
 
         h3 {
             margin: 0;
@@ -80,5 +82,13 @@ $module: 'Form';
             margin-inline-start: 0;
             margin-inline-end: 0;
         }
+    }
+
+    &-error {
+        display: flex;
+        min-height: 50px;
+        margin: 0.5rem auto;
+        justify-content: center;
+        align-items: center;
     }
 }
