@@ -2,53 +2,63 @@ import React, { Component } from 'react';
 import { Input, TextArea, Button } from '../../index'
 import { connect } from 'react-redux'
 import podcastAsyncActions from '../../../redux/actions/podcast/asyncActions'
+import { formValidation } from '../../../utils/'
 import './NewPodcast.scss'
 
 class NewPodcast extends Component {
 
     state = {
-        name:"",
-        slug:"",
-        start_date:"",
-        url:"",
-        description:"",
-        tags:""
+        name: {
+            value: '',
+            isValid: null
+        },
+        slug: {
+            value: '',
+            isValid: null
+        },
+        start_date: {
+            value: '',
+            isValid: null
+        },
+        url: {
+            value: '',
+            isValid: null
+        },
+        description: {
+            value: '',
+            isValid: null
+        },
+        tags: {
+            value: '',
+            isValid: null
+        }
     }
 
-    updateName = (event) => {
+    updateValue = (event, field) => {
         this.setState({
-            name: event.target.value
+            [field]: {
+                ...this.state[field],
+                value: event.target.value
+            }
         })
     }
 
-    updateSlug = (event) => {
+
+    handleBlur = (field) => {
+
+        const isValid = formValidation.message(this.state[field].value);
+
         this.setState({
-            slug: event.target.value
+            [field]: {
+                ...this.state[field],
+                isValid
+            }
         })
     }
 
-    updateTags = (event) => {
-         this.setState({
-            tags: event.target.value
-        })
-    }
-
-    updateStartDate = (event) => {
-        this.setState({
-            start_date: event.target.value
-        })
-    }
-
-    updateUrl = (event) => {
-        this.setState({
-            url: event.target.value
-        })
-    }
-
-    updateDescription = (event) => {
-        this.setState({
-            description: event.target.value
-        })
+    canSubmit = () => {
+        const { name, slug, tags, start_date, url, description } = this.state
+        return name.isValid && slug.isValid && tags.isValid && start_date.isValid && url.isValid && description.isValid
     }
 
     submitNewPodcast = () => {
@@ -63,29 +73,89 @@ class NewPodcast extends Component {
         return (
                 <div className='NewPodcast'>
                     <div className="NewPodcast-details">
-                    <section><h3>Add new podcast</h3></section>
-                    <section className="NewPodcast-name">
-                        <p>Name:</p> <Input value={name} onChange={this.updateName}/> 
-                    </section>
-                    <section className="NewPodcast-slug">
-                        <p>Slug:</p> <Input value={slug} onChange={this.updateSlug}/> 
-                    </section>
-                    <section className="NewPodcast-tags">
-                        <p>Tags:</p> <Input value={tags} onChange={this.updateTags}/>
-                    </section>
-                    <section className="NewPodcast-age">
-                        <p>Age:</p> <Input value={start_date} onChange={this.updateStartDate}/>
-                    </section>
-                    <section className="NewPodcast-link">
-                        <p>Link to podcast:</p> <Input value={url} onChange={this.updateUrl}/>
-                    </section>
-                    <section className="NewPodcast-description">
-                        <p>Description:</p><TextArea value={description} onChange={this.updateDescription}/>
-                    </section>
+                        <section><h3>Add new podcast</h3></section>
+                        <section className="NewPodcast-name">
+                            <p>Name:</p> 
+                            <Input 
+                                value={name.value} 
+                                onChange={(event) => this.updateValue(event, 'name')} 
+                                onBlur={() => this.handleBlur('name')}
+                            /> 
+                        </section>
+                        <section>
+                            {name.isValid === false && <p className='error'>Please enter the name of your podcast</p>}
+                        </section>
+
+                        <section className="NewPodcast-slug">
+                            <p>Slug:</p> 
+                            <Input 
+                                value={slug.value} 
+                                onChange={(event) => this.updateValue(event, 'slug')} 
+                                onBlur={() => this.handleBlur('slug')}
+                            /> 
+                        </section>
+                        <section>
+                            {slug.isValid === false && <p className='error'>Please enter a url slug for your podcast.</p>}
+                        </section>
+
+                        <section className="NewPodcast-tags">
+                            <p>Tags:</p> 
+                            <Input 
+                                value={tags.value} 
+                                onChange={(event) => this.updateValue(event, 'tags')} 
+                                onBlur={() => this.handleBlur('tags')}
+                            />
+                        </section>
+                        <section>
+                            {tags.isValid === false && <p className='error'>Please enter tags to describe your podcast</p>}
+                        </section>
+
+                        <section className="NewPodcast-age">
+                            <p>Age:</p> 
+                            <Input 
+                                value={start_date.value} 
+                                onChange={(event) => this.updateValue(event, 'start_date')} 
+                                onBlur={() => this.handleBlur('start_date')}
+                            />
+                        </section>
+                        <section>
+                            {start_date.isValid === false && <p className='error'>Please state how long your podcast has been active.</p>}
+                        </section>
+
+                        <section className="NewPodcast-link">
+                            <p>Link:</p> 
+                            <Input 
+                                value={url.value} 
+                                onChange={(event) => this.updateValue(event, 'url')} 
+                                onBlur={() => this.handleBlur('url')}
+                            />
+                        </section>
+                        <section>
+                            {url.isValid === false && <p className='error'>Please enter a link where you podcast can be found</p>}
+                        </section>
+
+                        <section className="NewPodcast-description">
+                            <p>Description:</p>
+                            <TextArea 
+                                value={description.value} 
+                                onChange={(event) => this.updateValue(event, 'description')} 
+                                onBlur={() => this.handleBlur('description')}
+                            />
+                        </section>
+                        <section>
+                            {description.isValid === false && <p className='error'>Please enter a description for your podcast</p>}
+                        </section>
+                     
                     </div>
                     <div className='NewPodcast-save'>
-                        <Button onClick={this.submitNewPodcast}>Save changes</Button>
+                        <Button 
+                            onClick={this.submitNewPodcast}
+                            disabled={!this.canSubmit()}
+                            >
+                            Save changes
+                        </Button>
                     </div>
+
                 </div>
         )
     }

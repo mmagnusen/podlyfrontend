@@ -4,7 +4,7 @@
 $module: 'NewPodcast';
 
 .#{$module} {   
-    width: 300px;
+    width: 310px;
     left: calc(50% - 150px);
     background: white;
     padding: 1rem;
@@ -31,18 +31,28 @@ $module: 'NewPodcast';
     &-description {
         display: grid;
         grid-template-columns: 100px 1fr;
+        margin-top: 1.5rem;
+    }
+
+    &-details {
+        margin-bottom: 1rem;
+        min-height: 400px;
     }
 
     &-save {
         margin-top: 1rem;
         button {
             height: 40px;
-            width: 200px;
+            width: 100%;
             font-size: 16px;
             border-radius: 4px;
             background: #40c4bf;
             color: white;
             border: none;
         }    
+    }
+
+    .error {
+        margin: 0.5rem 0 1rem 0;
     }
 }
