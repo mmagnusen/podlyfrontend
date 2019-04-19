@@ -56,6 +56,8 @@ import './Login.scss'
      render() {
 
         const { email, password } = this.state;
+        const { loginError } = this.props.user
+
          if (this.props.user.token !== null && this.props.podcast.podcasts !== null) {
             return <Redirect to='/dashboard'/>
         }
@@ -93,7 +95,11 @@ import './Login.scss'
                 <section>
                     {password.isValid === false && <p className='error'>Password must be minimum 8 characters</p>}
                 </section>
-
+                {loginError && (
+                    <section>
+                        <p className='error'>{loginError}</p>
+                    </section>
+                )}
                 </AuthenticationForm>
             </div>
         )

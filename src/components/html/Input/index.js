@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import classnames from 'classnames'
-import { func } from 'prop-types';
+import { func, oneOf } from 'prop-types';
 import { INPUT_TYPE } from '../../../constants'
 import './Input.scss'
 
@@ -13,7 +13,7 @@ class Input extends Component {
     static propTypes = {
         onChange: func, 
         onBlur: func,
-        type: INPUT_TYPE.TEXT
+        type: oneOf(Object.values(INPUT_TYPE))
     }
     
     static defaultProps = {
@@ -37,6 +37,17 @@ class Input extends Component {
         this.setState({showPassword: !this.state.showPassword})
     }
 
+    getAutoCompleteValue = (type) => {
+        switch(type) {
+            case INPUT_TYPE.EMAIL:
+                return 'email'
+            case INPUT_TYPE.PASSWORD:
+                return 'currentPassword'
+            default:
+                return null
+        }
+    }
+
     render() {
 
         const { icon, type, value, onChange, onBlur } = this.props
@@ -45,6 +56,7 @@ class Input extends Component {
         return (
             <section className='Input'>
                 <input  
+                    autoComplete={this.getAutoCompleteValue(type)}
                     onChange={(event) => onChange(event)} 
                     onKeyPress={this.handleKeypress} 
                     onBlur={(event) => onBlur(event)} 

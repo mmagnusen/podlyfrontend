@@ -1,6 +1,7 @@
 import axios from 'axios'
 import userActionGenerators from './userActionGenerators'
 import podcastAsyncActions from '../podcast/asyncActions'
+import { handleResponseError } from '../../../utils'
 import { ENDPOINT } from '../../../constants'
 
 axios.defaults.xsrfCookieName = 'csrftoken';
@@ -34,8 +35,9 @@ const userAsyncActions = {
                     }))
                 }
             })
-            .catch((error) => {
-                console.log('error', error)
+            .catch(({response}) => {
+                const parsedError = handleResponseError(response.data, 'login')
+                dispatch(userActionGenerators.loginError(parsedError))
             })
         }
     },
@@ -61,8 +63,9 @@ const userAsyncActions = {
                 }
                 setTimeout( () =>  dispatch(userActionGenerators.setUserDetails(data), 200));  
             })
-            .catch((error) => {
-                console.log('error', error)
+            .catch(({response}) => {
+                const parsedError = handleResponseError(response.data, 'register')
+                dispatch(userActionGenerators.registerError(parsedError))
             })
         }  
     },

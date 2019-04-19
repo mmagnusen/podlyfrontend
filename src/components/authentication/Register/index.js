@@ -72,6 +72,7 @@ class Register extends Component {
     render() {
 
         const { firstName, lastName, email, password } = this.state;
+        const { registerError } = this.props.user
 
         if (this.props.user.token !== null) {
             return <Redirect to='/dashboard'/>
@@ -95,6 +96,7 @@ class Register extends Component {
                             onChange={(event) => this.updateValue(event, 'firstName')} 
                             onBlur={() => this.handleBlur('firstName')}
                             value={firstName.value}
+                            type={INPUT_TYPE.TEXT}
                         />
                     </section>
                     <section>
@@ -107,6 +109,7 @@ class Register extends Component {
                             onChange={(event) => this.updateValue(event, 'lastName')}
                             onBlur={() => this.handleBlur('lastName')}
                             value={lastName.value}
+                            type={INPUT_TYPE.TEXT}
                         />
                     </section>
                     <section>
@@ -119,6 +122,7 @@ class Register extends Component {
                             onChange={(event) => this.updateValue(event, 'email')}
                             onBlur={() => this.handleBlur('email')}
                             value={email.value}
+                            type={INPUT_TYPE.EMAIL}
                         />
                     </section>
                     <section>
@@ -130,8 +134,8 @@ class Register extends Component {
                         <Input 
                             onChange={(event) => this.updateValue(event, 'password')}
                             onBlur={() => this.handleBlur('password')}
-                            type={INPUT_TYPE.PASSWORD}
                             value={password.value}
+                            type={INPUT_TYPE.PASSWORD}
                         />
                     </section>
                     <section>
@@ -143,6 +147,11 @@ class Register extends Component {
                             <p className='error'>Please check all the fields are completed</p>
                         </section>
                     }
+                    {registerError && (
+                        <section>
+                            <p className='error'>{registerError}</p>
+                        </section>
+                    )}
                 </AuthenticationForm>
             </div>
         )

@@ -28,6 +28,16 @@ const userReducer = (state = defaultUserState, action = {}) => {
                 ...state,
                 dashboardTabIndex: action.newTabIndex
             }
+        case 'REGISTER_ERROR':
+            return {
+                ...state,
+                registerError: action.error
+            }
+        case 'LOGIN_ERROR':
+            return {
+                ...state,
+                loginError: action.error
+            }
         default:
             return state
      }

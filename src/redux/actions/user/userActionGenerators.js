@@ -22,6 +22,18 @@ const userActionGenerators = {
             type: 'UPDATE_USER_TAB',
             newTabIndex
         }
+    },
+    registerError: (error) => {
+        return {
+            type: 'REGISTER_ERROR',
+            error
+        } 
+    },
+    loginError: (error) => {
+        return {
+            type: 'LOGIN_ERROR',
+            error
+        } 
     }
 }
 

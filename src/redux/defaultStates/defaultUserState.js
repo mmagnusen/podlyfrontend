@@ -8,7 +8,9 @@ const defaultUserState = {
     lastName: lastName,
     email: email,
     token: token,
-    dashboardTabIndex: 0
+    dashboardTabIndex: 0,
+    registerError: null,
+    loginError: null
 }
 
 export default defaultUserState
