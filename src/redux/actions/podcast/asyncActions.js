@@ -11,7 +11,6 @@ const token = localStorage.getItem('token');
 
 const podcastAsyncActions = { 
     getUserPodcasts: (responseToken) => {
-        console.log('get user podcasts triggered', 'token:', token, 'responseToken:', responseToken)
         return (dispatch) => {
             (token || responseToken) && axios({
                 method: 'get',
@@ -29,7 +28,7 @@ const podcastAsyncActions = {
             }) 
         }  
     },
-    submitChanges: () => {
+    submitChanges: (data, successCallback) => {
         const editedPodcast = store.getState().podcast.currentPodcast
         return (dispatch) => {
             dispatch(podcastActionGenerators.updateEditModalOpen(false))
@@ -40,14 +39,25 @@ const podcastAsyncActions = {
                     'Authorization': 'JWT '+ token
                     },
                 responseType: 'json',
-                data: editedPodcast
+                data: {
+                    ...data,
+                    pk: 'sdfsdf'
+                }
             })
-            .catch((error) => {
-                console.log('error', error)
+            .then((response) => {
+                if (response.status === 200) {
+                    dispatch(podcastActionGenerators.updateUserPodcasts([response.data]))
+                    successCallback() 
+                }
+             
+            })
+            .catch(() => {
+                const errortext = 'There was a problem creating your podcast. Please check details and try again'
+                dispatch(podcastActionGenerators.editPodcastError(errortext))
             }) 
         }  
     },
-    submitNewPodcast: (data) => {
+    submitNewPodcast: (data, successCallback) => {
         return (dispatch) => {
             axios({
                 method: 'post',
@@ -59,10 +69,14 @@ const podcastAsyncActions = {
                 data
             })
             .then((response) => {
-                console.log('response from submit podcast async action', response)
+                if (response.status === 201) {
+                    successCallback() 
+                }
+             
             })
-            .catch((error) => {
-                console.log('error', error)
+            .catch(() => {
+                const errortext = 'There was a problem creating your podcast. Please check details and try again'
+                dispatch(podcastActionGenerators.submitNewPodcastError(errortext))
             }) 
         }  
     },

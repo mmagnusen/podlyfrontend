@@ -7,59 +7,24 @@ const podcastReducer = (state = defaultPodcastState, action = {}) => {
                 ...state,
                 currentPodcast: action.podcast
             }
-        case 'UPDATE_NAME':
-            return {
-                ...state,
-                currentPodcast: {
-                    ...state.currentPodcast,
-                    name: action.name
-                }
-            }
-        case 'UPDATE_TAGS':
-            return {
-                ...state,
-                currentPodcast:  {
-                    ...state.currentPodcast,
-                    tags: action.tags
-                }
-            }
-        case 'UPDATE_START_DATE':
-            return {
-                ...state,
-                currentPodcast:  {
-                    ...state.currentPodcast,
-                    start_date: action.startDate
-                }
-            }
-        case 'UPDATE_HOSTS':
-            return {
-                ...state,
-                currentPodcast:  {
-                    ...state.currentPodcast,
-                    hosts: action.hosts
-                }
-            }
-        case 'UPDATE_URL':
-            return {
-                ...state,
-                currentPodcast:  {
-                    ...state.currentPodcast,
-                    url: action.url
-                }
-            }
-        case 'UPDATE_DESCRIPTION':
-            return {
-                ...state,
-                currentPodcast:  {
-                    ...state.currentPodcast,
-                    description: action.description
-                
-                }
-            }
         case 'UPDATE_USER_PODCASTS':
             return {
                 ...state,
                 podcasts: action.podcasts
+            }
+        case 'NEW_PODCAST_ERROR':
+            return {
+                ...state,
+                new: {
+                    error: action.error
+                }
+            }
+        case 'EDIT_PODCAST_ERROR':
+            return {
+                ...state,
+                edit: {
+                    error: action.error
+                }
             }
         default:
             return state

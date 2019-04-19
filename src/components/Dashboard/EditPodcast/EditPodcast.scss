@@ -30,6 +30,7 @@ $module: 'EditPodcast';
     &-description {
         display: grid;
         grid-template-columns: 100px 1fr;
+        margin-top: 1.5rem;
     }
 
     &-submit {
@@ -41,7 +42,11 @@ $module: 'EditPodcast';
             color: white;
             border: none;
             height: 40px;
-            width: 200px;
+            width: 100%;
         }    
+    }
+
+    .error {
+        margin: 0.5rem 0 1rem 0;
     }
 }

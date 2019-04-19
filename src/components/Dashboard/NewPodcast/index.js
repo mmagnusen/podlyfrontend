@@ -61,14 +61,29 @@ class NewPodcast extends Component {
         return name.isValid && slug.isValid && tags.isValid && start_date.isValid && url.isValid && description.isValid
     }
 
-    submitNewPodcast = () => {
+    toggleCallback = () => {
+        this.props.dispatch(podcastAsyncActions.getUserPodcasts())
         this.props.toggleNewPodcast(false)
-        this.props.dispatch((podcastAsyncActions.submitNewPodcast(this.state)))
+
+    }
+
+    submitNewPodcast = () => {
+        const { name, slug, tags, start_date, url, description } = this.state
+        const data = ({
+            name: name.value,
+            slug: slug.value,
+            tags: tags.value, 
+            start_date: start_date.value, 
+            url: url.value,
+            description: description.value
+        })
+        this.props.dispatch((podcastAsyncActions.submitNewPodcast(data, this.toggleCallback)))
     }
 
     render() {
 
         const { name, slug, tags, start_date, url, description } = this.state
+        const { podcast } = this.props;
 
         return (
                 <div className='NewPodcast'>
@@ -131,7 +146,7 @@ class NewPodcast extends Component {
                             />
                         </section>
                         <section>
-                            {url.isValid === false && <p className='error'>Please enter a link where you podcast can be found</p>}
+                            {url.isValid === false && <p className='error'>Please enter a link where your podcast can be found</p>}
                         </section>
 
                         <section className="NewPodcast-description">
@@ -155,7 +170,11 @@ class NewPodcast extends Component {
                             Save changes
                         </Button>
                     </div>
-
+                    {podcast.new.error &&
+                        <section>
+                            <p className='error'>There was an error creating your podcast. Please check details and try again.</p>
+                        </section>
+                    }
                 </div>
         )
     }
@@ -164,7 +183,7 @@ class NewPodcast extends Component {
 const mapStateToProps = (state) => {
     return {
         user: state.user,
-        podcast: state.podcast.currentPodcast
+        podcast: state.podcast
     }
 }
 

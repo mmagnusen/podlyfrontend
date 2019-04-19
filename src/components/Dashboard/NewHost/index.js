@@ -9,11 +9,23 @@ import { storage } from '../../../firebase'
 class NewHost extends Component {
 
     state = {
-        name:"",
+        name: {
+            value: '',
+            isValid: null
+        },
+        twitter_name: {
+            value: '',
+            isValid: null
+        },
+        twitter_url: {
+            value: '',
+            isValid: null
+        },
+        bio: {
+            value: '',
+            isValid: null
+        },
         podcastSelectOption: null,
-        twitter_name:"",
-        twitter_url:"",
-        bio: "",
         profile_pic: null,
         profile_url: null,
     }
@@ -33,27 +45,12 @@ class NewHost extends Component {
         })
     }
 
-    updateName = (event) => {
+    updateValue = (event, field) => {
         this.setState({
-            name: event.target.value
-        })
-    }
-
-    updateTwitterName = (event) => {
-        this.setState({
-            twitter_name: event.target.value
-        })
-    }
-
-    updateTwitterUrl = (event) => {
-        this.setState({
-            twitter_url: event.target.value
-        })
-    }
-
-    updateBio = (event) => {
-         this.setState({
-            bio: event.target.value
+            [field]: {
+                ...this.state[field],
+                value: event.target.value
+            }
         })
     }
 
@@ -117,7 +114,7 @@ class NewHost extends Component {
 
     render() {
 
-        const { name, slug, tags, podcastSelectOption, profile_url } = this.state
+        const { name, twitter_name, twitter_url, bio, podcastSelectOption, profile_url } = this.state
 
         return (
             <div className='NewHost'>
@@ -152,16 +149,32 @@ class NewHost extends Component {
                         />
                     </section>
                     <section className="NewHost-name">
-                        <p>Name:</p> <Input value={name} onChange={this.updateName}/> 
+                        <p>Name:</p> 
+                        <Input 
+                            value={name.value} 
+                            onChange={(event) => this.updateValue(event, 'name')} 
+                        /> 
                     </section>
                     <section className="NewHost-twitterName">
-                        <p>Twitter handle:</p> <Input value={slug} onChange={this.updateTwitterName}/> 
+                        <p>Twitter handle:</p> 
+                        <Input 
+                            value={twitter_name.value} 
+                            onChange={(event) => this.updateValue(event, 'twitter_name')} 
+                        /> 
                     </section>
                     <section className="NewHost-twitterUrl">
-                        <p>Twitter Url:</p> <Input value={slug} onChange={this.updateTwitterUrl}/> 
+                        <p>Twitter Url:</p> 
+                        <Input 
+                            value={twitter_url.value} 
+                            onChange={(event) => this.updateValue(event, 'twitter_url')} 
+                        /> 
                      </section>
                     <section className="NewHost-bio">
-                        <p>Bio:</p> <TextArea value={tags} onChange={this.updateBio}/>
+                        <p>Bio:</p> 
+                        <TextArea 
+                            value={bio.value} 
+                            onChange={(event) => this.updateValue(event, 'bio')} 
+                        />
                     </section>
                 </div>
                 <div className='NewHost-saveHost'>

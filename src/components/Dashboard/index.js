@@ -89,6 +89,7 @@ class DashboardHome extends Component {
                     <Modal
                         open={editOpen}
                         onClose={this.toggleEditPodcast}
+                        className='Platfore-modal'
                     >
                         <div>
                             <EditPodcast toggleEditPodcast={this.toggleEditPodcast}/>
@@ -98,6 +99,7 @@ class DashboardHome extends Component {
                     <Modal
                         open={newOpen}
                         onClose={this.toggleNewPodcast}
+                        className='Platfore-modal'
                     >
                         <div>
                             <NewPodcast toggleNewPodcast={this.toggleNewPodcast}/>
@@ -107,6 +109,7 @@ class DashboardHome extends Component {
                     <Modal
                         open={newEpisodeOpen}
                         onClose={this.toggleNewEpisode}
+                        className='Platfore-modal'
                     >
                         <div>
                             <NewEpisode toggleNewEpisode={this.toggleNewEpisode}/>
@@ -116,6 +119,7 @@ class DashboardHome extends Component {
                     <Modal
                         open={episodeEditOpen}
                         onClose={this.toggleEditEpisode}
+                        className='Platfore-modal'
                     >
                         <div>
                             <EditEpisode toggleEditEpisode={this.toggleEditEpisode}/>
@@ -125,6 +129,7 @@ class DashboardHome extends Component {
                     <Modal
                         open={newHostOpen}
                         onClose={this.toggleNewHost}
+                        className='Platfore-modal'
                     >
                     <div>
                         <NewHost toggleNewHost={this.toggleNewHost}/>
