@@ -1,5 +1,8 @@
 const defaultHostState = {
-    userHosts: []
+    userHosts: [],
+    newHostError: false,
+    editHostError: false,
+    currentHost: {}
 }
 
 export default defaultHostState

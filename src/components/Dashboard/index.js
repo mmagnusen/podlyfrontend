@@ -17,9 +17,12 @@ class DashboardHome extends Component {
     state = {
         newOpen: false,
         editOpen: false,
+
         newEpisodeOpen: false,
         episodeEditOpen: false,
+
         newHostOpen: false,
+        hostEditOpen: false
     }
 
     componentDidMount() {
@@ -50,6 +53,12 @@ class DashboardHome extends Component {
         })
     }
 
+    toggleEditHost = () => {
+        this.setState({
+            hostEditOpen: !this.state.hostEditOpen
+        })
+    }
+
     toggleEditEpisode = () => {
         this.setState({
             episodeEditOpen: !this.state.episodeEditOpen
@@ -63,7 +72,7 @@ class DashboardHome extends Component {
     render() {
 
         const { user } = this.props
-        const { newOpen, editOpen, newEpisodeOpen, episodeEditOpen, newHostOpen } = this.state
+        const { newOpen, editOpen, newEpisodeOpen, episodeEditOpen, newHostOpen, hostEditOpen } = this.state
 
         if (user.token === null) {
             return <Redirect to='/'/>
@@ -134,7 +143,15 @@ class DashboardHome extends Component {
                     <div>
                         <NewHost toggleNewHost={this.toggleNewHost}/>
                     </div>
-                </Modal>
+                    </Modal>
+
+                    <Modal
+                        open={hostEditOpen}
+                        onClose={this.toggleEditHost}
+                        className='Platfore-modal'
+                    > 
+                        <EditHost toggleEditHost={this.toggleEditHost}/>
+                    </Modal>
                 </div>
             </div>
         )

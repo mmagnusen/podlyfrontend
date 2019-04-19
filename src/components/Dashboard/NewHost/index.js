@@ -3,6 +3,7 @@ import { Input, TextArea, Button } from '../../index'
 import { connect } from 'react-redux'
 import Select from 'react-select';
 import hostAsyncActions from '../../../redux/actions/host/asyncActions'
+import { formValidation } from '../../../utils/'
 import './NewHost.scss'
 import { storage } from '../../../firebase'
 
@@ -26,8 +27,10 @@ class NewHost extends Component {
             isValid: null
         },
         podcastSelectOption: null,
-        profile_pic: null,
-        profile_url: null,
+        profile: {
+            pic: null,
+            url: null
+        },
     }
 
     componentDidMount() {
@@ -54,17 +57,39 @@ class NewHost extends Component {
         })
     }
 
-    submitNewHost = () => {
+    handleBlur = (field) => {
+
+        const isValid = formValidation.message(this.state[field].value);
+
+        this.setState({
+            [field]: {
+                ...this.state[field],
+                isValid
+            }
+        })
+    }
+
+    canSubmit = () => {
+        const { name, twitter_name, twitter_url, bio, profile } = this.state
+        return name.isValid && twitter_name.isValid && twitter_url.isValid && bio.isValid && profile.url
+    }
+
+    toggleCallback = () => {
+        this.props.dispatch(hostAsyncActions.getUserHosts())
         this.props.toggleNewHost(false)
+    }
+
+
+    submitNewHost = () => {
         const data = {
-            name: this.state.name,
+            name: this.state.name.value,
             host_of_podcast: this.state.podcastSelectOption.value,
-            twitter_name: this.state.twitter_name,
-            twitter_url: this.state.twitter_url,
-            bio: this.state.bio,
-            image: this.state.profile_url,
+            twitter_name: this.state.twitter_name.value,
+            twitter_url: this.state.twitter_url.value,
+            bio: this.state.bio.value,
+            image: this.state.profile.url,
         }
-        this.props.dispatch((hostAsyncActions.submitNewHost(data)))
+        this.props.dispatch((hostAsyncActions.submitNewHost(data, this.toggleCallback)))
     }
 
     getPodcastSelectOptions = () => {
@@ -83,14 +108,17 @@ class NewHost extends Component {
             const profile_pic = e.target.files[0]
 
             this.setState({
-                profile_pic
-            })
+                profile: {
+                    ...this.state.profile,
+                    pic: profile_pic
+                }
+            }, () => this.handleUpload())
         }   
     }
 
     handleUpload = () => {
-    const { profile_pic } = this.state
-       const uploadTask =  storage.ref(`profile/${profile_pic.name}`).put(profile_pic);
+    const { pic } = this.state.profile
+       const uploadTask =  storage.ref(`profile/${pic.name}`).put(pic);
        uploadTask.on('state_changed', 
        (snapshot) => {
            //progress function ...
@@ -101,11 +129,14 @@ class NewHost extends Component {
        },
        () => {
             //complete function ...
-            storage.ref('profile').child(profile_pic.name).getDownloadURL().then(profile_url => {
+            storage.ref('profile').child(pic.name).getDownloadURL().then(profile_url => {
                 console.log('type of url', typeof profile_url, profile_url)
                 
                 this.setState({
-                    profile_url
+                    profile: {
+                        ...this.state.profile,
+                        url: profile_url
+                    }
                 })
             })
        },
@@ -114,7 +145,8 @@ class NewHost extends Component {
 
     render() {
 
-        const { name, twitter_name, twitter_url, bio, podcastSelectOption, profile_url } = this.state
+        const { name, twitter_name, twitter_url, bio, podcastSelectOption, profile } = this.state
+        const { host } = this.props
 
         return (
             <div className='NewHost'>
@@ -125,8 +157,8 @@ class NewHost extends Component {
                         <div className="NewHost-profilePicImageSelection">
                             <div className="NewHost-upload">
                                 <section className="NewHost-uploadPreview">
-                                {profile_url ? 
-                                    <img src={profile_url}  alt='host profile'/>
+                                {profile.url ? 
+                                    <img src={profile.url}  alt='host profile'/>
                                     :
                                     <i className="fas fa-question" />
                                 }
@@ -135,9 +167,6 @@ class NewHost extends Component {
                                     <input type='file' onChange={this.handleChange}/>
                                 </section>
                             </div>
-                            <section  className="NewHost-uploadSave">
-                                <Button onClick={this.handleUpload}>preview upload</Button>
-                            </section>
                         </div>
                     </section>
                     <section className="NewHost-podcast">
@@ -153,33 +182,62 @@ class NewHost extends Component {
                         <Input 
                             value={name.value} 
                             onChange={(event) => this.updateValue(event, 'name')} 
+                            onBlur={() => this.handleBlur('name')}
                         /> 
                     </section>
+                    <section>
+                        {name.isValid === false && <p className='error'>Please enter the host name</p>}
+                    </section>
+
                     <section className="NewHost-twitterName">
                         <p>Twitter handle:</p> 
                         <Input 
                             value={twitter_name.value} 
                             onChange={(event) => this.updateValue(event, 'twitter_name')} 
+                            onBlur={() => this.handleBlur('twitter_name')}
                         /> 
                     </section>
+                    <section>
+                        {twitter_name.isValid === false && <p className='error'>Please enter twitter handle</p>}
+                    </section>
+
                     <section className="NewHost-twitterUrl">
                         <p>Twitter Url:</p> 
                         <Input 
                             value={twitter_url.value} 
                             onChange={(event) => this.updateValue(event, 'twitter_url')} 
+                            onBlur={() => this.handleBlur('twitter_url')}
                         /> 
                      </section>
+                     <section>
+                        {twitter_url.isValid === false && <p className='error'>Please enter url to twitter profile</p>}
+                    </section>
+
                     <section className="NewHost-bio">
                         <p>Bio:</p> 
                         <TextArea 
                             value={bio.value} 
                             onChange={(event) => this.updateValue(event, 'bio')} 
+                            onBlur={() => this.handleBlur('bio')}
                         />
+                    </section>
+                    <section>
+                        {bio.isValid === false && <p className='error'>Please provide a bio</p>}
                     </section>
                 </div>
                 <div className='NewHost-saveHost'>
-                    <Button onClick={this.submitNewHost}>Save New Host</Button>
+                    <Button 
+                        onClick={this.submitNewHost}
+                        disabled={!this.canSubmit()}
+                    >
+                        Save New Host
+                    </Button>
                 </div>
+                {host.newHostError &&
+                    <section>
+                        <p className='error'>There was an error adding this host. Please check details and try again.</p>
+                    </section>
+                }
             </div>
         )
     }
@@ -188,7 +246,8 @@ class NewHost extends Component {
 const mapStateToProps = (state) => {
     return {
         user: state.user,
-        podcast: state.podcast
+        podcast: state.podcast,
+        host: state.host
     }
 }
 

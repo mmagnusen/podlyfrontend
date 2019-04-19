@@ -8,10 +8,9 @@ import './UserHost.scss'
 
 class UserHost extends Component {
 
-
     openEditModal = () => {
-        // this.props.dispatch((episodeActionGenerators.updateEditModalOpen(this.props.episode)))
-        // this.props.toggleEditEpisode()
+        this.props.dispatch((hostActionGenerators.updateEditModalOpen(this.props.host)))
+        this.props.toggleEditHost()
     }
 
     render() {
@@ -37,10 +36,9 @@ class UserHost extends Component {
                     <p>Bio:</p> 
                     <p>{bio}</p> 
                 </section>
-                { /* <section className='UserEpisode-edit'>
+                <section className='UserEpisode-edit'>
                     <Button onClick={this.openEditModal}>Edit host profile</Button>
                  </section>
-                */ }
             </section> 
         )
     }

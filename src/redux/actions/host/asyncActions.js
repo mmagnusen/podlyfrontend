@@ -1,11 +1,12 @@
 import axios from 'axios'
 import hostActionGenerators from './hostActionGenerators'
+import store from '../../store/store'
 import { ENDPOINT } from '../../../constants'
 
 const token = localStorage.getItem('token');
 
 const hostAsyncActions = { 
-    submitNewHost: (data) => {
+    submitNewHost: (data, successCallback) => {
         return (dispatch) => {
             axios({
                 method: 'post',
@@ -17,12 +18,46 @@ const hostAsyncActions = {
                 data
             })
             .then((response) => {
-                console.log('response from submit podcast async action', response)
+                console.log('response from create host async action', response)
+                if (response.status === 201) {
+                    successCallback() 
+                }
+             
             })
             .catch((error) => {
                 console.log('error', error)
+                const errortext = 'There was a problem creating your podcast. Please check details and try again'
+                dispatch(hostActionGenerators.submitNewHostError(errortext))
+         
             }) 
         }  
+    },
+    submitChanges: (data, successCallback) => {
+        return (dispatch) => {
+            const editedHost = store.getState().host.currentHost
+            axios({
+                method: 'patch',
+                url: `${ENDPOINT}/api/host/${editedHost.pk}`, 
+                headers: {
+                    'Authorization': 'JWT '+ token
+                    },
+                responseType: 'json',
+                data: {
+                    ...data,
+                    pk: editedHost.pk
+                }
+            })
+            .then((response) => {
+                if (response.status === 200) {
+                    successCallback() 
+                }
+            })
+            .catch((error) => {
+                const errortext = 'There was a problem creating your podcast. Please check details and try again'
+                dispatch(hostActionGenerators.editHostError(errortext))
+                console.log('error from edit host async action', error)
+            })
+        }
     },
     getUserHosts: () => {
         return (dispatch) => {

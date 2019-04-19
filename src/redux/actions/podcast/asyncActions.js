@@ -31,7 +31,6 @@ const podcastAsyncActions = {
     submitChanges: (data, successCallback) => {
         const editedPodcast = store.getState().podcast.currentPodcast
         return (dispatch) => {
-            dispatch(podcastActionGenerators.updateEditModalOpen(false))
             axios({
                 method: 'patch',
                 url: `${ENDPOINT}/api/podcast/${editedPodcast.pk}`, 
@@ -41,7 +40,7 @@ const podcastAsyncActions = {
                 responseType: 'json',
                 data: {
                     ...data,
-                    pk: 'sdfsdf'
+                    pk: editedPodcast.pk
                 }
             })
             .then((response) => {
