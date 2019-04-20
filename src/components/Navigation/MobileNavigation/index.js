@@ -2,7 +2,6 @@ import React, { Component, Fragment } from 'react';
 import { Link  } from 'react-router-dom';
 import { connect } from 'react-redux'
 import Drawer from '@material-ui/core/Drawer';
-import { Responsive} from 'semantic-ui-react';
 import { NavigationItems } from '../../'
 import userActionGenerators from '../../../redux/actions/user/userActionGenerators'
 import './MobileNavigation.scss'
@@ -19,7 +18,6 @@ class MobileNavigation extends Component {
   }
 
   toggleMobileNavigation = () => {
-    console.log('toggle mobile nav called')
     this.setState({
       mobileNavOpen: !this.state.mobileNavOpen
     })

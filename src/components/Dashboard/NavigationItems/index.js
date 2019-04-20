@@ -13,21 +13,21 @@ class NavigationItems extends Component {
     }
 
     render() {
-  
+        const { reduxPodcast } = this.props
         return (
             <ul className='Dashboard-navigationItems'>
                 <Responsive maxWidth={767}>
                     <Link to='/dashboard' onClick={() => this.updateDashboardTab(0)}><li>Your details</li></Link>
                     <Link to='/dashboard' onClick={() => this.updateDashboardTab(1)}><li > Podcasts</li></Link>
-                    <Link to='/dashboard' onClick={() => this.updateDashboardTab(2)}><li >Hosts</li></Link>
+                    {reduxPodcast.podcasts &&  reduxPodcast.podcasts.length > 0 && <Link to='/dashboard' onClick={() => this.updateDashboardTab(2)}><li >Hosts</li></Link>}
                     {/* <li onClick={() => this.updateDashboardTab(3)}>Episodes</li> */}
                 </Responsive>
                 <Responsive minWidth={768}>
-                <li onClick={() => this.updateDashboardTab(0)}>Your details</li>
-                <li onClick={() => this.updateDashboardTab(1)}> Podcasts</li>
-                <li onClick={() => this.updateDashboardTab(2)}>Hosts</li>
-                {/* <li onClick={() => this.updateDashboardTab(3)}>Episodes</li> */}
-            </Responsive>
+                    <li onClick={() => this.updateDashboardTab(0)}>Your details</li>
+                    <li onClick={() => this.updateDashboardTab(1)}> Podcasts</li>
+                    {reduxPodcast.podcasts && reduxPodcast.podcasts.length > 0  && <li onClick={() => this.updateDashboardTab(2)}>Hosts</li>}
+                    {/* <li onClick={() => this.updateDashboardTab(3)}>Episodes</li> */}
+                </Responsive>
             </ul>
         )
     }
