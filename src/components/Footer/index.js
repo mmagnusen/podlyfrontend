@@ -7,7 +7,7 @@ class Footer extends Component {
 
     return (
             <footer className='Footer'>
-                <a href='https://twitter.com/m_magnusen' target='_blank' rel="noopener noreferrer">@mmagnusen</a>
+                <a href='https://twitter.com/platfore_app' target='_blank' rel="noopener noreferrer">@platfore_app</a>
             </footer>
     );
   }
