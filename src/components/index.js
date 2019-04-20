@@ -14,7 +14,6 @@ export { default as Home } from './Home'
 export { default as NoResults } from './NoResults'
 export { default as Footer } from './Footer'
 
-
 export { default as Host } from './Host'
 export { default as Discover } from './Discover'
 export { default as Play } from './Play'
@@ -34,7 +33,6 @@ export { default as DesktopLoggedOut } from '../components/Navigation/DesktopNav
 
 // Dashboard
 export { default as Dashboard } from './Dashboard'
-export { default as DashboardMobileNav } from './Dashboard/DashboardMobileNav'
 export { default as NavigationItems } from './Dashboard/NavigationItems'
 
 export { default as UserPodcast } from './Dashboard/UserPodcast'
