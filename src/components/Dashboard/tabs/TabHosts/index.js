@@ -18,7 +18,7 @@ class TabHosts extends Component {
             <section className='TabHosts'>
                 <section className='TabHosts-title'>
                     <h3>Your Host Profiles</h3>
-                    <Button onClick={() => toggleNewHost(true)}>Create New Host</Button>
+                    <Button onClick={() => toggleNewHost(true)}>Create new host</Button>
                 </section>
                 { userHosts.map((host) => (
                     <UserHost

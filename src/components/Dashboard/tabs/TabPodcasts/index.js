@@ -20,7 +20,7 @@ class TabPodcasts extends Component {
            
                 <section className='TabPodcasts-title'>
                     <h3>Your podcasts</h3>
-                    { reduxPodcast.podcasts.length < 1 && <Button onClick={() => toggleNewPodcast(true)}>Add new podcast</Button>}
+                    { reduxPodcast.podcasts && reduxPodcast.podcasts.length < 1 && <Button onClick={() => toggleNewPodcast(true)}>Add new podcast</Button>}
                 </section>
                 { reduxPodcast.podcasts && reduxPodcast.podcasts.map((podcast) => (
                     <UserPodcast 

@@ -45,7 +45,7 @@ import './Login.scss'
 
      submitLogin = (e) => {
         e.preventDefault()
-        this.props.dispatch(userAsyncActions.submitLogin(this.state.email, this.state.password))
+        this.props.dispatch(userAsyncActions.submitLogin(this.state.email.value, this.state.password.value))
     }
 
     canSubmit = () => {

@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
+import { Redirect } from 'react-router-dom'
 //tabs
 import TabDetails from './tabs/TabDetails'
 import TabPodcasts from './tabs/TabPodcasts'
 import TabEpisodes from './tabs/TabEpisodes'
 import TabHosts from './tabs/TabHosts'
 import Modal from '@material-ui/core/Modal';
-import { NewPodcast, EditPodcast, NewEpisode, EditEpisode,  NewHost, EditHost} from '../'
-import { Redirect } from 'react-router-dom'
+import { NewPodcast, EditPodcast, NewEpisode, EditEpisode,  NewHost, EditHost, NavigationItems } from '../'
+
 import podcastAsyncActions from '../../redux/actions/podcast/asyncActions'
 import userActionGenerators from '../../redux/actions/user/userActionGenerators'
 import './Dashboard.scss'
@@ -22,7 +23,9 @@ class DashboardHome extends Component {
         episodeEditOpen: false,
 
         newHostOpen: false,
-        hostEditOpen: false
+        hostEditOpen: false,
+
+        mobileNavigationOpen: false
     }
 
     componentDidMount() {
@@ -72,7 +75,7 @@ class DashboardHome extends Component {
     render() {
 
         const { user } = this.props
-        const { newOpen, editOpen, newEpisodeOpen, episodeEditOpen, newHostOpen, hostEditOpen } = this.state
+        const { newOpen, editOpen, newEpisodeOpen, episodeEditOpen, newHostOpen, hostEditOpen, mobileNavigationOpen } = this.state
 
         if (user.token === null) {
             return <Redirect to='/'/>
@@ -81,13 +84,8 @@ class DashboardHome extends Component {
         return (
             <div className='Dashboard'>
                 <div className='Dashboard-inner'>
-                    <section className='Dashboard-navigation'>
-                        <ul>
-                            <li onClick={() => this.updateDashboardTab(0)}>Your details</li>
-                            <li onClick={() => this.updateDashboardTab(1)}> Podcasts</li>
-                            <li onClick={() => this.updateDashboardTab(2)}>Hosts</li>
-                            {/* <li onClick={() => this.updateDashboardTab(3)}>Episodes</li> */}
-                        </ul>
+                    <section className='Dashboard-deskopNavigation'>
+                        <NavigationItems />
                     </section>
 
                     { user.dashboardTabIndex === 0 && <TabDetails />}
@@ -152,6 +150,7 @@ class DashboardHome extends Component {
                     > 
                         <EditHost toggleEditHost={this.toggleEditHost}/>
                     </Modal>
+
                 </div>
             </div>
         )

@@ -1,0 +1,43 @@
+import React, { Component } from 'react'; 
+import userActionGenerators from '../../../redux/actions/user/userActionGenerators'
+import { connect } from 'react-redux'
+import { Link  } from 'react-router-dom';
+import { Responsive} from 'semantic-ui-react'
+import './NavigationItems.scss'
+
+class NavigationItems extends Component {
+
+    updateDashboardTab = (newTabIndex) => {
+        this.props.dispatch(userActionGenerators.updateTabIndex(newTabIndex))
+        this.props.toggleMobileNavigation && this.props.toggleMobileNavigation()
+    }
+
+    render() {
+  
+        return (
+            <ul className='Dashboard-navigationItems'>
+                <Responsive maxWidth={767}>
+                    <Link to='/dashboard' onClick={() => this.updateDashboardTab(0)}><li>Your details</li></Link>
+                    <Link to='/dashboard' onClick={() => this.updateDashboardTab(1)}><li > Podcasts</li></Link>
+                    <Link to='/dashboard' onClick={() => this.updateDashboardTab(2)}><li >Hosts</li></Link>
+                    {/* <li onClick={() => this.updateDashboardTab(3)}>Episodes</li> */}
+                </Responsive>
+                <Responsive minWidth={768}>
+                <li onClick={() => this.updateDashboardTab(0)}>Your details</li>
+                <li onClick={() => this.updateDashboardTab(1)}> Podcasts</li>
+                <li onClick={() => this.updateDashboardTab(2)}>Hosts</li>
+                {/* <li onClick={() => this.updateDashboardTab(3)}>Episodes</li> */}
+            </Responsive>
+            </ul>
+        )
+    }
+}
+
+const mapStateToProps = (state) => {
+    return {
+        user: state.user,
+        reduxPodcast: state.podcast
+    }
+}
+
+export default connect(mapStateToProps)(NavigationItems)

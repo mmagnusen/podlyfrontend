@@ -18,14 +18,11 @@ const hostAsyncActions = {
                 data
             })
             .then((response) => {
-                console.log('response from create host async action', response)
                 if (response.status === 201) {
                     successCallback() 
                 }
-             
             })
             .catch((error) => {
-                console.log('error', error)
                 const errortext = 'There was a problem creating your podcast. Please check details and try again'
                 dispatch(hostActionGenerators.submitNewHostError(errortext))
          
@@ -55,7 +52,6 @@ const hostAsyncActions = {
             .catch((error) => {
                 const errortext = 'There was a problem creating your podcast. Please check details and try again'
                 dispatch(hostActionGenerators.editHostError(errortext))
-                console.log('error from edit host async action', error)
             })
         }
     },

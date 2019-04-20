@@ -32,15 +32,6 @@ $module: 'MobileNavigation';
         justify-content: flex-end;
     }
 
-    &-dropdownInner {
-        width: 90%;
-        margin: 0 auto;
-        h3 {
-            text-align: left;
-            margin-bottom: 3rem;
-        }
-    }
-
     .burger {
         display: flex;
         flex-direction: column;
@@ -56,13 +47,36 @@ $module: 'MobileNavigation';
         background: white;
 
     }
-
+  
     &-dropdown {
-        height: 100vh;
         color: white;
-        position: absolute;
         background-color: #18002a;
-        width: 100%;
-        z-index: 2;
+
+        li {
+            background: none !important;
+            margin-left: 1.5rem;
+            color: white;
+        }
+    }
+
+    &-home {
+        margin-bottom: 2rem;
+        padding-bottom: 1.5rem;
+        border-bottom: 2px solid rgba(128, 128, 128, 0.6);
+    }
+
+    &-logout {
+       margin-top: 1rem; 
+       padding-top: 1.5rem;
+       border-top: 2px solid rgba(128, 128, 128, 0.6);
+    }
+
+    &-link {
+        color: white;
+        cursor: pointer;
+    }
+
+    &-loginRegister {
+        margin: 3rem 0;
     }
 }
