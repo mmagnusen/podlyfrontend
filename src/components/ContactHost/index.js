@@ -51,40 +51,7 @@ class ContactHost extends Component {
 
 
     submitForm = (event) => {
-        event.preventDefault()   
-        const { host } = this.props
-        
-        const data = ({
-            "guest_name": this.state.name.value,
-            "guest_email": this.state.email.value,
-            "message": `
-Hello,
-                        
-You have received a new podcast guest message.
 
-Guest name: ${this.state.name.value}
-
-Message: ${this.state.message.value}
-
-Please reply to: ${this.state.email.value}
-
-Best,
-Platfore
-                        `,
-            "host": host
-        })
-
-        axios.post(
-            `${ENDPOINT}/api/message`, 
-            data
-        )
-        .then(() => {
-            this.setState({ submitted: true})
-            setTimeout(() => this.props.handleClose(), 2000);
-        })
-        .catch((error) => {
-            this.setState({ error: true })
-        })
     }
 
 
