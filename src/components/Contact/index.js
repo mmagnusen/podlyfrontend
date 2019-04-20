@@ -148,7 +148,7 @@ Platfore
                         )}
                         {submitted === true && (
                             <div className='ContactHost-success'>
-                                <h3>Your message has been sucessfully sent!</h3>
+                                <h3>Your message has been successfully sent!</h3>
                             </div>
                         )}
                     </form>
