@@ -13,6 +13,7 @@ export { default as AudioPlayer } from './AudioPlayer'
 export { default as Home } from './Home'
 export { default as NoResults } from './NoResults'
 export { default as Footer } from './Footer'
+export { default as Contact } from './Contact' 
 
 export { default as Host } from './Host'
 export { default as Discover } from './Discover'
@@ -20,6 +21,15 @@ export { default as Play } from './Play'
 export { default as PlayList } from './PlayList'
 export { default as ListItem } from './ListItem'
 
+//Pages
+export { default as ContactPage } from '../pages/ContactPage' 
+export { default as DashboardPage } from '../pages/DashboardPage' 
+export { default as DiscoverPage } from '../pages/DiscoverPage' 
+export { default as HomePage } from '../pages/HomePage' 
+export { default as LoginPage } from '../pages/LoginPage' 
+export { default as RegisterPage } from '../pages/RegisterPage' 
+export { default as PlayPage } from '../pages/PlayPage' 
+export { default as PodcastPage } from '../pages/PodcastPage' 
 
 // Navigation
 export { default as Navigation } from './Navigation'

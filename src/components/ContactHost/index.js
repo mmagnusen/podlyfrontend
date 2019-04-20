@@ -87,8 +87,6 @@ Platfore
         })
     }
 
-
-
   render() {
 
     const { submitted, error, name, email, message } = this.state

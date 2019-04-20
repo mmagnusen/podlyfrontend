@@ -2,13 +2,7 @@ import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { Provider } from 'react-redux'
 import store from '../../redux/store/store'
-import HomePage from '../../pages/HomePage'
-import PodcastPage from '../../pages/PodcastPage'
-import LoginPage from '../../pages/LoginPage'
-import RegisterPage from '../../pages/RegisterPage'
-import DashboardPage from '../../pages/DashboardPage'
-import DiscoverPage from '../../pages/DiscoverPage'
-import PlayPage from '../../pages/PlayPage'
+import { ContactPage, PlayPage, DiscoverPage, DashboardPage, RegisterPage, LoginPage, PodcastPage, HomePage } from '../../components/'
 
 const AppRouter  = (props) => {
     return (
@@ -22,6 +16,7 @@ const AppRouter  = (props) => {
                 <Route path="/dashboard" component={DashboardPage}/> 
                 <Route path="/discover" component={DiscoverPage}/> 
                 <Route path="/play/:slug" component={PlayPage}/> 
+                <Route path="/contact" component={ContactPage}/> 
 
             </Switch>
         </BrowserRouter>
