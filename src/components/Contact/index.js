@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios'
-import { Input, Button } from '../'
+import { Input, Button, TextArea } from '../'
 import { INPUT_TYPE, ENDPOINT } from '../../constants/'
 import { formValidation } from '../../utils/'
 import './Contact.scss'
@@ -52,7 +52,20 @@ class Contact extends Component {
         const data = ({
             "name": name.value,
             "email": email.value,
-            "message": message.value
+            "message": `
+Hello,
+                        
+You have received a new contact form message.
+
+Name: ${name.value}
+
+Message: ${message.value}
+
+Please reply to: ${email.value}
+
+Best,
+Platfore
+                                    `,
         })
 
         axios.post(
@@ -116,18 +129,17 @@ class Contact extends Component {
 
                         <section className='field fieldTwo'>
                             <label>Message</label> 
-                            <Input 
+                            <TextArea 
                                 onChange={(event) => this.updateValue(event, 'message')} 
                                 onBlur={() => this.handleBlur('message')}
                                 value={message.value}
-                                type={INPUT_TYPE.TEXT}
                             />
                         </section>
                         <section>
                             {message.isValid === false && <p className='error'>Please enter your message</p>}
                         </section>
                         <section className='Contact-submit'>
-                            <Button disabled={!this.canSubmit()}>Send message</Button>
+                            <Button disabled={!this.canSubmit()} onClick={this.submitContact}>Send message</Button>
                         </section>
                         {error && (
                             <section>
