@@ -32,7 +32,6 @@ class PodcastContent extends Component {
     this.props.dispatch(searchAsyncActions.singlePodcast(slug))
 
     const singleEndpoint = `${ENDPOINT}/api/host?slug=${this.props.match.params.slug}`
-    console.log('get hosts')
         axios.get(singleEndpoint)
         .then((response) => {
             this.setState({
@@ -87,7 +86,7 @@ class PodcastContent extends Component {
                 className='Platfore-modal'
             >
                 <div>
-                    <ContactHost handleClose={this.handleClose}/>
+                    <ContactHost handleClose={this.handleClose} host={this.props.match.params.slug}/>
                 </div>
             </Modal>
             )}

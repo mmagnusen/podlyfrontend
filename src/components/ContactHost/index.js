@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios'
 import { Input, TextArea, Button } from '../index'
 import { formValidation } from '../../utils'
-import { INPUT_TYPE } from '../../constants'
+import { INPUT_TYPE, ENDPOINT } from '../../constants'
 import './ContactHost.scss'
 
 class ContactHost extends Component {
@@ -52,21 +52,35 @@ class ContactHost extends Component {
 
     submitForm = (event) => {
         event.preventDefault()   
+        const { host } = this.props
         
-        const data = {
-            service_id: 'gmail',
-            template_id: 'podly',
-            user_id: 'user_4S2QFaThE0GDhqVGZhxLU',
-            template_params: {
-                'username': 'James',
-                'g-recaptcha-response': '03AHJ_ASjnLA214KSNKFJAK12sfKASfehbmfd...',
-                'from_name': this.state.name.value,
-                'email': this.state.email.value,
-                'message': this.state.message.value
-            }
-        }
+        const data = ({
+            "guest_name": this.state.name.value,
+            "guest_email": this.state.email.value,
+            "message": `
+Hello,
+                        
+You have received a new podcast guest message.
 
-        axios.post('https://api.emailjs.com/api/v1.0/email/send', data)
+Guest name: ${this.state.name.value}
+
+Message: ${this.state.message.value}
+
+Please reply to: ${this.state.email.value}
+
+Best,
+Platfore
+                        `,
+            "host": host
+        })
+
+        axios.post(
+            `${ENDPOINT}/api/message`, 
+            data,
+            {'headers': {
+                'Content-Type': 'application/json'
+            }}
+        )
         .then(() => {
             this.setState({ submitted: true})
             setTimeout(() => this.props.handleClose(), 2000);
