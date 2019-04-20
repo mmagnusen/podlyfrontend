@@ -76,10 +76,7 @@ Platfore
 
         axios.post(
             `${ENDPOINT}/api/message`, 
-            data,
-            {'headers': {
-                'Content-Type': 'application/json'
-            }}
+            data
         )
         .then(() => {
             this.setState({ submitted: true})
