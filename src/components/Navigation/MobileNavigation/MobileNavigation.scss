@@ -3,7 +3,6 @@
 $module: 'MobileNavigation';
 
 .#{$module} {
-    min-height: 100px;
     display: grid;
     grid-template-columns: 110px 1fr 180px;
     width: 90%;
@@ -45,12 +44,17 @@ $module: 'MobileNavigation';
         height: 2px;
         width: 100%;
         background: white;
-
     }
   
+    &-drawer {
+        width: 290px;
+    }
+
     &-dropdown {
         color: white;
         background-color: #18002a;
+        height: 100vh;
+        padding: 1rem;
 
         li {
             background: none !important;

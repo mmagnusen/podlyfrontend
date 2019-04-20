@@ -28,7 +28,7 @@ class MobileNavigation extends Component {
     const { mobileNavOpen } = this.state;
 
     return (
-      <Drawer anchor="left" open={mobileNavOpen} classes={{paper: 'DashboardMobileNav'}} onClose={this.toggleMobileNavigation}>
+      <Drawer anchor="left" open={mobileNavOpen} classes={{paper: 'MobileNavigation-drawer'}} onClose={this.toggleMobileNavigation}>
         <div className='MobileNavigation-dropdown'>
           <div className='MobileNavigation-dropdownInner'>
 
