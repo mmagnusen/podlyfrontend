@@ -6,7 +6,7 @@ import './Button.scss'
 class Button extends Component {
 
     render() {
-        const { children, onClick, disabled, loading = true } = this.props;
+        const { children, onClick, disabled, loading } = this.props;
         return (
             <div className={classnames('Button', {'disabled': disabled})}>
                 <button onClick={onClick}>{loading ?  <CircularProgress className='Button-loading' color="secondary" /> : children}</button>
