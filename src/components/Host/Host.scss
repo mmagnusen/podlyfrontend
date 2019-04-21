@@ -10,8 +10,11 @@ $module: 'Host';
         width: 100%;
         grid-template-columns: 100px 1fr;
         display: grid;
-        grid-column-gap: 40px;
+        grid-column-gap: 20px;
         padding-bottom: 2rem;
+        @media screen and (min-width: $mobileLargeBreakpoint) { 
+            grid-column-gap: 40px;
+        }
         @media screen and (min-width: $tabletBreakpoint) { 
             width: 50%;
             grid-template-columns: 150px 1fr;
