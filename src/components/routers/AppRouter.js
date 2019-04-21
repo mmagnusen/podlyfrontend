@@ -2,7 +2,18 @@ import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { Provider } from 'react-redux'
 import store from '../../redux/store/store'
-import { ContactPage, PlayPage, DiscoverPage, DashboardPage, RegisterPage, LoginPage, PodcastPage, HomePage } from '../../components/'
+import { 
+    ContactPage, 
+    PlayPage, 
+    DiscoverPage, 
+    DashboardPage, 
+    RegisterPage, 
+    LoginPage, 
+    PodcastPage, 
+    HomePage, 
+    BlogPage, 
+    BlogPostPage 
+} from '../../components/'
 
 const AppRouter  = (props) => {
     return (
@@ -17,7 +28,8 @@ const AppRouter  = (props) => {
                 <Route path="/discover" component={DiscoverPage}/> 
                 <Route path="/play/:slug" component={PlayPage}/> 
                 <Route path="/contact" component={ContactPage}/> 
-
+                <Route path="/blog" exact={true} component={BlogPage} /> 
+                <Route path="/blog/:slug/:id" exact={true} component={BlogPostPage}/> 
             </Switch>
         </BrowserRouter>
         </Provider>

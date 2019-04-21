@@ -1,0 +1,36 @@
+@import '../../../constants/styles/sass-variables/breakpoints';
+@import '../../../constants/styles/sass-variables/colors';
+
+$module: 'Blog';
+
+.#{$module} {  
+    padding: 3rem 0;
+    background: $ash;
+
+    &-inner {
+        width: 90%;
+        margin: 0 auto;
+    }
+
+    &-featured {
+        height: 200px;
+        background: white;
+        width: 100%;
+    }
+
+    &-articles {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 500px;
+        grid-row-gap: 50px;
+        grid-column-gap: 50px;
+        grid-auto-rows: 500px;
+        @media screen and (min-width: $tabletBreakpoint) { 
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        @media screen and (min-width: $largeMonitorBreakpoint) { 
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+}

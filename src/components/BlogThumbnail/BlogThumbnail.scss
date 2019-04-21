@@ -1,0 +1,58 @@
+@import '../../../constants/styles/sass-variables/colors';
+@import '../../../constants/styles/sass-variables/breakpoints';
+
+
+$module: 'BlogThumbnail';
+
+.#{$module} { 
+   
+    background:white;
+    display: flex;
+    flex-direction: column;
+    border-radius: 4px;
+    box-shadow: 2px 3.46px 8px 0 rgba(39,44,49,.04), 8px 13.86px 38px 0 rgba(39,44,49,.04);
+    transition: box-shadow 0.1s linear;
+
+   &:hover {
+        box-shadow: 2px 3.46px 8px 0 rgba(39,44,49,.12), 8px 13.86px 38px 0 rgba(39,44,49,.08);
+    }
+
+    &-image {
+        height: 45%;
+        margin-bottom: 10px;
+        width: 100%;
+        cursor: pointer;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+    }
+
+    &-imageFiller {
+        height: 100%;
+        width: 100%;
+    }
+
+    &-text {
+        height: 45%;
+        padding: 15px 20px;
+    }
+
+    &-details {
+        display: flex;
+        margin: 1rem 0;
+        justify-content: space-between;
+    }
+
+    &-title {
+        margin: 1rem 0 1.5rem 0;
+        cursor: pointer;
+        font-size: 20px;
+    }
+
+    &-excerpt {
+        p {
+            line-height: 30px;
+            text-align: justify;
+        }
+    }
+}

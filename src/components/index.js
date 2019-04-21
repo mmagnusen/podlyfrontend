@@ -2,8 +2,11 @@
 export { default as Input } from './html/Input'
 export { default as TextArea } from './html/TextArea'
 export {default as Button } from './html/Button'
+export {default as Link } from './html/Link'
 
-
+export { default as Blog } from './Blog'
+export { default as BlogThumbnail } from './BlogThumbnail'
+export { default as BlogPost } from './BlogPost'
 export { default as Podcast } from './Podcast'
 export { default as ContactHost } from './ContactHost'
 export { default as PodcastContent } from './PodcastContent'
@@ -30,6 +33,8 @@ export { default as LoginPage } from '../pages/LoginPage'
 export { default as RegisterPage } from '../pages/RegisterPage' 
 export { default as PlayPage } from '../pages/PlayPage' 
 export { default as PodcastPage } from '../pages/PodcastPage' 
+export { default as BlogPage } from '../pages/BlogPage' 
+export { default as BlogPostPage } from '../pages/BlogPostPage' 
 
 // Navigation
 export { default as Navigation } from './Navigation'
