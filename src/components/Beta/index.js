@@ -92,7 +92,7 @@ class Beta extends Component {
         return (
         <section className='Beta'>
             <div className='Beta-header'>
-                <h1>Apply to join beta list</h1>
+                <h1>Apply to join beta</h1>
                 <p>Supercharge your growth and monetize your podcast</p>
                 <section className='Beta-signup'>
                     <h3>We partner with selected industry brands to automatically play adverts during pre-defined points in your show</h3>
