@@ -12,7 +12,8 @@ import {
     PodcastPage, 
     HomePage, 
     BlogPage, 
-    BlogPostPage 
+    BlogPostPage ,
+    BetaPage
 } from '../../components/'
 
 const AppRouter  = (props) => {
@@ -24,6 +25,7 @@ const AppRouter  = (props) => {
                 <Route path="/podcast/:slug" component={PodcastPage}/>  
                 <Route path="/login" component={LoginPage}/> 
                 <Route path="/register" component={RegisterPage}/> 
+                <Route path="/beta" component={BetaPage}/> 
                 <Route path="/dashboard" component={DashboardPage}/> 
                 <Route path="/discover" component={DiscoverPage}/> 
                 <Route path="/play/:slug" component={PlayPage}/> 

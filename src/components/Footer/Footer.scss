@@ -4,7 +4,7 @@ $module: 'Footer';
 
 .#{$module} {
     background-color: #18002a;
-    min-height: 50px;
+    min-height: 80px;
 
     &-inner {
         width: 90%;
@@ -13,7 +13,7 @@ $module: 'Footer';
         justify-content: space-evenly;
         align-items: center;
         text-align: center;
-        height: 50px;
+        height: 80px;
     }
 
     h3 , a {

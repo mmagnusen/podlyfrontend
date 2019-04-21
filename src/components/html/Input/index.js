@@ -48,9 +48,20 @@ class Input extends Component {
         }
     }
 
+    getPlaceholder = (type, placeHolder) => {
+        switch(type) {
+            case INPUT_TYPE.EMAIL:
+                return 'your email address'
+            case INPUT_TYPE.PASSWORD:
+                return 'your password'
+            default:
+                return placeHolder ? placeHolder : null
+        }  
+    }
+
     render() {
 
-        const { icon, type, value, onChange, onBlur } = this.props
+        const { icon, type, value, onChange, onBlur, placeHolder } = this.props
         const { showPassword } = this.state
         
         return (
@@ -62,6 +73,7 @@ class Input extends Component {
                     onBlur={(event) => onBlur(event)} 
                     value={value}
                     type={(type === INPUT_TYPE.PASSWORD && showPassword === true) ? INPUT_TYPE.TEXT : type}
+                    placeholder={this.getPlaceholder(type, placeHolder)}
                 />
                 { type === INPUT_TYPE.PASSWORD && 
                     (showPassword === true ? 

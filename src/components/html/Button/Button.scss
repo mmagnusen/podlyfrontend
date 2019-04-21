@@ -17,4 +17,11 @@ $module: 'Button';
         opacity: 0.5;    
         pointer-events: none;
     }
+
+    &-loading {
+        position: relative;
+        width: 25px !important;
+        height: 25px !important;
+        left: calc(50% - 90px);  
+    }
 }

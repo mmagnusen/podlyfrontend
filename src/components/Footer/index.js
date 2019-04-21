@@ -11,6 +11,7 @@ class Footer extends Component {
                 <div className='Footer-inner'>
                   {/* <Link to='/blog'>Blog</Link> */}
                   <a href='https://twitter.com/platfore_app' target='_blank' rel="noopener noreferrer">@platfore_app</a>
+                  <Link to='/beta'>Beta</Link>
                   <Link to='/contact'>Contact us</Link>
                 </div>
             </footer>

@@ -4,6 +4,7 @@ export { default as TextArea } from './html/TextArea'
 export {default as Button } from './html/Button'
 export {default as Link } from './html/Link'
 
+export { default as Beta } from './Beta'
 export { default as Blog } from './Blog'
 export { default as BlogThumbnail } from './BlogThumbnail'
 export { default as BlogPost } from './BlogPost'
@@ -25,6 +26,7 @@ export { default as PlayList } from './PlayList'
 export { default as ListItem } from './ListItem'
 
 //Pages
+export { default as BetaPage } from '../pages/BetaPage' 
 export { default as ContactPage } from '../pages/ContactPage' 
 export { default as DashboardPage } from '../pages/DashboardPage' 
 export { default as DiscoverPage } from '../pages/DiscoverPage' 
