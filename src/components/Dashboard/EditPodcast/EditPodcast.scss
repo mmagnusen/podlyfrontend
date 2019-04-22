@@ -6,7 +6,7 @@ $module: 'EditPodcast';
 .#{$module} {   
     width: 300px;
     left: calc(50% - 150px);
-    background: white;
+    background: $white;
     padding: 1rem;
     box-sizing: border-box;
     margin-top: 3rem;
@@ -39,7 +39,7 @@ $module: 'EditPodcast';
             font-size: 16px;
             border-radius: 4px;
             background: #6B004C;
-            color: white;
+            color: $white;
             border: none;
             height: 40px;
             width: 100%;

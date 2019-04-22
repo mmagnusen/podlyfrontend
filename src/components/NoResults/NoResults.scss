@@ -1,12 +1,14 @@
 @import '../../../constants/styles/sass-variables/breakpoints';
+@import '../../../constants/styles/sass-variables/colors';
+
 
 $module: 'NoResults';
 
 .#{$module} {
-    background: rgba(83, 83, 83, 0.03);
+    background: transparent;
     width: 90%;
     margin: 6rem auto 3rem auto;
-    color: white;
+    color: $white;
     display: flex;
     justify-content: center;
 }

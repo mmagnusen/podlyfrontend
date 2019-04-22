@@ -6,7 +6,7 @@ $module: 'Dashboard';
 .#{$module} {   
     min-height: 500px;  
     padding: 2rem 0 4rem 0;
-    background: #E5ECF1;
+    background: $ash;
 
     &-inner {
         width: 90%;
@@ -38,7 +38,7 @@ $module: 'Dashboard';
             margin-bottom: 1rem;
             list-style-type: none;
             cursor: pointer;
-            background: white;
+            background: $white;
             padding: 10px;
             border-radius: 4px;
             text-align: left;

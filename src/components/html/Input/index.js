@@ -51,7 +51,7 @@ class Input extends Component {
     getPlaceholder = (type, placeHolder) => {
         switch(type) {
             case INPUT_TYPE.EMAIL:
-                return 'your email address'
+                return 'email@example.com'
             case INPUT_TYPE.PASSWORD:
                 return 'your password'
             default:

@@ -6,7 +6,7 @@ $module: 'NewPodcast';
 .#{$module} {   
     width: 310px;
     left: calc(50% - 150px);
-    background: white;
+    background: $white;
     padding: 1rem;
     box-sizing: border-box;
     margin-top: 3rem;
@@ -46,8 +46,8 @@ $module: 'NewPodcast';
             width: 100%;
             font-size: 16px;
             border-radius: 4px;
-            background: #40c4bf;
-            color: white;
+            background: $turquoise;
+            color: $white;
             border: none;
         }    
     }

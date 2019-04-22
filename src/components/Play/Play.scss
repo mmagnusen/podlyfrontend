@@ -1,10 +1,11 @@
 @import '../../../constants/styles/sass-variables/breakpoints';
+@import '../../../constants/styles/sass-variables/colors';
 
 $module: 'Play';
 
 .#{$module} {
-    background: #18002a;
-    color: white;
+    background: $purple;
+    color: $white;
     display: flex;
     justify-content: center;
     padding: 3rem 0 7rem 0;

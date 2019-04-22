@@ -1,4 +1,5 @@
 @import '../../../constants/styles/sass-variables/breakpoints';
+@import '../../../constants/styles/sass-variables/colors';
 
 $module: 'Beta';
 
@@ -13,7 +14,7 @@ $module: 'Beta';
         }
 
         p {
-            color: white;
+            color: $white;
         }
     }
 
@@ -22,7 +23,7 @@ $module: 'Beta';
         text-align: center;
         font-size: 30px;
         max-width: 250px;
-        color: white;
+        color: $white;
         @media screen and (min-width: $tabletBreakpoint) {  
             font-size: 60px;
             max-width: 800px;
@@ -42,8 +43,7 @@ $module: 'Beta';
         margin: 0 auto;
         font-size: 14px;
         margin-top: -1rem;
-        padding: 0 30px;
-        color: red;   
+        padding: 0 30px;  
         @media screen and (min-width: $mobileLargeBreakpoint) {  
             width: 220px;
             padding: 0 25px;
@@ -55,7 +55,7 @@ $module: 'Beta';
 
 
     &-signup {
-        background: #fff;
+        background: $white;
         width: 300px;
         position: absolute;
         top: 400px;
@@ -130,7 +130,6 @@ $module: 'Beta';
         h3 {
             margin: 1rem auto 0 auto;
             text-align: center;
-            color: red;
             width: 200px;
             font-weight: normal;
             @media screen and (min-width: $tabletBreakpoint) {  
@@ -151,7 +150,7 @@ $module: 'Beta';
 
     &-value {
         min-height: 300px;
-        background: white;
+        background: $white;
         display: grid;
         grid-template-columns: 1fr;
         grid-row-gap: 50px;
@@ -184,7 +183,7 @@ $module: 'Beta';
             width: 120px;
             font-size: 50px;
             border-color: grey;
-            color: white;
+            color: $white;
         }
 
         .fa-play {

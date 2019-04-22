@@ -1,4 +1,5 @@
 @import '../../../../constants/styles/sass-variables/breakpoints';
+@import '../../../../constants/styles/sass-variables/colors';
 
 $module: 'EditorsPick';
 
@@ -7,7 +8,7 @@ $module: 'EditorsPick';
     width: 100%;
     padding: 10px 20px;
     box-sizing: border-box;
-    background: white;
+    background: $white;
     margin-bottom: 2.5rem;
     cursor: pointer;
     color: rgba(0,0,0,.84)!important;

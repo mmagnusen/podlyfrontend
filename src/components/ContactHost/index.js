@@ -103,6 +103,7 @@ Platfore
                             onBlur={() => this.handleBlur('name')}
                             type={INPUT_TYPE.TEXT} 
                             value={name.value}
+                            placeHolder='your name'
                         />
                     </section>
                     <section>

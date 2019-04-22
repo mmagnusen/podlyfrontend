@@ -4,7 +4,7 @@
 $module: 'TabPodcasts';
 
 .#{$module} {   
-    background: white;
+    background: $white;
     border-radius: 4px;
     padding: 0 15px;
 
@@ -16,7 +16,7 @@ $module: 'TabPodcasts';
 
     &-emptyState {
         margin: 2rem auto;
-        background: #40c4bf;
+        background: $turquoise;
         height: 150px;
         width: 100%;
         max-width: 500px;
@@ -31,14 +31,14 @@ $module: 'TabPodcasts';
             opacity: 0.9;
         }
         i {
-            color: white;
+            color: $white;
             font-size: 50px;
         }
         button {
             font-size: 16px;
             border-radius: 4px;
             background: none;
-            color: white;
+            color: $white;
             border: none;
             margin: 0 auto;
             display: block;

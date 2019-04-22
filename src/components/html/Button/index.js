@@ -8,8 +8,8 @@ class Button extends Component {
     render() {
         const { children, onClick, disabled, loading } = this.props;
         return (
-            <div className={classnames('Button', {'disabled': disabled})}>
-                <button onClick={onClick}>{loading ?  <CircularProgress className='Button-loading' color="secondary" /> : children}</button>
+            <div className={classnames('Button')}>
+                <button onClick={onClick} className={classnames({'Button-disabled': disabled, 'Button-loading': loading})}>{loading ?  <CircularProgress className='Button-loadingSpinner' color="secondary" /> : children}</button>
             </div>
         )
      

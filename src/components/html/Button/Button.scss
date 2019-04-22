@@ -13,15 +13,20 @@ $module: 'Button';
         }
     }
 
-    &.disabled {
+    &-disabled {
         opacity: 0.5;    
         pointer-events: none;
     }
 
     &-loading {
         position: relative;
+    }
+
+    &-loadingSpinner {
+        position: absolute;
         width: 25px !important;
         height: 25px !important;
-        left: calc(50% - 90px);  
+        left: calc(50% - 10px);  
+        top: calc(50% - 12px);
     }
 }

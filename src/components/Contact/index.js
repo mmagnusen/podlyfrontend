@@ -20,7 +20,8 @@ class Contact extends Component {
             isValid: null
         },
         error: false,
-        submitted: false
+        submitted: false,
+        loading: false,
     }
 
     updateValue = (event, field) => {
@@ -48,6 +49,10 @@ class Contact extends Component {
         event.preventDefault()   
         const { host } = this.props
         const { name, email, message } = this.state;
+
+        this.setState({
+            loading: true
+        })
         
         const data = ({
             "name": name.value,
@@ -73,10 +78,10 @@ Platfore
             data
         )
         .then(() => {
-            this.setState({ submitted: true})
+            this.setState({ submitted: true, loading: false})
         })
         .catch((error) => {
-            this.setState({ error: true })
+            this.setState({ error: true, loading: false })
         })
     }
 
@@ -87,7 +92,7 @@ Platfore
 
     render() {
 
-        const { email, name, message, error, submitted } = this.state
+        const { email, name, message, error, submitted, loading } = this.state
 
         return (
         <section className='Contact'>
@@ -108,6 +113,7 @@ Platfore
                                 onBlur={() => this.handleBlur('name')}
                                 value={name.value}
                                 type={INPUT_TYPE.TEXT}
+                                placeHolder='name'
                             />
                         </section>
                         <section>
@@ -139,7 +145,7 @@ Platfore
                             {message.isValid === false && <p className='error'>Please enter your message</p>}
                         </section>
                         <section className='Contact-submit'>
-                            <Button disabled={!this.canSubmit()} onClick={this.submitContact}>Send message</Button>
+                            <Button disabled={!this.canSubmit()} onClick={this.submitContact} loading={loading}>Send message</Button>
                         </section>
                         {error && (
                             <section>

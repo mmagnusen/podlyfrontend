@@ -1,4 +1,5 @@
 @import '../../../constants/styles/sass-variables/breakpoints';
+@import '../../../constants/styles/sass-variables/colors';
 
 $module: 'Footer';
 
@@ -24,7 +25,8 @@ $module: 'Footer';
     }
 
     h3 , a {
-        color: white;
+        color: $white;
         font-size: 20px;
+        font-weight: bold;
     }
 }

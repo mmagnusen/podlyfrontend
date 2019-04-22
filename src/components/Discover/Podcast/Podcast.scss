@@ -1,11 +1,12 @@
 @import '../../../../constants/styles/sass-variables/breakpoints';
+@import '../../../../constants/styles/sass-variables/colors';
 
 $module: 'SinglePodcast';
 
 .#{$module} {
     min-height: 150px;
     width: 100%;
-    background: white;
+    background: $white;
     box-sizing: border-box;
     cursor: pointer;
    

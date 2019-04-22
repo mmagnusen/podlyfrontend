@@ -1,4 +1,5 @@
 @import '../../../constants/styles/sass-variables/breakpoints';
+@import '../../../constants/styles/sass-variables/colors';
 
 $module: 'Podcast';
 .#{$module} {
@@ -9,7 +10,7 @@ $module: 'Podcast';
     min-height: 100px;
     display: block;
     margin: 2rem auto;
-    background: white;
+    background: $white;
     &-details {
         cursor: pointer;
         padding: 0.5rem 1rem;
@@ -35,7 +36,7 @@ $module: 'Podcast';
     }
 
     &-list {
-        background: linear-gradient(#40c4bf,#820052,#23003e);
+        background: linear-gradient($turquoise,#820052,#23003e);
         min-height: 600px;
         margin: 0;
         padding: 1rem 0;
@@ -44,8 +45,8 @@ $module: 'Podcast';
             height: 30px;
             width: 200px;
             border-radius: 5px;
-            background: #46B6F8;
-            color: white;
+            background: $skyBlue;
+            color:$white;
             border: none;
             font-size: 14px;
         }
@@ -54,7 +55,7 @@ $module: 'Podcast';
     &-more {
         a, a:visited {
             text-decoration: none;        
-            color: #40c4bf;
+            color: $turquoise;
         }
     }
 

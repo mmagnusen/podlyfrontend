@@ -1,4 +1,5 @@
 @import '../../../constants/styles/sass-variables/breakpoints';
+@import '../../../constants/styles/sass-variables/colors';
 
 $module: 'Filter';
 
@@ -21,6 +22,6 @@ $module: 'Filter';
         display: flex;
         align-items: center;   
         padding-right: 5px;
-        color: white;
+        color: $white;
     }
 }

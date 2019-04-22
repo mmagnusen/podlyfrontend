@@ -6,7 +6,7 @@ $module: 'EditHost';
 .#{$module} {   
     width: 300px;
     left: calc(50% - 150px);
-    background: white;
+    background: $white;
     padding: 1rem;
     box-sizing: border-box;
     margin-top: 3rem;
@@ -42,7 +42,7 @@ $module: 'EditHost';
         }
 
         input[type="file"]  {
-                color: white;
+                color: $white;
         }
     }
 
@@ -54,13 +54,13 @@ $module: 'EditHost';
             height: 70px;
             width: 70px;
             padding: 10px;
-            background: #40c4bf;
+            background: $turquoise;
             border-radius: 50%;
             display: flex;
             justify-content: center;
             align-items: center;
             font-size: 30px;
-            color: white;
+            color: $white;
         }
 
         img {
@@ -76,8 +76,8 @@ $module: 'EditHost';
         button {
             height: 40px;
             width: 130px;
-            background: #40c4bf;
-            color: white;
+            background: $turquoise;
+            color: $white;
             font-size: 14px;
         }
     }
@@ -101,8 +101,8 @@ $module: 'EditHost';
             width: 100%;
             font-size: 16px;
             border-radius: 4px;
-            background: #40c4bf;
-            color: white;
+            background: $turquoise;
+            color: $white;
             border: none;
         }
     }

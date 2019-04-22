@@ -1,4 +1,5 @@
 @import '../../../../constants/styles/sass-variables/breakpoints';
+@import '../../../../constants/styles/sass-variables/colors';
 
 $module: 'MobileNavigation';
 
@@ -43,7 +44,7 @@ $module: 'MobileNavigation';
     .burger-row {
         height: 2px;
         width: 100%;
-        background: white;
+        background: $white;
     }
   
     &-drawer {
@@ -51,7 +52,7 @@ $module: 'MobileNavigation';
     }
 
     &-dropdown {
-        color: white;
+        color: $white;
         background-color: #18002a;
         height: 100vh;
         padding: 1rem;
@@ -59,7 +60,7 @@ $module: 'MobileNavigation';
         li {
             background: none !important;
             margin-left: 1.5rem;
-            color: white;
+            color: $white;
         }
     }
 
@@ -76,7 +77,7 @@ $module: 'MobileNavigation';
     }
 
     &-link {
-        color: white;
+        color: $white;
         cursor: pointer;
     }
 

@@ -30,7 +30,7 @@ $module: 'UserPodcast';
             font-size: 16px;
             border-radius: 4px;
             background: #6B004C;
-            color: white;
+            color: $white;
             border: none;
             @media only screen and (min-width: $tabletBreakpoint) {
                 height: 40px;

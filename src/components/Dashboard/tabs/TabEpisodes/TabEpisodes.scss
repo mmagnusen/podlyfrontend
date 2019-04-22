@@ -5,7 +5,7 @@ $module: 'TabEpisodes';
 
 .#{$module} {   
 
-    background: white;
+    background: $white;
     padding: 0 15px;
 
     &-title {
@@ -18,8 +18,8 @@ $module: 'TabEpisodes';
             width: 200px;
             font-size: 16px;
             border-radius: 4px;
-            background: #40c4bf;
-            color: white;
+            background: $turquoise;
+            color: $white;
             border: none;
         }
     }

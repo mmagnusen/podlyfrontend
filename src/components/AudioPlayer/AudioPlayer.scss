@@ -1,10 +1,10 @@
 @import '../../../constants/styles/sass-variables/breakpoints';
+@import '../../../constants/styles/sass-variables/colors';
 
 $module: 'AudioPlayer';
 
 .#{$module} {
-
-    background: #f1f3f4;
+    background: $silver;
     padding: 0 10px;
     position: fixed;
     bottom: 0;
@@ -65,7 +65,7 @@ $module: 'AudioPlayer';
 
 
     &-progressBar {
-        background: #35c6ce;
+        background: $turquoise;
         height: 100%;
         border-radius: 4px;
     }
@@ -81,7 +81,7 @@ $module: 'AudioPlayer';
 
     audio {
         width: 95%;
-        background: #f1f3f4;
+        background: $silver;
     }
 
     audio::-webkit-media-controls-panel {
