@@ -18,6 +18,10 @@ const options = [
     { value: 'Investing', label: 'Investing' },
     { value: 'Venture capital', label: 'Venture capital' },
     { value: 'Entrepreneurship', label: 'Entrepreneurship' },
+    { value: 'New', label: 'New' },
+    { value: 'Developer', label: 'Developer' },
+    { value: 'Web', label: 'Web' },
+    { value: 'Web Development', label: 'Web Development' },
   ];
 
 class Filter extends Component {
