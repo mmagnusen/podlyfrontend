@@ -183,6 +183,7 @@ class NewHost extends Component {
                             value={name.value} 
                             onChange={(event) => this.updateValue(event, 'name')} 
                             onBlur={() => this.handleBlur('name')}
+                            placeHolder='Your full name'
                         /> 
                     </section>
                     <section>
@@ -195,6 +196,7 @@ class NewHost extends Component {
                             value={twitter_name.value} 
                             onChange={(event) => this.updateValue(event, 'twitter_name')} 
                             onBlur={() => this.handleBlur('twitter_name')}
+                            placeHolder='twitter_username1'
                         /> 
                     </section>
                     <section>
@@ -207,6 +209,7 @@ class NewHost extends Component {
                             value={twitter_url.value} 
                             onChange={(event) => this.updateValue(event, 'twitter_url')} 
                             onBlur={() => this.handleBlur('twitter_url')}
+                            placeHolder='https://twitter.com/twitter_username1'
                         /> 
                      </section>
                      <section>

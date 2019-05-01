@@ -95,6 +95,7 @@ class NewPodcast extends Component {
                                 value={name.value} 
                                 onChange={(event) => this.updateValue(event, 'name')} 
                                 onBlur={() => this.handleBlur('name')}
+                                placeHolder='name of your podcast'
                             /> 
                         </section>
                         <section>
@@ -107,6 +108,7 @@ class NewPodcast extends Component {
                                 value={slug.value} 
                                 onChange={(event) => this.updateValue(event, 'slug')} 
                                 onBlur={() => this.handleBlur('slug')}
+                                placeHolder='name-of-your-podcast'
                             /> 
                         </section>
                         <section>
@@ -119,6 +121,7 @@ class NewPodcast extends Component {
                                 value={tags.value} 
                                 onChange={(event) => this.updateValue(event, 'tags')} 
                                 onBlur={() => this.handleBlur('tags')}
+                                placeHolder='tech, software, design'
                             />
                         </section>
                         <section>
@@ -131,6 +134,7 @@ class NewPodcast extends Component {
                                 value={start_date.value} 
                                 onChange={(event) => this.updateValue(event, 'start_date')} 
                                 onBlur={() => this.handleBlur('start_date')}
+                                placeHolder='1 Year'
                             />
                         </section>
                         <section>
@@ -143,6 +147,7 @@ class NewPodcast extends Component {
                                 value={url.value} 
                                 onChange={(event) => this.updateValue(event, 'url')} 
                                 onBlur={() => this.handleBlur('url')}
+                                placeHolder='https://anchor.fm/yourpodcast'
                             />
                         </section>
                         <section>
