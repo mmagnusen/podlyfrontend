@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { Input, TextArea, Button } from '../../index'
+import { Input, Button, RichText } from '../../index'
 import { connect } from 'react-redux'
+import { Editor, EditorState, RichUtils, convertFromRaw, convertToRaw } from 'draft-js';
 import podcastAsyncActions from '../../../redux/actions/podcast/asyncActions'
 import { formValidation } from '../../../utils/'
 import './NewPodcast.scss'
@@ -25,7 +26,7 @@ class NewPodcast extends Component {
             isValid: null
         },
         description: {
-            value: '',
+            editorState: EditorState.createEmpty(),
             isValid: null
         },
         tags: {
@@ -55,6 +56,28 @@ class NewPodcast extends Component {
             }
         })
     }
+
+    handleEditorChange = (editorState) => {
+        console.log('editorChange', editorState);
+        this.setState({
+            description: {
+                ...this.state.description,
+                editorState,
+            } 
+        });
+    }
+
+    handleEditorKeyCommand = (command) => {
+        console.log('handle key command');
+        const { description } = this.state
+        const newState = RichUtils.handleKeyCommand(description.editorState, command);
+  
+        if ( newState ) {
+          this.onChange(newState);
+          return 'handled';
+        }
+        return 'not-handled';
+    }  
 
     canSubmit = () => {
         const { name, slug, tags, start_date, url, description } = this.state
@@ -156,10 +179,10 @@ class NewPodcast extends Component {
 
                         <section className="NewPodcast-description">
                             <p>Description:</p>
-                            <TextArea 
-                                value={description.value} 
-                                onChange={(event) => this.updateValue(event, 'description')} 
-                                onBlur={() => this.handleBlur('description')}
+                            <RichText 
+                                editorState={description.editorState} 
+                                onChange={this.handleEditorChange} 
+                                handleEditorKeyCommand={this.handleEditorKeyCommand}
                             />
                         </section>
                         <section>

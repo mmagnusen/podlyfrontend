@@ -1,0 +1,18 @@
+@import '../../../constants/styles/sass-variables/breakpoints';
+@import '../../../constants/styles/sass-variables/colors';
+
+$module: 'RichText';
+
+.#{$module} {
+    .new-company-editor {
+        padding: 20px;
+        box-sizing: border-box;
+        border: 1px solid rgba(34, 36, 38, 0.15);
+        min-height: 300px;
+        width: 100%;
+        font-family: 'Noto Sans', sans-serif;
+        line-height: 30px;
+        font-size: 20px;
+    
+    }
+}
