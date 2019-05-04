@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { withRouter } from "react-router";
+import { getDangerousHtml } from '../../utils' 
 import './Host.scss'
 
 class Host extends Component {
@@ -21,7 +22,7 @@ class Host extends Component {
                 </div>
                 <div className='Host-bio'>
                     <h3>Bio</h3>
-                    <p>{bio}</p>
+                    <div dangerouslySetInnerHTML={getDangerousHtml(bio)}/>
                 </div>
             </section>
         )    
