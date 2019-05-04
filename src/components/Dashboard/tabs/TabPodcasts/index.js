@@ -21,13 +21,13 @@ class TabPodcasts extends Component {
                 <section className='TabPodcasts-title'>
                     <h3>Your podcasts</h3>
                 </section>
-                {reduxPodcast.podcasts.length === 0 &&
+                {reduxPodcast && reduxPodcast.podcasts && reduxPodcast.podcasts.length === 0 &&
                 <section className='TabPodcasts-emptyState' onClick={() => toggleNewPodcast(true)}>
                     <i className="fas fa-microphone"></i>
                     <Button>Add a new podcast to get started</Button>
                 </section>
                 }
-                {reduxPodcast && reduxPodcast.podcasts && reduxPodcast.podcasts.length > 0 && reduxPodcast.podcasts.map((podcast) => (
+                {reduxPodcast && reduxPodcast.podcasts.length > 0 && reduxPodcast.podcasts.map((podcast) => (
                     <UserPodcast 
                         key={podcast.name} 
                         podcast={podcast}
