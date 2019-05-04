@@ -9,7 +9,12 @@ $module: 'UserHost';
     &-detail {
         display: grid;
         grid-template-columns: 100px 1fr;
-    
+    }
+
+    &-bio {
+        margin-bottom: 1rem;
+        display: flex;
+        flex-direction: column;
     }
 
     &-edit {

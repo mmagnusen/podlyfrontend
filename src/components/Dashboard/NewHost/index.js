@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Input, TextArea, Button } from '../../index'
+import { Input, RichText, Button } from '../../index'
 import { connect } from 'react-redux'
 import Select from 'react-select';
 import hostAsyncActions from '../../../redux/actions/host/asyncActions'
@@ -48,23 +48,29 @@ class NewHost extends Component {
         })
     }
 
-    updateValue = (event, field) => {
+    updateValue = (value, field) => {
         this.setState({
             [field]: {
                 ...this.state[field],
-                value: event.target.value
+                value
             }
         })
     }
 
     handleBlur = (field) => {
 
-        const isValid = formValidation.message(this.state[field].value);
+        let isValid;
+
+        if (field === 'bio') {
+            isValid = formValidation.richText(this.state[field].value)
+        } else {
+            isValid = formValidation.message(this.state[field].value)
+        }
 
         this.setState({
             [field]: {
                 ...this.state[field],
-                isValid
+                isValid,
             }
         })
     }
@@ -181,7 +187,7 @@ class NewHost extends Component {
                         <p>Name:</p> 
                         <Input 
                             value={name.value} 
-                            onChange={(event) => this.updateValue(event, 'name')} 
+                            onChange={(event) => this.updateValue(event.target.value, 'name')} 
                             onBlur={() => this.handleBlur('name')}
                             placeHolder='Your full name'
                         /> 
@@ -194,7 +200,7 @@ class NewHost extends Component {
                         <p>Twitter handle:</p> 
                         <Input 
                             value={twitter_name.value} 
-                            onChange={(event) => this.updateValue(event, 'twitter_name')} 
+                            onChange={(event) => this.updateValue(event.target.value, 'twitter_name')} 
                             onBlur={() => this.handleBlur('twitter_name')}
                             placeHolder='twitter_username1'
                         /> 
@@ -207,7 +213,7 @@ class NewHost extends Component {
                         <p>Twitter Url:</p> 
                         <Input 
                             value={twitter_url.value} 
-                            onChange={(event) => this.updateValue(event, 'twitter_url')} 
+                            onChange={(event) => this.updateValue(event.target.value, 'twitter_url')} 
                             onBlur={() => this.handleBlur('twitter_url')}
                             placeHolder='https://twitter.com/twitter_username1'
                         /> 
@@ -218,9 +224,8 @@ class NewHost extends Component {
 
                     <section className="NewHost-bio">
                         <p>Bio:</p> 
-                        <TextArea 
-                            value={bio.value} 
-                            onChange={(event) => this.updateValue(event, 'bio')} 
+                        <RichText 
+                            onChange={(value) => this.updateValue(value, 'bio') } 
                             onBlur={() => this.handleBlur('bio')}
                         />
                     </section>
