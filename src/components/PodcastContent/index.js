@@ -5,7 +5,6 @@ import searchAsyncActions from './../../redux/actions/search/asyncActions'
 import { connect } from 'react-redux'
 import { withRouter } from "react-router";
 import { ContactHost, LoadingSpinner, Host, Button } from '../'
-import { getDangerousHtml } from '../../utils' 
 import { ENDPOINT } from '../../constants'
 import './PodcastContent.scss'
 
@@ -66,7 +65,7 @@ class PodcastContent extends Component {
                 }
                 <section className="PodcastContent-description">
                     <h3>Description: </h3>
-                    <div dangerouslySetInnerHTML={getDangerousHtml(description)}/>
+                    <p>{description}</p>
                 </section>
                 <div className='PodcastContent-detailsContact'>
                     <Button onClick={this.handleOpen}>Contact host</Button>

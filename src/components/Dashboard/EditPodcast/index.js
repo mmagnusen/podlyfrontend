@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Input, Button, RichText } from '../../index'
+import { Input, TextArea, Button } from '../../index'
 import { connect } from 'react-redux'
 import podcastAsyncActions from '../../../redux/actions/podcast/asyncActions'
 import { formValidation } from '../../../utils/'
@@ -10,7 +10,6 @@ class EditPodcast extends Component {
     constructor(props) {
         super(props)
         const { name, slug, tags, start_date, url, description } = this.props.currentPodcast
-
         this.state = {
             name: {
                 value: name,
@@ -39,29 +38,23 @@ class EditPodcast extends Component {
         }
     }
 
-    updateValue = (value, field) => {
+    updateValue = (event, field) => {
         this.setState({
             [field]: {
                 ...this.state[field],
-                value
+                value: event.target.value
             }
         })
     }
 
     handleBlur = (field) => {
 
-        let isValid;
-
-        if (field === 'description') {
-            isValid = formValidation.richText(this.state[field].value)
-        } else {
-            isValid = formValidation.message(this.state[field].value)
-        }
+        const isValid = formValidation.message(this.state[field].value);
 
         this.setState({
             [field]: {
                 ...this.state[field],
-                isValid,
+                isValid
             }
         })
     }
@@ -73,6 +66,7 @@ class EditPodcast extends Component {
 
     toggleCallback = () => {
         this.props.toggleEditPodcast()
+        console.log('edit callback called')
     }
 
     submitChanges = () => {
@@ -99,12 +93,12 @@ class EditPodcast extends Component {
         return (
                 <div className='EditPodcast'>
                     <div className="EditPodcast-details">
-                    <section><h3>Edit this podcast</h3></section>
+                    <section><h3>Edit this podcast podcast</h3></section>
                     <section className="EditPodcast-name">
                         <p>Name:</p> 
                         <Input 
                             value={name.value} 
-                            onChange={(event) => this.updateValue(event.target.value, 'name')} 
+                            onChange={(event) => this.updateValue(event, 'name')} 
                             onBlur={() => this.handleBlur('name')}
                         /> 
                     </section>
@@ -116,7 +110,7 @@ class EditPodcast extends Component {
                         <p>Tags:</p> 
                         <Input 
                             value={tags.value} 
-                            onChange={(event) => this.updateValue(event.target.value, 'tags')} 
+                            onChange={(event) => this.updateValue(event, 'tags')} 
                             onBlur={() => this.handleBlur('tags')}
                         />
                     </section>
@@ -128,7 +122,7 @@ class EditPodcast extends Component {
                         <p>Age:</p> 
                         <Input 
                             value={start_date.value} 
-                            onChange={(event) => this.updateValue(event.target.value, 'start_date')} 
+                            onChange={(event) => this.updateValue(event, 'start_date')} 
                             onBlur={() => this.handleBlur('start_date')}
                         />
                     </section>
@@ -140,7 +134,7 @@ class EditPodcast extends Component {
                         <p>Link to podcast:</p> 
                         <Input 
                             value={url.value} 
-                            onChange={(event) => this.updateValue(event.target.value, 'url')} 
+                            onChange={(event) => this.updateValue(event, 'url')} 
                             onBlur={() => this.handleBlur('url')}
                         />
                     </section>
@@ -150,9 +144,9 @@ class EditPodcast extends Component {
 
                     <section className="EditPodcast-description">
                         <p>Description:</p>
-                        <RichText 
-                            editorState={description.value} 
-                            onChange={(value) => this.updateValue(value, 'description')} 
+                        <TextArea 
+                            value={description.value} 
+                            onChange={(event) => this.updateValue(event, 'description')} 
                             onBlur={() => this.handleBlur('description')}
                         />
                     </section>

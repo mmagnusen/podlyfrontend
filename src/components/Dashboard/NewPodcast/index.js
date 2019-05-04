@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Input, Button, RichText } from '../../index'
+import { Input, TextArea, Button } from '../../index'
 import { connect } from 'react-redux'
 import podcastAsyncActions from '../../../redux/actions/podcast/asyncActions'
 import { formValidation } from '../../../utils/'
@@ -34,29 +34,24 @@ class NewPodcast extends Component {
         }
     }
 
-    updateValue = (value, field) => {
+    updateValue = (event, field) => {
         this.setState({
             [field]: {
                 ...this.state[field],
-                value
+                value: event.target.value
             }
         })
     }
 
-    handleBlur = (field) => {
-   
-        let isValid;
 
-        if (field === 'description') {
-            isValid = formValidation.richText(this.state[field].value)
-        } else {
-            isValid = formValidation.message(this.state[field].value)
-        }
+    handleBlur = (field) => {
+
+        const isValid = formValidation.message(this.state[field].value);
 
         this.setState({
             [field]: {
                 ...this.state[field],
-                isValid,
+                isValid
             }
         })
     }
@@ -98,7 +93,7 @@ class NewPodcast extends Component {
                             <p>Name:</p> 
                             <Input 
                                 value={name.value} 
-                                onChange={(event) => this.updateValue(event.target.value, 'name')} 
+                                onChange={(event) => this.updateValue(event, 'name')} 
                                 onBlur={() => this.handleBlur('name')}
                                 placeHolder='name of your podcast'
                             /> 
@@ -111,7 +106,7 @@ class NewPodcast extends Component {
                             <p>Slug:</p> 
                             <Input 
                                 value={slug.value} 
-                                onChange={(event) => this.updateValue(event.target.value, 'slug')} 
+                                onChange={(event) => this.updateValue(event, 'slug')} 
                                 onBlur={() => this.handleBlur('slug')}
                                 placeHolder='name-of-your-podcast'
                             /> 
@@ -124,7 +119,7 @@ class NewPodcast extends Component {
                             <p>Tags:</p> 
                             <Input 
                                 value={tags.value} 
-                                onChange={(event) => this.updateValue(event.target.value, 'tags')} 
+                                onChange={(event) => this.updateValue(event, 'tags')} 
                                 onBlur={() => this.handleBlur('tags')}
                                 placeHolder='tech, software, design'
                             />
@@ -137,7 +132,7 @@ class NewPodcast extends Component {
                             <p>Age:</p> 
                             <Input 
                                 value={start_date.value} 
-                                onChange={(event) => this.updateValue(event.target.value, 'start_date')} 
+                                onChange={(event) => this.updateValue(event, 'start_date')} 
                                 onBlur={() => this.handleBlur('start_date')}
                                 placeHolder='1 Year'
                             />
@@ -150,7 +145,7 @@ class NewPodcast extends Component {
                             <p>Link:</p> 
                             <Input 
                                 value={url.value} 
-                                onChange={(event) => this.updateValue(event.target.value, 'url')} 
+                                onChange={(event) => this.updateValue(event, 'url')} 
                                 onBlur={() => this.handleBlur('url')}
                                 placeHolder='https://anchor.fm/yourpodcast'
                             />
@@ -161,8 +156,9 @@ class NewPodcast extends Component {
 
                         <section className="NewPodcast-description">
                             <p>Description:</p>
-                            <RichText 
-                                onChange={(value) => this.updateValue(value, 'description') } 
+                            <TextArea 
+                                value={description.value} 
+                                onChange={(event) => this.updateValue(event, 'description')} 
                                 onBlur={() => this.handleBlur('description')}
                             />
                         </section>
