@@ -24,8 +24,6 @@ class DashboardHome extends Component {
 
         newHostOpen: false,
         hostEditOpen: false,
-
-        mobileNavigationOpen: false
     }
 
     componentDidMount() {
@@ -75,7 +73,7 @@ class DashboardHome extends Component {
     render() {
 
         const { user } = this.props
-        const { newOpen, editOpen, newEpisodeOpen, episodeEditOpen, newHostOpen, hostEditOpen, mobileNavigationOpen } = this.state
+        const { newOpen, editOpen, newEpisodeOpen, episodeEditOpen, newHostOpen, hostEditOpen } = this.state
 
         if (user.token === null) {
             return <Redirect to='/'/>

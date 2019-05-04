@@ -58,8 +58,6 @@ class MobileNavigation extends Component {
   }
 
   render() {
-    
-    const { dropdownOpen } = this.state
 
     return (
       <div>

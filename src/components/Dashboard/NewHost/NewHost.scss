@@ -87,11 +87,15 @@ $module: 'NewHost';
     &-name, 
     &-twitterName,
     &-twitterUrl,
-    &-bio,
     &-snippet {
         display: grid;
         grid-template-columns: 100px 1fr;
         margin-top: 1.5rem;
+    }
+
+    &-bio {
+        display: flex;
+        flex-direction: column;
     }
 
     &-saveHost {
