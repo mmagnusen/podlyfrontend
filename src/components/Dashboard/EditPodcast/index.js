@@ -50,12 +50,18 @@ class EditPodcast extends Component {
 
     handleBlur = (field) => {
 
-        const isValid = formValidation.message(this.state[field].value);
+        let isValid;
+
+        if (field === 'description') {
+            isValid = formValidation.richText(this.state[field].value)
+        } else {
+            isValid = formValidation.message(this.state[field].value)
+        }
 
         this.setState({
             [field]: {
                 ...this.state[field],
-                isValid
+                isValid,
             }
         })
     }
@@ -147,6 +153,7 @@ class EditPodcast extends Component {
                         <RichText 
                             editorState={description.value} 
                             onChange={(value) => this.updateValue(value, 'description')} 
+                            onBlur={() => this.handleBlur('description')}
                         />
                     </section>
                     <section>

@@ -21,7 +21,6 @@ class RichText extends Component {
         }
     }
     
-
     richTextOnChange = (editorState) => {
         const { onChange } = this.props
         //stringified is what we send to db
@@ -30,9 +29,7 @@ class RichText extends Component {
         this.setState({
             editorState,
             stringifiedContent,
-        });
-
-        onChange(stringifiedContent)
+        }, () =>  onChange(stringifiedContent));
 
     }
 
@@ -51,7 +48,7 @@ class RichText extends Component {
 
   render() {
 
-    const { handleEditorKeyCommand } = this.props;
+    const { handleEditorKeyCommand, onBlur } = this.props;
     const { editorState } = this.state
     return (
         <section className='RichText'>
@@ -65,6 +62,7 @@ class RichText extends Component {
                     editorState={editorState} 
                     handleKeyCommand={handleEditorKeyCommand}
                     onChange={this.richTextOnChange}
+                    onBlur={() => onBlur()}
                 />
             </section>
         </section>

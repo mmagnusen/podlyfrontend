@@ -25,8 +25,8 @@ class NewPodcast extends Component {
             isValid: null
         },
         description: {
-            value: 'No description added',
-            isValid: true
+            value: '',
+            isValid: null
         },
         tags: {
             value: '',
@@ -44,13 +44,19 @@ class NewPodcast extends Component {
     }
 
     handleBlur = (field) => {
+   
+        let isValid;
 
-        const isValid = formValidation.message(this.state[field].value);
+        if (field === 'description') {
+            isValid = formValidation.richText(this.state[field].value)
+        } else {
+            isValid = formValidation.message(this.state[field].value)
+        }
 
         this.setState({
             [field]: {
                 ...this.state[field],
-                isValid
+                isValid,
             }
         })
     }
@@ -156,7 +162,8 @@ class NewPodcast extends Component {
                         <section className="NewPodcast-description">
                             <p>Description:</p>
                             <RichText 
-                                onChange={(value) => this.updateValue(value, 'description')} 
+                                onChange={(value) => this.updateValue(value, 'description') } 
+                                onBlur={() => this.handleBlur('description')}
                             />
                         </section>
                         <section>
