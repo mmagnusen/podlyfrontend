@@ -26,10 +26,15 @@ $module: 'EditPodcast';
     &-tags,
     &-age,
     &-host,
-    &-link,
-    &-description {
+    &-link {
         display: grid;
         grid-template-columns: 100px 1fr;
+        margin-top: 1.5rem;
+    }
+
+    &-description {
+        display: flex;
+        flex-direction: column;
         margin-top: 1.5rem;
     }
 
