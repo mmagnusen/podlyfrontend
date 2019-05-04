@@ -1,6 +1,6 @@
 const defaultPodcastState = {
     currentPodcast: {},
-    podcasts: null,
+    podcasts: [],
     new: {
         error: null
     },
