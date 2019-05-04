@@ -47,7 +47,6 @@ class Contact extends Component {
 
     submitContact = (event) => {
         event.preventDefault()   
-        const { host } = this.props
         const { name, email, message } = this.state;
 
         this.setState({
