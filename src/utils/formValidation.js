@@ -21,5 +21,9 @@ export const formValidation = {
     },
     message: (message) => {
         return message.length > 0
+    },
+    richText: (text) => {
+        const parsedContent = JSON.parse(text);
+        return text && parsedContent.blocks[0].text !== ''
     }
 }

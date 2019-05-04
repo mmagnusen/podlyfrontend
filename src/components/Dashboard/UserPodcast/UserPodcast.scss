@@ -12,21 +12,37 @@ $module: 'UserPodcast';
     }
 
     &-details {
-        section {
-            display: grid;
-            grid-template-columns: 90px 1fr;  
-            margin: 0.1rem 0;
-        }
-
         p:last-child {
             word-break: break-all
+        }
+    }
+
+    &-twoColumn {
+        display: grid;
+        grid-template-columns: 90px 1fr;  
+        margin: 0.1rem 0;
+    }
+
+    &-description {
+        display: flex;
+        flex-direction: column;  
+        
+        div {
+            background: #e4e4e42b;
+            padding: 0 10px;
+            margin: 0 0 1rem 0;
+        
+
+            p {
+                line-height: 1rem;
+            }
         }
     }
     
     &-edit{
         button {
-            height: 30px;
-            width: 120px;
+            height: 40px;
+            width: 190px;
             font-size: 16px;
             border-radius: 4px;
             background: #6B004C;
