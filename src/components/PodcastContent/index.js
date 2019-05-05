@@ -47,6 +47,8 @@ class PodcastContent extends Component {
 
       const { podcastOpen, hosts } = this.state
 
+      console.log('props from pco', this.props)
+
     return (
       <div className="PodcastContent">
         <div className="PodcastContent-inner">
@@ -87,7 +89,7 @@ class PodcastContent extends Component {
                 className='Platfore-modal'
             >
                 <div>
-                    <ContactHost handleClose={this.handleClose} host={this.props.match.params.slug}/>
+                    <ContactHost handleClose={this.handleClose} host={this.props.search.singlePodcast}/>
                 </div>
             </Modal>
             )}
