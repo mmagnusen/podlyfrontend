@@ -20,7 +20,8 @@ class ContactHost extends Component {
             isValid: null
         },
         submitted: false,
-        error: false
+        error: false,
+        loading: false,
     }
 
     updateValue = (event, field) => {
@@ -52,7 +53,10 @@ class ContactHost extends Component {
 
     submitForm = (event) => {
         event.preventDefault()   
-        const { host } = this.props
+        this.setState({
+            loading: true
+        })
+        const { slug, name } = this.props.host
         
         const data = ({
             "guest_name": this.state.name.value,
@@ -61,6 +65,8 @@ class ContactHost extends Component {
 Hello,
                         
 You have received a new podcast guest message.
+
+Your podcast: ${name}
 
 Guest name: ${this.state.name.value}
 
@@ -71,7 +77,7 @@ Please reply to: ${this.state.email.value}
 Best,
 Platfore
                         `,
-            "host": host
+            "host": slug
         })
 
         axios.post(
@@ -79,17 +85,20 @@ Platfore
             data
         )
         .then(() => {
-            this.setState({ submitted: true})
+            this.setState({ submitted: true, loading: false})
             setTimeout(() => this.props.handleClose(), 2000);
         })
         .catch((error) => {
             this.setState({ error: true })
+            this.setState({
+                loading: false
+            })
         })
     }
 
   render() {
 
-    const { submitted, error, name, email, message } = this.state
+    const { submitted, error, name, email, message, loading } = this.state
 
     return (
           <form className="ContactHost">
@@ -136,7 +145,7 @@ Platfore
                     </section>
 
                     <section className='ContactHost-submit'>
-                        <Button onClick={this.submitForm} disabled={!this.canSubmit()}>Submit</Button>
+                        <Button onClick={this.submitForm} loading={loading} disabled={!this.canSubmit()}>Submit</Button>
                     </section>
                 </div>
             )}
