@@ -20,6 +20,7 @@ export { default as NoResults } from './NoResults'
 export { default as Footer } from './Footer'
 export { default as Contact } from './Contact' 
 export { default as Message } from './Message'
+export { default as NewPost } from './NewPost'
 
 export { default as Host } from './Host'
 export { default as Discover } from './Discover'
