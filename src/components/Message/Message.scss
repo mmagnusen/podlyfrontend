@@ -1,0 +1,30 @@
+@import '../../../constants/styles/sass-variables/breakpoints';
+@import '../../../constants/styles/sass-variables/colors';
+
+$module: 'Message';
+
+.#{$module} {  
+    margin: 2rem 0;
+    display: grid;
+    grid-template-columns: 150px 1fr;
+    grid-column-gap: 20px;
+    background: $white;
+    padding: 1.5rem 2rem;
+    box-sizing: border-box;
+    border-radius: 4px;
+
+    &-image {
+        img {
+            height: 100px;
+            width: 100px;
+            border-radius: 50%;
+        }
+    }
+
+    &-content {
+        h3 {
+            margin: 0;
+        }
+    }
+
+}

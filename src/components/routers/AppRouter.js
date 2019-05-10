@@ -13,7 +13,8 @@ import {
     HomePage, 
     BlogPage, 
     BlogPostPage ,
-    BetaPage
+    BetaPage,
+    CommunityPage
 } from '../../components/'
 
 const AppRouter  = (props) => {
@@ -31,6 +32,7 @@ const AppRouter  = (props) => {
                 <Route path="/play/:slug" component={PlayPage}/> 
                 <Route path="/contact" component={ContactPage}/> 
                 <Route path="/blog" exact={true} component={BlogPage} /> 
+                <Route path="/community" exact={true} component={CommunityPage} /> 
                 <Route path="/blog/:slug/:id" exact={true} component={BlogPostPage}/> 
             </Switch>
         </BrowserRouter>
