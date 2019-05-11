@@ -19,7 +19,7 @@ export { default as Home } from './Home'
 export { default as NoResults } from './NoResults'
 export { default as Footer } from './Footer'
 export { default as Contact } from './Contact' 
-export { default as Message } from './Message'
+export { default as CommunityPost } from './CommunityPost'
 export { default as NewPost } from './NewPost'
 
 export { default as Host } from './Host'

@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import { NewPost, Message, Button } from '../';
+import { NewPost, CommunityPost, Button } from '../';
+import { connect } from 'react-redux'
+import communityAsyncActions from './../../redux/actions/community/asyncActions'
 import Modal from '@material-ui/core/Modal';
 import './Community.scss'
 
@@ -7,60 +9,10 @@ class Community extends Component {
 
     state = {
         newPostOpen: false,
-        messages: [
-            {
-                user: {
-                    name: 'Marilyn',
-                },
-                date: '12th May 2019',
-                title: 'Lorem Ipsum is simply ',
-                text: `Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been 
-                    the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of 
-                    type and scrambled it to make a type specimen book. It has survived not only five centuries, but 
-                    also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in 
-                    the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently 
-                    with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.`
-            },
-            {
-                user: {
-                    name: 'Hassan',
-                },
-                date: '12th May 2019',
-                title: 'Lorem Ipsum is simply ',
-                text: `Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been 
-                    the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of 
-                    type and scrambled it to make a type specimen book. It has survived not only five centuries, but 
-                    also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in 
-                    the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently 
-                    with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.`
-            },
-            {
-                user: {
-                    name: 'Davina',
-                },
-                date: '12th May 2019',
-                title: 'Lorem Ipsum is simply ',
-                text: `Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been 
-                    the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of 
-                    type and scrambled it to make a type specimen book. It has survived not only five centuries, but 
-                    also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in 
-                    the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently 
-                    with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.`
-            },
-            {
-                user: {
-                    name: 'Stuart',
-                },
-                date: '12th May 2019',
-                title: 'Lorem Ipsum is simply ',
-                text: `Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been 
-                    the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of 
-                    type and scrambled it to make a type specimen book. It has survived not only five centuries, but 
-                    also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in 
-                    the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently 
-                    with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.`
-            },
-        ]
+    }
+
+    componentDidMount() {
+        this.props.dispatch(communityAsyncActions.freshRequest())
     }
 
     toggleNewPost = () => {
@@ -72,6 +24,7 @@ class Community extends Component {
     render() {
 
         const { newPostOpen } = this.state
+        const { communityPosts } = this.props
 
     return (
             <div className='Community'>
@@ -79,12 +32,12 @@ class Community extends Component {
                     <section className='Community-title'><h3>Community Hub</h3></section>
                     <section className='Community-postButton'><Button onClick={this.toggleNewPost}>Create a post</Button></section>
                     <section>
-                        {this.state.messages.map((message) => <Message message={message}/>)}
+                        {communityPosts.map((post) => <CommunityPost post={post}/>)}
                     </section>
                 </div>
                 <Modal
                     open={newPostOpen}
-                    onClose={this.toggleNewPodcast}
+                    onClose={this.toggleNewPost}
                     className='Platfore-modal'
                 >
                 <div>
@@ -96,4 +49,10 @@ class Community extends Component {
   }
 }
 
-export default Community;
+const mapStateToProps = (state) => {
+    return {
+        communityPosts: state.community.communityPosts,
+    }
+}
+
+export default connect(mapStateToProps)(Community);

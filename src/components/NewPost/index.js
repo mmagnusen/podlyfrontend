@@ -51,7 +51,9 @@ class NewPost extends Component {
         return title.isValid && post.isValid
     }
 
-    submitNewPost = () => {
+    submitNewPost = (event) => {
+        event.preventDefault()
+        
         this.setState({
             loading: true,
         })
