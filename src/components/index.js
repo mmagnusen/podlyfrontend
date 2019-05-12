@@ -28,6 +28,7 @@ export { default as Play } from './Play'
 export { default as PlayList } from './PlayList'
 export { default as ListItem } from './ListItem'
 export { default as RichText } from './RichText'
+export { default as Reply } from './Reply'
 
 //Pages
 export { default as BetaPage } from '../pages/BetaPage' 

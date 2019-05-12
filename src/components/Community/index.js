@@ -9,6 +9,7 @@ class Community extends Component {
 
     state = {
         newPostOpen: false,
+        activePost: null
     }
 
     componentDidMount() {
@@ -21,9 +22,15 @@ class Community extends Component {
         })
     }
 
+    updateActivePost = (pk) => {
+        const { activePost } = this.state
+         const newActivePost = (pk === activePost) ? null : pk
+         this.setState({activePost: newActivePost})
+    }
+
     render() {
 
-        const { newPostOpen } = this.state
+        const { newPostOpen, activePost } = this.state
         const { communityPosts } = this.props
 
     return (
@@ -32,7 +39,7 @@ class Community extends Component {
                     <section className='Community-title'><h3>Community Hub</h3></section>
                     <section className='Community-postButton'><Button onClick={this.toggleNewPost}>Create a post</Button></section>
                     <section>
-                        {communityPosts.map((post) => <CommunityPost post={post}/>)}
+                        {communityPosts.map((post) => <CommunityPost post={post} activePost={activePost} updateActivePost={this.updateActivePost}/>)}
                     </section>
                 </div>
                 <Modal
@@ -41,7 +48,7 @@ class Community extends Component {
                     className='Platfore-modal'
                 >
                 <div>
-                    <NewPost toggleNewPodcast={this.toggleNewPodcast}/>
+                    <NewPost toggleNewPost={this.toggleNewPost}/>
                 </div>
             </Modal>
             </div>

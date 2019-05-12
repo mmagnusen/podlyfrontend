@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
+import axios from 'axios'
 import { Button, Input, RichText } from '../'
 import { formValidation } from '../../utils/'
+import communityAsyncActions from './../../redux/actions/community/asyncActions'
+import { ENDPOINT } from '../../constants'
+import { connect } from 'react-redux'
 import './NewPost.scss'
 
 class NewPost extends Component {
@@ -52,16 +56,46 @@ class NewPost extends Component {
     }
 
     submitNewPost = (event) => {
+        const { title, post } = this.state
+        const { toggleNewPost } = this.props
         event.preventDefault()
         
         this.setState({
             loading: true,
         })
+
+        const data = ({
+            title: title.value,
+            post: post.value
+        })
+
+        const token = localStorage.getItem('token');
+
+        axios({
+            method: 'post',
+            url: `${ENDPOINT}/api/community_post`, 
+            headers: {
+                'Authorization': 'JWT '+ token
+                },
+            responseType: 'json',
+            data
+        })
+        .then(() => {
+            this.props.dispatch(communityAsyncActions.freshRequest())
+            this.setState({ submitted: true, loading: false})
+            toggleNewPost()
+        })
+        .catch((error) => {
+            this.setState({
+                loading: false,
+                error: true 
+            })
+        })
     }
 
     render() {
 
-    const { title, loading } = this.state
+    const { title, loading, error } = this.state
 
     return (
             <div className='NewPost'>
@@ -82,18 +116,27 @@ class NewPost extends Component {
                             />
                         </section>
                         <div className='NewPost-save'>
-                        <Button 
-                            onClick={this.submitNewPost}
-                            disabled={!this.canSubmit()}
-                            loading={loading}
-                        >
-                            Publish Post
-                        </Button>
-                    </div>
+                            <Button 
+                                onClick={this.submitNewPost}
+                                disabled={!this.canSubmit()}
+                                loading={loading}
+                            >
+                                Publish Post
+                            </Button>
+                        </div>
+                        <div>
+                            {error && <p className='error'>There was a problem submitting your post. Please try again.</p>}
+                        </div>
                     </form>
             </div>
     );
   }
 }
 
-export default NewPost;
+const mapStateToProps = (state) => {
+    return {
+        communityPosts: state.community.communityPosts,
+    }
+}
+
+export default connect(mapStateToProps)(NewPost);

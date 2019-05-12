@@ -1,0 +1,32 @@
+@import '../../../constants/styles/sass-variables/breakpoints';
+@import '../../../constants/styles/sass-variables/colors';
+
+$module: 'Reply';
+
+.#{$module} {  
+    margin: 2rem 0;
+    background: $white;
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    grid-column-gap: 10px;
+
+    &-image {
+        img {
+            height: 70px;
+            width: 70px;
+            border-radius: 50%;
+        }
+    }
+
+    &-details {
+        display: flex;
+        p {
+            margin: 0;
+        }
+    }
+
+    &-name {
+        margin-right: 10px;
+        font-weight: bold;
+    }
+}

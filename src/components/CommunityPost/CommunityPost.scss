@@ -5,13 +5,16 @@ $module: 'CommunityPost';
 
 .#{$module} {  
     margin: 2rem 0;
-    display: grid;
-    grid-template-columns: 150px 1fr;
-    grid-column-gap: 20px;
     background: $white;
     padding: 1.5rem 2rem;
     box-sizing: border-box;
     border-radius: 4px;
+
+    &-originalPost {
+        display: grid;
+        grid-template-columns: 150px 1fr;
+        grid-column-gap: 20px;
+    }
 
     &-image {
         img {
@@ -24,6 +27,59 @@ $module: 'CommunityPost';
     &-content {
         h3 {
             margin: 0;
+        }
+    }
+
+    &-viewMore {
+        display: flex;
+        justify-content: center;
+        margin-top: 1rem;
+     
+        i {
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 40px;
+            width: 40px;
+            cursor: pointer;
+            &:hover {
+                background: #efefef;
+
+            }
+        }
+    }
+
+    &-replies {
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    &-repliesInner {
+        width: calc(100% - 170px);
+      
+    }
+
+    .RichText-editor {
+        min-height: unset;
+    }
+
+    &-replyActions {
+        display: flex;
+        align-content: center;
+        margin: 1rem 0 0 0;
+        button, p {
+            font-size: 14px;
+        }
+
+        p {
+            margin: 0;
+        }
+
+        button {
+            background-color: $turquoise;
+            color: $white;
+            margin-right: 1rem;
         }
     }
 

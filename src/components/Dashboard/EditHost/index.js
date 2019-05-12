@@ -11,7 +11,6 @@ class EditHost extends Component {
     constructor(props) {
         super(props)
 
-        console.log('edit host constructor props', this.props)
         const { name, twitter_name, twitter_url, bio, image } = this.props.currentHost
         this.state = {
             name: {

@@ -4,10 +4,10 @@ import { withRouter } from "react-router";
 import { Button } from '../'
 import { Editor, EditorState, RichUtils, convertToRaw } from 'draft-js';
 import { convertEditorFromDb } from '../../utils'
+import { bool } from 'prop-types';
 import './RichText.scss'
 
 class RichText extends Component {    
-
     constructor(props) {
         super(props)
         const { editorState } = this.props
@@ -20,6 +20,14 @@ class RichText extends Component {
             editorState: editorState ? EditorState.createWithContent(immutableContent) : EditorState.createEmpty(),
         }
     }
+
+    static propTypes = {
+        showMenu: bool
+    }
+    
+    static defaultProps = {
+        showMenu: true
+      }
     
     richTextOnChange = (editorState) => {
         const { onChange } = this.props
@@ -48,16 +56,18 @@ class RichText extends Component {
 
   render() {
 
-    const { handleEditorKeyCommand, onBlur } = this.props;
+    const { handleEditorKeyCommand, onBlur, showMenu } = this.props;
     const { editorState } = this.state
     return (
         <section className='RichText'>
-            <section className="RichText-editorButtons">
-                <Button onClick={this.onUnderlineClick} type="button" className="RichText-editorButton"><i className="fas fa-underline"/></Button>
-                <Button onClick={this.onBoldClick} type="button" className="RichText-editorButton"><i className="fas fa-bold"/></Button>
-                <Button onClick={this.onItalicClick} type="button" className="RichText-editorButton"><i className="fas fa-italic"/></Button>
-            </section>
-            <section className='new-company-editor'>
+            {showMenu && (
+                <section className="RichText-editorButtons">
+                    <Button onClick={this.onUnderlineClick} type="button" className="RichText-editorButton"><i className="fas fa-underline"/></Button>
+                    <Button onClick={this.onBoldClick} type="button" className="RichText-editorButton"><i className="fas fa-bold"/></Button>
+                    <Button onClick={this.onItalicClick} type="button" className="RichText-editorButton"><i className="fas fa-italic"/></Button>
+                </section>
+            )}
+            <section className='RichText-editor'>
                 <Editor 
                     editorState={editorState} 
                     handleKeyCommand={handleEditorKeyCommand}
