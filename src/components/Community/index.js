@@ -39,7 +39,7 @@ class Community extends Component {
                     <section className='Community-title'><h3>Community Hub</h3></section>
                     <section className='Community-postButton'><Button onClick={this.toggleNewPost}>Create a post</Button></section>
                     <section>
-                        {communityPosts.map((post) => <CommunityPost post={post} activePost={activePost} updateActivePost={this.updateActivePost}/>)}
+                        {communityPosts.map((post) => <CommunityPost key={post.pk} post={post} activePost={activePost} updateActivePost={this.updateActivePost}/>)}
                     </section>
                 </div>
                 <Modal

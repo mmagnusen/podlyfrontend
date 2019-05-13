@@ -106,7 +106,7 @@ class CommunityPost extends Component {
         {isActive && (
           <div className='CommunityPost-replies'>
             <div className='CommunityPost-repliesInner'>
-              {replies.map((reply) => <Reply reply={reply}/>)}
+              {replies.map((reply) => <Reply reply={reply} key={reply.pk}/>)}
               <RichText 
                 showMenu={false}
                 editorState={reply.value} 
