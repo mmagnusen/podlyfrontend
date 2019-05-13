@@ -20,7 +20,7 @@ const communityAsyncActions = {
             }) 
         }  
     },
-    postReply: (data) => {
+    postReply: (data, getPosts) => {
         return () => {
             axios({
                 method: 'post',
@@ -31,6 +31,7 @@ const communityAsyncActions = {
                 responseType: 'json',
                 data
             })
+            .then(() => getPosts())
             .catch((error) => {
                 console.log('error', error)
             }) 

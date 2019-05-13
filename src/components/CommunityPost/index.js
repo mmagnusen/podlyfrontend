@@ -32,7 +32,11 @@ class CommunityPost extends Component {
   })
   .then(({data}) => {
     this.setState({
-      replies: data
+      replies: data,
+      reply: {
+        value: '',
+        isValid: null,
+      }
     })
   })
   .catch((error) => {
@@ -68,7 +72,7 @@ class CommunityPost extends Component {
       content: reply.value,
       reply_to_post: pk
     })
-    this.props.dispatch(communityAsyncActions.postReply(data))
+    this.props.dispatch(communityAsyncActions.postReply(data, this.getPosts))
   }
 
   render() {

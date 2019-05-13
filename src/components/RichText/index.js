@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { withRouter } from "react-router";
 import { Button } from '../'
-import { Editor, EditorState, RichUtils, convertToRaw } from 'draft-js';
+import { Editor, EditorState, RichUtils, convertToRaw, ContentState } from 'draft-js';
 import { convertEditorFromDb } from '../../utils'
 import { bool } from 'prop-types';
 import './RichText.scss'
@@ -18,6 +18,13 @@ class RichText extends Component {
         
         this.state = {
             editorState: editorState ? EditorState.createWithContent(immutableContent) : EditorState.createEmpty(),
+        }
+    }
+
+    componentWillReceiveProps(nextProps) {
+        if(nextProps.editorState === '') {
+            const editorState = EditorState.push(this.state.editorState, ContentState.createFromText(''));
+            this.setState({ editorState });
         }
     }
 
