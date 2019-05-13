@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Input, Button, RichText } from '../../index'
+import { Input, Button, RichText } from '../../'
 import { connect } from 'react-redux'
 import podcastAsyncActions from '../../../redux/actions/podcast/asyncActions'
 import { formValidation } from '../../../utils/'

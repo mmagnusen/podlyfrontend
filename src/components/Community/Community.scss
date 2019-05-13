@@ -1,0 +1,31 @@
+@import '../../../constants/styles/sass-variables/breakpoints';
+@import '../../../constants/styles/sass-variables/colors';
+
+$module: 'Community';
+
+.#{$module} {
+    padding: 2rem 0;
+    background: $ash;
+
+    &-inner {
+        width: 90%;
+        margin: 0 auto;
+    }
+
+    &-title {
+        text-align: center;
+    }
+
+    &-postButton {
+        display: flex;
+        justify-content: flex-end;
+        button {
+            height: 40px;
+            width: 200px;
+            font-size: 16px;
+            background: $turquoise;
+            color: $white;
+            font-weight: bold;
+        }
+    }
+}

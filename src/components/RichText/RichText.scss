@@ -4,7 +4,7 @@
 $module: 'RichText';
 
 .#{$module} {
-    .new-company-editor {
+    &-editor {
         padding: 20px;
         box-sizing: border-box;
         border: 1px solid rgba(34, 36, 38, 0.15);
