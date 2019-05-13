@@ -20,9 +20,14 @@ class CommunityPost extends Component {
   }
 
   componentDidMount() {
+    this.getPosts()
+  }
+
+  getPosts = () => {
+    const { pk } = this.props.post
     axios({
       method: 'get',
-      url: `${ENDPOINT}/api/community_replies`, 
+      url: `${ENDPOINT}/api/community_replies?post=${pk}`, 
       responseType: 'json',
   })
   .then(({data}) => {
@@ -59,7 +64,11 @@ class CommunityPost extends Component {
   postReply = () => {
     const { reply } = this.state
     const { pk } = this.props.post
-    this.props.dispatch(communityAsyncActions.postReply(pk, reply.value))
+    const data = ({
+      content: reply.value,
+      reply_to_post: pk
+    })
+    this.props.dispatch(communityAsyncActions.postReply(data))
   }
 
   render() {
@@ -93,7 +102,7 @@ class CommunityPost extends Component {
         {isActive && (
           <div className='CommunityPost-replies'>
             <div className='CommunityPost-repliesInner'>
-              {/*replies.map((reply) => <Reply reply={reply}/>)*/}
+              {replies.map((reply) => <Reply reply={reply}/>)}
               <RichText 
                 showMenu={false}
                 editorState={reply.value} 
