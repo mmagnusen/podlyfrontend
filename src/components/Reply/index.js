@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import  avatar  from '../../resources/profile.jpg'
+import dog from '../../resources/dog.jpg'
 import moment from 'moment'
 import { getDangerousHtml } from '../../utils' 
 import './Reply.scss'
@@ -14,7 +14,7 @@ class Reply extends Component {
     return (
       <div className='Reply'>
         <div className='Reply-image'>
-            <img src={avatar} alt='profile'/>
+            <img src={dog} alt='profile'/>
         </div>
         <div className='Reply-content'>
             <div className='Reply-details'>

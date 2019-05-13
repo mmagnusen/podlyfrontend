@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios'
-import avatar from '../../resources/profile.jpg'
+import dog from '../../resources/dog.jpg'
 import moment from 'moment'
 import { RichText, Reply, Button } from '../';
 import { getDangerousHtml, formValidation } from '../../utils' 
@@ -83,7 +83,7 @@ class CommunityPost extends Component {
       <div className='CommunityPost'>
         <section className='CommunityPost-originalPost'>
           <div className='CommunityPost-image'>
-            <img src={avatar} alt='profile'/>
+            <img src={dog} alt='profile'/>
           </div>
           <div className='CommunityPost-content'>
             <h3>{title}</h3>
