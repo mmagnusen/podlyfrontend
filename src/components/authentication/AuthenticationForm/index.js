@@ -4,7 +4,7 @@ import './AuthenticationForm.scss'
 
 class AuthenticationForm extends Component { 
     render() {
-        const { children, header, classes, buttonCta, buttonAction, canSubmit } = this.props
+        const { children, header, classes, buttonCta, buttonAction, canSubmit, loading } = this.props
         return (
             <div className='AuthenticationForm'>
                 <section className='AuthenticationForm-header'>{header}</section>
@@ -13,7 +13,7 @@ class AuthenticationForm extends Component {
                     {children}
 
                 <section className='AuthenticationForm-authenticate'>
-                    <Button onClick={buttonAction} disabled={!canSubmit}>{buttonCta}</Button>
+                    <Button onClick={buttonAction} disabled={!canSubmit} loading={loading}>{buttonCta}</Button>
                 </section>
             
                 </form>

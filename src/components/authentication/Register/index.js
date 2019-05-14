@@ -28,6 +28,7 @@ class Register extends Component {
             isValid: null
         },
         formError: null,
+        loading: false,
     }
 
     updateValue = (event, field) => {
@@ -63,6 +64,7 @@ class Register extends Component {
         const canSubmit = this.canSubmit()
 
         if ( canSubmit ) {
+            this.setState({ loading: true })
             this.props.dispatch((userAsyncActions.submitRegister(firstName.value, lastName.value, email.value, password.value)))
         } else {
             this.setState({ formError: true})
@@ -71,7 +73,7 @@ class Register extends Component {
 
     render() {
 
-        const { firstName, lastName, email, password } = this.state;
+        const { firstName, lastName, email, password, loading } = this.state;
         const { registerError } = this.props.user
 
         if (this.props.user.token !== null) {
@@ -89,6 +91,7 @@ class Register extends Component {
                     buttonCta='Register'
                     buttonAction={this.submitRegister}
                     canSubmit={this.canSubmit()}
+                    loading={loading}
                 >
                     <section className='field fieldTwo'>
                         <label>First name</label> 
