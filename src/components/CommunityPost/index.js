@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import axios from 'axios'
 import dog from '../../resources/dog.jpg'
 import moment from 'moment'
@@ -29,19 +29,19 @@ class CommunityPost extends Component {
       method: 'get',
       url: `${ENDPOINT}/api/community_replies?post=${pk}`, 
       responseType: 'json',
-  })
-  .then(({data}) => {
-    this.setState({
-      replies: data,
-      reply: {
-        value: '',
-        isValid: null,
-      }
     })
-  })
-  .catch((error) => {
-    console.log(error)
-  })
+    .then(({data}) => {
+      this.setState({
+        replies: data,
+        reply: {
+          value: '',
+          isValid: null,
+        }
+      })
+    })
+    .catch((error) => {
+      console.log(error)
+    })
   }
 
   updateValue = (value) => {
@@ -78,7 +78,7 @@ class CommunityPost extends Component {
   render() {
 
     const { publish_date, title, post, first_name, last_name, pk } = this.props.post
-    const { activePost, updateActivePost } = this.props
+    const { activePost, updateActivePost, user } = this.props
     const { replies, reply } = this.state
     const isActive = activePost === pk
     const formattedDate = moment(publish_date).format("Do MMM YYYY")
@@ -107,16 +107,20 @@ class CommunityPost extends Component {
           <div className='CommunityPost-replies'>
             <div className='CommunityPost-repliesInner'>
               {replies.map((reply) => <Reply reply={reply} key={reply.pk}/>)}
-              <RichText 
-                showMenu={false}
-                editorState={reply.value} 
-                onChange={(value) => this.updateValue(value)} 
-                onBlur={() => this.handleBlur()}
-              />
-              <div className='CommunityPost-replyActions'>
-                <Button onClick={this.postReply}>Reply</Button>
-                <p>Cancel</p>
-              </div>
+              
+              {user.token && <Fragment>
+                  <RichText 
+                    showMenu={false}
+                    editorState={reply.value} 
+                    onChange={(value) => this.updateValue(value)} 
+                    onBlur={() => this.handleBlur()}
+                  />
+                <div className='CommunityPost-replyActions'>
+                  <Button onClick={this.postReply}>Reply</Button>
+                  <p>Cancel</p>
+                </div>
+              </Fragment>
+              }
             </div>
           </div>)}
       </div>
@@ -126,7 +130,7 @@ class CommunityPost extends Component {
 
 const mapStateToProps = (state) => {
   return {
-      communityPosts: state.community.communityPosts,
+      user: state.user,
   }
 }
 

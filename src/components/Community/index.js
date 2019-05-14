@@ -24,20 +24,20 @@ class Community extends Component {
 
     updateActivePost = (pk) => {
         const { activePost } = this.state
-         const newActivePost = (pk === activePost) ? null : pk
-         this.setState({activePost: newActivePost})
+        const newActivePost = (pk === activePost) ? null : pk
+        this.setState({activePost: newActivePost})
     }
 
     render() {
 
         const { newPostOpen, activePost } = this.state
-        const { communityPosts } = this.props
+        const { communityPosts, user } = this.props
 
     return (
             <div className='Community'>
                 <div className='Community-inner'>
                     <section className='Community-title'><h3>Community Hub</h3></section>
-                    <section className='Community-postButton'><Button onClick={this.toggleNewPost}>Create a post</Button></section>
+                    {user.token && <section className='Community-postButton'><Button onClick={this.toggleNewPost}>Create a post</Button></section>}
                     <section>
                         {communityPosts.map((post) => <CommunityPost key={post.pk} post={post} activePost={activePost} updateActivePost={this.updateActivePost}/>)}
                     </section>
@@ -58,6 +58,7 @@ class Community extends Component {
 
 const mapStateToProps = (state) => {
     return {
+        user: state.user,
         communityPosts: state.community.communityPosts,
     }
 }
