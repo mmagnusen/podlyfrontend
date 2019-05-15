@@ -89,11 +89,14 @@ class CommunityPost extends Component {
           <div className='CommunityPost-image'>
             <img src={dog} alt='profile'/>
           </div>
-          <div className='CommunityPost-content'>
+          <div className='CommunityPost-details'>
             <h3>{title}</h3>
-            <p>{`${first_name} ${last_name}`}{formattedDate}</p>
-            <div dangerouslySetInnerHTML={getDangerousHtml(post)}/>
+            <div className='CommunityPost-nameDate'> 
+              <p>{`${first_name} ${last_name}`}</p>
+              <p>{formattedDate}</p>
+              </div>
           </div>
+          <div dangerouslySetInnerHTML={getDangerousHtml(post)} className='CommunityPost-content'/>
         </section>
 
         <div className='CommunityPost-viewMore'>

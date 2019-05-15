@@ -18,7 +18,11 @@ $module: 'Community';
 
     &-postButton {
         display: flex;
-        justify-content: flex-end;
+        justify-content: center;
+        align-content: center;
+        @media screen and (min-width: $tabletBreakpoint) {  
+            justify-content: flex-end;
+         } 
         button {
             height: 40px;
             width: 200px;

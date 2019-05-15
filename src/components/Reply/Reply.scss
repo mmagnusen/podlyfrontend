@@ -9,7 +9,6 @@ $module: 'Reply';
     display: grid;
     grid-template-columns: 100px 1fr;
     grid-column-gap: 10px;
-
     &-image {
         img {
             height: 70px;
@@ -19,7 +18,12 @@ $module: 'Reply';
     }
 
     &-details {
+        margin-top: 0.7rem;
         display: flex;
+        flex-direction: column;
+        @media screen and (min-width: $tabletBreakpoint) {  
+            flex-direction: row;
+        } 
         p {
             margin: 0;
         }
@@ -28,5 +32,15 @@ $module: 'Reply';
     &-name {
         margin-right: 10px;
         font-weight: bold;
+    }
+
+    &-message {
+        grid-column-start: 1;
+        grid-column-end: 3;
+        @media screen and (min-width: $tabletBreakpoint) {  
+            grid-column-start: 2;
+            grid-column-end: 3;
+            margin-top: -3rem;
+        }
     }
 }
