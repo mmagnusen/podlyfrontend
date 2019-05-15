@@ -4,8 +4,8 @@ import { connect } from 'react-redux'
 import Select from 'react-select';
 import hostAsyncActions from '../../../redux/actions/host/asyncActions'
 import { formValidation } from '../../../utils/'
-import './NewHost.scss'
 import { storage } from '../../../firebase'
+import './NewHost.scss'
 
 class NewHost extends Component {
 
@@ -123,30 +123,33 @@ class NewHost extends Component {
     }
 
     handleUpload = () => {
-    const { pic } = this.state.profile
-       const uploadTask =  storage.ref(`profile/${pic.name}`).put(pic);
-       uploadTask.on('state_changed', 
-       (snapshot) => {
-           //progress function ...
-       },
-       (error) => {
-           //error function ...
-           console.log('error:', error)
-       },
-       () => {
-            //complete function ...
-            storage.ref('profile').child(pic.name).getDownloadURL().then(profile_url => {
-                console.log('type of url', typeof profile_url, profile_url)
-                
-                this.setState({
-                    profile: {
-                        ...this.state.profile,
-                        url: profile_url
-                    }
+        const { pic } = this.state.profile
+        debugger;
+        const uploadTask =  storage.ref(`profile/${pic.name}`).put(pic);
+        debugger;
+        uploadTask.on('state_changed', 
+        (snapshot) => {
+            //progress function ...
+        },
+        (error) => {
+            //error function ...
+            console.log('error:', error)
+        },
+        () => {
+                //complete function ...
+                storage.ref('profile').child(pic.name).getDownloadURL().then(profile_url => {
+                    debugger;
+                    console.log('type of url', typeof profile_url, profile_url)
+                    
+                    this.setState({
+                        profile: {
+                            ...this.state.profile,
+                            url: profile_url
+                        }
+                    })
                 })
-            })
-       },
-    )
+        },
+        )
     }
 
     render() {

@@ -19,4 +19,97 @@ $module: 'TabDetails';
         margin: 2rem 0 3rem 0;
     }
 
+    &-profilePic {
+        min-height: 300px;
+        box-sizing: border-box;
+        padding: 0 0 1rem 0;
+    }
+
+    &-profileEdit {
+        display: flex;
+        flex-direction: column;
+
+        [type="file"] {
+            border: 0;
+            clip: rect(0, 0, 0, 0);
+            height: 1px;
+            overflow: hidden;
+            padding: 0;
+            position: absolute !important;
+            white-space: nowrap;
+            width: 1px;  
+        }
+
+        [type="file"] + label {
+            background-color: $purple;
+            border-radius: 4px;
+            color: #fff;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            height: 40px;
+            width: 200px;
+            line-height: 4rem;
+            padding-left: 2rem;
+            padding-right: 2rem;
+            transition: background-color 0.3s;
+            margin-top: 2rem;
+        }
+           
+        [type="file"] + label * {
+            pointer-events: none;
+          }
+    }
+
+    &-reactCrop {
+        max-height: 500px;
+        background: $ash;
+        img {
+            height: auto;
+        }
+    }
+
+    &-profilePreview {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 2rem 0;
+        box-sizing: border-box;
+        margin-top: 1rem;
+        @media only screen and (min-width: $mobileLargeBreakpoint) {
+            margin-top: 0;
+        }
+        img {
+            height: 150px;
+            width: 150px;
+            border-radius: 50%;
+            border: 1px solid $ash;
+        }
+
+        i {
+            height: 70px;
+            width: 70px;
+            padding: 10px;
+            background: $turquoise;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 30px;
+            color: $white;
+        }
+
+        button {
+            background: $turquoise;
+            color: $white;
+            font-size: 14px;
+            margin-top: 1rem;
+        }
+    }
+
 }
