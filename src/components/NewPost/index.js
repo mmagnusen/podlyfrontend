@@ -56,7 +56,6 @@ class NewPost extends Component {
     }
 
     submitNewPost = (event) => {
-        console.log('submitNewPost')
         event.preventDefault()
 
         const { title, post } = this.state
