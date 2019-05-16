@@ -8,7 +8,7 @@ class Reply extends Component {
 
   render() {
 
-    const {first_name, last_name, content, publish_date,} = this.props.reply
+    const { first_name, last_name, content, publish_date } = this.props.reply
     const formattedDate = moment(publish_date).format("Do MMM YYYY")
 
     return (

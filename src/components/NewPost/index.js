@@ -56,9 +56,12 @@ class NewPost extends Component {
     }
 
     submitNewPost = (event) => {
+        console.log('submitNewPost')
+        event.preventDefault()
+
         const { title, post } = this.state
         const { toggleNewPost } = this.props
-        event.preventDefault()
+ 
         
         this.setState({
             loading: true,
@@ -111,6 +114,7 @@ class NewPost extends Component {
                         <section className='NewPost-post'>
                             <label>Post</label>
                             <RichText 
+                                showMenu={true}
                                 onChange={(value) => this.updateValue(value, 'post') } 
                                 onBlur={() => this.handleBlur('post')}
                             />
