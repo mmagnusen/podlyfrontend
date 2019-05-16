@@ -16,7 +16,7 @@ class Community extends Component {
         this.props.dispatch(communityAsyncActions.freshRequest())
     }
 
-    toggleNewPost = () => {
+    toggleNewPost = () => {    
         this.setState({
             newPostOpen: !this.state.newPostOpen
         })

@@ -113,14 +113,13 @@ class CommunityPost extends Component {
               
               {user.token && <Fragment>
                   <RichText 
-                    showMenu={false}
+                    showMenu={true}
                     editorState={reply.value} 
                     onChange={(value) => this.updateValue(value)} 
                     onBlur={() => this.handleBlur()}
                   />
                 <div className='CommunityPost-replyActions'>
                   <Button onClick={this.postReply}>Reply</Button>
-                  <p>Cancel</p>
                 </div>
               </Fragment>
               }
