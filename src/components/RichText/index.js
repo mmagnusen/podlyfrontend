@@ -129,20 +129,24 @@ class RichText extends Component {
         this.richTextOnChange(RichUtils.toggleInlineStyle(this.state.editorState, 'ITALIC')); 
     }
 
-    onAddLink = (e) => {
-        e.preventDefault();
-        const {editorState, urlValue} = this.state;
+    onAddLink = (event) => {
+   
+        let { editorState, urlValue } = this.state;
+        editorState = RichUtils.toggleInlineStyle(editorState, 'HIGHLIGHT');
         const contentState = editorState.getCurrentContent();
+
         const contentStateWithEntity = contentState.createEntity(
           'LINK',
           'MUTABLE',
           {url: urlValue}
         );
+
         const entityKey = contentStateWithEntity.getLastCreatedEntityKey();
         const newEditorState = EditorState.set(editorState, { currentContent: contentStateWithEntity });
+
         this.setState({
             showUrlInput: false,
-          editorState: RichUtils.toggleLink(
+            editorState: RichUtils.toggleLink(
             newEditorState,
             newEditorState.getSelection(),
             entityKey
@@ -155,6 +159,7 @@ class RichText extends Component {
       }
     
     handleKeyCommand = command => {
+        
 		const newState = RichUtils.handleKeyCommand(
 			this.state.editorState,
 			command
@@ -166,11 +171,31 @@ class RichText extends Component {
 		return "not-handled";
     };
     
-    toggleUrlInput = () => {
+    toggleUrlInput = (event) => {
+        event.preventDefault();
         this.setState({
             showUrlInput: !this.state.showUrlInput
         })
     }
+
+    isSelection = (editorState) => {
+        const selection = editorState.getSelection();
+        const start = selection.getStartOffset();
+        const end = selection.getEndOffset();
+        return start !== end;
+    };
+    
+    onChange(editorState) {
+      if (!this.isSelection(editorState)) {
+        return;
+      }
+    }
+
+    styleMap = {
+        'HIGHLIGHT': {
+          backgroundColor: 'lightgreen'
+         }
+      };
 
   render() {
 
@@ -188,7 +213,7 @@ class RichText extends Component {
             )}
             {showUrlInput &&
                 (<div className='RichText-saveUrl'>
-                    <Input value={urlValue} onChange={this.updateUrl}/>
+                    <Input value={urlValue} onChange={this.updateUrl} autoFocus={true}/>
                     <Button type="button" className="RichText-editorButton" onClick={this.onAddLink}>
                         <i className="fas fa-check-circle" onClick={this.onAddLink}/>
                     </Button>
