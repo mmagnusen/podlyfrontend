@@ -2,65 +2,12 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { withRouter } from "react-router";
 import { Button, Input } from '../'
-import { Editor, EditorState, RichUtils, convertToRaw, ContentState, CompositeDecorator } from 'draft-js';
+import { EditorState, RichUtils, convertToRaw, ContentState } from 'draft-js';
+import Editor from "draft-js-plugins-editor";
 import { convertEditorFromDb } from '../../utils'
+import addLinkPlugin from './addLinkPlugin'
 import { bool } from 'prop-types';
 import './RichText.scss'
-
-function findLinkEntities(contentBlock, callback, contentState) {
-    contentBlock.findEntityRanges(
-      (character) => {
-        const entityKey = character.getEntity();
-        return (
-          entityKey !== null &&
-          contentState.getEntity(entityKey).getType() === 'LINK'
-        );
-      },
-      callback
-    );
-  }
-  
-  const Link = (props) => {
-    const {url} = props.contentState.getEntity(props.entityKey).getData();
-    return (
-      <a href={url} style={styles.link}>
-        {props.children}
-      </a>
-    );
-  };
-
-  const styles = {
-    root: {
-      fontFamily: '\'Georgia\', serif',
-      padding: 20,
-      width: 600,
-    },
-    buttons: {
-      marginBottom: 10,
-    },
-    urlInputContainer: {
-      marginBottom: 10,
-    },
-    urlInput: {
-      fontFamily: '\'Georgia\', serif',
-      marginRight: 10,
-      padding: 3,
-    },
-    editor: {
-      border: '1px solid #ccc',
-      cursor: 'text',
-      minHeight: 80,
-      padding: 10,
-    },
-    button: {
-      marginTop: 10,
-      textAlign: 'center',
-    },
-    link: {
-      color: '#3b5998',
-      textDecoration: 'underline',
-    },
-  };
 class RichText extends Component {    
     constructor(props) {
         super(props)
@@ -69,19 +16,14 @@ class RichText extends Component {
         const immutableContent = editorState ? convertEditorFromDb(editorState) : null
     
         //if there is editorState, it means we are editing existing text. If not, we need to create new empty state
-        
-        const decorator = new CompositeDecorator([
-            {
-              strategy: findLinkEntities,
-              component: Link,
-            },
-          ]);
 
         this.state = {
-            editorState: editorState ? EditorState.createWithContent(immutableContent) : EditorState.createEmpty(decorator),
+            editorState: editorState ? EditorState.createWithContent(immutableContent) : EditorState.createEmpty(),
             urlValue: '',
             showUrlInput: false,
         }
+
+        this.plugins = [addLinkPlugin];
     }
 
     componentWillReceiveProps(nextProps) {
@@ -99,13 +41,12 @@ class RichText extends Component {
         showMenu: true
       }
     
-    richTextOnChange = (editorState) => {
+    onChange = (editorState) => {
         //stringified is what we send to db
         const stringifiedContent = JSON.stringify(convertToRaw(editorState.getCurrentContent()))
 
         this.setState({
             editorState,
-            stringifiedContent,
         }, () =>  { this.props.onChange(stringifiedContent) });
 
     }
@@ -116,61 +57,19 @@ class RichText extends Component {
 
     onUnderlineClick = (event) => {
         event.preventDefault() //stops form from submitting and closing modals
-        this.richTextOnChange(RichUtils.toggleInlineStyle(this.state.editorState, 'UNDERLINE'));
+        this.onChange(RichUtils.toggleInlineStyle(this.state.editorState, 'UNDERLINE'));
     }
   
     onBoldClick = (event) => {
         event.preventDefault()
-        this.richTextOnChange(RichUtils.toggleInlineStyle(this.state.editorState, 'BOLD')); 
+        this.onChange(RichUtils.toggleInlineStyle(this.state.editorState, 'BOLD')); 
     }
   
     onItalicClick = (event) => {
         event.preventDefault()
-        this.richTextOnChange(RichUtils.toggleInlineStyle(this.state.editorState, 'ITALIC')); 
+        this.onChange(RichUtils.toggleInlineStyle(this.state.editorState, 'ITALIC')); 
     }
 
-    onAddLink = (event) => {
-   
-        let { editorState, urlValue } = this.state;
-        editorState = RichUtils.toggleInlineStyle(editorState, 'HIGHLIGHT');
-        const contentState = editorState.getCurrentContent();
-
-        const contentStateWithEntity = contentState.createEntity(
-          'LINK',
-          'MUTABLE',
-          {url: urlValue}
-        );
-
-        const entityKey = contentStateWithEntity.getLastCreatedEntityKey();
-        const newEditorState = EditorState.set(editorState, { currentContent: contentStateWithEntity });
-
-        this.setState({
-            showUrlInput: false,
-            editorState: RichUtils.toggleLink(
-            newEditorState,
-            newEditorState.getSelection(),
-            entityKey
-          ),
-          showURLInput: false,
-          urlValue: '',
-        }, () => {
-         ;
-        });
-      }
-    
-    handleKeyCommand = command => {
-        
-		const newState = RichUtils.handleKeyCommand(
-			this.state.editorState,
-			command
-		);
-		if (newState) {
-			this.richTextOnChange(newState);
-			return "handled";
-		}
-		return "not-handled";
-    };
-    
     toggleUrlInput = (event) => {
         event.preventDefault();
         this.setState({
@@ -178,24 +77,46 @@ class RichText extends Component {
         })
     }
 
-    isSelection = (editorState) => {
+    onAddLink = () => {
+        const { editorState, urlValue } = this.state;
         const selection = editorState.getSelection();
-        const start = selection.getStartOffset();
-        const end = selection.getEndOffset();
-        return start !== end;
+
+        if (!urlValue) {
+			this.onChange(RichUtils.toggleLink(editorState, selection, null));
+			return "handled";
+        }
+        
+        const content = editorState.getCurrentContent();
+
+        const contentWithEntity = content.createEntity(
+          'LINK',
+          'MUTABLE',
+          {url: urlValue}
+        );
+
+        const newEditorState = EditorState.push(editorState, contentWithEntity, 'create-entity');
+        const entityKey = contentWithEntity.getLastCreatedEntityKey();
+        this.onChange(RichUtils.toggleLink(newEditorState, selection, entityKey));
+
+        //hides linkinput
+        this.setState({showUrlInput: false})
+        return "handled";
+      }
+
+    handleKeyCommand = command => {
+        
+		const newState = RichUtils.handleKeyCommand(
+			this.state.editorState,
+			command
+		);
+		if (newState) {
+			this.onChange(newState);
+			return "handled";
+		}
+		return "not-handled";
     };
     
-    onChange(editorState) {
-      if (!this.isSelection(editorState)) {
-        return;
-      }
-    }
-
-    styleMap = {
-        'HIGHLIGHT': {
-          backgroundColor: 'lightgreen'
-         }
-      };
+ 
 
   render() {
 
@@ -222,8 +143,9 @@ class RichText extends Component {
                 <Editor 
                     editorState={editorState} 
                     handleKeyCommand={handleEditorKeyCommand}
-                    onChange={this.richTextOnChange}
+                    onChange={this.onChange}
                     onBlur={() => onBlur()}
+                    plugins={this.plugins}
                 />
             </section>
         </section>
