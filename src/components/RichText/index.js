@@ -87,7 +87,7 @@ class RichText extends Component {
 			this.onChange(RichUtils.toggleLink(editorState, selection, null));
 			return "handled";
         }
-        
+
         const content = editorState.getCurrentContent();
 
         const contentWithEntity = content.createEntity(
@@ -99,8 +99,8 @@ class RichText extends Component {
         const newEditorState = EditorState.push(editorState, contentWithEntity, 'create-entity');
         const entityKey = contentWithEntity.getLastCreatedEntityKey();
         this.onChange(RichUtils.toggleLink(newEditorState, selection, entityKey));
-
-        //hides linkinput
+        
+        //hides link input
         this.setState({showUrlInput: false})
         return "handled";
       }
@@ -117,8 +117,6 @@ class RichText extends Component {
 		}
 		return "not-handled";
     };
-    
- 
 
   render() {
 
@@ -136,7 +134,7 @@ class RichText extends Component {
             )}
             {showUrlInput &&
                 (<div className='RichText-saveUrl'>
-                    <Input value={urlValue} onChange={this.updateUrl} autoFocus={true}/>
+                    <Input value={urlValue} onChange={this.updateUrl} autoFocus={true} placeHolder='Paste full url'/>
                     <Button type="button" className="RichText-editorButton" onClick={this.onAddLink}>
                         <i className="fas fa-check-circle" onClick={this.onAddLink}/>
                     </Button>
@@ -148,6 +146,7 @@ class RichText extends Component {
                     onChange={this.onChange}
                     onBlur={() => onBlur()}
                     plugins={this.plugins}
+                    customStyleMap={styleMap} 
                 />
             </section>
         </section>
@@ -160,5 +159,11 @@ const mapStateToProps = (state) => {
         search: state.search
     }
 }
+
+const styleMap = {
+    'HIGHLIGHT': {
+      backgroundColor: 'lightgreen'
+     }
+  };
 
 export default connect(mapStateToProps)(withRouter(RichText));
