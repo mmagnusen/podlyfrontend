@@ -8,12 +8,14 @@ import { convertEditorFromDb } from '../../utils'
 import addLinkPlugin from './addLinkPlugin'
 import { bool } from 'prop-types';
 import './RichText.scss'
+
 class RichText extends Component {    
     constructor(props) {
         super(props)
         const { editorState } = this.props
 
         const immutableContent = editorState ? convertEditorFromDb(editorState) : null
+
     
         //if there is editorState, it means we are editing existing text. If not, we need to create new empty state
 
