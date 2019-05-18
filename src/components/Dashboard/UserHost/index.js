@@ -30,7 +30,7 @@ class UserHost extends Component {
                     <p>{twitter_name}</p> 
                 </section>
                 <section className='UserHost-detail'>       
-                    <p>snippet:</p> 
+                    <p>Twitter Url:</p> 
                     <p>{twitter_url}</p> 
                 </section>
                 <section className='UserHost-bio'>       
