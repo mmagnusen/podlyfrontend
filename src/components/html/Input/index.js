@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import classnames from 'classnames'
-import { func, oneOf } from 'prop-types';
+import { func, oneOf, bool } from 'prop-types';
 import { INPUT_TYPE } from '../../../constants'
 import './Input.scss'
 
@@ -11,12 +11,14 @@ class Input extends Component {
     }
 
     static propTypes = {
+        autoFocus: bool,
         onChange: func, 
         onBlur: func,
         type: oneOf(Object.values(INPUT_TYPE))
     }
     
     static defaultProps = {
+        autoFocus: false,
         onChange: () => { },
         onBlur: () => { },
         value: null
@@ -61,12 +63,13 @@ class Input extends Component {
 
     render() {
 
-        const { icon, type, value, onChange, onBlur, placeHolder } = this.props
+        const { icon, type, value, onChange, onBlur, placeHolder, autoFocus } = this.props
         const { showPassword } = this.state
         
         return (
             <section className='Input'>
                 <input  
+                    autoFocus={autoFocus}
                     autoComplete={this.getAutoCompleteValue(type)}
                     onChange={(event) => onChange(event)} 
                     onKeyPress={this.handleKeypress} 

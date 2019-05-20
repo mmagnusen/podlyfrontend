@@ -12,11 +12,20 @@ $module: 'CommunityPost';
 
     &-originalPost {
         display: grid;
-        grid-template-columns: 150px 1fr;
-        grid-column-gap: 20px;
+        grid-template-columns: 1fr;
+        grid-row-gap: 20px;
+        @media screen and (min-width: $mobileLargeBreakpoint) {  
+            grid-column-gap: 20px;
+            grid-template-columns: 150px 1fr;
+        } 
     }
 
     &-image {
+        display: flex;
+        justify-content: flex-start;
+        @media screen and (min-width: $tabletBreakpoint) {  
+            justify-content: center;
+        } 
         img {
             height: 100px;
             width: 100px;
@@ -24,9 +33,31 @@ $module: 'CommunityPost';
         }
     }
 
-    &-content {
+    &-details {
+
         h3 {
-            margin: 0;
+            margin: 1rem 0 0 0;
+        }
+    }
+
+    &-nameDate {
+        display: flex;
+        flex-direction: column;
+        p {
+            margin: 0.5rem 0;
+        }
+        @media screen and (min-width: $tabletBreakpoint) {  
+            flex-direction: row;
+        } 
+    }
+
+    &-content {
+        grid-column-start: 1;
+        grid-column-end: 3;
+        @media screen and (min-width: $tabletBreakpoint) {  
+            grid-column-start: 2;
+            grid-column-end: 3;
+            margin-top: -3rem;
         }
     }
 
@@ -56,8 +87,10 @@ $module: 'CommunityPost';
     }
 
     &-repliesInner {
-        width: calc(100% - 170px);
-      
+        width: 100%;
+        @media screen and (min-width: $tabletBreakpoint) {  
+            width: calc(100% - 170px);
+         } 
     }
 
     .RichText-editor {

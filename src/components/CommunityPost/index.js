@@ -89,11 +89,14 @@ class CommunityPost extends Component {
           <div className='CommunityPost-image'>
             <img src={dog} alt='profile'/>
           </div>
-          <div className='CommunityPost-content'>
+          <div className='CommunityPost-details'>
             <h3>{title}</h3>
-            <p>{`${first_name} ${last_name}`}{formattedDate}</p>
-            <div dangerouslySetInnerHTML={getDangerousHtml(post)}/>
+            <div className='CommunityPost-nameDate'> 
+              <p>{`${first_name} ${last_name}`}</p>
+              <p>{formattedDate}</p>
+              </div>
           </div>
+          <div dangerouslySetInnerHTML={getDangerousHtml(post)} className='CommunityPost-content'/>
         </section>
 
         <div className='CommunityPost-viewMore'>
@@ -110,14 +113,13 @@ class CommunityPost extends Component {
               
               {user.token && <Fragment>
                   <RichText 
-                    showMenu={false}
+                    showMenu={true}
                     editorState={reply.value} 
                     onChange={(value) => this.updateValue(value)} 
                     onBlur={() => this.handleBlur()}
                   />
                 <div className='CommunityPost-replyActions'>
                   <Button onClick={this.postReply}>Reply</Button>
-                  <p>Cancel</p>
                 </div>
               </Fragment>
               }
