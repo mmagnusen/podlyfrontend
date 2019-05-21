@@ -19,15 +19,17 @@ $module: 'TabDetails';
         margin: 2rem 0 3rem 0;
     }
 
-    &-profilePic {
+    &-profile {
         min-height: 300px;
         box-sizing: border-box;
         padding: 0 0 1rem 0;
     }
 
     &-profileEdit {
-        display: flex;
-        flex-direction: column;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-column-gap: 20px;
+   
 
         [type="file"] {
             border: 0;
@@ -57,7 +59,6 @@ $module: 'TabDetails';
             padding-left: 2rem;
             padding-right: 2rem;
             transition: background-color 0.3s;
-            margin-top: 2rem;
         }
            
         [type="file"] + label * {
@@ -65,29 +66,26 @@ $module: 'TabDetails';
           }
     }
 
-    &-reactCrop {
-        max-height: 500px;
-        background: $ash;
-        img {
-            height: auto;
-        }
-    }
 
-    &-profilePreview {
+    .img-preview {
+        max-width: 200px;
+        max-height: 200px;
+    }
+    &-profileUpload {
+        background: $ash;
         display: flex;
         justify-content: center;
-        flex-direction: column;
-        align-items: flex-start;
+        align-items: center;;
         padding: 2rem 0;
         box-sizing: border-box;
         margin-top: 1rem;
+        background: $ash;
         @media only screen and (min-width: $mobileLargeBreakpoint) {
             margin-top: 0;
         }
         img {
             height: 150px;
             width: 150px;
-            border-radius: 50%;
             border: 1px solid $ash;
         }
 
