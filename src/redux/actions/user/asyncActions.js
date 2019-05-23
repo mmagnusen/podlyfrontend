@@ -20,7 +20,7 @@ const userAsyncActions = {
                 responseType: 'json'
             })
             .then(({data}) => {
-
+                console.log(data)
                 if ( data.token ) {
                     dispatch(podcastAsyncActions.getUserPodcasts(data.token))
                     localStorage.setItem('firstName', data.user.first_name)
@@ -31,7 +31,8 @@ const userAsyncActions = {
                         first_name: data.user.first_name,
                         last_name: data.user.last_name,
                         email: data.user.email,
-                        token: data.token
+                        token: data.token,
+                        pk: data.user.pk
                     }))
                 }
             })

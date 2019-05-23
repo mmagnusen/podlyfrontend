@@ -11,7 +11,7 @@ class TabDetails extends Component {
         }
     }
 
-    sendToFirebase = (croppedImageBlob, blob) => {
+    sendToFirebase = (blob) => {
         const uploadTask =  storage.ref(`profile/${'marilyn'}`).put(blob);
         uploadTask.on('state_changed', 
         (snapshot) => {

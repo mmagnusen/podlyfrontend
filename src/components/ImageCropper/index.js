@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ReactCrop from "react-image-crop";
+import classnames from 'classnames'
 import "react-image-crop/dist/ReactCrop.css";
 import 'react-image-crop-component/style.css';
 import { Button } from '../'
@@ -7,22 +8,27 @@ import './ImageCropper.scss'
 
 class ImageCropper extends Component {
 
-    state = {
-        src: null,
+    defaultState = {
+        originalUploadedImage: null,
         crop: {
             aspect: 10 / 10,
             width: 200,
             x: 0,
             y: 0
         },
+        blob: null,
         croppedImageBlob: null 
+    }
+
+    state = {
+        ...this.defaultState
     }
 
     onSelectFile = e => {
         if (e.target.files && e.target.files.length > 0) {
           const reader = new FileReader();
           reader.addEventListener("load", () =>
-            this.setState({ src: reader.result})
+            this.setState({ originalUploadedImage: reader.result})
           );
           reader.readAsDataURL(e.target.files[0]);
         }
@@ -91,33 +97,48 @@ class ImageCropper extends Component {
 
     saveImage = () => {
         const { saveImage } = this.props;
-        const { croppedImageBlob, blob } = this.state
+        const { blob } = this.state
 
-        saveImage(croppedImageBlob, blob)
+        saveImage(blob)
+    }
 
+    resetImage = () => {
+        this.setState({...this.defaultState})
     }
 
     render() {
-        const { crop, croppedImageBlob, src } = this.state;
+        const { originalUploadedImage, crop, croppedImageBlob} = this.state;
         return (
             <div className='ImageCropper'>
-                <div>
-                    <input type="file" onChange={this.onSelectFile} />
+                <div className='ImageCropper-grid'>
+                    <div className={classnames('ImageCropper-left', {'center': !originalUploadedImage })}>
+                        {originalUploadedImage   ? 
+                            <ReactCrop
+                                src={originalUploadedImage}
+                                crop={crop}
+                                onImageLoaded={this.onImageLoaded}
+                                onComplete={this.onCropComplete}
+                                onChange={this.onCropChange}
+                            />
+                            :
+                            <i className="fas fa-question" /> 
+                        }
+                    </div>
+                    <div className='ImageCropper-right'>
+                    {croppedImageBlob ? 
+                        <img alt="Crop" style={{ maxWidth: "100%" }} src={croppedImageBlob} />
+                    :
+                    <div className='ImageCropper-profileUpload'>
+                        <input type="file" id='file' onChange={this.onSelectFile} />
+                        <label htmlFor="file" >choose profile pic</label>
+                    </div>}
+                    </div>
                 </div>
-                {src && (
-                    <ReactCrop
-                        src={src}
-                        crop={crop}
-                        onImageLoaded={this.onImageLoaded}
-                        onComplete={this.onCropComplete}
-                        onChange={this.onCropChange}
-                    />
-                )}
                 {croppedImageBlob && (
-                    <img alt="Crop" style={{ maxWidth: "100%" }} src={croppedImageBlob} />
-                )}
-                {croppedImageBlob && (
-                        <Button onClick={this.saveImage}> Save Image</Button>
+                        <div className='ImageCropper-imageControls'>
+                            <Button classes='Reset' onClick={this.resetImage}> Remove Image</Button>
+                            <Button classes='Save' onClick={this.saveImage}> Save Image</Button>
+                        </div>
                     )  
                 }
             </div>
