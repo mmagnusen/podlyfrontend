@@ -61,6 +61,7 @@ const userAsyncActions = {
                     localStorage.setItem('lastName', data.last_name)
                     localStorage.setItem('email', data.email)
                     localStorage.setItem('token', data.token)
+                    localStorage.setItem('pk', data.pk)
                 }
                 setTimeout( () =>  dispatch(userActionGenerators.setUserDetails(data), 200));  
             })

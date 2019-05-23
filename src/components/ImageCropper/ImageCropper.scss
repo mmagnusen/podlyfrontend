@@ -6,9 +6,13 @@ $module: 'ImageCropper';
 .#{$module} {   
     &-grid {
         display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        grid-column-gap: 20px;
+        grid-template-columns: 1fr;
+        grid-row-gap: 30px;
         min-height: 300px;
+        @media screen and (min-width: $computerBreakpoint) { 
+            grid-template-columns: repeat(2, 1fr);
+            grid-column-gap: 20px;
+        }
     }
 
     .center {
@@ -21,6 +25,10 @@ $module: 'ImageCropper';
     &-left {
         background: $ash;
         min-height: 300px;
+        display: flex;
+        justify-content: center;
+        padding: 30px;
+        box-sizing: border-box;
 
         i {
             height: 120px;
@@ -44,6 +52,7 @@ $module: 'ImageCropper';
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        padding: 30px;
         img {
             height: auto;
             width: auto;
@@ -73,11 +82,11 @@ $module: 'ImageCropper';
             font-family: 'Poppins', sans-serif;
             font-size: 1rem;
             font-weight: 700;
-            height: 40px;
-            width: 200px;
-            line-height: 4rem;
-            padding-left: 2rem;
-            padding-right: 2rem;
+            min-height: 40px;
+            width: 130px;
+            line-height: 1.5rem;
+            padding: 1rem 1rem;
+            text-align: center;
             transition: background-color 0.3s;
         }
            

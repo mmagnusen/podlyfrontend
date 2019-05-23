@@ -12,7 +12,8 @@ class TabDetails extends Component {
     }
 
     sendToFirebase = (blob) => {
-        const uploadTask =  storage.ref(`profile/${'marilyn'}`).put(blob);
+        const { pk } = this.props.user
+        const uploadTask =  storage.ref(`profile/user_${pk}`).put(blob);
         uploadTask.on('state_changed', 
         (snapshot) => {
             //progress function ...
@@ -23,7 +24,7 @@ class TabDetails extends Component {
         },
         () => {
              //complete function ...
-             storage.ref('profile').child('marilyn').getDownloadURL().then(profile_url => {
+             storage.ref('profile').child(`user_${pk}`).getDownloadURL().then(profile_url => {
                  console.log('type of url', typeof profile_url, profile_url)
                  
                  this.setState({
