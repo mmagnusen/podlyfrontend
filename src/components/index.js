@@ -21,6 +21,7 @@ export { default as Footer } from './Footer'
 export { default as Contact } from './Contact' 
 export { default as CommunityPost } from './CommunityPost'
 export { default as NewPost } from './NewPost'
+export { default as ImageCropper } from './ImageCropper'
 
 export { default as Host } from './Host'
 export { default as Discover } from './Discover'
