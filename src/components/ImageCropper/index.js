@@ -107,7 +107,7 @@ class ImageCropper extends Component {
     }
 
     render() {
-        const { originalUploadedImage, crop, croppedImageBlob} = this.state;
+        const { originalUploadedImage, crop, croppedImageBlob, loading } = this.state;
         return (
             <div className='ImageCropper'>
                 <div className='ImageCropper-grid'>
@@ -137,7 +137,7 @@ class ImageCropper extends Component {
                 {croppedImageBlob && (
                         <div className='ImageCropper-imageControls'>
                             <Button classes='Reset' onClick={this.resetImage}> Remove Image</Button>
-                            <Button classes='Save' onClick={this.saveImage}> Save Image</Button>
+                            <Button classes='Save' onClick={this.saveImage} loading={loading}> Save Image</Button>
                         </div>
                     )  
                 }

@@ -39,6 +39,11 @@ const userReducer = (state = defaultUserState, action = {}) => {
                 ...state,
                 loginError: action.error
             }
+        case 'SET_PROFILE':
+            return {
+                ...state,
+                profile: action.profile
+            }
         default:
             return state
      }

@@ -6,6 +6,7 @@ import { ENDPOINT } from '../../../constants'
 
 axios.defaults.xsrfCookieName = 'csrftoken';
 axios.defaults.xsrfHeaderName = 'X-CSRFToken';
+const token = localStorage.getItem('token');
 
 const userAsyncActions = { 
     submitLogin: (email, password) => {
@@ -27,6 +28,7 @@ const userAsyncActions = {
                     localStorage.setItem('lastName', data.user.last_name)
                     localStorage.setItem('email', data.user.email)
                     localStorage.setItem('token', data.token)
+                    localStorage.setItem('pk', data.user.pk)
                     dispatch(userActionGenerators.setUserDetails({
                         first_name: data.user.first_name,
                         last_name: data.user.last_name,
@@ -69,6 +71,45 @@ const userAsyncActions = {
                 const parsedError = handleResponseError(response.data, 'register')
                 dispatch(userActionGenerators.registerError(parsedError))
             })
+        }  
+    },
+    updateProfile: (image, getProfile) => {
+        return (dispatch) => {
+            axios({
+                method: 'post',
+                url: `${ENDPOINT}/api/user_profile`, 
+                headers: {
+                    'Authorization': 'JWT '+ token
+                    },
+                responseType: 'json',
+                data: {
+                    image,
+                },
+            })
+            .then(({data}) => {
+                getProfile()
+            })
+            .catch(({response}) => {
+              console.log(response)
+            })
+        }
+    },
+    getProfile: () => {
+        return (dispatch) => {
+            axios({
+                method: 'get',
+                url: `${ENDPOINT}/api/user_profile`, 
+                headers: {
+                    'Authorization': 'JWT '+ token
+                    },
+                responseType: 'json'
+            })
+            .then(({data}) => {
+                dispatch(userActionGenerators.setProfile(data[0]))
+            })
+            .catch((error) => {
+                console.log('error', error)
+            }) 
         }  
     },
 }

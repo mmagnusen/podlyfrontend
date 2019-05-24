@@ -9,10 +9,11 @@ const defaultUserState = {
     lastName: lastName,
     email: email,
     token: token,
-    pk,
+    pk: pk,
     dashboardTabIndex: 0,
     registerError: null,
-    loginError: null
+    loginError: null,
+    profile: null,
 }
 
 export default defaultUserState

@@ -34,6 +34,12 @@ const userActionGenerators = {
             type: 'LOGIN_ERROR',
             error
         } 
+    },
+    setProfile: (profile) => {
+        return {
+            type: 'SET_PROFILE',
+            profile
+        }
     }
 }
 
