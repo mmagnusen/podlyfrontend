@@ -12,7 +12,7 @@ class DesktopLoggedOut extends Component {
             <Link to="/"><h1>Platfore</h1></Link>
         </section>
         <section className="DesktopLoggedOut-middle">
-            <h3>Connecting podcasts with engaging guests</h3>
+                <Link to="/community"><h4>Community</h4></Link>
         </section>
         <section className="DesktopLoggedOut-authenticate">
             <Link to='/login'>
