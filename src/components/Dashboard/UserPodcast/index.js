@@ -36,10 +36,6 @@ class UserPodcast extends Component {
                         <p className='Dashboard-value'>{start_date}</p>
                     </section>
                     <section className="Dashboard-infoLabel">
-                        <p className='Dashboard-label'>Host:</p>
-                        <p className='Dashboard-value'>{hosts}</p>
-                    </section>
-                    <section className="Dashboard-infoLabel">
                         <p className='Dashboard-label'>Link to podcast:</p>
                         <p className='Dashboard-value'>{url}</p>
                     </section>
