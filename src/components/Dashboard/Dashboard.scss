@@ -47,4 +47,34 @@ $module: 'Dashboard';
             }
         } 
     } 
+
+    &-label {
+        font-weight: bold;
+        margin: 0;
+        @media only screen and (min-width: $mobileLargeBreakpoint) {
+            padding: 1rem 0;
+        }
+    }
+
+    &-value {
+        background: $ash;
+        padding: 0.5rem 1rem;
+        display: flex;
+        width: max-content;
+        border-radius: 4px;
+        margin: 0;
+        @media only screen and (min-width: $mobileLargeBreakpoint) {
+            padding: 1rem;
+        }
+    }
+
+    &-infoLabel {
+        margin: 2rem 0 3rem 0;
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-row-gap: 0.5rem;
+        @media only screen and (min-width: $mobileLargeBreakpoint) {
+            grid-template-columns: 150px 1fr;
+        }
+    }
 }

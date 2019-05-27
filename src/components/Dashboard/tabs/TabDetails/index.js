@@ -54,17 +54,20 @@ class TabDetails extends Component {
                 <section className='TabDetails-title'>
                     <h3>Your details</h3>
                 </section>
-                <section className='TabDetails-email'>
-                    <p>Email:</p> { user.email }
+                <section className='Dashboard-infoLabel'>
+                    <p className='Dashboard-label'> Email:</p> 
+                    <p className='Dashboard-value'> { user.email }</p> 
                 </section>
-                <section className='TabDetails-firstName'>
-                    <p>First Name:</p>  { user.firstName }
+                <section className='Dashboard-infoLabel'>
+                    <p className='Dashboard-label'>First Name:</p>  
+                    <p className='Dashboard-value'>{ user.firstName }</p>
                 </section>
-                <section className='TabDetails-lastName'>
-                    <p>Last Name:</p>  { user.lastName }
+                <section className='Dashboard-infoLabel'>
+                    <p className='Dashboard-label'>Last Name:</p>  
+                    <p className='Dashboard-value'>{ user.lastName }</p> 
                 </section>
                 <section className='TabDetails-profile'>
-                    <p>Your profile picture:</p> 
+                    <p className='Dashboard-label'>Profile picture:</p> 
                     <section>
                         {user && user.profile && user.profile.image ?
                             <div className='TabDetails-profileImage'>

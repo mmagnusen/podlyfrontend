@@ -112,17 +112,20 @@ class CommunityPost extends Component {
             <div className='CommunityPost-repliesInner'>
               {replies.map((reply) => <Reply reply={reply} key={reply.pk}/>)}
               
-              {user.token && <Fragment>
+              {user.token ? (
+                <Fragment>
                   <RichText 
                     showMenu={true}
                     editorState={reply.value} 
                     onChange={(value) => this.updateValue(value)} 
                     onBlur={() => this.handleBlur()}
                   />
-                <div className='CommunityPost-replyActions'>
-                  <Button onClick={this.postReply}>Reply</Button>
-                </div>
-              </Fragment>
+                  <div className='CommunityPost-replyActions'>
+                    <Button onClick={this.postReply}>Reply</Button>
+                  </div>
+                </Fragment>
+              ) :
+              <div className='CommunityPost-loggedOutReply'>You must be logged in to reply to this post</div>
               }
             </div>
           </div>)}

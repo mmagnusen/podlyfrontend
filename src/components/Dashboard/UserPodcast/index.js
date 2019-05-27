@@ -23,23 +23,28 @@ class UserPodcast extends Component {
             <div className='UserPodcast'>
              
                     <div className="UserPodcast-details">
-                    <section className="UserPodcast-twoColumn">
-                        <p>Name:</p><p>{name}</p>
+                    <section className="Dashboard-infoLabel">
+                        <p className='Dashboard-label'>Name:</p>
+                        <p className='Dashboard-value'>{name}</p>
                     </section>
-                    <section className="UserPodcast-twoColumn">
-                        <p>Tags:</p><p>{tags}</p>
+                    <section className="Dashboard-infoLabel">
+                        <p className='Dashboard-label'>Tags:</p>
+                        <p className='Dashboard-value'>{tags}</p>
                     </section>
-                    <section className="UserPodcast-twoColumn">
-                        <p>Age:</p><p>{start_date}</p>
+                    <section className="Dashboard-infoLabel">
+                        <p className='Dashboard-label'>Age:</p>
+                        <p className='Dashboard-value'>{start_date}</p>
                     </section>
-                    <section className="UserPodcast-twoColumn">
-                        <p>Host:</p><p>{hosts}</p>
+                    <section className="Dashboard-infoLabel">
+                        <p className='Dashboard-label'>Host:</p>
+                        <p className='Dashboard-value'>{hosts}</p>
                     </section>
-                    <section className="UserPodcast-twoColumn">
-                        <p>Link to podcast:</p><p>{url}</p>
+                    <section className="Dashboard-infoLabel">
+                        <p className='Dashboard-label'>Link to podcast:</p>
+                        <p className='Dashboard-value'>{url}</p>
                     </section>
-                    <section className="UserPodcast-description">
-                        <p>Description:</p>
+                    <section>
+                        <p className='Dashboard-label'>Description:</p>
                         <div dangerouslySetInnerHTML={descriptionHtml}/>
                     </section>
                     </div>
