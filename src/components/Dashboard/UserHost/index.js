@@ -21,20 +21,20 @@ class UserHost extends Component {
 
         return (
             <section className='UserHost'>
-                <section className='UserHost-detail'>
-                    <p>Name:</p> 
-                    <p>{name}</p> 
+                <section className="Dashboard-infoLabel">
+                    <p className='Dashboard-label'>Name:</p> 
+                    <p className='Dashboard-value'>{name}</p> 
                 </section>
-                <section className='UserHost-detail'>
-                    <p>Twitter Handle:</p> 
-                    <p>{twitter_name}</p> 
+                <section className="Dashboard-infoLabel">
+                    <p className='Dashboard-label'>Twitter Handle:</p> 
+                    <p className='Dashboard-value'>{twitter_name}</p> 
                 </section>
-                <section className='UserHost-detail'>       
-                    <p>Twitter Url:</p> 
-                    <p>{twitter_url}</p> 
+                <section className="Dashboard-infoLabel">       
+                    <p className='Dashboard-label'>Twitter Url:</p> 
+                    <p className='Dashboard-value'>{twitter_url}</p> 
                 </section>
                 <section className='UserHost-bio'>       
-                    <p>Bio:</p> 
+                    <p className='Dashboard-label'>Bio:</p> 
                     <div dangerouslySetInnerHTML={bioHtml}/>
                 </section>
                 <section className='UserHost-edit'>

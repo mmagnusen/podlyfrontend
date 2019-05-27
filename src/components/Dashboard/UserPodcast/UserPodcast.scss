@@ -17,12 +17,6 @@ $module: 'UserPodcast';
         }
     }
 
-    &-twoColumn {
-        display: grid;
-        grid-template-columns: 90px 1fr;  
-        margin: 0.1rem 0;
-    }
-
     &-description {
         display: flex;
         flex-direction: column;  

@@ -77,7 +77,8 @@ class CommunityPost extends Component {
 
   render() {
 
-    const { publish_date, title, post, first_name, last_name, pk } = this.props.post
+    const { publish_date, title, post, pk, publisher = {}} = this.props.post
+    const { first_name, last_name, profile } = publisher
     const { activePost, updateActivePost, user } = this.props
     const { replies, reply } = this.state
     const isActive = activePost === pk
@@ -87,7 +88,7 @@ class CommunityPost extends Component {
       <div className='CommunityPost'>
         <section className='CommunityPost-originalPost'>
           <div className='CommunityPost-image'>
-            <img src={dog} alt='profile'/>
+            <img src={profile ? profile.image : dog} alt='profile'/>
           </div>
           <div className='CommunityPost-details'>
             <h3>{title}</h3>
@@ -111,17 +112,20 @@ class CommunityPost extends Component {
             <div className='CommunityPost-repliesInner'>
               {replies.map((reply) => <Reply reply={reply} key={reply.pk}/>)}
               
-              {user.token && <Fragment>
+              {user.token ? (
+                <Fragment>
                   <RichText 
                     showMenu={true}
                     editorState={reply.value} 
                     onChange={(value) => this.updateValue(value)} 
                     onBlur={() => this.handleBlur()}
                   />
-                <div className='CommunityPost-replyActions'>
-                  <Button onClick={this.postReply}>Reply</Button>
-                </div>
-              </Fragment>
+                  <div className='CommunityPost-replyActions'>
+                    <Button onClick={this.postReply}>Reply</Button>
+                  </div>
+                </Fragment>
+              ) :
+              <div className='CommunityPost-loggedOutReply'>You must be logged in to reply to this post</div>
               }
             </div>
           </div>)}

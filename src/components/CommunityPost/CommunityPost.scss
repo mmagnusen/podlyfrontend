@@ -116,4 +116,11 @@ $module: 'CommunityPost';
         }
     }
 
+    &-loggedOutReply {
+        background: $ash;
+        border-radius: 4px;
+        padding: 1rem;
+        margin-top: 0.5rem;
+    }
+
 }

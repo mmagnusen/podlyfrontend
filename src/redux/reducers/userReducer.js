@@ -9,6 +9,7 @@ const userReducer = (state = defaultUserState, action = {}) => {
                 lastName: action.details.last_name,
                 email: action.details.email,
                 token: action.details.token,
+                pk: action.details.pk
             }
         case 'SET_REDIRECT':
             return {
@@ -37,6 +38,11 @@ const userReducer = (state = defaultUserState, action = {}) => {
             return {
                 ...state,
                 loginError: action.error
+            }
+        case 'SET_PROFILE':
+            return {
+                ...state,
+                profile: action.profile
             }
         default:
             return state
