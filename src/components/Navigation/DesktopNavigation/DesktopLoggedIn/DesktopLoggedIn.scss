@@ -22,10 +22,9 @@ $module: 'DesktopLoggedIn';
         display: flex; 
         align-items: center;
         justify-content: center;
-        @media screen and (min-width: $tabletBreakpoint) { 
-            h3 {
-                display: none;
-            }
+        padding-right: 1rem;
+        a {
+            color: $white; 
         }
     }
 

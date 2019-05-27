@@ -77,7 +77,8 @@ class CommunityPost extends Component {
 
   render() {
 
-    const { publish_date, title, post, first_name, last_name, pk, publisher_profile } = this.props.post
+    const { publish_date, title, post, pk, publisher = {}} = this.props.post
+    const { first_name, last_name, profile } = publisher
     const { activePost, updateActivePost, user } = this.props
     const { replies, reply } = this.state
     const isActive = activePost === pk
@@ -87,7 +88,7 @@ class CommunityPost extends Component {
       <div className='CommunityPost'>
         <section className='CommunityPost-originalPost'>
           <div className='CommunityPost-image'>
-            <img src={publisher_profile ? publisher_profile : dog} alt='profile'/>
+            <img src={profile ? profile.image : dog} alt='profile'/>
           </div>
           <div className='CommunityPost-details'>
             <h3>{title}</h3>
