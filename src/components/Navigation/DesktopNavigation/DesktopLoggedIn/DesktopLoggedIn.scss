@@ -6,7 +6,7 @@ $module: 'DesktopLoggedIn';
 .#{$module} {
     min-height: 100px;
     display: grid;
-    grid-template-columns: 200px 1fr 220px;
+    grid-template-columns: 200px 1fr 150px;
     width: 90%;
     margin: 0 auto;
 
@@ -21,25 +21,17 @@ $module: 'DesktopLoggedIn';
     &-middle {
         display: flex; 
         align-items: center;
-        justify-content: center;
+        justify-content: flex-end;
         padding-right: 1rem;
         a {
             color: $white; 
+            margin: 0 1rem;
         }
     }
 
-    &-authenticate {
+    &-profile {
         display: flex; 
         align-items: center;
-        justify-content: space-between;
-        button {
-            background: $white;
-            color: grey;
-            height: 40px;
-            width: 100px;
-            border-radius: 4px;
-            font-size: 16px;
-            font-weight: bold;
-        }
+        justify-content: flex-end;
     }
 }

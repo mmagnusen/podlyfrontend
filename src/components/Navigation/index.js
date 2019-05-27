@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux'
 import { MobileNavigation, DesktopNavigation } from '../../components/'
 import { Responsive} from 'semantic-ui-react'
 import './Navigation.scss'
@@ -42,10 +41,4 @@ class Navigation extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  return {
-      user: state.user
-  }
-}
-
-export default connect(mapStateToProps)(Navigation);
+export default Navigation;

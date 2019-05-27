@@ -14,10 +14,6 @@ class TabDetails extends Component {
         uploadingToFirebase: false
     }
 
-    componentDidMount() {
-        this.getProfile()
-    }
-
     getProfile = () => {
         this.props.dispatch(userAsyncActions.getProfile())
     }
@@ -69,7 +65,7 @@ class TabDetails extends Component {
                 <section className='TabDetails-profile'>
                     <p className='Dashboard-label'>Profile picture:</p> 
                     <section>
-                        {user && user.profile && user.profile.image ?
+                        {user && user.profile ?
                             <div className='TabDetails-profileImage'>
                                 <img src={user.profile.image} alt='profile' />
                             </div>

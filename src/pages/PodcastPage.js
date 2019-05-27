@@ -1,14 +1,12 @@
 import React, { Component } from 'react';
-import { Navigation, PodcastContent, Footer } from '../../src/components/';
+import { PodcastContent } from '../../src/components/';
 
 class PodcastPage extends Component {
 
   render() {
     return (
         <div className="App">
-            <Navigation />
             <PodcastContent />
-            <Footer />
         </div>
     );
   }

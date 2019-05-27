@@ -3,6 +3,7 @@ const lastName = localStorage.getItem('lastName')
 const email = localStorage.getItem('email')
 const token = localStorage.getItem('token')
 const pk = localStorage.getItem('pk')
+const profile =  localStorage.getItem('profile')
 
 const defaultUserState = {
     firstName: firstName,
@@ -13,7 +14,8 @@ const defaultUserState = {
     dashboardTabIndex: 0,
     registerError: null,
     loginError: null,
-    profile: null,
+    profile,
+
 }
 
 export default defaultUserState
