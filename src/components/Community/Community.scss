@@ -14,6 +14,11 @@ $module: 'Community';
 
     &-title {
         text-align: center;
+        @media screen and (min-width: $tabletBreakpoint) {  
+            h3 {
+                display: none;
+            }
+         } 
     }
 
     &-postButton {

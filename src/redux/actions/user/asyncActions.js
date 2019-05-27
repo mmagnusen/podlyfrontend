@@ -29,12 +29,16 @@ const userAsyncActions = {
                     localStorage.setItem('email', data.user.email)
                     localStorage.setItem('token', data.token)
                     localStorage.setItem('pk', data.user.pk)
+                    if (data.user.profile) {
+                        localStorage.setItem('profile', data.user.profile.image)
+                    }
                     dispatch(userActionGenerators.setUserDetails({
                         first_name: data.user.first_name,
                         last_name: data.user.last_name,
                         email: data.user.email,
                         token: data.token,
-                        pk: data.user.pk
+                        pk: data.user.pk,
+                        profile: data.user.profile.image
                     }))
                 }
             })

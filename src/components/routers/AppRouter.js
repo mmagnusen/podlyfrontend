@@ -14,13 +14,18 @@ import {
     BlogPage, 
     BlogPostPage ,
     BetaPage,
-    CommunityPage
+    CommunityPage,
+    Navigation,
+    Footer
 } from '../../components/'
 
 const AppRouter  = (props) => {
     return (
+        
         <Provider store={store}>
+      
         <BrowserRouter>
+        <Navigation />
             <Switch>
                 <Route path='/' component={HomePage} exact={true}/>
                 <Route path="/podcast/:slug" component={PodcastPage}/>  
@@ -35,6 +40,7 @@ const AppRouter  = (props) => {
                 <Route path="/community" exact={true} component={CommunityPage} /> 
                 <Route path="/blog/:slug/:id" exact={true} component={BlogPostPage}/> 
             </Switch>
+        <Footer />
         </BrowserRouter>
         </Provider>
     )
