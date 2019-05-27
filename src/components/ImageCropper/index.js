@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import ReactCrop from "react-image-crop";
 import classnames from 'classnames'
 import "react-image-crop/dist/ReactCrop.css";
-import 'react-image-crop-component/style.css';
 import { Button } from '../'
 import './ImageCropper.scss'
 
