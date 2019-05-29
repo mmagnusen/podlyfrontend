@@ -5,6 +5,7 @@ $module: 'DropdownMenu';
 
 .#{$module} {
     position: relative;
+    z-index: 1;
     img {
         max-width: 50px;
         height: auto;
