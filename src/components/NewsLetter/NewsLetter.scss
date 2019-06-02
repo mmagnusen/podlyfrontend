@@ -1,0 +1,187 @@
+@import '../../../constants/styles/sass-variables/breakpoints';
+@import '../../../constants/styles/sass-variables/colors';
+
+$module: 'NewsLetter';
+
+.#{$module} {
+    &-header {
+        padding: 4rem 1rem 2rem;
+        min-height: 350px;
+        background-color: #18002a;
+        @media screen and (min-width: $tabletBreakpoint) {  
+            min-height: 280px;
+            padding: 5rem 1rem 5rem;
+        }
+
+        p {
+            color: $white;
+        }
+    }
+
+    h1 {
+        margin: 0 auto 2rem auto;
+        text-align: center;
+        font-size: 30px;
+        max-width: 250px;
+        color: $white;
+        @media screen and (min-width: $tabletBreakpoint) {  
+            font-size: 60px;
+            max-width: 800px;
+        }
+    }
+
+    p {
+        font-size: 20px;
+    }
+
+    .error {
+        width: 270px;
+        margin: 0 auto;
+        font-size: 14px;
+        margin-top: -1rem;
+        padding: 0 30px;  
+        @media screen and (min-width: $mobileLargeBreakpoint) {  
+            width: 220px;
+            padding: 0 25px;
+        }
+        @media screen and (min-width: $tabletBreakpoint) {  
+            width: 250px;
+        }
+    }
+
+
+    &-signup {
+        background: $white;
+        width: 300px;
+        position: absolute;
+        top: 300px;
+        box-shadow: 0 7px 16px 0 rgba(57,76,93,.13);
+        border-radius: 4px;
+        left: calc(50% - 150px);
+        padding: 0px 10px 40px;
+        box-sizing: border-box;
+        @media screen and (min-width: $mobileLargeBreakpoint) {  
+            width: 400px;
+            left: calc(50% - 190px);
+        }
+        @media screen and (min-width: $tabletBreakpoint) {  
+            padding: 10px 10px 40px;
+            width: 600px;
+            left: calc(50% - 305px);
+        }
+
+        h3 {
+            margin: 3rem auto;
+            text-align: center;
+            color: #414045eb;
+            font-size: 15px;
+            line-height: 1.5rem;   
+            max-width: 250px;
+            @media screen and (min-width: $tabletBreakpoint) {  
+                font-size: 20px; 
+                margin: 5rem auto;
+                max-width: 400px;
+            } 
+        }
+       
+        .Input {
+            margin: 1rem auto 1rem;
+            width: 270px;
+            height: 50px;
+            @media screen and (min-width: $tabletBreakpoint) {  
+                width: 300px;
+            } 
+        }
+
+        .Button {
+            margin-top: 1.5rem;
+        }
+        button {
+            height: 50px;
+            margin: 0 auto;
+            background-image: linear-gradient(to right, #4c40b2 0%, #881f76 100%);
+            display: block;
+            margin: 0 auto;
+            min-width: 200px;
+            color: #fff;
+            font-size: 16px;
+            font-weight: 700;
+        }
+
+    }
+
+    &-success {
+        h3 {
+            margin: 1rem auto 0 auto;
+            text-align: center;
+            width: 200px;
+            @media screen and (min-width: $tabletBreakpoint) {  
+               font-size: 16px;
+               width: 300px;
+            } 
+        }
+    }
+
+    &-error {
+        h3 {
+            margin: 1rem auto 0 auto;
+            text-align: center;
+            width: 200px;
+            font-weight: normal;
+            @media screen and (min-width: $tabletBreakpoint) {  
+               font-size: 16px;
+               width: 300px;
+            } 
+        }
+    }
+
+    &-filler {
+        height: 200px;
+        background: #ffc0cb33;
+        padding-bottom: 3rem;
+        @media screen and (min-width: $tabletBreakpoint) {  
+            height: 330px;
+        } 
+    }
+
+    &-value {
+        min-height: 300px;
+        background: $white;
+        width: 290px;
+        margin: 0 auto;
+        padding: 4rem 0;
+        @media screen and (min-width: $mobileLargeBreakpoint) { 
+            padding: 6rem 0; 
+            width: 400px;
+        }
+        @media screen and (min-width: $tabletBreakpoint) {  
+            left: calc(50% - 305px);
+        }
+
+        img {
+            width: 200px;
+            height: auto;
+            margin: 0 auto;
+            display: block;
+        }
+
+        p {
+            margin: 1rem auto 2rem auto;
+            text-align: center;
+        }
+
+        ul {
+            margin-block-start: 0;
+            padding-inline-start: 20px;
+            width: 250px;
+            margin: 0 auto;
+            @media screen and (min-width: $mobileLargeBreakpoint) {  
+                width: 350px;
+            }
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+    }
+}

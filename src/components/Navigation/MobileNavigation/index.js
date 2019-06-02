@@ -35,7 +35,8 @@ class MobileNavigation extends Component {
           {user.token === null && (
             <Fragment>
               <Link to="/" onClick={this.toggleMobileNavigation}><h3 className='MobileNavigation-link MobileNavigation-loginRegister'>Home</h3></Link>
-              <Link to="/community" onClick={this.toggleMobileNavigation}><h3 className='MobileNavigation-link MobileNavigation-loginRegister'>Community</h3></Link>
+              {/* <Link to="/community" onClick={this.toggleMobileNavigation}><h3 className='MobileNavigation-link MobileNavigation-loginRegister'>Community</h3></Link> */}
+              <Link to="/newsletter" onClick={this.toggleMobileNavigation}><h3 className='MobileNavigation-link MobileNavigation-loginRegister'>Newsletter</h3></Link>
               <Link to="/login" onClick={this.toggleMobileNavigation}><h3 className='MobileNavigation-link MobileNavigation-loginRegister'>Login</h3></Link>
               <Link to="/register" onClick={this.toggleMobileNavigation}><h3 className='MobileNavigation-link MobileNavigation-loginRegister'>Register</h3></Link>
             </Fragment>
@@ -43,8 +44,9 @@ class MobileNavigation extends Component {
           
           {user.token !== null && (
             <Fragment>
-              <Link to="/" onClick={this.toggleMobileNavigation}><h3 className='MobileNavigation-link MobileNavigation-loginRegister'>Home</h3></Link>
-              <Link to="/community" onClick={this.toggleMobileNavigation}><h3 className='MobileNavigation-link MobileNavigation-community'>Community</h3></Link>
+              <Link to="/" onClick={this.toggleMobileNavigation}><h3 className='MobileNavigation-link MobileNavigation-loginRegister MobileNavigation-home'>Home</h3></Link>
+              <Link to="/newsletter" onClick={this.toggleMobileNavigation}><h3 className='MobileNavigation-link MobileNavigation-newsletter'>Newsletter</h3></Link>
+              {/* <Link to="/community" onClick={this.toggleMobileNavigation}><h3 className='MobileNavigation-link MobileNavigation-community'>Community</h3></Link> */}
               <section>
                 <h3>Dashboard</h3>
               </section>

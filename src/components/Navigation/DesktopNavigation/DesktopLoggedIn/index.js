@@ -13,7 +13,7 @@ class DesktopLoggedIn extends Component {
           <Link to="/"><h1>Platfore</h1></Link>
         </section>
         <section className="DesktopLoggedIn-middle">
-          <Link to="/community"><h4>Community</h4></Link>
+          <Link to="/newsletter"><h4>Newsletter</h4></Link>
         </section>
         <section className="DesktopLoggedIn-profile">
             <DropdownMenu />
