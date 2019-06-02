@@ -6,6 +6,16 @@ $module: 'Footer';
 .#{$module} {
     background-color: #18002a;
 
+    &-newsletter {
+        background: orange;
+        height: 150px;
+        width: 300px;
+        position: fixed;
+        right: 100px;
+        bottom: 100px;
+        display: none;
+    }
+
     &-inner {
         width: 90%;
         margin: 0 auto;

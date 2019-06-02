@@ -23,6 +23,7 @@ export { default as CommunityPost } from './CommunityPost'
 export { default as NewPost } from './NewPost'
 export { default as ImageCropper } from './ImageCropper'
 export { default as DropdownMenu } from './Navigation/DesktopNavigation/DropdownMenu'
+export { default as NewsLetter } from './NewsLetter'
 
 export { default as Host } from './Host'
 export { default as Discover } from './Discover'
@@ -45,6 +46,7 @@ export { default as PlayPage } from '../pages/PlayPage'
 export { default as PodcastPage } from '../pages/PodcastPage' 
 export { default as BlogPage } from '../pages/BlogPage' 
 export { default as BlogPostPage } from '../pages/BlogPostPage' 
+export { default as NewsLetterPage } from '../pages/NewsLetterPage'
 
 // Navigation
 export { default as Navigation } from './Navigation'
