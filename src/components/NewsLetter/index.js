@@ -3,7 +3,6 @@ import axios from 'axios'
 import { Input, Button } from '../'
 import { INPUT_TYPE, ENDPOINT } from '../../constants/'
 import { formValidation } from '../../utils/'
-import slack from '../../resources/slack.png'
 import './NewsLetter.scss'
 
 class NewsLetter extends Component {
@@ -129,15 +128,6 @@ class NewsLetter extends Component {
             </div>
             <div className='NewsLetter-filler'>
             </div>
-            <div className='NewsLetter-value'>
-                <img src={slack} alt='Slack logo'/><p>Newsletter sign-up gives you access to our slack group of podcasters:</p>
-                <ul>
-                    <li>Pick our brains</li> 
-                    <li>stay up-to-date with community events</li> 
-                    <li>get feedback on your episodes</li>
-                </ul>
-            </div>
-
         </section>
         )
     }
