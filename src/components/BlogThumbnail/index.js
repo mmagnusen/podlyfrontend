@@ -10,7 +10,7 @@ class BlogThumbnail extends Component {
 
         const date = moment(article.date).format("MMM Do YYYY")
 
-        const postLink = `/blog/${article.slug}/${article.id}`
+        const postLink = `/blog/${article.slug}`
 
         return (
             <div className='BlogThumbnail'>

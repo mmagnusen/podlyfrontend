@@ -39,7 +39,7 @@ const AppRouter  = (props) => {
                 <Route path="/contact" component={ContactPage}/> 
                 <Route path="/blog" exact={true} component={BlogPage} /> 
                 <Route path="/community" exact={true} component={CommunityPage} /> 
-                <Route path="/blog/:slug/:id" exact={true} component={BlogPostPage}/> 
+                <Route path="/blog/:slug" exact={true} component={BlogPostPage}/> 
                 <Route path="/newsletter" exact={true} component={NewsLetterPage}/> 
             </Switch>
         <Footer />
