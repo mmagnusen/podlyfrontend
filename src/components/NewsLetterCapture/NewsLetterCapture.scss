@@ -1,0 +1,66 @@
+@import '../../../constants/styles/sass-variables/breakpoints';
+@import '../../../constants/styles/sass-variables/colors';
+
+$module: 'NewsLetterCapture';
+
+.#{$module} {
+    padding: 2rem 1rem 2.5rem 1rem;
+    box-sizing: border-box;
+    box-shadow: 0 7px 16px 0 rgba(57, 76, 93, 0.13);
+    background: $silver;
+
+    h3, p {
+        text-align: center;
+    }
+
+    &-inputs {
+        margin: 2rem auto 1rem auto;
+        @media screen and (min-width: $computerBreakpoint) {  
+            display: grid;
+            width: 850px;
+            grid-template-columns: 1fr 1fr 200px;
+            margin-top: 2rem;
+        } 
+    }
+
+    .Input {
+        margin: 1rem auto 1rem;
+        width: 270px;
+        height: 50px;
+        @media screen and (min-width: $computerBreakpoint) {  
+            width: 300px;
+            margin: 0;
+            height: 40px;
+        } 
+    }
+
+    .Button {
+        margin-top: 1.5rem;
+
+        @media screen and (min-width: $computerBreakpoint) {  
+            margin-top: 0;
+            display: flex;
+            align-items: center;
+        } 
+    }
+
+    button {
+        height: 50px;
+        margin: 0 auto;
+        background-image: linear-gradient(to right, #4c40b2 0%, #881f76 100%);
+        display: block;
+        margin: 0 auto;
+        min-width: 180px;
+        color: #fff;
+        font-size: 16px;
+        font-weight: 700;
+        @media screen and (min-width: $computerBreakpoint) {  
+            height: 40px;
+        } 
+    }
+
+    &-error {
+        margin-top: 1rem;
+        color: $red;
+    }
+}

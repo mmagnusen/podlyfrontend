@@ -24,6 +24,7 @@ export { default as NewPost } from './NewPost'
 export { default as ImageCropper } from './ImageCropper'
 export { default as DropdownMenu } from './Navigation/DesktopNavigation/DropdownMenu'
 export { default as NewsLetter } from './NewsLetter'
+export { default as NewsLetterCapture } from './NewsLetterCapture'
 
 export { default as Host } from './Host'
 export { default as Discover } from './Discover'

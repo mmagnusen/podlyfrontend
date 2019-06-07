@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios'
 import moment from 'moment'
+import { NewsLetterCapture } from '../'
 import './BlogPost.scss'
 
 
@@ -34,23 +35,25 @@ class BlogPost extends Component {
 
         return (
             <div className='BlogPost'>
-            <section className='BlogPost-header'>
-                    <section className='BlogPost-headerImage' style={{backgroundImage: `url(${featuredImage})`}}/>
-            </section>
+                <section className='BlogPost-header'>
+                        <section className='BlogPost-headerImage' style={{backgroundImage: `url(${featuredImage})`}}/>
+                </section>
 
-            <div className='BlogPost-main'>
-            <section className='container'>
-                <section className='BlogPost-title'>
-                    {title && <h1>{title}</h1>}
-                </section>
-                <section className='BlogPost-date'>
-                    {formattedDate && <h3>{formattedDate}</h3>}
-                </section>
-                <section dangerouslySetInnerHTML={{__html: content}} className='BlogPost-content'>
-                </section>
-            </section>
+                <div className='BlogPost-main'>
+                    <section className='container'>
+                        <section className='BlogPost-title'>
+                            {title && <h1>{title}</h1>}
+                        </section>
+                        <section className='BlogPost-date'>
+                            {formattedDate && <h3>{formattedDate}</h3>}
+                        </section>
+                        <section dangerouslySetInnerHTML={{__html: content}} className='BlogPost-content'>
+                        </section>
+                    </section>
+                </div>
+
+            <NewsLetterCapture />
             </div>
-        </div>
         )
     }
 }
