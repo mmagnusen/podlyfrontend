@@ -68,7 +68,6 @@ $module: 'BlogPost';
         h3 {
             color: $black;
         }
-   
     }
 
     &-content {
@@ -95,7 +94,7 @@ $module: 'BlogPost';
         }
 
         a {
-            color: #00C3A7;   
+            color: $turquoise;   
         }
 
         img {
@@ -120,4 +119,29 @@ $module: 'BlogPost';
         }
     }
 
+    &-quote {
+        color: $charcoal; 
+        margin: 3rem 0;
+        text-align: center;
+        &:before,
+        &:after {
+            background: #ddd;
+            content: "";
+            display: block;
+            height: 2px;
+            width: 100px;
+        }   
+
+        &:before {
+            margin: 1rem auto 1.5rem auto;
+        }   
+
+        &:after {
+            margin: 2rem auto 0 auto;
+        }   
+    }
+
 }
+
+// wordpress additional classes i'm using
+// BlogPost-quote - large quote blocks

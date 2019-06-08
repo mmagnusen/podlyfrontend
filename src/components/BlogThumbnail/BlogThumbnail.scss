@@ -6,7 +6,7 @@ $module: 'BlogThumbnail';
 
 .#{$module} { 
    
-    background:white;
+    background:$white;
     display: flex;
     flex-direction: column;
     border-radius: 4px;
@@ -15,6 +15,10 @@ $module: 'BlogThumbnail';
 
    &:hover {
         box-shadow: 2px 3.46px 8px 0 rgba(39,44,49,.12), 8px 13.86px 38px 0 rgba(39,44,49,.08);
+    }
+
+    a {
+        color: $turquoise;
     }
 
     &-image {
@@ -39,14 +43,17 @@ $module: 'BlogThumbnail';
 
     &-details {
         display: flex;
-        margin: 1rem 0;
         justify-content: space-between;
+        margin: 0;
+        @media screen and (min-width: $tabletBreakpoint) { 
+            margin: 1rem 0;
+        }
     }
 
     &-title {
         margin: 1rem 0 1.5rem 0;
         cursor: pointer;
-        font-size: 20px;
+        font-size: 16px;
     }
 
     &-excerpt {
