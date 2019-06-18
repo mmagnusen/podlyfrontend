@@ -6,16 +6,6 @@ $module: 'Footer';
 .#{$module} {
     background-color: #18002a;
 
-    &-newsletter {
-        background: orange;
-        height: 150px;
-        width: 300px;
-        position: fixed;
-        right: 100px;
-        bottom: 100px;
-        display: none;
-    }
-
     &-inner {
         width: 90%;
         margin: 0 auto;
@@ -31,10 +21,8 @@ $module: 'Footer';
             padding: 3rem 0;
         }
 
-        @media screen and (min-width: 600px) { 
-            grid-template-columns: repeat(4, 1fr);
-            grid-column-gap: 20px;
-            padding: 3rem 0;
+        @media screen and (min-width: $tabletBreakpoint) { 
+            grid-template-columns: repeat(5, 1fr);
         }
     }
 
@@ -42,5 +30,14 @@ $module: 'Footer';
         color: $white;
         font-size: 20px;
         font-weight: bold;
+    }
+
+    &-blog {
+        grid-column-start: 1;
+        grid-column-end: 3;
+        @media screen and (min-width: $tabletBreakpoint) { 
+            grid-column-start: 5;
+            grid-column-end: 6;
+        }
     }
 }
