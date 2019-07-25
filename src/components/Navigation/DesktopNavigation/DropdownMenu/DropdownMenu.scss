@@ -16,6 +16,7 @@ $module: 'DropdownMenu';
             border: 2px solid $white;
         }
     }
+
     &-menu {
         background: $white;
         display: flex;
@@ -38,7 +39,6 @@ $module: 'DropdownMenu';
             pointer-events: none;
         }
 
-        
         &:before {
             border-color: rgba(194, 225, 245, 0);
             border-bottom-color: #c2e1f5;
@@ -69,5 +69,4 @@ $module: 'DropdownMenu';
             }   
         }
     }
-
 }

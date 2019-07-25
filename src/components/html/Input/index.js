@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import classnames from 'classnames'
+import classnames from 'classnames';
 import { func, oneOf, bool } from 'prop-types';
-import { INPUT_TYPE } from '../../../constants'
-import './Input.scss'
+import { INPUT_TYPE } from '../../../constants';
+import './Input.scss';
 
 class Input extends Component {
 
@@ -25,7 +25,7 @@ class Input extends Component {
       }
 
     handleKeypress = (event) => {
-        const { inputType} = this.props
+        const { inputType} = this.props;
 
         if ( inputType === INPUT_TYPE.NUMBER) {
             if (event.which < 48 || event.which > 57) {
@@ -36,7 +36,7 @@ class Input extends Component {
     }
 
     togglePassword = () => {
-        this.setState({showPassword: !this.state.showPassword})
+        this.setState({showPassword: !this.state.showPassword});
     }
 
     getAutoCompleteValue = (type) => {
@@ -63,8 +63,9 @@ class Input extends Component {
 
     render() {
 
-        const { icon, type, value, onChange, onBlur, placeHolder, autoFocus } = this.props
-        const { showPassword } = this.state
+        const { icon, type, value, onChange, onBlur, placeHolder, autoFocus } = this.props;
+
+        const { showPassword } = this.state;
         
         return (
             <section className='Input'>
@@ -89,4 +90,4 @@ class Input extends Component {
     }
 }
 
-export default Input
+export default Input;

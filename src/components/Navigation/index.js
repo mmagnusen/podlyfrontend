@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { MobileNavigation, DesktopNavigation } from '../../components/'
-import { Responsive} from 'semantic-ui-react'
-import './Navigation.scss'
+import { MobileNavigation, DesktopNavigation } from '../../components/';
+import { Responsive} from 'semantic-ui-react';
+import './Navigation.scss';
 
 class Navigation extends Component {
 
@@ -24,19 +24,19 @@ class Navigation extends Component {
 
   render() {
 
-    const { navigationDropDownOpen } = this.state
+    const { navigationDropDownOpen } = this.state;
+
     return (
-      <nav className='Navigation'>
-      <Responsive maxWidth={767}>
-          <MobileNavigation 
-              toggleNavigationDropdown={this.toggleNavigationDropdown} 
-              navigationDropDownOpen={navigationDropDownOpen} />
-      </Responsive>
-      <Responsive minWidth={768}>
-          <DesktopNavigation />
-      </Responsive>
-          
-  </nav>
+        <nav className='Navigation'>
+            <Responsive maxWidth={767}>
+                <MobileNavigation 
+                    toggleNavigationDropdown={this.toggleNavigationDropdown} 
+                    navigationDropDownOpen={navigationDropDownOpen} />
+            </Responsive>
+            <Responsive minWidth={768}>
+                <DesktopNavigation />
+            </Responsive> 
+        </nav>
     );
   }
 }

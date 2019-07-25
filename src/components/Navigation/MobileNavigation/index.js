@@ -1,10 +1,10 @@
 import React, { Component, Fragment } from 'react';
 import { Link  } from 'react-router-dom';
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
 import Drawer from '@material-ui/core/Drawer';
-import { NavigationItems } from '../../'
-import userActionGenerators from '../../../redux/actions/user/userActionGenerators'
-import './MobileNavigation.scss'
+import { NavigationItems } from '../../';
+import userActionGenerators from '../../../redux/actions/user/userActionGenerators';
+import './MobileNavigation.scss';
 
 class MobileNavigation extends Component {
 
@@ -13,8 +13,9 @@ class MobileNavigation extends Component {
   }
 
   handleLogout = () => {
-    this.toggleMobileNavigation()
-    this.props.dispatch(userActionGenerators.handleLogout())
+    this.toggleMobileNavigation();
+
+    this.props.dispatch(userActionGenerators.handleLogout());
   }
 
   toggleMobileNavigation = () => {
@@ -24,7 +25,8 @@ class MobileNavigation extends Component {
   }
 
   getDropdownMenu = () => {
-    const { user } = this.props
+    const { user } = this.props;
+
     const { mobileNavOpen } = this.state;
 
     return (
@@ -55,7 +57,6 @@ class MobileNavigation extends Component {
               <h3 className='MobileNavigation-link MobileNavigation-logout' onClick={this.handleLogout}>Logout</h3>
             </Fragment>
           )}
-
           </div>
         </div>
       </Drawer>
@@ -63,7 +64,6 @@ class MobileNavigation extends Component {
   }
 
   render() {
-
     return (
       <div>
       <div className="MobileNavigation">

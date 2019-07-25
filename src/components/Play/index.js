@@ -1,22 +1,21 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux'
-import { PlayList } from '../index'
-import { ENDPOINT } from '../../constants'
-import moment from 'moment'
-import { AudioPlayer } from '../'
+import { connect } from 'react-redux';
+import { PlayList } from '../index';
+import { ENDPOINT } from '../../constants';
+import moment from 'moment';
+import { AudioPlayer } from '../';
 import Truncate from 'react-truncate';
-import episodeAsyncActions from '../../redux/actions/episode/asyncActions'
-import './Play.scss'
+import episodeAsyncActions from '../../redux/actions/episode/asyncActions';
+import './Play.scss';
 
 class Play extends Component {
 
     componentDidMount() {
-        this.props.dispatch(episodeAsyncActions.getEpisode(this.props.slug))
+        this.props.dispatch(episodeAsyncActions.getEpisode(this.props.slug));
     }
 
     render() {
-
-    const { podcast_name, snippet, image, publish_date, podcast, audio } = this.props.episode.currentlyPlaying
+    const { podcast_name, snippet, image, publish_date, podcast, audio } = this.props.episode.currentlyPlaying;
 
         return (
             <section className='Play'>
@@ -50,4 +49,4 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps)(Play)
+export default connect(mapStateToProps)(Play);

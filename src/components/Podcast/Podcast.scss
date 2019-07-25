@@ -2,8 +2,8 @@
 @import '../../constants/styles/sass-variables/colors';
 
 $module: 'Podcast';
-.#{$module} {
 
+.#{$module} {
     display: flex;
     flex-direction: column;
     width: 90%;
@@ -28,8 +28,6 @@ $module: 'Podcast';
     
     }
  
-
-   
     p {
         line-height: 1.5rem;
         margin: 0.5rem 0;
@@ -69,5 +67,4 @@ $module: 'Podcast';
             margin: 10px;
         }
     }
-   
 }

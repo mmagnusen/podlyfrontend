@@ -1,24 +1,23 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux'
-import { withRouter } from "react-router";
-import { Button, Input } from '../'
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router';
+import { Button, Input } from '../';
 import { EditorState, RichUtils, convertToRaw, ContentState } from 'draft-js';
-import Editor from "draft-js-plugins-editor";
-import { convertEditorFromDb } from '../../utils'
-import addLinkPlugin from './addLinkPlugin'
+import Editor from 'draft-js-plugins-editor';
+import { convertEditorFromDb } from '../../utils';
+import addLinkPlugin from './addLinkPlugin';
 import { bool } from 'prop-types';
-import './RichText.scss'
+import './RichText.scss';
 
 class RichText extends Component {    
     constructor(props) {
-        super(props)
-        const { editorState } = this.props
+        super(props);
 
-        const immutableContent = editorState ? convertEditorFromDb(editorState) : null
+        const { editorState } = this.props;
 
-    
+        const immutableContent = editorState ? convertEditorFromDb(editorState) : null;
+
         //if there is editorState, it means we are editing existing text. If not, we need to create new empty state
-
         this.state = {
             editorState: editorState ? EditorState.createWithContent(immutableContent) : EditorState.createEmpty(),
             urlValue: '',
@@ -44,8 +43,8 @@ class RichText extends Component {
       }
     
     onChange = (editorState) => {
-        //stringified is what we send to db
-        const stringifiedContent = JSON.stringify(convertToRaw(editorState.getCurrentContent()))
+        //stringified is what we send to database
+        const stringifiedContent = JSON.stringify(convertToRaw(editorState.getCurrentContent()));
 
         this.setState({
             editorState,
@@ -54,26 +53,30 @@ class RichText extends Component {
     }
 
     updateUrl = (event) => {
-        this.setState({urlValue: event.target.value})
+        this.setState({urlValue: event.target.value});
     }
 
     onUnderlineClick = (event) => {
         event.preventDefault() //stops form from submitting and closing modals
+
         this.onChange(RichUtils.toggleInlineStyle(this.state.editorState, 'UNDERLINE'));
     }
   
     onBoldClick = (event) => {
-        event.preventDefault()
+        event.preventDefault();
+
         this.onChange(RichUtils.toggleInlineStyle(this.state.editorState, 'BOLD')); 
     }
   
     onItalicClick = (event) => {
-        event.preventDefault()
+        event.preventDefault();
+
         this.onChange(RichUtils.toggleInlineStyle(this.state.editorState, 'ITALIC')); 
     }
 
     toggleUrlInput = (event) => {
         event.preventDefault();
+
         this.setState({
             showUrlInput: !this.state.showUrlInput
         })
@@ -81,6 +84,7 @@ class RichText extends Component {
 
     onAddLink = () => {
         const { editorState, urlValue } = this.state;
+
         const selection = editorState.getSelection();
 
         if (!urlValue) {
@@ -97,12 +101,15 @@ class RichText extends Component {
         );
 
         const newEditorState = EditorState.push(editorState, contentWithEntity, 'create-entity');
+
         const entityKey = contentWithEntity.getLastCreatedEntityKey();
+
         this.onChange(RichUtils.toggleLink(newEditorState, selection, entityKey));
         
         //hides link input
-        this.setState({showUrlInput: false})
-        return "handled";
+        this.setState({showUrlInput: false});
+
+        return 'handled';
       }
 
     handleKeyCommand = command => {
@@ -121,7 +128,9 @@ class RichText extends Component {
   render() {
 
     const { handleEditorKeyCommand, onBlur, showMenu } = this.props;
-    const { editorState, urlValue, showUrlInput } = this.state
+
+    const { editorState, urlValue, showUrlInput } = this.state;
+
     return (
         <section className='RichText'>
             {showMenu && (
@@ -166,4 +175,4 @@ const styleMap = {
      }
   };
 
-export default connect(mapStateToProps)(withRouter(RichText));
+export default connect(mapStateToProps)(withRouter(RichText));;

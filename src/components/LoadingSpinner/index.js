@@ -1,17 +1,11 @@
-import React, { Component } from 'react';
+import React from 'react';
 import CircularProgress from '@material-ui/core/CircularProgress';
-import './LoadingSpinner.scss'
+import './LoadingSpinner.scss';
 
-class LoadingSpinner extends Component {
-    render() {
+const LoadingSpinner = ({ color = 'inherit' }) => (
+    <section className='LoadingSpinner'>
+        <CircularProgress color={color} />
+    </section> 
+);
 
-        const { color = 'inherit' } = this.props
-        return (
-            <section className='LoadingSpinner'>
-                    <CircularProgress color={color} />
-            </section> 
-        )
-    }
-}
-
-export default LoadingSpinner
+export default LoadingSpinner;

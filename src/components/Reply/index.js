@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import dog from '../../resources/dog.jpg'
-import moment from 'moment'
-import { getDangerousHtml } from '../../utils' 
-import './Reply.scss'
+import moment from 'moment';
+import dog from '../../resources/dog.jpg';
+import { getDangerousHtml } from '../../utils';
+import './Reply.scss';
 
 class Reply extends Component {
 

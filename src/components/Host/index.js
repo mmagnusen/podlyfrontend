@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
 import { withRouter } from "react-router";
-import { getDangerousHtml } from '../../utils' 
-import './Host.scss'
+import { getDangerousHtml } from '../../utils';
+import './Host.scss';
 
 class Host extends Component {
 
     render() {
-        const { name, bio, image, twitter_name, twitter_url } = this.props.host
+        const { name, bio, image, twitter_name, twitter_url } = this.props.host;
+        
         return (
             <section className='Host'>
                 <div className='Host-avatar'>

@@ -11,7 +11,6 @@ $module: 'PodcastContent';
     &-inner {
         margin: 0 auto;
         padding: 3rem 0;
-
         width: 90%;
         @media only screen and (min-width: $tabletBreakpoint) {
             width: 80%;
@@ -67,9 +66,7 @@ $module: 'PodcastContent';
         p {
             line-height: 2rem;
         }
-    }
-
-    
+    }    
 }
 
 .Platfore-modal {

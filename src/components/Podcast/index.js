@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
 import { Link  } from 'react-router-dom';
-import axios from 'axios'
-import { ENDPOINT } from '../../constants'
-//import HostThumbnail from './HostThumbnail'
-import './Podcast.scss'
+import axios from 'axios';
+import { ENDPOINT } from '../../constants';
+import './Podcast.scss';
 
 class Podcast extends Component {
-
   state = {
     hosts: []
   }
@@ -23,8 +21,7 @@ class Podcast extends Component {
   }
 
   render() {
-      const { name, tags, start_date, slug } = this.props.podcast
-      //const { hosts } = this.state
+      const { name, tags, start_date, slug } = this.props.podcast;
 
     return (
       <div>
@@ -36,11 +33,6 @@ class Podcast extends Component {
               <p>Age: {start_date}</p>
               <p className='Podcast-more'>Find out more</p>
             </section>
-            {/*
-              <section className="Podcast-hosts">
-                {hosts && hosts.map((host) => <HostThumbnail host={host}/>)}
-              </section>
-            */}
           </div>
       </Link>
       </div>

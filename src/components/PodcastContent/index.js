@@ -1,13 +1,13 @@
 import React, { Component, Fragment } from 'react';
 import Modal from '@material-ui/core/Modal';
-import axios from 'axios'
-import searchAsyncActions from './../../redux/actions/search/asyncActions'
-import { connect } from 'react-redux'
+import axios from 'axios';
+import searchAsyncActions from './../../redux/actions/search/asyncActions';
+import { connect } from 'react-redux';
 import { withRouter } from "react-router";
-import { ContactHost, LoadingSpinner, Host, Button } from '../'
-import { getDangerousHtml } from '../../utils' 
-import { ENDPOINT } from '../../constants'
-import './PodcastContent.scss'
+import { ContactHost, LoadingSpinner, Host, Button } from '../';
+import { getDangerousHtml } from '../../utils';
+import { ENDPOINT } from '../../constants';
+import './PodcastContent.scss';
 
 class PodcastContent extends Component {
     state = {
@@ -18,19 +18,20 @@ class PodcastContent extends Component {
     handleOpen = () => {
         this.setState({
             podcastOpen: true 
-        })
+        });
     }
 
     handleClose = () => {
         this.setState({
             podcastOpen: false 
-        })
+        });
     }
 
 
     componentDidMount() {
-    const slug = this.props.match.params.slug
-    this.props.dispatch(searchAsyncActions.singlePodcast(slug))
+    const slug = this.props.match.params.slug;
+
+    this.props.dispatch(searchAsyncActions.singlePodcast(slug));
 
     const singleEndpoint = `${ENDPOINT}/api/host?slug=${this.props.match.params.slug}`
         axios.get(singleEndpoint)
@@ -43,9 +44,9 @@ class PodcastContent extends Component {
 
 
     render() {
-        const { name, tags, start_date, url, description } = this.props.search.singlePodcast
+        const { name, tags, start_date, url, description } = this.props.search.singlePodcast;
 
-        const { podcastOpen, hosts } = this.state
+        const { podcastOpen, hosts } = this.state;
 
         return (
             <div className="PodcastContent">

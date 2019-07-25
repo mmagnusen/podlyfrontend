@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {func} from 'prop-types';
-import './TextArea.scss'
+import './TextArea.scss';
 
 class TextArea extends Component {
 
@@ -17,7 +17,7 @@ class TextArea extends Component {
 
     render() {
 
-        const { value, onChange, onBlur } = this.props
+        const { value, onChange, onBlur } = this.props;
         
         return (
             <section className='TextArea'>
@@ -31,4 +31,4 @@ class TextArea extends Component {
     }
 }
 
-export default TextArea
+export default TextArea;

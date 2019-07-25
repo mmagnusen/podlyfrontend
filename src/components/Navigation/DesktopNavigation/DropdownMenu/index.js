@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import dog from '../../../../resources/dog.jpg'
+import dog from '../../../../resources/dog.jpg';
 import { Button } from '../../../';
 import { Link  } from 'react-router-dom';
-import { connect } from 'react-redux'
-import userActionGenerators from '../../../../redux/actions/user/userActionGenerators'
+import { connect } from 'react-redux';
+import userActionGenerators from '../../../../redux/actions/user/userActionGenerators';
 import './DropdownMenu.scss';
 
 class DropdownMenu extends Component {
@@ -15,11 +15,12 @@ class DropdownMenu extends Component {
     };
     
     this.showMenu = this.showMenu.bind(this);
+
     this.closeMenu = this.closeMenu.bind(this);
   }
 
   handleLogout = () => {
-    this.props.dispatch(userActionGenerators.handleLogout())
+    this.props.dispatch(userActionGenerators.handleLogout());
   }
 
   
@@ -48,10 +49,7 @@ class DropdownMenu extends Component {
 
     return (
       <div className='DropdownMenu'>
-        <img 
-        src={profile ? profile : dog}
-        onClick={this.showMenu}
-        />
+        <img src={profile ? profile : dog} onClick={this.showMenu} alt='user profile'/>
         
         {
           this.state.showMenu
@@ -81,6 +79,6 @@ const mapStateToProps = (state) => {
   return {
       user: state.user
   }
-}
+};
 
 export default connect(mapStateToProps)(DropdownMenu);

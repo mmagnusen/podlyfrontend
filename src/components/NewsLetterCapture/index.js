@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import axios from 'axios'
-import { Input, Button } from '../'
-import { INPUT_TYPE, ENDPOINT } from '../../constants/'
-import { formValidation } from '../../utils/'
-import './NewsLetterCapture.scss'
+import axios from 'axios';
+import { Input, Button } from '../';
+import { INPUT_TYPE, ENDPOINT } from '../../constants/';
+import { formValidation } from '../../utils/';
+import './NewsLetterCapture.scss';
 
 class NewsLetterCapture extends Component {
     state = {
@@ -44,8 +44,10 @@ class NewsLetterCapture extends Component {
     }
 
     submitNewsLetter = (event) => {
-        event.preventDefault()   
-        const shouldSubmit = this.canSubmit()
+        event.preventDefault();
+
+        const shouldSubmit = this.canSubmit();
+
         if (!shouldSubmit) {
             this.setState({
                 error: true,
@@ -82,12 +84,13 @@ class NewsLetterCapture extends Component {
 
     canSubmit = () => {
         const { name, email } = this.state;
-        return name.isValid && email.isValid
+
+        return name.isValid && email.isValid;
     }
 
     render() {
 
-        const { email, name, error, submitted, loading } = this.state
+        const { email, name, error, submitted, loading } = this.state;
 
         return (
             <section className='NewsLetterCapture'>
@@ -122,4 +125,4 @@ class NewsLetterCapture extends Component {
     }
 }
 
-export default NewsLetterCapture
+export default NewsLetterCapture;

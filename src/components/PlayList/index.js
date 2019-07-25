@@ -1,18 +1,17 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux'
-import { ListItem } from '../'
-import episodeAsyncActions from '../../redux/actions/episode/asyncActions'
-import './PlayList.scss'
+import { connect } from 'react-redux';
+import { ListItem } from '../';
+import episodeAsyncActions from '../../redux/actions/episode/asyncActions';
+import './PlayList.scss';
 
 class PlayList extends Component {
 
     componentDidMount() {
-        this.props.dispatch(episodeAsyncActions.getFamilyEpisodes(this.props.pk))
+        this.props.dispatch(episodeAsyncActions.getFamilyEpisodes(this.props.pk));
     }
 
     render() {
-
-        const { episodeFamily } = this.props.episode
+        const { episodeFamily } = this.props.episode;
 
         return (
             <section className='PlayList'>
@@ -41,4 +40,4 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps)(PlayList)
+export default connect(mapStateToProps)(PlayList);

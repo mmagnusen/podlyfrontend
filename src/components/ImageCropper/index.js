@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import ReactCrop from "react-image-crop";
-import classnames from 'classnames'
+import classnames from 'classnames';
 import "react-image-crop/dist/ReactCrop.css";
-import { Button } from '../'
-import './ImageCropper.scss'
+import { Button } from '../';
+import './ImageCropper.scss';
 
 class ImageCropper extends Component {
 
@@ -26,9 +26,11 @@ class ImageCropper extends Component {
     onSelectFile = e => {
         if (e.target.files && e.target.files.length > 0) {
           const reader = new FileReader();
+
           reader.addEventListener("load", () =>
             this.setState({ originalUploadedImage: reader.result})
           );
+
           reader.readAsDataURL(e.target.files[0]);
         }
     };
@@ -45,7 +47,6 @@ class ImageCropper extends Component {
         this.setState({ crop });
     };
 
-
     async makeClientCrop(crop) {
         if (this.imageRef && crop.width && crop.height) {
           const croppedImageBlob = await this.getCroppedImg(
@@ -60,10 +61,15 @@ class ImageCropper extends Component {
 
     getCroppedImg(image, crop, fileName) {
     const canvas = document.createElement("canvas");
+
     const scaleX = image.naturalWidth / image.width;
+
     const scaleY = image.naturalHeight / image.height;
+
     canvas.width = crop.width;
+
     canvas.height = crop.height;
+
     const ctx = canvas.getContext("2d");
 
     ctx.drawImage(
@@ -96,17 +102,19 @@ class ImageCropper extends Component {
 
     saveImage = () => {
         const { saveImage } = this.props;
-        const { blob } = this.state
 
-        saveImage(blob)
+        const { blob } = this.state;
+
+        saveImage(blob);
     }
 
     resetImage = () => {
-        this.setState({...this.defaultState})
+        this.setState({...this.defaultState});
     }
 
     render() {
         const { originalUploadedImage, crop, croppedImageBlob, loading } = this.state;
+
         return (
             <div className='ImageCropper'>
                 <div className='ImageCropper-grid'>
@@ -145,5 +153,5 @@ class ImageCropper extends Component {
     }
 }
 
-export default ImageCropper
+export default ImageCropper;
 

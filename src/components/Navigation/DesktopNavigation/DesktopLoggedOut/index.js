@@ -1,13 +1,11 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Link  } from 'react-router-dom';
-import { connect } from 'react-redux'
-import { Button } from '../../../'
-import './DesktopLoggedOut.scss'
+import { connect } from 'react-redux';
+import { Button } from '../../../';
+import './DesktopLoggedOut.scss';
 
-class DesktopLoggedOut extends Component {
-  render() {
-    return (
-      <div className="DesktopLoggedOut">
+const DesktopLoggedOut = () => (
+    <div className="DesktopLoggedOut">
         <section className="DesktopLoggedOut-logo">
             <Link to="/"><h1>Platfore</h1></Link>
         </section>
@@ -23,15 +21,13 @@ class DesktopLoggedOut extends Component {
                 <Button>Register</Button>
             </Link>
         </section>
-      </div>
-    );
-  }
-}
+    </div>
+);
 
 const mapStateToProps = (state) => {
     return {
         user: state.user
     }
-}
+};
 
 export default connect(mapStateToProps)(DesktopLoggedOut);

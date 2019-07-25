@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Podcast , Filter, LoadingSpinner, NoResults } from '../../../src/components/';
-import { connect } from 'react-redux'
-import searchAsyncActions from './../../redux/actions/search/asyncActions'
+import { connect } from 'react-redux';
+import searchAsyncActions from './../../redux/actions/search/asyncActions';
 import { withRouter } from "react-router";
 
 class Home extends Component {
@@ -10,11 +10,11 @@ class Home extends Component {
     }
 
     componentDidMount() {
-        this.props.dispatch(searchAsyncActions.freshRequest())
+        this.props.dispatch(searchAsyncActions.freshRequest());
     }
 
   render() {
-    const { podcasts, loading } = this.props.search
+    const { podcasts, loading } = this.props.search;
 
     return (
         <div className="App">
