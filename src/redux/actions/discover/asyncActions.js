@@ -1,6 +1,6 @@
-import axios from 'axios'
-import discoverActionGenerators from './discoverActionGenerators'
-import { ENDPOINT } from '../../../constants'
+import axios from 'axios';
+import discoverActionGenerators from './discoverActionGenerators';
+import { ENDPOINT } from '../../../constants';
 
 const discoverAsyncActions = { 
     freshRequest: () => {
@@ -11,13 +11,13 @@ const discoverAsyncActions = {
                 responseType: 'json'
             })
             .then(({data}) => {
-                dispatch(discoverActionGenerators.updateDiscoverEposides(data))
+                dispatch(discoverActionGenerators.updateDiscoverEposides(data));
             })
             .catch((error) => {
-                console.log('error', error)
+                console.log('error', error);
             }) 
         }  
     }
-}
+};
 
-export default discoverAsyncActions
+export default discoverAsyncActions;

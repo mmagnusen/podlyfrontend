@@ -3,7 +3,7 @@ const defaultSearchState = {
     singleLoading: true,
     filters: [],
     podcasts: [],
-    singlePodcast: {}
-}
+    singlePodcast: {},
+};
 
-export default defaultSearchState
+export default defaultSearchState;

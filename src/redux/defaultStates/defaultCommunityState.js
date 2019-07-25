@@ -1,5 +1,5 @@
 const defaultCommunityState = {
-    communityPosts: []
-}
+    communityPosts: [],
+};
 
-export default defaultCommunityState
+export default defaultCommunityState;

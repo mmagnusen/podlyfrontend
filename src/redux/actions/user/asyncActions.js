@@ -1,11 +1,13 @@
-import axios from 'axios'
-import userActionGenerators from './userActionGenerators'
-import podcastAsyncActions from '../podcast/asyncActions'
-import { handleResponseError } from '../../../utils'
-import { ENDPOINT } from '../../../constants'
+import axios from 'axios';
+import userActionGenerators from './userActionGenerators';
+import podcastAsyncActions from '../podcast/asyncActions';
+import { handleResponseError } from '../../../utils';
+import { ENDPOINT } from '../../../constants';
 
 axios.defaults.xsrfCookieName = 'csrftoken';
+
 axios.defaults.xsrfHeaderName = 'X-CSRFToken';
+
 const token = localStorage.getItem('token');
 
 const userAsyncActions = { 
@@ -23,14 +25,20 @@ const userAsyncActions = {
             .then(({data}) => {
                 console.log(data)
                 if ( data.token ) {
-                    dispatch(podcastAsyncActions.getUserPodcasts(data.token))
-                    localStorage.setItem('firstName', data.user.first_name)
-                    localStorage.setItem('lastName', data.user.last_name)
-                    localStorage.setItem('email', data.user.email)
-                    localStorage.setItem('token', data.token)
-                    localStorage.setItem('pk', data.user.pk)
+                    dispatch(podcastAsyncActions.getUserPodcasts(data.token));
+
+                    localStorage.setItem('firstName', data.user.first_name);
+
+                    localStorage.setItem('lastName', data.user.last_name);
+
+                    localStorage.setItem('email', data.user.email);
+
+                    localStorage.setItem('token', data.token);
+
+                    localStorage.setItem('pk', data.user.pk);
+
                     if (data.user.profile) {
-                        localStorage.setItem('profile', data.user.profile.image)
+                        localStorage.setItem('profile', data.user.profile.image);
                     }
                     dispatch(userActionGenerators.setUserDetails({
                         first_name: data.user.first_name,
@@ -40,14 +48,15 @@ const userAsyncActions = {
                         pk: data.user.pk,
                         profile: data.user.profile.image
                     }))
-                }
+                };
             })
             .catch(({response}) => {
                 const parsedError = handleResponseError(response.data, 'login')
-                dispatch(userActionGenerators.loginError(parsedError))
+                dispatch(userActionGenerators.loginError(parsedError));
             })
         }
     },
+
     submitRegister: (firstName, lastName, email, password) => {
         return (dispatch) => { 
             axios({
@@ -72,8 +81,10 @@ const userAsyncActions = {
                 setTimeout( () =>  dispatch(userActionGenerators.setUserDetails(data), 200));  
             })
             .catch(({response}) => {
-                const parsedError = handleResponseError(response.data, 'register')
-                dispatch(userActionGenerators.registerError(parsedError))
+
+                const parsedError = handleResponseError(response.data, 'register');
+
+                dispatch(userActionGenerators.registerError(parsedError));
             })
         }  
     },
@@ -90,13 +101,13 @@ const userAsyncActions = {
                     image,
                 },
             })
-            .then(({data}) => {
+            .then(() => {
                 getProfile()
             })
             .catch(({response}) => {
               console.log(response)
             })
-        }
+        };
     },
     getProfile: () => {
         return (dispatch) => {
@@ -116,6 +127,6 @@ const userAsyncActions = {
             }) 
         }  
     },
-}
+};
 
-export default userAsyncActions
+export default userAsyncActions;

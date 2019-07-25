@@ -5,36 +5,41 @@ const episodeActionGenerators = {
             episode
         }
     },
+
     updateName: (name) => {
         return {
             type: 'UPDATE_EPISODE_NAME',
             name
         }
     },
+
     updateSnippet: (snippet) => {
         return {
             type: 'UPDATE_EPISODE_SNIPPET',
             snippet
         }
     },
+
     setPlaying: (episode) => {
         return {
             type: 'SET_PLAYING',
             episode
         }
     },
+
     setUserEpisodes: (episodes) => {
         return {
             type: 'UPDATE_USER_EPISODES',
             episodes
         }
     },
+
     updateEpisdeFamily: (episodes) => {
         return {
             type: 'UPDATE_EPISODE_FAMILY',
             episodes
         }  
     }
-}
+};
 
-export default episodeActionGenerators
+export default episodeActionGenerators;

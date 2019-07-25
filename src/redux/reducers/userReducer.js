@@ -1,4 +1,4 @@
-import defaultUserState from '../defaultStates/defaultUserState'
+import defaultUserState from '../defaultStates/defaultUserState';
 
 const userReducer = (state = defaultUserState, action = {}) => {
     switch(action.type) {
@@ -10,13 +10,13 @@ const userReducer = (state = defaultUserState, action = {}) => {
                 email: action.details.email,
                 token: action.details.token,
                 pk: action.details.pk,
-                profile: action.details.profile
+                profile: action.details.profile,
             }
         case 'SET_REDIRECT':
             return {
                 ...state,
                 shboard: action.redirect,
-            }
+            };
         case 'SET_LOGOUT':
             return {
                 ...state,
@@ -24,30 +24,30 @@ const userReducer = (state = defaultUserState, action = {}) => {
                 lastName: null,
                 email: null,
                 token: null,
-            }
+            };
         case 'UPDATE_USER_TAB':
             return {
                 ...state,
-                dashboardTabIndex: action.newTabIndex
-            }
+                dashboardTabIndex: action.newTabIndex,
+            };
         case 'REGISTER_ERROR':
             return {
                 ...state,
-                registerError: action.error
-            }
+                registerError: action.error,
+            };
         case 'LOGIN_ERROR':
             return {
                 ...state,
-                loginError: action.error
-            }
+                loginError: action.error,
+            };
         case 'SET_PROFILE':
             return {
                 ...state,
-                profile: action.profile
-            }
+                profile: action.profile,
+            };
         default:
-            return state
-     }
-}
+            return state;
+     };
+};
 
-export default userReducer
+export default userReducer;

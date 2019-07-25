@@ -3,6 +3,6 @@ const defaultPlayState = {
     userEpisodes: [],
     currentEditEpisode: {},
     episodeFamily: [],
-}
+};
 
-export default defaultPlayState
+export default defaultPlayState;

@@ -1,7 +1,7 @@
-import axios from 'axios'
-import hostActionGenerators from './hostActionGenerators'
-import store from '../../store/store'
-import { ENDPOINT } from '../../../constants'
+import axios from 'axios';
+import hostActionGenerators from './hostActionGenerators';
+import store from '../../store/store';
+import { ENDPOINT } from '../../../constants';
 
 const token = localStorage.getItem('token');
 
@@ -27,8 +27,9 @@ const hostAsyncActions = {
                 dispatch(hostActionGenerators.submitNewHostError(errortext))
          
             }) 
-        }  
+        };
     },
+
     submitChanges: (data, successCallback) => {
         return (dispatch) => {
             const editedHost = store.getState().host.currentHost
@@ -53,8 +54,9 @@ const hostAsyncActions = {
                 const errortext = 'There was a problem creating your podcast. Please check details and try again'
                 dispatch(hostActionGenerators.editHostError(errortext))
             })
-        }
+        };
     },
+
     getUserHosts: () => {
         return (dispatch) => {
             token && axios({
@@ -68,8 +70,8 @@ const hostAsyncActions = {
             .then((response) => {
                 dispatch(hostActionGenerators.setUserHosts(response.data))
             })
-        }  
+        };  
     }
-}
+};
 
-export default hostAsyncActions
+export default hostAsyncActions;

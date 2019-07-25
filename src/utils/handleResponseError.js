@@ -10,6 +10,5 @@ export const handleResponseError = (error, authenticationType) => {
         return 'Your email/password is not recognised. Please check details and try again.'
     }
 
-    return null
-
-}
+    return null;
+};

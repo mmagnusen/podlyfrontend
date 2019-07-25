@@ -1,9 +1,14 @@
-const firstName = localStorage.getItem('firstName')
-const lastName = localStorage.getItem('lastName')
-const email = localStorage.getItem('email')
-const token = localStorage.getItem('token')
-const pk = localStorage.getItem('pk')
-const profile =  localStorage.getItem('profile')
+const firstName = localStorage.getItem('firstName');
+
+const lastName = localStorage.getItem('lastName');
+
+const email = localStorage.getItem('email');
+
+const token = localStorage.getItem('token');
+
+const pk = localStorage.getItem('pk');
+
+const profile =  localStorage.getItem('profile');
 
 const defaultUserState = {
     firstName: firstName,
@@ -15,7 +20,6 @@ const defaultUserState = {
     registerError: null,
     loginError: null,
     profile,
+};
 
-}
-
-export default defaultUserState
+export default defaultUserState;

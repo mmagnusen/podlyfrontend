@@ -1,5 +1,5 @@
 const defaultDiscoverState = {
-    episodes: []
+    episodes: [],
 }
 
-export default defaultDiscoverState
+export default defaultDiscoverState;

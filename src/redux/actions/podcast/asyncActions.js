@@ -1,7 +1,7 @@
-import axios from 'axios'
-import podcastActionGenerators from './podcastActionGenerators'
-import store from '../../store/store'
-import { ENDPOINT } from '../../../constants'
+import axios from 'axios';
+import podcastActionGenerators from './podcastActionGenerators';
+import store from '../../store/store';
+import { ENDPOINT } from '../../../constants';
 
 const endpoint = `${ENDPOINT}/api/podcast`
 axios.defaults.xsrfCookieName = 'csrftoken';
@@ -26,8 +26,9 @@ const podcastAsyncActions = {
             .catch((error) => {
                 console.log('error', error)
             }) 
-        }  
+        };
     },
+
     submitChanges: (data, successCallback) => {
         const editedPodcast = store.getState().podcast.currentPodcast
         return (dispatch) => {
@@ -54,10 +55,11 @@ const podcastAsyncActions = {
                 const errortext = 'There was a problem creating your podcast. Please check details and try again'
                 dispatch(podcastActionGenerators.editPodcastError(errortext))
             }) 
-        }  
+        };
     },
+
     submitNewPodcast: (data, successCallback) => {
-        return (dispatch) => {
+        return (dispatch) => {;
             axios({
                 method: 'post',
                 url: endpoint, 
@@ -71,7 +73,6 @@ const podcastAsyncActions = {
                 if (response.status === 201) {
                     successCallback() 
                 }
-             
             })
             .catch(() => {
                 const errortext = 'There was a problem creating your podcast. Please check details and try again'
@@ -79,6 +80,6 @@ const podcastAsyncActions = {
             }) 
         }  
     },
-}
+};
 
-export default podcastAsyncActions
+export default podcastAsyncActions;

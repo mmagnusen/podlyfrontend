@@ -5,6 +5,6 @@ const communityActionGenerators = {
             communityPosts
         }
     },
-}
+};
 
-export default communityActionGenerators
+export default communityActionGenerators;

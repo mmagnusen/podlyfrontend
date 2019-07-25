@@ -2,11 +2,11 @@ const defaultPodcastState = {
     currentPodcast: {},
     podcasts: [],
     new: {
-        error: null
+        error: null,
     },
     edit: {
-        error: null
-    }
-}
+        error: null,
+    },
+};
 
-export default defaultPodcastState
+export default defaultPodcastState;

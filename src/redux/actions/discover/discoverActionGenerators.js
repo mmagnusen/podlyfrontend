@@ -3,8 +3,8 @@ const discoverActionGenerators = {
         return {
             type: 'UPDATE_DISCOVER_EPISODES',
             episodes
-        }
+        };
     },
-}
+};
 
-export default discoverActionGenerators
+export default discoverActionGenerators;

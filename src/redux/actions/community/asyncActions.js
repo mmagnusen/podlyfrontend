@@ -1,6 +1,6 @@
-import axios from 'axios'
-import communityActionGenerators from './communityActionGenerators'
-import { ENDPOINT } from '../../../constants'
+import axios from 'axios';
+import communityActionGenerators from './communityActionGenerators';
+import { ENDPOINT } from '../../../constants';
 
 const token = localStorage.getItem('token');
 
@@ -20,6 +20,7 @@ const communityAsyncActions = {
             }) 
         }  
     },
+
     postReply: (data, getPosts) => {
         return () => {
             axios({
@@ -37,6 +38,6 @@ const communityAsyncActions = {
             }) 
         }  
     }
-}
+};
 
-export default communityAsyncActions
+export default communityAsyncActions;

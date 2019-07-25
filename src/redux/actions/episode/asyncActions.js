@@ -1,7 +1,7 @@
-import axios from 'axios'
-import episodeActionGenerators from './episodeActionGenerators'
-import store from '../../store/store'
-import { ENDPOINT } from '../../../constants'
+import axios from 'axios';
+import episodeActionGenerators from './episodeActionGenerators';
+import store from '../../store/store';
+import { ENDPOINT } from '../../../constants';
 
 const token = localStorage.getItem('token');
 
@@ -13,8 +13,9 @@ const podcastAsyncActions = {
             .then((response) => {
                 dispatch(episodeActionGenerators.setPlaying(response.data[0]))
             })
-        }  
+        };  
     },
+
     getFamilyEpisodes: (pk) => {
         return (dispatch) => {
             const singleEndpoint = `${ENDPOINT}/api/episode/family?podcast_pk=${pk}`
@@ -22,8 +23,9 @@ const podcastAsyncActions = {
             .then(({data}) => {
                 dispatch(episodeActionGenerators.updateEpisdeFamily(data))
             })
-        }  
+        };
     },
+
     getUserEpisodes: () => {
         return (dispatch) => {
             token && axios({
@@ -35,14 +37,15 @@ const podcastAsyncActions = {
                 responseType: 'json'
             })
             .then((response) => {
-                dispatch(episodeActionGenerators.setUserEpisodes(response.data))
+                dispatch(episodeActionGenerators.setUserEpisodes(response.data));
             })
-        }  
+        };  
     },
+
     submitChanges: () => { 
-        const editedEpisode = store.getState().episode.currentEditEpisode 
-        delete editedEpisode.podcast
-        delete editedEpisode.image
+        const editedEpisode = store.getState().episode.currentEditEpisode;
+        delete editedEpisode.podcast;
+        delete editedEpisode.image;
 
         return (dispatch) => {
             axios({
@@ -57,8 +60,9 @@ const podcastAsyncActions = {
             .catch((error) => {
                 console.log('error', error)
             }) 
-        }  
+        }; 
     },
+
     submitNewEpisode: (data) => {
         return () => {
             axios({
@@ -73,9 +77,8 @@ const podcastAsyncActions = {
             .catch((error) => {
                 console.log('error', error)
             }) 
-        }  
+        };
     },
+};
 
-}
-
-export default podcastAsyncActions
+export default podcastAsyncActions;

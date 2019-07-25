@@ -9,4 +9,4 @@ export const getDangerousHtml = (stringifiedContent) => {
 
     const outputHtml = {__html: html}
     return outputHtml
-}
+};

@@ -2,7 +2,7 @@ const defaultHostState = {
     userHosts: [],
     newHostError: false,
     editHostError: false,
-    currentHost: {}
-}
+    currentHost: {},
+};
 
-export default defaultHostState
+export default defaultHostState;
