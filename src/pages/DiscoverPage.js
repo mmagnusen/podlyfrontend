@@ -1,16 +1,10 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Discover } from '../../src/components/';
 
-class DiscoverPage extends Component {
-
-  render() {
-    return (
-        <div className="App">
-            <Discover />
-        </div>
-    );
-  }
-}
-
+const DiscoverPage = () => (
+  <div className="App">
+    <Discover />
+  </div>
+);
 
 export default DiscoverPage;

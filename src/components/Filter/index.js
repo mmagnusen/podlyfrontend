@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import Select from 'react-select';
-import { connect } from 'react-redux'
-import searchAsyncActions from './../../redux/actions/search/asyncActions'
-import './Filter.scss'
+import { connect } from 'react-redux';
+import searchAsyncActions from './../../redux/actions/search/asyncActions';
+import './Filter.scss';
 
 const options = [
     { value: 'Tech', label: 'Tech' },
@@ -34,7 +34,7 @@ class Filter extends Component {
   }
   
   render() {
-    const { filters } = this.props.search
+    const { filters } = this.props.search;
 
     return (
           <div className="Filter">
@@ -56,4 +56,4 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps)(Filter)
+export default connect(mapStateToProps)(Filter);

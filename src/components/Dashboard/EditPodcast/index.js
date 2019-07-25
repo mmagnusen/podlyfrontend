@@ -1,15 +1,16 @@
 import React, { Component } from 'react';
-import { Input, Button, RichText } from '../../index'
+import { Input, Button, RichText } from '../../index';
 import { connect } from 'react-redux'
-import podcastAsyncActions from '../../../redux/actions/podcast/asyncActions'
-import { formValidation } from '../../../utils/'
-import './EditPodcast.scss'
+import podcastAsyncActions from '../../../redux/actions/podcast/asyncActions';
+import { formValidation } from '../../../utils/';
+import './EditPodcast.scss';
 
 class EditPodcast extends Component {
 
     constructor(props) {
         super(props)
-        const { name, slug, tags, start_date, url, description } = this.props.currentPodcast
+
+        const { name, slug, tags, start_date, url, description } = this.props.currentPodcast;
 
         this.state = {
             name: {
@@ -77,7 +78,7 @@ class EditPodcast extends Component {
 
     submitChanges = () => {
 
-        const { name, slug, tags, start_date, url, description } = this.state
+        const { name, slug, tags, start_date, url, description } = this.state;
 
         const data = ({
             name: name.value,
@@ -88,93 +89,94 @@ class EditPodcast extends Component {
             description: description.value
         })
 
-        this.props.dispatch((podcastAsyncActions.submitChanges(data, this.toggleCallback)))
+        this.props.dispatch((podcastAsyncActions.submitChanges(data, this.toggleCallback)));
     }
 
     render() {
 
-        const { name, tags, start_date, url, description } = this.state
-        const { podcast } = this.props
+        const { name, tags, start_date, url, description } = this.state;
+
+        const { podcast } = this.props;
 
         return (
-                <div className='EditPodcast'>
-                    <div className="EditPodcast-details">
-                    <section><h3>Edit this podcast</h3></section>
-                    <section className="EditPodcast-name">
-                        <p>Name:</p> 
-                        <Input 
-                            value={name.value} 
-                            onChange={(event) => this.updateValue(event.target.value, 'name')} 
-                            onBlur={() => this.handleBlur('name')}
-                        /> 
-                    </section>
-                    <section>
-                        {name.isValid === false && <p className='error'>Please enter the name of your podcast</p>}
-                    </section>
+            <div className='EditPodcast'>
+                <div className="EditPodcast-details">
+                <section><h3>Edit this podcast</h3></section>
+                <section className="EditPodcast-name">
+                    <p>Name:</p> 
+                    <Input 
+                        value={name.value} 
+                        onChange={(event) => this.updateValue(event.target.value, 'name')} 
+                        onBlur={() => this.handleBlur('name')}
+                    /> 
+                </section>
+                <section>
+                    {name.isValid === false && <p className='error'>Please enter the name of your podcast</p>}
+                </section>
 
-                    <section className="EditPodcast-tags">
-                        <p>Tags:</p> 
-                        <Input 
-                            value={tags.value} 
-                            onChange={(event) => this.updateValue(event.target.value, 'tags')} 
-                            onBlur={() => this.handleBlur('tags')}
-                        />
-                    </section>
-                    <section>
-                        {tags.isValid === false && <p className='error'>Please enter tags to describe your podcast</p>}
-                    </section>
+                <section className="EditPodcast-tags">
+                    <p>Tags:</p> 
+                    <Input 
+                        value={tags.value} 
+                        onChange={(event) => this.updateValue(event.target.value, 'tags')} 
+                        onBlur={() => this.handleBlur('tags')}
+                    />
+                </section>
+                <section>
+                    {tags.isValid === false && <p className='error'>Please enter tags to describe your podcast</p>}
+                </section>
 
-                    <section className="EditPodcast-age">
-                        <p>Age:</p> 
-                        <Input 
-                            value={start_date.value} 
-                            onChange={(event) => this.updateValue(event.target.value, 'start_date')} 
-                            onBlur={() => this.handleBlur('start_date')}
-                        />
-                    </section>
-                    <section>
-                        {start_date.isValid === false && <p className='error'>Please state how long your podcast has been active.</p>}
-                    </section>
+                <section className="EditPodcast-age">
+                    <p>Age:</p> 
+                    <Input 
+                        value={start_date.value} 
+                        onChange={(event) => this.updateValue(event.target.value, 'start_date')} 
+                        onBlur={() => this.handleBlur('start_date')}
+                    />
+                </section>
+                <section>
+                    {start_date.isValid === false && <p className='error'>Please state how long your podcast has been active.</p>}
+                </section>
 
-                    <section className="EditPodcast-link">
-                        <p>Link to podcast:</p> 
-                        <Input 
-                            value={url.value} 
-                            onChange={(event) => this.updateValue(event.target.value, 'url')} 
-                            onBlur={() => this.handleBlur('url')}
-                        />
-                    </section>
-                    <section>
-                        {url.isValid === false && <p className='error'>Please enter a link where your podcast can be found</p>}
-                    </section>
+                <section className="EditPodcast-link">
+                    <p>Link to podcast:</p> 
+                    <Input 
+                        value={url.value} 
+                        onChange={(event) => this.updateValue(event.target.value, 'url')} 
+                        onBlur={() => this.handleBlur('url')}
+                    />
+                </section>
+                <section>
+                    {url.isValid === false && <p className='error'>Please enter a link where your podcast can be found</p>}
+                </section>
 
-                    <section className="EditPodcast-description">
-                        <p>Description:</p>
-                        <RichText 
-                            editorState={description.value} 
-                            onChange={(value) => this.updateValue(value, 'description')} 
-                            onBlur={() => this.handleBlur('description')}
-                        />
-                    </section>
-                    <section>
-                        {description.isValid === false && <p className='error'>Please enter a description for your podcast</p>}
-                    </section>
+                <section className="EditPodcast-description">
+                    <p>Description:</p>
+                    <RichText 
+                        editorState={description.value} 
+                        onChange={(value) => this.updateValue(value, 'description')} 
+                        onBlur={() => this.handleBlur('description')}
+                    />
+                </section>
+                <section>
+                    {description.isValid === false && <p className='error'>Please enter a description for your podcast</p>}
+                </section>
 
-                    </div>
-                    <div className='EditPodcast-submit'>
-                        <Button 
-                            onClick={this.submitChanges}
-                            disabled={!this.canSubmit()}
-                        >
-                        Save changes
-                        </Button>
-                    </div>
-                    {podcast.edit.error &&
-                        <section>
-                            <p className='error'>There was an error updating your podcast. Please check details and try again.</p>
-                        </section>
-                    }
                 </div>
+                <div className='EditPodcast-submit'>
+                    <Button 
+                        onClick={this.submitChanges}
+                        disabled={!this.canSubmit()}
+                    >
+                    Save changes
+                    </Button>
+                </div>
+                {podcast.edit.error &&
+                    <section>
+                        <p className='error'>There was an error updating your podcast. Please check details and try again.</p>
+                    </section>
+                }
+            </div>
         )
     }
 }
@@ -185,6 +187,6 @@ const mapStateToProps = (state) => {
         currentPodcast: state.podcast.currentPodcast,
         podcast: state.podcast
     }
-}
+};
 
-export default connect(mapStateToProps)(EditPodcast)
+export default connect(mapStateToProps)(EditPodcast);

@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
 import { Link  } from 'react-router-dom';
 import Truncate from 'react-truncate';
-import moment from 'moment'
-import './EditorsPick.scss'
+import moment from 'moment';
+import './EditorsPick.scss';
 
 class EditorsPick extends Component {
   state = {
@@ -11,7 +11,8 @@ class EditorsPick extends Component {
   }
 
   render() {
-    const { name, podcast_name, snippet, publish_date, slug } = this.props.podcast
+    const { name, podcast_name, snippet, publish_date, slug } = this.props.podcast;
+
     return (
         <Link to={`/play/${slug}`}>
             <div className="EditorsPick">
@@ -50,4 +51,4 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps)(EditorsPick)
+export default connect(mapStateToProps)(EditorsPick);

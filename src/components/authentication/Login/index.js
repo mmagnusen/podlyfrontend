@@ -1,11 +1,11 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import { AuthenticationForm, Input } from '../../'
-import { Redirect } from 'react-router-dom'
-import { FORM, INPUT_TYPE } from '../../../constants/'
-import userAsyncActions from '../../../redux/actions/user/asyncActions'
-import { formValidation } from '../../../utils/'
-import './Login.scss'
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { AuthenticationForm, Input } from '../../';
+import { Redirect } from 'react-router-dom';
+import { FORM, INPUT_TYPE } from '../../../constants/';
+import userAsyncActions from '../../../redux/actions/user/asyncActions';
+import { formValidation } from '../../../utils/';
+import './Login.scss';
 
  class Login extends Component {
 
@@ -50,17 +50,18 @@ import './Login.scss'
 
     canSubmit = () => {
         const { email, password } = this.state;
-        return email.isValid && password.isValid
+
+        return email.isValid && password.isValid;
     }
 
      render() {
-
         const { email, password } = this.state;
+
         const { loginError } = this.props.user
 
          if (this.props.user.token !== null && this.props.podcast.podcasts !== null) {
-            return <Redirect to='/dashboard'/>
-        }
+            return <Redirect to='/dashboard' />;
+        };
 
          return (
             <div className='Login'>
@@ -111,7 +112,7 @@ import './Login.scss'
     return {
         user: state.user,
         podcast: state.podcast
-    }
-}
+    };
+};
 
- export default connect(mapStateToProps)(Login)
+export default connect(mapStateToProps)(Login);

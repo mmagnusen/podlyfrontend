@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
 import { Link } from '../';
-import moment from 'moment'
-import { LINK_TYPE } from '../../constants'
-import './BlogThumbnail.scss'
+import moment from 'moment';
+import { LINK_TYPE } from '../../constants';
+import './BlogThumbnail.scss';
 
 class BlogThumbnail extends Component {
     render() {
-        const { article } = this.props
+        const { article } = this.props;
 
-        const date = moment(article.date).format("MMM Do YYYY")
+        const date = moment(article.date).format("MMM Do YYYY");
 
-        const postLink = `/blog/${article.slug}`
+        const postLink = `/blog/${article.slug}`;
 
         return (
             <div className='BlogThumbnail'>
@@ -34,4 +34,4 @@ class BlogThumbnail extends Component {
     }
 }
 
-export default BlogThumbnail
+export default BlogThumbnail;

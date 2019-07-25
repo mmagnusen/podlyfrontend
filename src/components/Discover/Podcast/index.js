@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux'
-import { ENDPOINT } from '../../../constants'
-import moment from 'moment'
+import { connect } from 'react-redux';
+import { ENDPOINT } from '../../../constants';
+import moment from 'moment';
 import { Link  } from 'react-router-dom';
-import './Podcast.scss'
+import './Podcast.scss';
 
 class Podcast extends Component {
   state = {
@@ -11,7 +11,8 @@ class Podcast extends Component {
   }
 
   render() {
-    const { name, podcast_name, snippet, hosts, publish_date, image, slug } = this.props.podcast
+    const { name, podcast_name, snippet, hosts, publish_date, image, slug } = this.props.podcast;
+
     return (
         <Link to={`/play/${slug}`}>
             <div className="SinglePodcast">
@@ -42,7 +43,7 @@ class Podcast extends Component {
                     </section>
                 </div>
                 <div className='SinglePodcast-image' style={{backgroundImage: `url(${ENDPOINT}/media/${image})`}}>
-                        <div className='SinglePodcast-imageInner'/>
+                    <div className='SinglePodcast-imageInner'/>
                 </div>
             </div>
         </Link>
@@ -54,6 +55,6 @@ const mapStateToProps = (state) => {
     return {
         search: state.search
     }
-}
+};
 
-export default connect(mapStateToProps)(Podcast)
+export default connect(mapStateToProps)(Podcast);

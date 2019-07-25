@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import axios from 'axios'
-import { Input, TextArea, Button } from '../index'
-import { formValidation } from '../../utils'
-import { INPUT_TYPE, ENDPOINT } from '../../constants'
-import './ContactHost.scss'
+import axios from 'axios';
+import { Input, TextArea, Button } from '../';
+import { formValidation } from '../../utils';
+import { INPUT_TYPE, ENDPOINT } from '../../constants';
+import './ContactHost.scss';
 
 class ContactHost extends Component {
     state = {
@@ -98,7 +98,7 @@ Platfore
 
   render() {
 
-    const { submitted, error, name, email, message, loading } = this.state
+    const { submitted, error, name, email, message, loading } = this.state;
 
     return (
           <form className="ContactHost">

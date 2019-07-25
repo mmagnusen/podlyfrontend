@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux'
-import { ImageCropper } from '../../../'
-import { storage } from '../../../../firebase'
-import userAsyncActions from '../../../../redux/actions/user/asyncActions'
-import './TabDetails.scss'
+import { connect } from 'react-redux';
+import { ImageCropper } from '../../../';
+import { storage } from '../../../../firebase';
+import userAsyncActions from '../../../../redux/actions/user/asyncActions';
+import './TabDetails.scss';
 
 class TabDetails extends Component {
     state = {
@@ -15,12 +15,14 @@ class TabDetails extends Component {
     }
 
     getProfile = () => {
-        this.props.dispatch(userAsyncActions.getProfile())
+        this.props.dispatch(userAsyncActions.getProfile());
     }
 
     sendToFirebase = (blob) => {
-        const { pk } = this.props.user
+        const { pk } = this.props.user;
+
         const uploadTask =  storage.ref(`profile/user_${pk}`).put(blob);
+
         uploadTask.on('state_changed', 
         (snapshot) => {
             //progress function ...
@@ -43,6 +45,7 @@ class TabDetails extends Component {
     render() {
 
     const { user } = this.props;
+
     const { uploadingToFirebase } = this.state;
 
         return (
@@ -85,5 +88,5 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps)(TabDetails)
+export default connect(mapStateToProps)(TabDetails);
 

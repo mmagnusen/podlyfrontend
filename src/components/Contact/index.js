@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import axios from 'axios'
-import { Input, Button, TextArea } from '../'
-import { INPUT_TYPE, ENDPOINT } from '../../constants/'
-import { formValidation } from '../../utils/'
-import './Contact.scss'
+import axios from 'axios';
+import { Input, Button, TextArea } from '../';
+import { INPUT_TYPE, ENDPOINT } from '../../constants/';
+import { formValidation } from '../../utils/';
+import './Contact.scss';
 
 class Contact extends Component {
     state = {
@@ -46,12 +46,13 @@ class Contact extends Component {
     }
 
     submitContact = (event) => {
-        event.preventDefault()   
+        event.preventDefault();
+
         const { name, email, message } = this.state;
 
         this.setState({
             loading: true
-        })
+        });
         
         const data = ({
             "name": name.value,
@@ -86,81 +87,82 @@ Platfore
 
     canSubmit = () => {
         const { name, email, message } = this.state;
-        return name.isValid && email.isValid && message.isValid
+
+        return name.isValid && email.isValid && message.isValid;
     }
 
     render() {
 
-        const { email, name, message, error, submitted, loading } = this.state
+        const { email, name, message, error, submitted, loading } = this.state;
 
         return (
-        <section className='Contact'>
-            <div className='Contact-inner'>
-                <p>Hello!</p>
-                <p>Thankyou for visiting our contact us page. We'd love to hear from you, whether you've got suggestions, have any questions or just fancy a chat.</p>
-                <p>Hit us up using the contact form below and we'll get back to you ASAP.</p>
+            <section className='Contact'>
+                <div className='Contact-inner'>
+                    <p>Hello!</p>
+                    <p>Thankyou for visiting our contact us page. We'd love to hear from you, whether you've got suggestions, have any questions or just fancy a chat.</p>
+                    <p>Hit us up using the contact form below and we'll get back to you ASAP.</p>
 
-                    <form>
-                        <section>
-                            <h3>Contact us</h3>
-                        </section>
-
-                        <section className='field fieldTwo'>
-                            <label>Name</label> 
-                            <Input 
-                                onChange={(event) => this.updateValue(event, 'name')} 
-                                onBlur={() => this.handleBlur('name')}
-                                value={name.value}
-                                type={INPUT_TYPE.TEXT}
-                                placeHolder='name'
-                            />
-                        </section>
-                        <section>
-                            {name.isValid === false && <p className='error'>Please enter your name</p>}
-                        </section>
-
-                        <section className='field fieldTwo'>
-                            <label>Email</label> 
-                            <Input 
-                                onChange={(event) => this.updateValue(event, 'email')} 
-                                onBlur={() => this.handleBlur('email')}
-                                value={email.value}
-                                type={INPUT_TYPE.EMAIL}
-                            />
-                        </section>
-                        <section>
-                            {email.isValid === false && <p className='error'>Please enter your email</p>}
-                        </section>
-
-                        <section className='field fieldTwo'>
-                            <label>Message</label> 
-                            <TextArea 
-                                onChange={(event) => this.updateValue(event, 'message')} 
-                                onBlur={() => this.handleBlur('message')}
-                                value={message.value}
-                            />
-                        </section>
-                        <section>
-                            {message.isValid === false && <p className='error'>Please enter your message</p>}
-                        </section>
-                        <section className='Contact-submit'>
-                            <Button disabled={!this.canSubmit()} onClick={this.submitContact} loading={loading}>Send message</Button>
-                        </section>
-                        {error && (
+                        <form>
                             <section>
-                                <p className='error'>There was an error sending your message. Please check and try again</p>
+                                <h3>Contact us</h3>
                             </section>
-                        )}
-                        {submitted === true && (
-                            <div className='ContactHost-success'>
-                                <h3>Your message has been successfully sent!</h3>
-                            </div>
-                        )}
-                    </form>
-            </div>
-        </section>
+
+                            <section className='field fieldTwo'>
+                                <label>Name</label> 
+                                <Input 
+                                    onChange={(event) => this.updateValue(event, 'name')} 
+                                    onBlur={() => this.handleBlur('name')}
+                                    value={name.value}
+                                    type={INPUT_TYPE.TEXT}
+                                    placeHolder='name'
+                                />
+                            </section>
+                            <section>
+                                {name.isValid === false && <p className='error'>Please enter your name</p>}
+                            </section>
+
+                            <section className='field fieldTwo'>
+                                <label>Email</label> 
+                                <Input 
+                                    onChange={(event) => this.updateValue(event, 'email')} 
+                                    onBlur={() => this.handleBlur('email')}
+                                    value={email.value}
+                                    type={INPUT_TYPE.EMAIL}
+                                />
+                            </section>
+                            <section>
+                                {email.isValid === false && <p className='error'>Please enter your email</p>}
+                            </section>
+
+                            <section className='field fieldTwo'>
+                                <label>Message</label> 
+                                <TextArea 
+                                    onChange={(event) => this.updateValue(event, 'message')} 
+                                    onBlur={() => this.handleBlur('message')}
+                                    value={message.value}
+                                />
+                            </section>
+                            <section>
+                                {message.isValid === false && <p className='error'>Please enter your message</p>}
+                            </section>
+                            <section className='Contact-submit'>
+                                <Button disabled={!this.canSubmit()} onClick={this.submitContact} loading={loading}>Send message</Button>
+                            </section>
+                            {error && (
+                                <section>
+                                    <p className='error'>There was an error sending your message. Please check and try again</p>
+                                </section>
+                            )}
+                            {submitted === true && (
+                                <div className='ContactHost-success'>
+                                    <h3>Your message has been successfully sent!</h3>
+                                </div>
+                            )}
+                        </form>
+                </div>
+            </section>
         )
     }
 }
 
-export default Contact
+export default Contact;

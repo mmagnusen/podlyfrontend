@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux'
-import Podcast from './Podcast'
+import { connect } from 'react-redux';
+import Podcast from './Podcast';
 import EditorsPick from './EditorsPick'
-import discoverAsyncActions from './../../redux/actions/discover/asyncActions'
-import './Discover.scss'
+import discoverAsyncActions from './../../redux/actions/discover/asyncActions';
+import './Discover.scss';
 
 class Discover extends Component {
   state = {
@@ -11,12 +11,12 @@ class Discover extends Component {
   }
 
   componentDidMount() {
-    this.props.dispatch(discoverAsyncActions.freshRequest())
+    this.props.dispatch(discoverAsyncActions.freshRequest());
   }
 
   render() {
 
-    const { episodes } = this.props.discover
+    const { episodes } = this.props.discover;
 
     return (
           <div className="Discover">
@@ -44,4 +44,4 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps)(Discover)
+export default connect(mapStateToProps)(Discover);

@@ -1,11 +1,9 @@
 @import '../../constants/styles/sass-variables/colors';
 @import '../../constants/styles/sass-variables/breakpoints';
 
-
 $module: 'BlogThumbnail';
 
 .#{$module} { 
-   
     background:$white;
     display: flex;
     flex-direction: column;

@@ -15,8 +15,6 @@ class AudioPlayer extends Component {
             muted: false
         }
 
-        
-
         this.timer = setInterval(() => {
             this.countDown();
           }, 1000);
@@ -94,9 +92,11 @@ class AudioPlayer extends Component {
 
     render() {
 
-    const { audio } = this.props
-    const { currentTime, duration, muted, currentOriginal, durationOriginal } = this.state
-    const percentange = (currentOriginal / durationOriginal) * 100
+    const { audio } = this.props;
+
+    const { currentTime, duration, muted, currentOriginal, durationOriginal } = this.state;
+
+    const percentange = (currentOriginal / durationOriginal) * 100;
 
         return (
         <section className='AudioPlayer'>
@@ -135,11 +135,7 @@ class AudioPlayer extends Component {
                     <i className="fas fa-volume-up" onClick={this.toggleMute}/>
                 }
                 </section>
-
-    
             </section>	
-
-         
 
             <audio id='player' key={audio}>
                 <source src='https://firebasestorage.googleapis.com/v0/b/firebasics-79e59.appspot.com/o/episodes%2F18%20MacCunn%20The%20Lay%20of%20the%20Last%20Minstrel%20-%20Part%202%20Final%20chorus%20O%20Caledonia!%20stern%20and%20wild.MP3?alt=media&token=68745e0f-258c-42c8-a00c-47b0dc3a8822' type="audio/mpeg"/>
@@ -148,6 +144,6 @@ class AudioPlayer extends Component {
         </section>
         )
     }
-}
+};
 
-export default AudioPlayer
+export default AudioPlayer;

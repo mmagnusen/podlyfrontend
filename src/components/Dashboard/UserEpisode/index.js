@@ -1,23 +1,24 @@
 
 
 import React, { Component } from 'react';
-import { connect } from 'react-redux'
-import { Button } from '../../'
-import episodeActionGenerators from '../../../redux/actions/episode/episodeActionGenerators'
+import { connect } from 'react-redux';
+import { Button } from '../../';
+import episodeActionGenerators from '../../../redux/actions/episode/episodeActionGenerators';
 import moment from 'moment';
-import './UserEpisode.scss'
+import './UserEpisode.scss';
 
 class UserEpisode extends Component {
 
 
     openEditModal = () => {
-        this.props.dispatch((episodeActionGenerators.updateEditModalOpen(this.props.episode)))
-        this.props.toggleEditEpisode()
+        this.props.dispatch((episodeActionGenerators.updateEditModalOpen(this.props.episode)));
+
+        this.props.toggleEditEpisode();
     }
 
     render() {
 
-    const { name, slug, snippet, publish_date } = this.props.episode
+    const { name, slug, snippet, publish_date } = this.props.episode;
 
         return (
             <section className='UserEpisode'>
@@ -49,7 +50,7 @@ const mapStateToProps = (state) => {
     return {
         user: state.user
     }
-}
+};
 
-export default connect(mapStateToProps)(UserEpisode)
+export default connect(mapStateToProps)(UserEpisode);
 

@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux'
-import { AuthenticationForm, Input } from '../../'
-import { FORM } from '../../../constants'
+import { connect } from 'react-redux';
+import { AuthenticationForm, Input } from '../../';
+import { FORM } from '../../../constants';
 import { Redirect } from 'react-router-dom';
-import userAsyncActions from '../../../redux/actions/user/asyncActions'
-import { INPUT_TYPE } from '../../../constants/index'
-import { formValidation } from '../../../utils/'
-import './Register.scss'
+import userAsyncActions from '../../../redux/actions/user/asyncActions';
+import { INPUT_TYPE } from '../../../constants/index';
+import { formValidation } from '../../../utils/';
+import './Register.scss';
 
 class Register extends Component {
 
@@ -54,7 +54,8 @@ class Register extends Component {
 
     canSubmit = () => {
         const { firstName, lastName, email, password } = this.state;
-        return firstName.isValid && lastName.isValid && email.isValid && password.isValid
+
+        return firstName.isValid && lastName.isValid && email.isValid && password.isValid;
     }
 
 
@@ -74,10 +75,11 @@ class Register extends Component {
     render() {
 
         const { firstName, lastName, email, password, loading } = this.state;
-        const { registerError } = this.props.user
+
+        const { registerError } = this.props.user;
 
         if (this.props.user.token !== null) {
-            return <Redirect to='/dashboard'/>
+            return <Redirect to='/dashboard' />
         }
 
         const { formError } = this.state;
@@ -159,12 +161,12 @@ class Register extends Component {
             </div>
         )
     }
-}
+};
 
 const mapStateToProps = (state) => {
     return {
-        user: state.user
-    }
+        user: state.user,
+    };
 }
 
-export default connect(mapStateToProps)(Register)
+export default connect(mapStateToProps)(Register);

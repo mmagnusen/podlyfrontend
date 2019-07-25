@@ -1,13 +1,13 @@
 import React, { Component, Fragment } from 'react';
-import axios from 'axios'
-import dog from '../../resources/dog.jpg'
-import moment from 'moment'
+import axios from 'axios';
+import dog from '../../resources/dog.jpg';
+import moment from 'moment';
 import { RichText, Reply, Button } from '../';
-import { getDangerousHtml, formValidation } from '../../utils' 
-import communityAsyncActions from './../../redux/actions/community/asyncActions'
-import { connect } from 'react-redux'
-import { ENDPOINT } from '../../constants'
-import './CommunityPost.scss'
+import { getDangerousHtml, formValidation } from '../../utils';
+import communityAsyncActions from './../../redux/actions/community/asyncActions';
+import { connect } from 'react-redux';
+import { ENDPOINT } from '../../constants';
+import './CommunityPost.scss';
 
 class CommunityPost extends Component {
 
@@ -16,11 +16,11 @@ class CommunityPost extends Component {
     reply: {
       value: '',
       isValid: null,
-    }
+    },
   }
 
   componentDidMount() {
-    this.getPosts()
+    this.getPosts();
   }
 
   getPosts = () => {
@@ -48,14 +48,14 @@ class CommunityPost extends Component {
     this.setState({
       reply: {
             ...this.state.reply,
-            value
+            value,
         }
     })
   }
 
   handleBlur = () => {
 
-    const isValid = formValidation.richText(this.state.reply.value)
+    const isValid = formValidation.richText(this.state.reply.value);
 
     this.setState({
       reply: {
@@ -66,23 +66,31 @@ class CommunityPost extends Component {
   }
 
   postReply = () => {
-    const { reply } = this.state
-    const { pk } = this.props.post
+    const { reply } = this.state;
+
+    const { pk } = this.props.post;
+
     const data = ({
       content: reply.value,
       reply_to_post: pk
-    })
-    this.props.dispatch(communityAsyncActions.postReply(data, this.getPosts))
+    });
+
+    this.props.dispatch(communityAsyncActions.postReply(data, this.getPosts));
   }
 
   render() {
 
-    const { publish_date, title, post, pk, publisher = {}} = this.props.post
-    const { first_name, last_name, profile } = publisher
-    const { activePost, updateActivePost, user } = this.props
-    const { replies, reply } = this.state
-    const isActive = activePost === pk
-    const formattedDate = moment(publish_date).format("Do MMM YYYY")
+    const { publish_date, title, post, pk, publisher = {}} = this.props.post;
+
+    const { first_name, last_name, profile } = publisher;
+
+    const { activePost, updateActivePost, user } = this.props;
+
+    const { replies, reply } = this.state;
+
+    const isActive = activePost === pk;
+
+    const formattedDate = moment(publish_date).format("Do MMM YYYY");
 
     return (
       <div className='CommunityPost'>

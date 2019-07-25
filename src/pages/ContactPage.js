@@ -1,16 +1,10 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Contact } from '../../src/components/';
 
-class ContactPage extends Component {
-
-  render() {
-    return (
-        <div className="App">
-            <Contact />
-        </div>
-    );
-  }
-}
-
+const ContactPage = () => (
+  <div className="App">
+    <Contact />
+  </div>
+);
 
 export default ContactPage;

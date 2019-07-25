@@ -1,23 +1,25 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux'
-import { Button } from '../../'
-import podcastActionGenerators from '../../../redux/actions/podcast/podcastActionGenerators'
-import { getDangerousHtml } from '../../../utils' 
-import './UserPodcast.scss'
+import { connect } from 'react-redux';
+import { Button } from '../../';
+import podcastActionGenerators from '../../../redux/actions/podcast/podcastActionGenerators';
+import { getDangerousHtml } from '../../../utils';
+import './UserPodcast.scss';
 
 class UserPodcast extends Component {
 
     openEditModal = () => {
-        this.props.dispatch((podcastActionGenerators.updateEditModalOpen(this.props.podcast)))
-        this.props.toggleEditPodcast()
+        this.props.dispatch((podcastActionGenerators.updateEditModalOpen(this.props.podcast)));
+
+        this.props.toggleEditPodcast();
     }
 
     render() {
 
-        const { podcast } = this.props
-        const { name, tags, start_date, hosts, url, description } = podcast
+        const { podcast } = this.props;
 
-        const descriptionHtml = getDangerousHtml(description)
+        const { name, tags, start_date, hosts, url, description } = podcast;
+
+        const descriptionHtml = getDangerousHtml(description);
 
         return (
             <div className='UserPodcast'>
@@ -47,7 +49,6 @@ class UserPodcast extends Component {
                     <div className='UserPodcast-edit'>
                         <Button onClick={this.openEditModal}>Edit podcast details</Button>
                     </div>
-       
             </div>
         )
     }
@@ -59,4 +60,4 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps)(UserPodcast)
+export default connect(mapStateToProps)(UserPodcast);

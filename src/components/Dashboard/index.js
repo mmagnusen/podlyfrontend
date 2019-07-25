@@ -1,79 +1,76 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux'
-import { Redirect } from 'react-router-dom'
-//tabs
-import TabDetails from './tabs/TabDetails'
-import TabPodcasts from './tabs/TabPodcasts'
-import TabEpisodes from './tabs/TabEpisodes'
-import TabHosts from './tabs/TabHosts'
+import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
+import TabDetails from './tabs/TabDetails';
+import TabPodcasts from './tabs/TabPodcasts';
+import TabEpisodes from './tabs/TabEpisodes';
+import TabHosts from './tabs/TabHosts';
 import Modal from '@material-ui/core/Modal';
-import { NewPodcast, EditPodcast, NewEpisode, EditEpisode,  NewHost, EditHost, NavigationItems } from '../'
-
-import podcastAsyncActions from '../../redux/actions/podcast/asyncActions'
-import userActionGenerators from '../../redux/actions/user/userActionGenerators'
-import './Dashboard.scss'
+import { NewPodcast, EditPodcast, NewEpisode, EditEpisode,  NewHost, EditHost, NavigationItems } from '../';
+import podcastAsyncActions from '../../redux/actions/podcast/asyncActions';
+import userActionGenerators from '../../redux/actions/user/userActionGenerators';
+import './Dashboard.scss';
 
 class DashboardHome extends Component {
 
     state = {
         newOpen: false,
         editOpen: false,
-
         newEpisodeOpen: false,
         episodeEditOpen: false,
-
         newHostOpen: false,
         hostEditOpen: false,
     }
 
     componentDidMount() {
-        this.props.dispatch(podcastAsyncActions.getUserPodcasts())
+        this.props.dispatch(podcastAsyncActions.getUserPodcasts());
     }
 
     toggleNewPodcast = () => {
         this.setState({
             newOpen: !this.state.newOpen
-        })
+        });
     }
 
     toggleNewEpisode = () => {
         this.setState({
             newEpisodeOpen: !this.state.newEpisodeOpen
-        })
+        });
     }
 
     toggleNewHost = () => {
         this.setState({
             newHostOpen: !this.state.newHostOpen
-        })
+        });
     }
 
     toggleEditPodcast = () => {
         this.setState({
             editOpen: !this.state.editOpen
-        })
+        });
     }
 
     toggleEditHost = () => {
         this.setState({
             hostEditOpen: !this.state.hostEditOpen
-        })
+        });
     }
 
     toggleEditEpisode = () => {
         this.setState({
             episodeEditOpen: !this.state.episodeEditOpen
-        })
+        });
     }
 
     updateDashboardTab = (newTabIndex) => {
-        this.props.dispatch(userActionGenerators.updateTabIndex(newTabIndex))
+        this.props.dispatch(userActionGenerators.updateTabIndex(newTabIndex));
     }
 
     render() {
 
-        const { user } = this.props
-        const { newOpen, editOpen, newEpisodeOpen, episodeEditOpen, newHostOpen, hostEditOpen } = this.state
+        const { user } = this.props;
+
+        const { newOpen, editOpen, newEpisodeOpen, episodeEditOpen, newHostOpen, hostEditOpen } = this.state;
 
         if (user.token === null) {
             return <Redirect to='/'/>
@@ -162,4 +159,4 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps)(DashboardHome)
+export default connect(mapStateToProps)(DashboardHome);

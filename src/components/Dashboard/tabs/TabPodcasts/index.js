@@ -1,19 +1,19 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux'
-import UserPodcast from '../../UserPodcast'
+import { connect } from 'react-redux';
+import UserPodcast from '../../UserPodcast';
 import { Button } from '../../../'
-import podcastAsyncActions from '../../../../redux/actions/podcast/asyncActions'
-import './TabPodcasts.scss'
+import podcastAsyncActions from '../../../../redux/actions/podcast/asyncActions';
+import './TabPodcasts.scss';
 
 class TabPodcasts extends Component {
 
     componentDidMount() {
-        this.props.dispatch(podcastAsyncActions.getUserPodcasts())
+        this.props.dispatch(podcastAsyncActions.getUserPodcasts());
     }
 
     render() {
 
-    const { reduxPodcast, toggleNewPodcast } = this.props
+    const { reduxPodcast, toggleNewPodcast } = this.props;
 
         return (
             <section className='TabPodcasts'>
@@ -44,7 +44,7 @@ const mapStateToProps = (state) => {
         user: state.user,
         reduxPodcast: state.podcast
     }
-}
+};
 
-export default connect(mapStateToProps)(TabPodcasts)
+export default connect(mapStateToProps)(TabPodcasts);
 

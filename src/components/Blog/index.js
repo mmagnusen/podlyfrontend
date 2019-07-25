@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import axios from 'axios'
-import { BlogThumbnail } from '../'
-import './Blog.scss'
+import axios from 'axios';
+import { BlogThumbnail } from '../';
+import './Blog.scss';
 
 class Blog extends Component {
 
@@ -30,11 +30,6 @@ class Blog extends Component {
         return (
             <div className='Blog'>
                 <div className='Blog-inner'>
-                    {/*
-                        <article className='Blog-featured thumbnail'>
-                            <h3>Featured title</h3>
-                        </article>
-                    */}
                     <section className='Blog-articles'>
                         {
                             articles && articles.map((article) => <BlogThumbnail key={article.id} article={article}/>)
@@ -44,7 +39,6 @@ class Blog extends Component {
             </div>
         )
     }
-
 }
 
-export default Blog
+export default Blog;

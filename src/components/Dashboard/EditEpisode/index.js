@@ -1,28 +1,29 @@
 import React, { Component } from 'react';
-import { Input, TextArea, Button } from '../../index'
-import { connect } from 'react-redux'
-import episodeAsyncActions from '../../../redux/actions/episode/asyncActions'
-import episodeActionGenerators from '../../../redux/actions/episode/episodeActionGenerators'
-import './EditEpisode.scss'
+import { Input, TextArea, Button } from '../../index';
+import { connect } from 'react-redux';
+import episodeAsyncActions from '../../../redux/actions/episode/asyncActions';
+import episodeActionGenerators from '../../../redux/actions/episode/episodeActionGenerators';
+import './EditEpisode.scss';
 
 class EditEpisode extends Component {
 
     updateName = (event) => {
-        this.props.dispatch(episodeActionGenerators.updateName(event.target.value))
+        this.props.dispatch(episodeActionGenerators.updateName(event.target.value));
     }
 
     updateSnippet = (event) => {
-        this.props.dispatch(episodeActionGenerators.updateSnippet(event.target.value))
+        this.props.dispatch(episodeActionGenerators.updateSnippet(event.target.value));
     }
 
     submitChanges = () => {
-        this.props.dispatch((episodeAsyncActions.submitChanges()))
-        this.props.toggleEditEpisode()
+        this.props.dispatch((episodeAsyncActions.submitChanges()));
+
+        this.props.toggleEditEpisode();
     }
 
     render() {
 
-        const { name, snippet } = this.props.reduxEpisode.currentEditEpisode
+        const { name, snippet } = this.props.reduxEpisode.currentEditEpisode;
 
         return (
             <div className='EditEpisode'>
@@ -48,8 +49,8 @@ const mapStateToProps = (state) => {
     return {
         user: state.user,
         podcast: state.podcast,
-        reduxEpisode: state.episode
+        reduxEpisode: state.episode,
     }
 }
 
-export default connect(mapStateToProps)(EditEpisode)
+export default connect(mapStateToProps)(EditEpisode);

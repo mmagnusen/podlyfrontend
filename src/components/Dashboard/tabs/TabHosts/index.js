@@ -1,18 +1,19 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux'
-import hostAsyncActions from '../../../../redux/actions/host/asyncActions'
-import UserHost from './../../UserHost'
-import { Button } from '../../../'
-import './TabHosts.scss'
+import { connect } from 'react-redux';
+import hostAsyncActions from '../../../../redux/actions/host/asyncActions';
+import UserHost from './../../UserHost';
+import { Button } from '../../../';
+import './TabHosts.scss';
 
 class TabHosts extends Component {
     componentDidMount() {
-        this.props.dispatch(hostAsyncActions.getUserHosts())
+        this.props.dispatch(hostAsyncActions.getUserHosts());
     }
 
     render() {
-        const { toggleNewHost } = this.props
-        const { userHosts } = this.props.host
+        const { toggleNewHost } = this.props;
+
+        const { userHosts } = this.props.host;
 
         return (
             <section className='TabHosts'>
@@ -37,7 +38,7 @@ const mapStateToProps = (state) => {
         episode: state.episode,
         host: state.host
     }
-}
+};
 
-export default connect(mapStateToProps)(TabHosts)
+export default connect(mapStateToProps)(TabHosts);
 

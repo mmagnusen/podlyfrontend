@@ -1,17 +1,18 @@
 import React, { Component } from 'react';
-import { Input, RichText, Button } from '../../index'
+import { Input, RichText, Button } from '../../index';
 import { connect } from 'react-redux'
-import hostAsyncActions from '../../../redux/actions/host/asyncActions'
-import { formValidation } from '../../../utils/'
-import './EditHost.scss'
-import { storage } from '../../../firebase'
+import hostAsyncActions from '../../../redux/actions/host/asyncActions';
+import { formValidation } from '../../../utils/';
+import { storage } from '../../../firebase';
+import './EditHost.scss';
 
 class EditHost extends Component {
 
     constructor(props) {
-        super(props)
+        super(props);
 
-        const { name, twitter_name, twitter_url, bio, image } = this.props.currentHost
+        const { name, twitter_name, twitter_url, bio, image } = this.props.currentHost;
+
         this.state = {
             name: {
                 value: name,
@@ -81,13 +82,15 @@ class EditHost extends Component {
     }
 
     canSubmit = () => {
-        const { name, twitter_name, twitter_url, bio, profile } = this.state
-        return name.isValid && twitter_name.isValid && twitter_url.isValid && bio.isValid && profile.url
+        const { name, twitter_name, twitter_url, bio, profile } = this.state;
+
+        return name.isValid && twitter_name.isValid && twitter_url.isValid && bio.isValid && profile.url;
     }
 
     toggleCallback = () => {
-        this.props.dispatch(hostAsyncActions.getUserHosts())
-        this.props.toggleEditHost(false)
+        this.props.dispatch(hostAsyncActions.getUserHosts());
+
+        this.props.toggleEditHost(false);
     }
 
 
@@ -98,19 +101,21 @@ class EditHost extends Component {
             twitter_url: this.state.twitter_url.value,
             bio: this.state.bio.value,
             image: this.state.profile.url,
-        }
-        this.props.dispatch((hostAsyncActions.submitChanges(data, this.toggleCallback)))
+        };
+
+        this.props.dispatch((hostAsyncActions.submitChanges(data, this.toggleCallback)));
     }
 
     getPodcastSelectOptions = () => {
-        const options = []
-        const { podcasts } = this.props.podcast
+        const options = [];
+
+        const { podcasts } = this.props.podcast;
 
         podcasts && podcasts.forEach((podcast) => {
             options.push({value: podcast.pk, label: podcast.name})
         })
 
-        return options
+        return options;
     }
 
     handleChange = (e) => {
@@ -127,17 +132,19 @@ class EditHost extends Component {
     }
 
     handleUpload = () => {
-    const { pic } = this.state.profile
-       const uploadTask =  storage.ref(`profile/${pic.name}`).put(pic);
-       uploadTask.on('state_changed', 
-       (snapshot) => {
+        const { pic } = this.state.profile;
+
+        const uploadTask =  storage.ref(`profile/${pic.name}`).put(pic);
+
+        uploadTask.on('state_changed', 
+        (snapshot) => {
            //progress function ...
-       },
-       (error) => {
+        },
+        (error) => {
            //error function ...
            console.log('error:', error)
-       },
-       () => {
+        },
+        () => {
             //complete function ...
             storage.ref('profile').child(pic.name).getDownloadURL().then(profile_url => {
                 console.log('type of url', typeof profile_url, profile_url)
@@ -149,14 +156,14 @@ class EditHost extends Component {
                     }
                 })
             })
-       },
-    )
-    }
+        },
+    )}
 
     render() {
 
-        const { name, twitter_name, twitter_url, bio, profile } = this.state
-        const { reduxHost } = this.props
+        const { name, twitter_name, twitter_url, bio, profile } = this.state;
+
+        const { reduxHost } = this.props;
 
         return (
             <div className='EditHost'>
@@ -254,4 +261,4 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps)(EditHost)
+export default connect(mapStateToProps)(EditHost);

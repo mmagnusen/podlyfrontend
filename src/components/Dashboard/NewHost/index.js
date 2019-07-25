@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import { Input, RichText, Button } from '../../index'
-import { connect } from 'react-redux'
+import { Input, RichText, Button } from '../../index';
+import { connect } from 'react-redux';
 import Select from 'react-select';
-import hostAsyncActions from '../../../redux/actions/host/asyncActions'
-import { formValidation } from '../../../utils/'
-import { storage } from '../../../firebase'
-import './NewHost.scss'
+import hostAsyncActions from '../../../redux/actions/host/asyncActions';
+import { formValidation } from '../../../utils/';
+import { storage } from '../../../firebase';
+import './NewHost.scss';
 
 class NewHost extends Component {
 
@@ -62,9 +62,9 @@ class NewHost extends Component {
         let isValid;
 
         if (field === 'bio') {
-            isValid = formValidation.richText(this.state[field].value)
+            isValid = formValidation.richText(this.state[field].value);
         } else {
-            isValid = formValidation.message(this.state[field].value)
+            isValid = formValidation.message(this.state[field].value);
         }
 
         this.setState({
@@ -76,13 +76,15 @@ class NewHost extends Component {
     }
 
     canSubmit = () => {
-        const { name, twitter_name, twitter_url, bio, profile } = this.state
-        return name.isValid && twitter_name.isValid && twitter_url.isValid && bio.isValid && profile.url
+        const { name, twitter_name, twitter_url, bio, profile } = this.state;
+
+        return name.isValid && twitter_name.isValid && twitter_url.isValid && bio.isValid && profile.url;
     }
 
     toggleCallback = () => {
-        this.props.dispatch(hostAsyncActions.getUserHosts())
-        this.props.toggleNewHost(false)
+        this.props.dispatch(hostAsyncActions.getUserHosts());
+
+        this.props.toggleNewHost(false);
     }
 
 
@@ -94,19 +96,22 @@ class NewHost extends Component {
             twitter_url: this.state.twitter_url.value,
             bio: this.state.bio.value,
             image: this.state.profile.url,
-        }
-        this.props.dispatch((hostAsyncActions.submitNewHost(data, this.toggleCallback)))
+        };
+
+        this.props.dispatch((hostAsyncActions.submitNewHost(data, this.toggleCallback)));
     }
 
     getPodcastSelectOptions = () => {
-        const options = []
-        const { podcasts } = this.props.podcast
+        const options = [];
+
+        const { podcasts } = this.props.podcast;
+
 
         podcasts && podcasts.forEach((podcast) => {
             options.push({value: podcast.pk, label: podcast.name})
         })
 
-        return options
+        return options;
     }
 
     handleChange = (e) => {
@@ -123,10 +128,9 @@ class NewHost extends Component {
     }
 
     handleUpload = () => {
-        const { pic } = this.state.profile
-        debugger;
+        const { pic } = this.state.profile;
+
         const uploadTask =  storage.ref(`profile/${pic.name}`).put(pic);
-        debugger;
         uploadTask.on('state_changed', 
         (snapshot) => {
             //progress function ...
@@ -138,7 +142,6 @@ class NewHost extends Component {
         () => {
                 //complete function ...
                 storage.ref('profile').child(pic.name).getDownloadURL().then(profile_url => {
-                    debugger;
                     console.log('type of url', typeof profile_url, profile_url)
                     
                     this.setState({
@@ -154,8 +157,9 @@ class NewHost extends Component {
 
     render() {
 
-        const { name, twitter_name, twitter_url, bio, podcastSelectOption, profile } = this.state
-        const { host } = this.props
+        const { name, twitter_name, twitter_url, bio, podcastSelectOption, profile } = this.state;
+
+        const { host } = this.props;
 
         return (
             <div className='NewHost'>
@@ -262,4 +266,4 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps)(NewHost)
+export default connect(mapStateToProps)(NewHost);

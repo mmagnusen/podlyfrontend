@@ -9,7 +9,6 @@ $module: 'UserEpisode';
     &-detail {
         display: grid;
         grid-template-columns: 100px 1fr;
-    
     }
 
     &-edit {
@@ -23,5 +22,4 @@ $module: 'UserEpisode';
             width: 200px;
         }
     }
-
 }

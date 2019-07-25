@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import { Input, TextArea } from '../../index'
-import { connect } from 'react-redux'
+import { Input, TextArea } from '../../index';
+import { connect } from 'react-redux';
 import Select from 'react-select';
-import episodeAsyncActions from '../../../redux/actions/episode/asyncActions'
-import './NewEpisode.scss'
-import { storage } from '../../../firebase'
+import episodeAsyncActions from '../../../redux/actions/episode/asyncActions';
+import './NewEpisode.scss';
+import { storage } from '../../../firebase';
 
 class NewEpisode extends Component {
 
@@ -52,7 +52,8 @@ class NewEpisode extends Component {
     }
 
     submitNewEpisode = () => {
-        this.props.toggleNewEpisode(false)
+        this.props.toggleNewEpisode(false);
+
         const data = {
             name: this.state.name,
             slug: this.state.slug,
@@ -60,8 +61,9 @@ class NewEpisode extends Component {
             podcast: this.state.podcastSelectOption.value,
             audio: this.state.url,
             duration: this.state.duration,
-        }
-        this.props.dispatch((episodeAsyncActions.submitNewEpisode(data)))
+        };
+
+        this.props.dispatch((episodeAsyncActions.submitNewEpisode(data)));
     }
 
     getPodcastSelectOptions = () => {
@@ -72,7 +74,7 @@ class NewEpisode extends Component {
             options.push({value: podcast.pk, label: podcast.name})
         })
 
-        return options
+        return options;
     }
 
     handleChange = (e) => {
@@ -83,11 +85,7 @@ class NewEpisode extends Component {
             this.setState({
                 audio
             })
-
-      
-
         }
-        
     }
 
     handleUpload = () => {
@@ -111,12 +109,11 @@ class NewEpisode extends Component {
                 })
             })
        },
-    )
-    }
+    )}
 
     render() {
 
-        const { name, slug, tags, podcastSelectOption } = this.state
+        const { name, slug, tags, podcastSelectOption } = this.state;
 
         return (
             <div className='NewEpisode'>
@@ -160,6 +157,6 @@ const mapStateToProps = (state) => {
         user: state.user,
         podcast: state.podcast
     }
-}
+};
 
-export default connect(mapStateToProps)(NewEpisode)
+export default connect(mapStateToProps)(NewEpisode);

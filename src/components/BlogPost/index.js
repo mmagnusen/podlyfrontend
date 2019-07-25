@@ -30,10 +30,9 @@ class BlogPost extends Component {
 
     render() {
 
-        const {title, content, date, featuredImage } = this.state 
-        console.log(this.state)
+        const {title, content, date, featuredImage } = this.state;
 
-        const formattedDate = moment(date).format("MMM Do YYYY")
+        const formattedDate = moment(date).format("MMM Do YYYY");
 
         return (
             <div className='BlogPost'>
@@ -60,6 +59,6 @@ class BlogPost extends Component {
             </div>
         )
     }
-}
+};
 
-export default BlogPost
+export default BlogPost;
